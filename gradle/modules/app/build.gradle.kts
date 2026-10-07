@@ -14,6 +14,7 @@ plugins {
 }
 
 val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioCompileSdkMinor = rootProject.extra["folioCompileSdkMinor"] as Int
 val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 val folioProtobuf = rootProject.extra["folioProtobuf"] as String
 @Suppress("UNCHECKED_CAST")
@@ -30,7 +31,9 @@ val launcherSources = listOf<Any>(
 
 extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
     namespace = "app.folio.launcher"
-    compileSdk = folioCompileSdk
+    compileSdk {
+        version = release(folioCompileSdk) { minorApiLevel = folioCompileSdkMinor }
+    }
 
     defaultConfig {
         applicationId = "app.folio.launcher"

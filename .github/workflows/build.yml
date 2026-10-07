@@ -24,7 +24,7 @@ env:
   # Never packaged into the APK. Source: github.com/Reginer/aosp-android-jar
   HIDDEN_API_JAR_URL: https://raw.githubusercontent.com/Reginer/aosp-android-jar/262f6ae931160011572a5adfe4ec6302585e8f60/android-37/android.jar
   HIDDEN_API_JAR_SHA256: 28226cd0fcf14b812275abb2e9b914f8501bff4847c80bf6ccc95bd49ae128dc
-  COMPILE_SDK: "37"
+  COMPILE_SDK: "37.2"
 
 permissions:
   contents: write  # to publish build logs to the ci-logs branch
@@ -59,14 +59,12 @@ jobs:
             echo "sdkmanager: $SDKMANAGER"
             yes | "$SDKMANAGER" --licenses > /dev/null || true
             LIST=$("$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-[0-9A-Za-z.\-]+" | sort -u)
-            echo "$LIST" | grep -E "android-${COMPILE_SDK}"
-            # API 37 ships as "android-37.0" (plus QPR minors); older APIs as "android-NN".
-            PKG=$(echo "$LIST" | grep -xE "platforms;android-${COMPILE_SDK}(\.0)?" | sort | tail -1)
+            echo "$LIST" | grep -E "android-${COMPILE_SDK%%.*}"
+            PKG="platforms;android-${COMPILE_SDK}"
             echo "installing: $PKG"
             "$SDKMANAGER" "$PKG"
             ls "$ANDROID_HOME/platforms"
-            DIR=$(ls -d "$ANDROID_HOME"/platforms/android-${COMPILE_SDK}* | head -1)
-            echo "PLATFORM_DIR=$DIR" >> "$GITHUB_ENV"
+            echo "PLATFORM_DIR=$ANDROID_HOME/platforms/android-${COMPILE_SDK}" >> "$GITHUB_ENV"
           } 2>&1 | tee sdk.log
 
       - name: Use the hidden-API android.jar for compiling

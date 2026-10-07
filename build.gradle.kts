@@ -14,7 +14,10 @@ plugins {
 }
 
 // Shared settings, read by the module build files.
-extra["folioCompileSdk"] = providers.gradleProperty("folio.compileSdk").get().toInt()
+// compileSdk is "major.minor" (Android 17 SDKs are 37.0, 37.1, 37.2).
+val compileSdkParts = providers.gradleProperty("folio.compileSdk").get().split(".")
+extra["folioCompileSdk"] = compileSdkParts[0].toInt()
+extra["folioCompileSdkMinor"] = compileSdkParts.getOrElse(1) { "0" }.toInt()
 extra["folioMinSdk"] = 31
 extra["folioProtobuf"] = providers.gradleProperty("folio.protobuf").get()
 
@@ -34,16 +37,3 @@ val vendoredManifest: (Project, String) -> File = { project, path ->
 }
 extra["vendoredManifest"] = vendoredManifest
 
-// Dependencies are declared with "+" and resolve to the newest *stable* release, except for
-// libraries that only have pre-releases so far.
-val prereleaseAllowed = setOf("androidx.appfunctions")
-val prerelease = Regex("""(?i).*-(alpha|beta|rc|dev|eap|snapshot)[0-9.\-]*""")
-subprojects {
-    configurations.configureEach {
-        resolutionStrategy.componentSelection.all {
-            if (candidate.group !in prereleaseAllowed && prerelease.matches(candidate.version)) {
-                reject("pre-release")
-            }
-        }
-    }
-}
