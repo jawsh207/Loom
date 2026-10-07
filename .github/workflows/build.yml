@@ -58,8 +58,10 @@ jobs:
             SDKMANAGER=$(ls "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | sort | tail -1)
             echo "sdkmanager: $SDKMANAGER"
             yes | "$SDKMANAGER" --licenses > /dev/null || true
-            "$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-[0-9A-Za-z.\-]+" | sort -u
-            PKG=$("$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-${COMPILE_SDK}(\.0)?\b" | sort -u | head -1)
+            LIST=$("$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-[0-9A-Za-z.\-]+" | sort -u)
+            echo "$LIST" | grep -E "android-${COMPILE_SDK}"
+            # API 37 ships as "android-37.0" (plus QPR minors); older APIs as "android-NN".
+            PKG=$(echo "$LIST" | grep -xE "platforms;android-${COMPILE_SDK}(\.0)?" | sort | tail -1)
             echo "installing: $PKG"
             "$SDKMANAGER" "$PKG"
             ls "$ANDROID_HOME/platforms"
