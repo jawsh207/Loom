@@ -28,7 +28,7 @@ val launcherSources = listOf<Any>(
     rootProject.file("launcher3/modules/concurrent/src"),
 )
 
-android {
+extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
     namespace = "app.folio.launcher"
     compileSdk = folioCompileSdk
 
@@ -59,18 +59,20 @@ android {
         }
     }
 
-    sourceSets.getByName("main") {
-        java.setSrcDirs(launcherSources)
-        kotlin.setSrcDirs(launcherSources)
-        res.setSrcDirs(listOf<Any>())
-        manifest.srcFile(vendoredManifest(project, "launcher3/folio/AndroidManifest.xml"))
-    }
-
     packaging {
         resources.excludes += listOf("META-INF/*.version", "META-INF/versions/9/OSGI-INF/MANIFEST.MF")
     }
 
     lint { abortOnError = false }
+}
+
+// Sources come from the vendored trees (through the new DSL type; AGP 9's
+// `android.sourceSets` accessor still exposes the removed legacy type).
+extensions.getByType<com.android.build.api.dsl.ApplicationExtension>().sourceSets.getByName("main") {
+    java.setSrcDirs(launcherSources)
+    kotlin.setSrcDirs(launcherSources)
+    res.setSrcDirs(listOf<Any>())
+    manifest.srcFile(vendoredManifest(project, "launcher3/folio/AndroidManifest.xml"))
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
