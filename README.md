@@ -40,6 +40,8 @@ Add these under **Settings › Secrets and variables › Actions**:
 
 Keep `folio.jks` somewhere safe. Android only accepts updates signed with the same key.
 
+Folio's release key has the certificate SHA-256 `5A:CB:BD:65:B5:6A:3D:A0:13:47:43:44:A7:28:F1:A6:CD:CF:EE:FC:E2:2F:45:CA:91:6F:5F:81:41:12:40:18`. Each build logs the certificate it was signed with (step **Show signing certificate**).
+
 ## Building
 
 CI (`.github/workflows/build.yml`) runs on a standard GitHub runner in about 5 minutes. It does the following:
