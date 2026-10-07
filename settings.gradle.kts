@@ -43,7 +43,6 @@ listOf(
     "iconloaderlib",
     "animationlib",
     "msdllib",
-    "mechanics",
     "dynamiccolors",
     "plugins",
     "wmshellshared",
