@@ -13,7 +13,7 @@ val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
-android {
+extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.android.mechanics"
     compileSdk = folioCompileSdk
     defaultConfig { minSdk = folioMinSdk }
@@ -23,12 +23,15 @@ android {
     }
     lint { abortOnError = false }
     buildFeatures { compose = true }
-    sourceSets.getByName("main") {
-        java.setSrcDirs(listOf<Any>(rootProject.file("systemui/mechanics/src")))
-        kotlin.setSrcDirs(listOf<Any>(rootProject.file("systemui/mechanics/src")))
-        res.setSrcDirs(listOf<Any>())
-        manifest.srcFile(vendoredManifest(project, "systemui/mechanics/AndroidManifest.xml"))
-    }
+}
+
+// Sources come from the vendored trees (through the new DSL type; AGP 9's
+// `android.sourceSets` accessor still exposes the removed legacy type).
+extensions.getByType<com.android.build.api.dsl.LibraryExtension>().sourceSets.getByName("main") {
+    java.setSrcDirs(listOf<Any>(rootProject.file("systemui/mechanics/src")))
+    kotlin.setSrcDirs(listOf<Any>(rootProject.file("systemui/mechanics/src")))
+    res.setSrcDirs(listOf<Any>())
+    manifest.srcFile(vendoredManifest(project, "systemui/mechanics/AndroidManifest.xml"))
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

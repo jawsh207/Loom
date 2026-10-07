@@ -12,7 +12,7 @@ val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
-android {
+extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.android.folio.flags"
     compileSdk = folioCompileSdk
     defaultConfig { minSdk = folioMinSdk }
@@ -21,11 +21,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
     lint { abortOnError = false }
-    sourceSets.getByName("main") {
-        java.setSrcDirs(listOf<Any>(rootProject.file("flags/src")))
-        kotlin.setSrcDirs(listOf<Any>(rootProject.file("flags/src")))
-        res.setSrcDirs(listOf<Any>())
-    }
+}
+
+// Sources come from the vendored trees (through the new DSL type; AGP 9's
+// `android.sourceSets` accessor still exposes the removed legacy type).
+extensions.getByType<com.android.build.api.dsl.LibraryExtension>().sourceSets.getByName("main") {
+    java.setSrcDirs(listOf<Any>(rootProject.file("flags/src")))
+    kotlin.setSrcDirs(listOf<Any>(rootProject.file("flags/src")))
+    res.setSrcDirs(listOf<Any>())
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
