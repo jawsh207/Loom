@@ -5,6 +5,7 @@ name: Build Folio
 
 on:
   push:
+    branches-ignore: [ci-logs]
   pull_request:
   workflow_dispatch:
     inputs:
@@ -24,6 +25,9 @@ env:
   HIDDEN_API_JAR_URL: https://raw.githubusercontent.com/Reginer/aosp-android-jar/262f6ae931160011572a5adfe4ec6302585e8f60/android-37/android.jar
   HIDDEN_API_JAR_SHA256: 28226cd0fcf14b812275abb2e9b914f8501bff4847c80bf6ccc95bd49ae128dc
   COMPILE_SDK: "37"
+
+permissions:
+  contents: write  # to publish build logs to the ci-logs branch
 
 jobs:
   build:
@@ -49,19 +53,26 @@ jobs:
 
       - name: Install Android SDK platform ${{ env.COMPILE_SDK }}
         run: |
-          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
-          yes | "$SDKMANAGER" --licenses > /dev/null || true
-          "$SDKMANAGER" --list 2>/dev/null | grep -E "platforms;android-" | sort -u | tail -5
-          "$SDKMANAGER" "platforms;android-${COMPILE_SDK}"
-          ls "$ANDROID_HOME/platforms"
+          set -o pipefail
+          {
+            SDKMANAGER=$(ls "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | sort | tail -1)
+            echo "sdkmanager: $SDKMANAGER"
+            yes | "$SDKMANAGER" --licenses > /dev/null || true
+            "$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-[0-9A-Za-z.\-]+" | sort -u
+            PKG=$("$SDKMANAGER" --list 2>/dev/null | grep -oE "platforms;android-${COMPILE_SDK}(\.0)?\b" | sort -u | head -1)
+            echo "installing: $PKG"
+            "$SDKMANAGER" "$PKG"
+            ls "$ANDROID_HOME/platforms"
+            DIR=$(ls -d "$ANDROID_HOME"/platforms/android-${COMPILE_SDK}* | head -1)
+            echo "PLATFORM_DIR=$DIR" >> "$GITHUB_ENV"
+          } 2>&1 | tee sdk.log
 
       - name: Use the hidden-API android.jar for compiling
         run: |
           curl -fsSL -o /tmp/android.jar "$HIDDEN_API_JAR_URL"
           echo "$HIDDEN_API_JAR_SHA256  /tmp/android.jar" | sha256sum -c -
-          PLATFORM="$ANDROID_HOME/platforms/android-${COMPILE_SDK}"
-          cp "$PLATFORM/android.jar" "$PLATFORM/android-public.jar"
-          cp /tmp/android.jar "$PLATFORM/android.jar"
+          cp "$PLATFORM_DIR/android.jar" "$PLATFORM_DIR/android-public.jar"
+          cp /tmp/android.jar "$PLATFORM_DIR/android.jar"
 
       - uses: gradle/actions/setup-gradle@v4
         with:
@@ -69,8 +80,9 @@ jobs:
 
       - name: Build
         run: |
-          gradle --version
-          gradle ${{ steps.versions.outputs.args }} --continue --stacktrace :app:assembleRelease
+          set -o pipefail
+          gradle --version 2>&1 | tee build.log
+          gradle ${{ steps.versions.outputs.args }} --continue --stacktrace :app:assembleRelease 2>&1 | tee -a build.log
 
       - name: Upload APK
         if: success()
@@ -79,3 +91,18 @@ jobs:
           name: Folio
           path: gradle/modules/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
+
+      # GitHub's log storage isn't reachable from every environment, so the logs are also
+      # pushed to the ci-logs branch (one commit, overwritten each run).
+      - name: Publish logs to ci-logs branch
+        if: always() && github.event_name != 'pull_request'
+        run: |
+          mkdir -p /tmp/ci-logs
+          cp sdk.log build.log /tmp/ci-logs/ 2>/dev/null || true
+          grep -nE "^e: |error:|FAILURE|What went wrong|Could not|BUILD" build.log > /tmp/ci-logs/errors.log 2>/dev/null || true
+          echo "${{ github.sha }} run ${{ github.run_id }} ${{ job.status }}" > /tmp/ci-logs/RUN
+          cd /tmp/ci-logs
+          git init -q -b ci-logs
+          git add -A
+          git -c user.name=folio-ci -c user.email=ci@users.noreply.github.com commit -qm "Logs for ${{ github.sha }} (run ${{ github.run_id }})"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-logs
