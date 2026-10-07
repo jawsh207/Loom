@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+// SystemUI plugin interfaces (PluginCoreLib, SystemUILogCoreLib) and Launcher3's plugins.
+
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
-val folioCompileSdk: Int by rootProject.extra
-val folioMinSdk: Int by rootProject.extra
+val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
@@ -23,12 +24,13 @@ android {
     }
     lint { abortOnError = false }
     sourceSets.getByName("main") {
-        java.setSrcDirs(listOf(rootProject.file("frameworks/plugin_core/src"), rootProject.file("frameworks/plugin_core/annotations/src"), rootProject.file("frameworks/log_core/src"), rootProject.file("launcher3/src_plugins")))
+        java.setSrcDirs(listOf<Any>(rootProject.file("frameworks/plugin_core/src"), rootProject.file("frameworks/plugin_core/annotations/src"), rootProject.file("frameworks/log_core/src"), rootProject.file("launcher3/src_plugins")))
+        kotlin.setSrcDirs(listOf<Any>(rootProject.file("frameworks/plugin_core/src"), rootProject.file("frameworks/plugin_core/annotations/src"), rootProject.file("frameworks/log_core/src"), rootProject.file("launcher3/src_plugins")))
         res.setSrcDirs(listOf<Any>())
     }
 }
 
-kotlin {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xjvm-default=all")

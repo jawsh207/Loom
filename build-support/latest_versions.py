@@ -40,13 +40,11 @@ def main():
     ksp_standalone = stable(ksp_all)
     ksp_coupled = [v for v in ksp_all if v.startswith(kotlin + "-") and re.fullmatch(r"[0-9.]+-[0-9.]+", v)]
     ksp = newest(ksp_standalone) if ksp_standalone else newest(ksp_coupled)
-    protobuf_plugin = newest(stable(versions(CENTRAL, "com.google.protobuf", "protobuf-gradle-plugin")))
     protobuf = newest(stable(versions(CENTRAL, "com.google.protobuf", "protoc")))
     args = {
         "folio.agp": agp,
         "folio.kotlin": kotlin,
         "folio.ksp": ksp,
-        "folio.protobufPlugin": protobuf_plugin,
         "folio.protobuf": protobuf,
     }
     print(" ".join("-P%s=%s" % kv for kv in args.items()))

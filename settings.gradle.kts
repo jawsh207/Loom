@@ -9,12 +9,12 @@ pluginManagement {
     plugins {
         id("com.android.application") version v("folio.agp")
         id("com.android.library") version v("folio.agp")
+        id("com.android.legacy-kapt") version v("folio.agp")
+        // Not applied to modules (AGP 9 compiles Kotlin itself); declared so AGP uses this Kotlin.
         id("org.jetbrains.kotlin.android") version v("folio.kotlin")
-        id("org.jetbrains.kotlin.kapt") version v("folio.kotlin")
         id("org.jetbrains.kotlin.plugin.compose") version v("folio.kotlin")
         id("org.jetbrains.kotlin.plugin.parcelize") version v("folio.kotlin")
         id("com.google.devtools.ksp") version v("folio.ksp")
-        id("com.google.protobuf") version v("folio.protobufPlugin")
     }
     repositories {
         google()
