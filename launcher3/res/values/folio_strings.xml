@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Folio Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App name -->
+    <string name="folio_app_name">Folio</string>
+
+    <!-- Drawer tabs -->
+    <string name="drawer_tab_all">All</string>
+    <string name="drawer_tab_new">New tab</string>
+    <string name="drawer_tab_name_hint">Tab name</string>
+    <string name="drawer_tab_choose_apps">Choose apps</string>
+    <string name="drawer_tab_rename">Rename</string>
+    <string name="drawer_tab_move_left">Move left</string>
+    <string name="drawer_tab_move_right">Move right</string>
+    <string name="drawer_tab_delete">Delete tab</string>
+    <string name="drawer_tab_delete_confirm">Delete \"<xliff:g id="name" example="Games">%1$s</xliff:g>\"? Its apps stay installed and remain under All.</string>
+    <string name="drawer_tab_add_app">Add to tab</string>
+
+    <!-- Icon packs -->
+    <string name="icon_pack_title">Icon pack</string>
+    <string name="icon_pack_system">System icons</string>
+    <string name="icon_pack_none_found">No icon packs are installed. Folio works with packs made for Nova, ADW and similar launchers, which you can get from F-Droid, Accrescent and other stores.</string>
+    <string name="icon_pack_fallback_title">Style other icons</string>
+    <string name="icon_pack_fallback_summary">Give apps the icon pack doesn\'t include the pack\'s background and shape, if it has one</string>
+
+    <!-- Per-app icons -->
+    <string name="icon_edit_title">Edit icon</string>
+    <string name="icon_edit_default">Default icon</string>
+    <string name="icon_edit_default_pack">Default (from icon pack)</string>
+    <string name="icon_edit_original">App\'s own icon</string>
+    <string name="icon_edit_from_pack">Choose from <xliff:g id="pack" example="Arcticons">%1$s</xliff:g></string>
+    <string name="icon_picker_search_hint">Search icons</string>
+    <string name="icon_picker_empty">No matching icons</string>
+
+    <!-- Drawer tabs in settings -->
+    <string name="drawer_tabs_settings_title">Drawer tabs</string>
+    <string name="drawer_tabs_settings_summary">Create tabs for the app drawer and choose their apps</string>
+    <string name="drawer_tabs_settings_category">Your tabs</string>
+    <string name="drawer_tabs_settings_empty">No tabs yet</string>
+    <string name="drawer_tabs_settings_hint">Tap a tab to choose its apps, rename, reorder or delete it. You can also manage tabs from the app drawer, and add any app to a tab from its long-press menu.</string>
+    <plurals name="drawer_tab_app_count">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> app</item>
+        <item quantity="other"><xliff:g id="count" example="5">%d</xliff:g> apps</item>
+    </plurals>
+
+    <!-- Folder cover mode -->
+    <string name="folder_cover_on">Use as folder cover</string>
+    <string name="folder_cover_off">Stop using as cover</string>
+    <string name="folder_menu_description">Folder options</string>
+    <string name="folder_cover_on_menu">Make cover folder</string>
+    <string name="folder_cover_off_menu">Make regular folder</string>
+
+    <!-- Double tap to lock -->
+    <string name="double_tap_lock_title">Double-tap to lock</string>
+    <string name="double_tap_lock_summary">Double-tap an empty part of the home screen to turn the screen off</string>
+    <string name="double_tap_lock_setup_title">Turn on double-tap to lock</string>
+    <string name="double_tap_lock_setup_message">To turn the screen off, Folio needs its \"Folio screen lock\" accessibility service. It only locks the screen and doesn\'t read anything on screen.\n\nIn Accessibility settings, open Folio screen lock and turn it on.</string>
+    <string name="double_tap_lock_open_settings">Open settings</string>
+    <string name="lock_service_label">Folio screen lock</string>
+    <string name="lock_service_description">Lets Folio turn your screen off when you double-tap an empty spot. It doesn\'t observe or read anything on screen.</string>
+</resources>
