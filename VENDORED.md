@@ -5,7 +5,7 @@ Folio is built with Gradle from copies of these GrapheneOS sources (branch `17`,
 | Directory | Upstream | Commit |
 |---|---|---|
 | `launcher3/` | GrapheneOS/platform_packages_apps_Launcher3 + Folio patches | `47accce386` + 5 Folio commits |
-| `systemui/` | GrapheneOS/platform_frameworks_libs_systemui (iconloaderlib, animationlib, msdllib, mechanics, usertypelib, dynamiccolors) | `2b48d4c9ee` |
+| `systemui/` | GrapheneOS/platform_frameworks_libs_systemui (iconloaderlib, animationlib, msdllib, usertypelib, dynamiccolors) | `2b48d4c9ee` |
 | `frameworks/plugin_core`, `frameworks/log_core` | GrapheneOS/platform_frameworks_base `packages/SystemUI/{plugin_core,log/core}` | `84183aff99` |
 | `frameworks/wm_shell_shared` | GrapheneOS/platform_frameworks_base `libs/WindowManager/Shell/shared` (BubbleFlagHelper, EntryPoint only) | `84183aff99` |
 | `build-support/flag_values.txt` | GrapheneOS/platform_build_release, release config `cur` + `user` | branch `17` |

@@ -39,7 +39,6 @@ dependencies {
     api(project(":iconloaderlib"))
     api(project(":animationlib"))
     api(project(":msdllib"))
-    api(project(":mechanics"))
     api(project(":plugins"))
     api(project(":wmshellshared"))
     api(project(":widgetpicker"))
