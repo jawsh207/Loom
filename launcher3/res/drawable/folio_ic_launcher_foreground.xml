@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Folio Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!-- Three stacked pages, the front one with a folded corner: a folio. 108dp adaptive canvas,
+     artwork kept inside the 66dp safe zone (21..87). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- back page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.45"
+        android:pathData="M44,30h22a4,4 0,0 1,4 4v34a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
+    <!-- middle page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M39,34h22a4,4 0,0 1,4 4v34a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
+    <!-- front page with folded corner -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,38h16l10,10v28a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.55"
+        android:pathData="M50,38v6a4,4 0,0 0,4 4h6z" />
+</vector>
