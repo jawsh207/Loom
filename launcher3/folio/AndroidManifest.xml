@@ -44,10 +44,7 @@
         android:restoreAnyVersion="true"
         android:supportsRtl="true" >
 
-        <!-- App Functions Metadata -->
-        <property
-            android:name="android.app.appfunctions.app_metadata"
-            android:resource="@xml/app_metadata" />
+        <!-- Folio leaves out Launcher3's App Functions (home screen access for AI agents). -->
 
         <!--
         Main launcher activity. When extending only change the name, and keep all the
@@ -93,15 +90,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name="androidx.appfunctions.service.ExtensionAppFunctionService"
-            android:permission="android.permission.BIND_APP_FUNCTION_SERVICE"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.app.appfunctions.AppFunctionService" />
-            </intent-filter>
-        </service>
 
         <!-- Drawer tabs screen, opened from Folio's settings -->
         <activity

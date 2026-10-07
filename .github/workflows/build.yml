@@ -6,6 +6,7 @@ name: Build Folio
 on:
   push:
     branches-ignore: [ci-logs]
+    tags: ["v*"]
   pull_request:
   workflow_dispatch:
     inputs:
@@ -19,9 +20,10 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Android 17 (API 37) framework classes including hidden APIs, used only to compile
-  # the few vendored libraries that call system APIs (same as Soong's platform builds).
-  # Never packaged into the APK. Source: github.com/Reginer/aosp-android-jar
+  # Android 17 (API 37) framework classes including hidden and system APIs. Some vendored
+  # GrapheneOS/AOSP libraries are built against these in Soong, so they are compiled the
+  # same way here. Compile-time only; never packaged into the APK.
+  # Source: github.com/Reginer/aosp-android-jar
   HIDDEN_API_JAR_URL: https://raw.githubusercontent.com/Reginer/aosp-android-jar/262f6ae931160011572a5adfe4ec6302585e8f60/android-37/android.jar
   HIDDEN_API_JAR_SHA256: 28226cd0fcf14b812275abb2e9b914f8501bff4847c80bf6ccc95bd49ae128dc
   COMPILE_SDK: "37.2"
@@ -45,7 +47,10 @@ jobs:
         id: versions
         run: |
           if [ "${{ github.event.inputs.latest }}" = "true" ] || grep -q '^folio.useLatestTools=true' gradle.properties; then
-            echo "args=$(python3 build-support/latest_versions.py)" >> "$GITHUB_OUTPUT"
+            # Newest tools and libraries; the resulting lockfiles go to the ci-logs branch.
+            echo "args=$(python3 build-support/latest_versions.py) --write-locks" >> "$GITHUB_OUTPUT"
+          elif ! ls gradle/modules/*/gradle.lockfile > /dev/null 2>&1; then
+            echo "args=--write-locks" >> "$GITHUB_OUTPUT"
           else
             echo "args=" >> "$GITHUB_OUTPUT"
           fi
@@ -78,7 +83,23 @@ jobs:
         with:
           gradle-version: current
 
+      - name: Release signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.FOLIO_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/folio.jks"
+            echo "FOLIO_KEYSTORE=$RUNNER_TEMP/folio.jks" >> "$GITHUB_ENV"
+            echo "Signing with the release key from secrets."
+          else
+            echo "No FOLIO_KEYSTORE_BASE64 secret: the APK is signed with a throwaway debug key."
+          fi
+
       - name: Build
+        env:
+          FOLIO_KEYSTORE_PASSWORD: ${{ secrets.FOLIO_KEYSTORE_PASSWORD }}
+          FOLIO_KEY_ALIAS: ${{ secrets.FOLIO_KEY_ALIAS }}
+          FOLIO_KEY_PASSWORD: ${{ secrets.FOLIO_KEY_PASSWORD }}
         run: |
           set -o pipefail
           echo "tool versions: ${{ steps.versions.outputs.args }}" | tee build.log
@@ -93,6 +114,15 @@ jobs:
           path: gradle/modules/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
 
+      - name: Publish release
+        if: success() && startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp gradle/modules/app/build/outputs/apk/release/*.apk "Folio-${GITHUB_REF_NAME}.apk"
+          gh release create "$GITHUB_REF_NAME" "Folio-${GITHUB_REF_NAME}.apk" \
+            --title "Folio ${GITHUB_REF_NAME}" --generate-notes
+
       # GitHub's log storage isn't reachable from every environment, so the logs are also
       # pushed to the ci-logs branch (one commit, overwritten each run).
       - name: Publish logs to ci-logs branch
@@ -100,6 +130,9 @@ jobs:
         run: |
           mkdir -p /tmp/ci-logs
           cp sdk.log build.log /tmp/ci-logs/ 2>/dev/null || true
+          for f in gradle/modules/*/gradle.lockfile; do
+            [ -f "$f" ] && mkdir -p "/tmp/ci-logs/$(dirname "$f")" && cp "$f" "/tmp/ci-logs/$f"
+          done
           grep -nE "^e: |error:|FAILURE|What went wrong|Could not|BUILD" build.log > /tmp/ci-logs/errors.log 2>/dev/null || true
           echo "${{ github.sha }} run ${{ github.run_id }} ${{ job.status }}" > /tmp/ci-logs/RUN
           cd /tmp/ci-logs
