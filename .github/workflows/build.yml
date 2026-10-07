@@ -1,0 +1,81 @@
+# Copyright (C) 2026 The Folio Authors
+# SPDX-License-Identifier: Apache-2.0
+
+name: Build Folio
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      latest:
+        description: "Build with the newest build tools instead of gradle.properties"
+        type: boolean
+        default: false
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Android 17 (API 37) framework classes including hidden APIs, used only to compile
+  # the few vendored libraries that call system APIs (same as Soong's platform builds).
+  # Never packaged into the APK. Source: github.com/Reginer/aosp-android-jar
+  HIDDEN_API_JAR_URL: https://raw.githubusercontent.com/Reginer/aosp-android-jar/262f6ae931160011572a5adfe4ec6302585e8f60/android-37/android.jar
+  HIDDEN_API_JAR_SHA256: 28226cd0fcf14b812275abb2e9b914f8501bff4847c80bf6ccc95bd49ae128dc
+  COMPILE_SDK: "37"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Pick build tool versions
+        id: versions
+        run: |
+          if [ "${{ github.event.inputs.latest }}" = "true" ] || grep -q '^folio.useLatestTools=true' gradle.properties; then
+            echo "args=$(python3 build-support/latest_versions.py)" >> "$GITHUB_OUTPUT"
+          else
+            echo "args=" >> "$GITHUB_OUTPUT"
+          fi
+          grep '^folio\.' gradle.properties
+
+      - name: Install Android SDK platform ${{ env.COMPILE_SDK }}
+        run: |
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" --list 2>/dev/null | grep -E "platforms;android-" | sort -u | tail -5
+          "$SDKMANAGER" "platforms;android-${COMPILE_SDK}"
+          ls "$ANDROID_HOME/platforms"
+
+      - name: Use the hidden-API android.jar for compiling
+        run: |
+          curl -fsSL -o /tmp/android.jar "$HIDDEN_API_JAR_URL"
+          echo "$HIDDEN_API_JAR_SHA256  /tmp/android.jar" | sha256sum -c -
+          PLATFORM="$ANDROID_HOME/platforms/android-${COMPILE_SDK}"
+          cp "$PLATFORM/android.jar" "$PLATFORM/android-public.jar"
+          cp /tmp/android.jar "$PLATFORM/android.jar"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: current
+
+      - name: Build
+        run: |
+          gradle --version
+          gradle ${{ steps.versions.outputs.args }} --continue --stacktrace :app:assembleRelease
+
+      - name: Upload APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Folio
+          path: gradle/modules/app/build/outputs/apk/release/*.apk
+          if-no-files-found: error

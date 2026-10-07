@@ -1,0 +1,79 @@
+/*
+ * Copyright (C) 2026 The Folio Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+// Launcher3's resources and shared manifest, plus the libraries they need (Soong: Launcher3ResLib).
+// Kept apart from :app so the resources get Launcher3's R package, com.android.launcher3.
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+}
+
+val folioCompileSdk: Int by rootProject.extra
+val folioMinSdk: Int by rootProject.extra
+@Suppress("UNCHECKED_CAST")
+val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
+
+android {
+    namespace = "com.android.launcher3"
+    compileSdk = folioCompileSdk
+    defaultConfig { minSdk = folioMinSdk }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    lint { abortOnError = false }
+    sourceSets.getByName("main") {
+        java.setSrcDirs(listOf<Any>())
+        res.setSrcDirs(listOf(rootProject.file("launcher3/res")))
+        manifest.srcFile(vendoredManifest(project, "launcher3/AndroidManifest-common.xml"))
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+dependencies {
+    api(project(":dynamiccolors"))
+    api(project(":iconloaderlib"))
+    api(project(":animationlib"))
+    api(project(":msdllib"))
+    api(project(":mechanics"))
+    api(project(":plugins"))
+    api(project(":wmshellshared"))
+    api(project(":widgetpicker"))
+    api(project(":appfunctions"))
+    api(project(":flags"))
+
+    api("androidx.annotation:annotation:+")
+    api("androidx.core:core-ktx:+")
+    api("androidx.collection:collection:+")
+    api("androidx.constraintlayout:constraintlayout:+")
+    api("androidx.recyclerview:recyclerview:+")
+    api("androidx.dynamicanimation:dynamicanimation:+")
+    api("androidx.fragment:fragment-ktx:+")
+    api("androidx.preference:preference:+")
+    api("androidx.slice:slice-view:+")
+    api("androidx.cardview:cardview:+")
+    api("androidx.window:window:+")
+    api("androidx.graphics:graphics-shapes:+")
+    api("androidx.savedstate:savedstate:+")
+    api("androidx.activity:activity-compose:+")
+    api("androidx.navigation:navigation-compose:+")
+    api("androidx.lifecycle:lifecycle-common-java8:+")
+    api("androidx.lifecycle:lifecycle-extensions:+")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:+")
+    api("androidx.lifecycle:lifecycle-runtime-compose:+")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:+")
+    api("com.google.android.material:material:+")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:+")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:+")
+    api("androidx.compose.runtime:runtime:+")
+    api("androidx.compose.material3:material3:+")
+    api("androidx.compose.ui:ui-tooling-preview:+")
+    api("androidx.compose.ui:ui-tooling:+")
+}
