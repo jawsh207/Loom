@@ -5,11 +5,10 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
-val folioCompileSdk: Int by rootProject.extra
-val folioMinSdk: Int by rootProject.extra
+val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
@@ -23,13 +22,14 @@ android {
     }
     lint { abortOnError = false }
     sourceSets.getByName("main") {
-        java.setSrcDirs(listOf(rootProject.file("systemui/iconloaderlib/src")))
+        java.setSrcDirs(listOf<Any>(rootProject.file("systemui/iconloaderlib/src")))
+        kotlin.setSrcDirs(listOf<Any>(rootProject.file("systemui/iconloaderlib/src")))
         res.setSrcDirs(listOf<Any>(rootProject.file("systemui/iconloaderlib/res")))
         manifest.srcFile(vendoredManifest(project, "systemui/iconloaderlib/AndroidManifest.xml"))
     }
 }
 
-kotlin {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xjvm-default=all")

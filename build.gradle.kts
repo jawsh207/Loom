@@ -6,12 +6,11 @@
 plugins {
     id("com.android.application") apply false
     id("com.android.library") apply false
+    id("com.android.legacy-kapt") apply false
     id("org.jetbrains.kotlin.android") apply false
-    id("org.jetbrains.kotlin.kapt") apply false
     id("org.jetbrains.kotlin.plugin.compose") apply false
     id("org.jetbrains.kotlin.plugin.parcelize") apply false
     id("com.google.devtools.ksp") apply false
-    id("com.google.protobuf") apply false
 }
 
 // Shared settings, read by the module build files.
