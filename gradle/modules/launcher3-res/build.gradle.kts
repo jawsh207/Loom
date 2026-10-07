@@ -56,6 +56,7 @@ dependencies {
     api("androidx.dynamicanimation:dynamicanimation:+")
     api("androidx.fragment:fragment-ktx:+")
     api("androidx.preference:preference:+")
+    api("androidx.slice:slice-core:+")
     api("androidx.slice:slice-view:+")
     api("androidx.cardview:cardview:+")
     api("androidx.window:window:+")
