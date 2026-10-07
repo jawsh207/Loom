@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Folio Authors
+     SPDX-License-Identifier: Apache-2.0
+
+     dynamiccolors maps these to private framework colors (com.android.internal),
+     which only system apps can use. Folio overrides them: the two the launcher uses
+     (folder background) follow the public dynamic palette; the rest keep the
+     framework default values.
+-->
+<resources>
+    <color name="customColorBrandA">#485B88</color>
+    <color name="customColorBrandB">#A4ABC1</color>
+    <color name="customColorBrandC">#6476A5</color>
+    <color name="customColorBrandD">#9983AF</color>
+    <color name="customColorClockHour">#373D50</color>
+    <color name="customColorClockMinute">#425480</color>
+    <color name="customColorClockSecond">#6A567F</color>
+    <color name="customColorOnShadeActive">#516391</color>
+    <color name="customColorOnShadeActiveVariant">#334671</color>
+    <color name="customColorOnShadeInactive">#E1E2ED</color>
+    <color name="customColorOnShadeInactiveVariant">#C5C6D0</color>
+    <color name="customColorOnThemeApp">#263963</color>
+    <color name="customColorOverviewBackground">#C5C6D0</color>
+    <color name="customColorShadeActive">#D9E2FF</color>
+    <color name="customColorShadeDisabled">#0D0E12</color>
+    <color name="customColorShadeInactive">#2F3035</color>
+    <color name="customColorSurfaceEffect0">@android:color/system_primary_container_light</color>
+    <color name="customColorSurfaceEffect0Fallback">@android:color/system_secondary_container_light</color>
+    <color name="customColorSurfaceEffect1">#FAF8FE</color>
+    <color name="customColorSurfaceEffect2">#FFFFFF</color>
+    <color name="customColorSurfaceEffect3">#4B5D8B</color>
+    <color name="customColorThemeApp">#B9CBFF</color>
+    <color name="customColorThemeAppRing">#98AADC</color>
+    <color name="customColorThemeNotif">#D5BDEC</color>
+    <color name="customColorUnderSurface">#000000</color>
+    <color name="customColorWeatherTemp">#4B5D8B</color>
+    <color name="customColorWidgetBackground">#EEF0FF</color>
+</resources>

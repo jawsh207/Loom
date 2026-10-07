@@ -74,7 +74,7 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
 extensions.getByType<com.android.build.api.dsl.ApplicationExtension>().sourceSets.getByName("main") {
     java.setSrcDirs(launcherSources)
     kotlin.setSrcDirs(launcherSources)
-    res.setSrcDirs(listOf<Any>())
+    res.setSrcDirs(listOf<Any>("res")) // Folio-only overrides; launcher res is in :launcher3-res.
     manifest.srcFile(vendoredManifest(project, "launcher3/folio/AndroidManifest.xml"))
 }
 
