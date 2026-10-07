@@ -14,8 +14,6 @@ import static com.android.launcher3.testing.shared.ResourceUtils.INVALID_RESOURC
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.GosPackageState;
-import android.content.pm.GosPackageStateFlag;
 import android.content.pm.ShortcutInfo;
 import android.graphics.Rect;
 import android.os.Process;
@@ -278,12 +276,39 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
             targetPackage = itemInfo.getTargetPackage();
         }
 
-        protected static boolean hasGosPackageStateFlag(ItemInfo itemInfo, int flag) {
+        /**
+         * Folio: GosPackageState is a GrapheneOS system API. Folio is a regular app, so it is
+         * reached by reflection and the shortcut is simply hidden when the OS doesn't allow it
+         * (or isn't GrapheneOS), instead of crashing.
+         */
+        protected static boolean hasGosPackageStateFlag(ItemInfo itemInfo, String flagName) {
             String pkg = itemInfo.getTargetPackage();
-            if (pkg == null) {
+            if (pkg == null || !Process.myUserHandle().equals(itemInfo.user)) {
                 return false;
             }
-            return GosPackageState.get(pkg, itemInfo.user).hasFlag(flag);
+            try {
+                int flag = Class.forName("android.content.pm.GosPackageStateFlag")
+                        .getField(flagName).getInt(null);
+                Object state = Class.forName("android.content.pm.GosPackageState")
+                        .getMethod("get", String.class, UserHandle.class)
+                        .invoke(null, pkg, itemInfo.user);
+                return state != null && (boolean) state.getClass()
+                        .getMethod("hasFlag", int.class).invoke(state, flag);
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError e) {
+                return false;
+            }
+        }
+
+        /** Calls a GrapheneOS static {@code createConfigActivityIntent(String)}, or null. */
+        @Nullable
+        protected static Intent createConfigIntent(String className, String targetPkg) {
+            try {
+                return (Intent) Class.forName(className)
+                        .getMethod("createConfigActivityIntent", String.class)
+                        .invoke(null, targetPkg);
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError e) {
+                return null;
+            }
         }
 
         @Override
@@ -291,13 +316,22 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
             dismissTaskMenuView();
 
             Intent intent = getIntent(targetPackage);
+            if (intent == null) {
+                return;
+            }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             var opts = android.app.ActivityOptions.makeBasic()
                     .setSplashScreenStyle(SplashScreen.SPLASH_SCREEN_STYLE_SOLID_COLOR)
                     .toBundle();
-            v.getContext().startActivityAsUser(intent, opts, mItemInfo.user);
+            // Folio: only offered for the current user (see hasGosPackageStateFlag).
+            try {
+                v.getContext().startActivity(intent, opts);
+            } catch (RuntimeException e) {
+                // The settings screen isn't available to a regular app on this OS.
+            }
         }
 
+        @Nullable
         protected abstract Intent getIntent(String targetPkg);
     }
 
@@ -312,7 +346,7 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
 
         @Nullable
         public static <T extends ActivityContext> StorageScopes<T> maybeGet(T target, ItemInfo itemInfo, View originalView) {
-            if (hasGosPackageStateFlag(itemInfo, GosPackageStateFlag.STORAGE_SCOPES_ENABLED)) {
+            if (hasGosPackageStateFlag(itemInfo, "STORAGE_SCOPES_ENABLED")) {
                 return new StorageScopes<>(target, itemInfo, originalView);
             }
 
@@ -320,8 +354,9 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
         }
 
         @Override
+        @Nullable
         protected Intent getIntent(String targetPkg) {
-            return android.app.StorageScope.createConfigActivityIntent(targetPkg);
+            return createConfigIntent("android.app.StorageScope", targetPkg);
         }
     }
 
@@ -336,7 +371,7 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
 
         @Nullable
         public static <T extends ActivityContext> ContactScopes<T> maybeGet(T target, ItemInfo itemInfo, View originalView) {
-            if (hasGosPackageStateFlag(itemInfo, GosPackageStateFlag.CONTACT_SCOPES_ENABLED)) {
+            if (hasGosPackageStateFlag(itemInfo, "CONTACT_SCOPES_ENABLED")) {
                 return new ContactScopes<>(target, itemInfo, originalView);
             }
 
@@ -344,8 +379,9 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
         }
 
         @Override
+        @Nullable
         protected Intent getIntent(String targetPkg) {
-            return android.ext.cscopes.ContactScopesApi.createConfigActivityIntent(targetPackage);
+            return createConfigIntent("android.ext.cscopes.ContactScopesApi", targetPackage);
         }
     }
 
