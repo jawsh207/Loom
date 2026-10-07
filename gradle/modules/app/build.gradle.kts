@@ -3,20 +3,30 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import javax.inject.Inject
+import org.gradle.process.ExecOperations
+
 // Folio app: the Launcher3 sources (Soong module "Folio" in launcher3's Android.bp).
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("com.android.legacy-kapt")
     id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.protobuf")
 }
 
-val folioCompileSdk: Int by rootProject.extra
-val folioMinSdk: Int by rootProject.extra
-val folioProtobuf: String by rootProject.extra
+val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
+val folioProtobuf = rootProject.extra["folioProtobuf"] as String
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
+
+val launcherSources = listOf<Any>(
+    "src/main/java",
+    rootProject.file("launcher3/src"),
+    rootProject.file("launcher3/src_no_quickstep"),
+    rootProject.file("launcher3/shared/src"),
+    rootProject.file("launcher3/dagger/src"),
+    rootProject.file("launcher3/modules/concurrent/src"),
+)
 
 android {
     namespace = "app.folio.launcher"
@@ -50,22 +60,10 @@ android {
     }
 
     sourceSets.getByName("main") {
-        java.setSrcDirs(
-            listOf(
-                "src/main/java",
-                rootProject.file("launcher3/src"),
-                rootProject.file("launcher3/src_no_quickstep"),
-                rootProject.file("launcher3/shared/src"),
-                rootProject.file("launcher3/dagger/src"),
-                rootProject.file("launcher3/modules/concurrent/src"),
-            )
-        )
+        java.setSrcDirs(launcherSources)
+        kotlin.setSrcDirs(launcherSources)
         res.setSrcDirs(listOf<Any>())
         manifest.srcFile(vendoredManifest(project, "launcher3/folio/AndroidManifest.xml"))
-        (this as ExtensionAware).extensions.getByName<SourceDirectorySet>("proto").apply {
-            srcDir(rootProject.file("launcher3/protos"))
-            srcDir(rootProject.file("launcher3/protos_quickstep"))
-        }
     }
 
     packaging {
@@ -75,25 +73,63 @@ android {
     lint { abortOnError = false }
 }
 
-kotlin {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xjvm-default=all")
     }
 }
 
-kapt {
-    correctErrorTypes = true
+// Launcher3's logging protos, compiled with protoc for protobuf-javalite (Soong:
+// launcher_quickstep_log_protos_lite). Done with a plain task instead of the protobuf
+// Gradle plugin, which doesn't support AGP 9's variant API.
+val protoc: Configuration by configurations.creating
+dependencies {
+    val os = System.getProperty("os.name").lowercase()
+    val arch = if (System.getProperty("os.arch").contains("aarch64")) "aarch_64" else "x86_64"
+    val classifier = when {
+        os.contains("mac") -> "osx-$arch"
+        os.contains("win") -> "windows-$arch"
+        else -> "linux-$arch"
+    }
+    protoc("com.google.protobuf:protoc:$folioProtobuf:$classifier@exe")
 }
 
-protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:$folioProtobuf" }
-    generateProtoTasks {
-        all().configureEach {
-            builtins {
-                create("java") { option("lite") }
-            }
+abstract class GenerateLiteProtos : DefaultTask() {
+    @get:InputFiles abstract val protoc: ConfigurableFileCollection
+    @get:InputFiles abstract val protoDirs: ConfigurableFileCollection
+    @get:OutputDirectory abstract val outputDir: DirectoryProperty
+    @get:Inject abstract val exec: ExecOperations
+
+    @TaskAction
+    fun generate() {
+        val out = outputDir.get().asFile
+        out.deleteRecursively()
+        out.mkdirs()
+        val exe = protoc.singleFile.apply { setExecutable(true) }
+        val protos = protoDirs.files.flatMap { dir -> dir.listFiles { f -> f.extension == "proto" }!!.toList() }
+        exec.exec {
+            commandLine(
+                listOf(exe.absolutePath, "--java_out=lite:${out.absolutePath}") +
+                    protoDirs.files.map { "--proto_path=${it.absolutePath}" } +
+                    protos.map { it.absolutePath }
+            )
         }
+    }
+}
+
+val generateLauncherProtos = tasks.register<GenerateLiteProtos>("generateLauncherProtos") {
+    protoc.from(configurations.getByName("protoc"))
+    // protos_quickstep goes first so its launcher_atom_extension.proto replaces the stub one.
+    protoDirs.from(rootProject.file("launcher3/protos_quickstep"), rootProject.file("launcher3/protos"))
+    outputDir.set(layout.buildDirectory.dir("generated/source/launcherProtos"))
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.sources.java?.addGeneratedSourceDirectory(
+            generateLauncherProtos, GenerateLiteProtos::outputDir
+        )
     }
 }
 

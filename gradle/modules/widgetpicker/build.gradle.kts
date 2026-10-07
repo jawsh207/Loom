@@ -5,13 +5,12 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("com.android.legacy-kapt")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
-val folioCompileSdk: Int by rootProject.extra
-val folioMinSdk: Int by rootProject.extra
+val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
@@ -26,13 +25,14 @@ android {
     lint { abortOnError = false }
     buildFeatures { compose = true }
     sourceSets.getByName("main") {
-        java.setSrcDirs(listOf(rootProject.file("launcher3/modules/widgetpicker/src")))
+        java.setSrcDirs(listOf<Any>(rootProject.file("launcher3/modules/widgetpicker/src")))
+        kotlin.setSrcDirs(listOf<Any>(rootProject.file("launcher3/modules/widgetpicker/src")))
         res.setSrcDirs(listOf<Any>(rootProject.file("launcher3/modules/widgetpicker/res")))
         manifest.srcFile(vendoredManifest(project, "launcher3/modules/widgetpicker/AndroidManifest.xml"))
     }
 }
 
-kotlin {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xjvm-default=all")

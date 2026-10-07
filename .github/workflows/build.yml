@@ -83,7 +83,8 @@ jobs:
       - name: Build
         run: |
           set -o pipefail
-          gradle --version 2>&1 | tee build.log
+          echo "tool versions: ${{ steps.versions.outputs.args }}" | tee build.log
+          gradle --version 2>&1 | tee -a build.log
           gradle ${{ steps.versions.outputs.args }} --continue --stacktrace :app:assembleRelease 2>&1 | tee -a build.log
 
       - name: Upload APK

@@ -7,11 +7,10 @@
 // Kept apart from :app so the resources get Launcher3's R package, com.android.launcher3.
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
-val folioCompileSdk: Int by rootProject.extra
-val folioMinSdk: Int by rootProject.extra
+val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
@@ -26,14 +25,9 @@ android {
     lint { abortOnError = false }
     sourceSets.getByName("main") {
         java.setSrcDirs(listOf<Any>())
+        kotlin.setSrcDirs(listOf<Any>())
         res.setSrcDirs(listOf(rootProject.file("launcher3/res")))
         manifest.srcFile(vendoredManifest(project, "launcher3/AndroidManifest-common.xml"))
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
     }
 }
 
