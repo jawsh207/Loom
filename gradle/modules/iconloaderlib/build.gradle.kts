@@ -8,13 +8,16 @@ plugins {
 }
 
 val folioCompileSdk = rootProject.extra["folioCompileSdk"] as Int
+val folioCompileSdkMinor = rootProject.extra["folioCompileSdkMinor"] as Int
 val folioMinSdk = rootProject.extra["folioMinSdk"] as Int
 @Suppress("UNCHECKED_CAST")
 val vendoredManifest = rootProject.extra["vendoredManifest"] as (Project, String) -> File
 
 extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.android.launcher3.icons"
-    compileSdk = folioCompileSdk
+    compileSdk {
+        version = release(folioCompileSdk) { minorApiLevel = folioCompileSdkMinor }
+    }
     defaultConfig { minSdk = folioMinSdk }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
