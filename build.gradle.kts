@@ -50,3 +50,10 @@ val vendoredManifest: (Project, String) -> File = { project, path ->
 }
 extra["vendoredManifest"] = vendoredManifest
 
+// Library versions are declared as "+" and pinned by the gradle.lockfile in each module.
+// Refresh them with: gradle --write-locks :app:assembleRelease (CI does this with the latest
+// tools when folio.useLatestTools=true and publishes the lockfiles to the ci-logs branch).
+subprojects {
+    dependencyLocking { lockAllConfigurations() }
+}
+
