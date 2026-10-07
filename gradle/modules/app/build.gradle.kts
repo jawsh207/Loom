@@ -53,12 +53,23 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
         buildConfig = false // Launcher3 has its own BuildConfig (src/main/java).
     }
 
+    // Release signing key from the environment (CI secrets, see README); without one the
+    // release APK is signed with the debug key, which differs between machines.
+    val keystore = System.getenv("FOLIO_KEYSTORE")?.takeIf { it.isNotBlank() }
+    if (keystore != null) {
+        signingConfigs.create("folio") {
+            storeFile = file(keystore)
+            storePassword = System.getenv("FOLIO_KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("FOLIO_KEY_ALIAS")
+            keyPassword = System.getenv("FOLIO_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         getByName("release") {
-            // Like the AOSP Launcher3 build: no shrinking. Signed with the debug key until a
-            // release key is configured (see README).
+            // Like the AOSP Launcher3 build: no shrinking.
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName(if (keystore != null) "folio" else "debug")
         }
     }
 
