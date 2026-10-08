@@ -46,6 +46,14 @@ class FeedRefreshJob : JobService() {
 
         /** Schedules or cancels the periodic refresh to match the settings. */
         fun schedule(context: Context) {
+            try {
+                scheduleOrThrow(context)
+            } catch (e: Exception) {
+                android.util.Log.w("FolioFeeds", "Couldn't schedule feed refresh", e)
+            }
+        }
+
+        private fun scheduleOrThrow(context: Context) {
             val js = context.getSystemService(JobScheduler::class.java) ?: return
             val hours = FeedPrefs.refreshHours(context)
             if (!FeedPrefs.isEnabled(context) || hours <= 0) {
