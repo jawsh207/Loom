@@ -161,6 +161,9 @@ dependencies {
     // Feed panel: article extraction (a port of Firefox Reader View's Readability), which
     // also brings jsoup for parsing HTML. Apache-2.0.
     implementation("net.dankito.readability4j:readability4j:1.0.8")
+    // Readability4J asks for jsoup 1.11 (2017); use a current one, which parses untrusted
+    // pages more safely. Extraction falls back to Folio's own if Readability4J ever breaks.
+    implementation("org.jsoup:jsoup:+")
     // @ThreadSafe and friends; normally supplied by the hidden-API android.jar.
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
