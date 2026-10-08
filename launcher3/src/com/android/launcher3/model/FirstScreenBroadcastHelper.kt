@@ -108,10 +108,10 @@ constructor(private val packageManagerHelper: PackageManagerHelper) {
     ): Map<String, Set<String>> {
         val myUser = Process.myUserHandle()
         return userKeyToSessionMap.values
-            .filter { it.user == myUser && !it.installerPackageName.isNullOrEmpty() }
+            .filter { it.user == myUser && !it.getInstallerPackageName().isNullOrEmpty() }
             .groupBy(
-                keySelector = { it.installerPackageName },
-                valueTransform = { it.appPackageName },
+                keySelector = { it.getInstallerPackageName() },
+                valueTransform = { it.getAppPackageName() },
             )
             .mapValues { it.value.filterNotNull().toSet() } as Map<String, Set<String>>
     }

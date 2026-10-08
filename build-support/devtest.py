@@ -154,7 +154,7 @@ def add_widget_attempt(label, use_drag=False):
         tap(details)
         time.sleep(3)
         nodes = snap(f"{label}-selected")
-        add = find(nodes, r"^add$|^add widget$|add to home")
+        add = find(nodes, r"^add$|^add .*widget$|add to home")
         if not add:
             log("  !! no Add button")
             return
