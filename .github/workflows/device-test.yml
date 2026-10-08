@@ -19,6 +19,9 @@ on:
 permissions:
   contents: write
 
+env:
+  ANDROID_AVD_HOME: /home/runner/avd
+
 jobs:
   widget:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
@@ -69,18 +72,22 @@ jobs:
           echo "image: $IMG"
           echo "IMG=$IMG" >> "$GITHUB_ENV"
           "$SDKMANAGER" emulator platform-tools "$IMG" > /dev/null
+          mkdir -p "$ANDROID_AVD_HOME"
           echo no | "$AVDMANAGER" create avd -n test -k "$IMG" -d pixel_6 --force
+          "$ANDROID_HOME/emulator/emulator" -list-avds
 
       - name: Boot emulator
+        timeout-minutes: 20
         run: |
           "$ANDROID_HOME/emulator/emulator" -avd test -no-window -no-audio -no-boot-anim \
             -gpu swiftshader_indirect -no-snapshot -memory 4096 -cores 4 > emulator.log 2>&1 &
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
-          adb wait-for-device
+          timeout 900 adb wait-for-device || { tail -50 emulator.log; exit 1; }
           for i in $(seq 1 120); do
             [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = "1" ] && break
             sleep 5
           done
+          tail -5 emulator.log
           adb shell getprop ro.build.fingerprint
           adb shell input keyevent KEYCODE_WAKEUP
           adb shell wm dismiss-keyguard || true
