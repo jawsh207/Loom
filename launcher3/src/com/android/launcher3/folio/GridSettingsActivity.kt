@@ -30,6 +30,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalIconButton
@@ -103,6 +105,38 @@ class GridSettingsActivity : ComponentActivity() {
             if (customHome) columns else 0, if (customHome) rows else 0,
             if (customDock) dock else 0, if (customDrawer) drawer else 0)
         val changed = result != saved
+        // Changing the home screen or dock size clears the home screen, so ask first.
+        val homeChanges = FolioGrid.effectiveHome(result) != FolioGrid.effectiveHome(saved)
+        val locked = remember { HomeLock.isLocked(this) }
+        var confirm by remember { mutableStateOf(false) }
+        val apply = { fresh: Boolean ->
+            FolioGrid.write(this@GridSettingsActivity, result, freshStart = fresh)
+            // Back to the home screen to see the new grid.
+            startActivity(Intent(Intent.ACTION_MAIN)
+                .addCategory(Intent.CATEGORY_HOME).setPackage(packageName)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            finish()
+        }
+        if (confirm) {
+            AlertDialog(
+                onDismissRequest = { confirm = false },
+                icon = { Icon(Icons.Outlined.Warning, null) },
+                title = { Text(getString(R.string.folio_grid_warn_title)) },
+                text = { Text(getString(R.string.folio_grid_warn_body)) },
+                confirmButton = {
+                    TextButton({ confirm = false; apply(true) },
+                        Modifier.testTag("folio_grid_confirm")) {
+                        Text(getString(R.string.folio_grid_warn_confirm),
+                            color = MaterialTheme.colorScheme.error)
+                    }
+                },
+                dismissButton = {
+                    TextButton({ confirm = false }) {
+                        Text(getString(android.R.string.cancel))
+                    }
+                },
+            )
+        }
 
         Scaffold(
             topBar = {
@@ -124,14 +158,7 @@ class GridSettingsActivity : ComponentActivity() {
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(Modifier.height(12.dp))
                         Button(
-                            onClick = {
-                                FolioGrid.write(this@GridSettingsActivity, result)
-                                // Back to the home screen to see the new grid.
-                                startActivity(Intent(Intent.ACTION_MAIN)
-                                    .addCategory(Intent.CATEGORY_HOME).setPackage(packageName)
-                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-                                finish()
-                            },
+                            onClick = { if (homeChanges) confirm = true else apply(false) },
                             enabled = changed,
                             modifier = Modifier.fillMaxWidth().testTag("folio_grid_apply"),
                         ) { Text(getString(R.string.folio_grid_apply)) }
@@ -158,19 +185,25 @@ class GridSettingsActivity : ComponentActivity() {
                 }
 
                 Section(getString(R.string.folio_grid_home))
+                if (locked) {
+                    Text(getString(R.string.folio_grid_locked),
+                        Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
                 SwitchRow(getString(R.string.folio_grid_custom_home),
                     if (customHome) null else getString(R.string.folio_grid_default_is,
                         stock.columns, stock.rows),
-                    customHome, "folio_grid_custom_home") { customHome = it }
+                    customHome, "folio_grid_custom_home", enabled = !locked) { customHome = it }
                 Stepper(getString(R.string.folio_grid_columns), columns,
-                    FolioGrid.COLUMN_RANGE, customHome, "columns") { columns = it }
+                    FolioGrid.COLUMN_RANGE, customHome && !locked, "columns") { columns = it }
                 Stepper(getString(R.string.folio_grid_rows), rows,
-                    FolioGrid.ROW_RANGE, customHome, "rows") { rows = it }
+                    FolioGrid.ROW_RANGE, customHome && !locked, "rows") { rows = it }
                 SwitchRow(getString(R.string.folio_grid_custom_dock),
                     if (customDock) null else getString(R.string.folio_grid_dock_follows),
-                    customDock, "folio_grid_custom_dock") { customDock = it }
+                    customDock, "folio_grid_custom_dock", enabled = !locked) { customDock = it }
                 Stepper(getString(R.string.folio_grid_dock), dock,
-                    FolioGrid.COLUMN_RANGE, customDock, "dock") { dock = it }
+                    FolioGrid.COLUMN_RANGE, customDock && !locked, "dock") { dock = it }
 
                 Section(getString(R.string.folio_grid_drawer))
                 SwitchRow(getString(R.string.folio_grid_custom_drawer),
@@ -183,9 +216,11 @@ class GridSettingsActivity : ComponentActivity() {
                 if (saved != FolioGrid.Sizes(0, 0, 0, 0)) {
                     TextButton(
                         {
-                            customHome = false; customDock = false; customDrawer = false
-                            columns = stock.columns; rows = stock.rows
-                            dock = stock.hotseat; drawer = stock.drawerColumns
+                            if (!locked) {
+                                customHome = false; customDock = false
+                                columns = stock.columns; rows = stock.rows; dock = stock.hotseat
+                            }
+                            customDrawer = false; drawer = stock.drawerColumns
                         },
                         Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
                     ) { Text(getString(R.string.folio_grid_reset)) }
@@ -205,13 +240,14 @@ class GridSettingsActivity : ComponentActivity() {
     @Composable
     private fun SwitchRow(
         title: String, summary: String?, checked: Boolean, tag: String,
-        onChange: (Boolean) -> Unit,
+        enabled: Boolean = true, onChange: (Boolean) -> Unit,
     ) {
         ListItem(
             headlineContent = { Text(title) },
             supportingContent = summary?.let { { Text(it) } },
-            trailingContent = { Switch(checked, null, Modifier.testTag(tag)) },
-            modifier = Modifier.clickable { onChange(!checked) }.padding(horizontal = 8.dp),
+            trailingContent = { Switch(checked, null, Modifier.testTag(tag), enabled = enabled) },
+            modifier = Modifier.clickable(enabled = enabled) { onChange(!checked) }
+                .padding(horizontal = 8.dp),
         )
     }
 

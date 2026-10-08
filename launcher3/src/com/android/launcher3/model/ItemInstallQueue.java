@@ -108,6 +108,7 @@ public class ItemInstallQueue {
     /** Queues a pending item to ths install queue */
     @AnyThread
     public void queueItem(SerializedItemItem info) {
+        if (com.android.launcher3.folio.HomeLock.isLocked(mContext)) return; // Folio: locked home screen
         // Queue the item up for adding if launcher has not loaded properly yet
         MODEL_EXECUTOR.post(() -> {
             ensureQueueLoaded();

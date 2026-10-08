@@ -2014,6 +2014,11 @@ public class Workspace<T extends View & PageIndicator> extends PagedView<T>
      */
     @Override
     public boolean acceptDrop(DragObject d) {
+        // Folio: nothing changes on a locked home screen.
+        if (com.android.launcher3.folio.HomeLock.isLocked(getContext())) {
+            com.android.launcher3.folio.HomeLock.showLockedMessage(getContext());
+            return false;
+        }
         // If it's an external drop (e.g. from All Apps), check if it should be accepted
         CellLayout dropTargetLayout = mDropToLayout;
         if (d.dragSource != this) {

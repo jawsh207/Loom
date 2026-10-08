@@ -412,6 +412,11 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
     public boolean onLongClick(View v) {
         // Return if global dragging is not enabled
         if (!getIsLauncherDraggingEnabled()) return true;
+        // Folio: folders on a locked home screen can't be rearranged.
+        if (com.android.launcher3.folio.HomeLock.isLocked(getContext())
+                && mActivityContext instanceof com.android.launcher3.Launcher launcher) {
+            return com.android.launcher3.folio.HomeLock.onLockedLongPress(launcher, v);
+        }
         return startDrag(v, new DragOptions());
     }
 
@@ -1076,6 +1081,7 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
 
     @Override
     public boolean acceptDrop(DragObject d) {
+        if (com.android.launcher3.folio.HomeLock.isLocked(getContext())) return false;
         return willAcceptItemType(d.dragInfo.itemType);
     }
 

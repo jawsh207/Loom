@@ -159,6 +159,14 @@ public class LauncherAccessibilityDelegate extends BaseAccessibilityDelegate<Lau
         if (supportAddToWorkSpace(item)) {
             out.add(mActions.get(ADD_TO_WORKSPACE));
         }
+        // Folio: no moving, removing, resizing or adding while the home screen is locked.
+        if (com.android.launcher3.folio.HomeLock.isLocked(mContext.asContext())) {
+            out.removeIf(a -> {
+                int id = a.accessibilityAction.getId();
+                return id == REMOVE || id == MOVE || id == MOVE_TO_WORKSPACE || id == RESIZE
+                        || id == ADD_TO_WORKSPACE;
+            });
+        }
     }
 
     private boolean supportAddToWorkSpace(ItemInfo item) {
@@ -407,6 +415,11 @@ public class LauncherAccessibilityDelegate extends BaseAccessibilityDelegate<Lau
      */
     public boolean addToWorkspace(ItemInfo item, boolean accessibility,
             @Nullable Consumer<Boolean> finishCallback) {
+        if (com.android.launcher3.folio.HomeLock.isLocked(mContext.asContext())) {
+            com.android.launcher3.folio.HomeLock.showLockedMessage(mContext.asContext());
+            if (finishCallback != null) finishCallback.accept(false);
+            return false;
+        }
         // Dismiss widget resize frame if it is showing. The frame marks its cells as unoccupied
         // while it is showing, so findSpaceOnWorkspace may try to use those cells.
         AbstractFloatingView.closeOpenViews(mContext, /* animate= */ false,

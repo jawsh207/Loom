@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
-"""Emulator test of the grid settings: change the home screen to the largest grid (8 x 10, 8-icon
-dock) and a 7-column drawer, check the icons survived the move, open the drawer, then go back to the
-defaults.  usage: devtest_grid.py OUT_DIR FOLIO_APK"""
+"""Emulator test of the home screen lock and grid changes.
+
+1. Lock the home screen: long-press shows the icon menu but nothing moves; apps dragged from
+   the drawer aren't added; the Grid screen's home screen controls are disabled.
+2. Unlock, change the home screen grid: a warning appears; confirming clears the home screen.
+3. Change only the drawer columns: no warning, nothing cleared.
+
+usage: devtest_grid.py OUT_DIR FOLIO_APK"""
 
 import time
 
@@ -16,10 +21,14 @@ def home_icons(nodes):
                   and n["bounds"][1] > 150)
 
 
-def open_grid_settings():
+def open_settings():
     sh(f"am start -a android.intent.action.APPLICATION_PREFERENCES -p {PKG}")
     time.sleep(4)
-    return tap_text(r"^grid$", "settings-grid", wait=4)
+
+
+def go_home():
+    sh("input keyevent KEYCODE_HOME")
+    time.sleep(3)
 
 
 def scroll_down():
@@ -30,8 +39,7 @@ def scroll_down():
 
 def press(desc, times, name):
     for i in range(times):
-        nodes = snap(f"{name}-{i}")
-        n = find(nodes, desc)
+        n = find(snap(f"{name}-{i}"), desc)
         if not n:
             log(f"  !! no /{desc}/")
             return
@@ -39,51 +47,79 @@ def press(desc, times, name):
         time.sleep(0.6)
 
 
-def open_drawer(name):
-    w, h = screen_size()
-    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
-    time.sleep(3)
-    snap(name)
-    sh("input keyevent KEYCODE_HOME")
-    time.sleep(2)
+def center(n):
+    x1, y1, x2, y2 = n["bounds"]
+    return (x1 + x2) // 2, (y1 + y2) // 2
 
 
 def main():
     setup_home()
+    w, h = screen_size()
     before = home_icons(snap("home-before"))
     log(f"  home icons before: {before}")
-    open_drawer("drawer-before")
 
-    if not open_grid_settings():
-        save_logs()
-        return
-    snap("grid-screen")
+    # --- 1. Lock ---
+    open_settings()
+    tap_text(r"^lock home screen$", "lock-on", wait=2)
+    go_home()
+    nodes = snap("locked-home")
+    gallery = find(nodes, r"^gallery$")
+    if gallery:
+        x, y = center(gallery)
+        sh(f"input swipe {x} {y} {x} {y} 1200")  # long press
+        time.sleep(2)
+        menu = snap("locked-long-press")
+        log(f"  locked long-press shows menu: {bool(find(menu, 'app info'))}")
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(1)
+        sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
+        time.sleep(3)
+        after_drag = find(snap("locked-after-drag"), r"^gallery$")
+        log(f"  icon stayed put: {bool(after_drag) and after_drag['bounds'] == gallery['bounds']}")
+    # Drag an app from the drawer onto the home screen.
+    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+    time.sleep(3)
+    clock = find(snap("locked-drawer"), r"^clock$")
+    if clock:
+        x, y = center(clock)
+        sh(f"input draganddrop {x} {y} {w // 2} {h // 2} 3000")
+        time.sleep(4)
+    go_home()
+    locked_after = home_icons(snap("locked-home-after"))
+    log(f"  nothing added while locked: {locked_after == before}")
+    open_settings()
+    tap_text(r"^grid$", "locked-grid", wait=3)
+    log(f"  grid says locked: {bool(find(snap('locked-grid-screen'), 'home screen is locked'))}")
+    sh("input keyevent KEYCODE_BACK")
+    time.sleep(2)
+    tap_text(r"^lock home screen$", "lock-off", wait=2)
+
+    # --- 2. Grid change clears the home screen ---
+    tap_text(r"^grid$", "settings-grid", wait=4)
     tap_text(r"choose home screen size", "custom-home", wait=1)
-    press(r"^more columns$", 4, "cols")   # the most: 8
-    press(r"^more rows$", 5, "rows")      # the most: 10
+    press(r"^more columns$", 1, "cols")
+    tap_text(r"^apply$", "apply", wait=2)
+    nodes = snap("warning")
+    log(f"  warning shown: {bool(find(nodes, 'clear your home screen'))}")
+    tap_text(r"clear and change grid", "confirm", wait=10)
+    go_home()
+    cleared = home_icons(snap("home-cleared"))
+    log(f"  home screen cleared: {cleared == []} ({cleared})")
+    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+    time.sleep(3)
+    log(f"  apps still in drawer: {bool(find(snap('drawer-after-clear'), '^gallery$'))}")
+    go_home()
+
+    # --- 3. Drawer-only change: no warning ---
+    open_settings()
+    tap_text(r"^grid$", "settings-grid-2", wait=4)
     scroll_down()
     scroll_down()
     tap_text(r"choose app drawer columns", "custom-drawer", wait=1)
-    press(r"^more drawer$", 3, "drawer")
-    snap("grid-chosen")
-    tap_text(r"^apply$", "apply", wait=8)
-
-    after_nodes = snap("home-after")
-    after = home_icons(after_nodes)
-    log(f"  home icons after: {after}")
-    log(f"  icons kept: {set(before) <= set(after)}")
-    open_drawer("drawer-after")
-
-    # Back to the defaults.
-    if open_grid_settings():
-        scroll_down()
-        scroll_down()
-        tap_text(r"back to the defaults", "reset", wait=1)
-        tap_text(r"^apply$", "apply-reset", wait=8)
-        restored = home_icons(snap("home-restored"))
-        log(f"  home icons restored: {restored}")
-        log(f"  icons kept after reset: {set(before) <= set(restored)}")
-        open_drawer("drawer-restored")
+    press(r"^more drawer$", 1, "drawer")
+    tap_text(r"^apply$", "apply-drawer", wait=6)
+    nodes = snap("after-drawer-apply")
+    log(f"  no warning for drawer change: {not find(nodes, 'clear your home screen')}")
     save_logs()
 
 
