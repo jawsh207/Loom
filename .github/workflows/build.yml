@@ -5,7 +5,7 @@ name: Build Folio
 
 on:
   push:
-    branches-ignore: [ci-logs, ci-logs-public]
+    branches-ignore: [ci-logs, ci-logs-public, ci-devtest]
     tags: ["v*"]
   pull_request:
   workflow_dispatch:
