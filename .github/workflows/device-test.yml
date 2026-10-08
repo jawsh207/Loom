@@ -21,7 +21,7 @@ on:
       test:
         description: "What to test"
         type: choice
-        options: [feed, widgets]
+        options: [feed, widgets, grid]
         default: feed
 
 permissions:
@@ -115,6 +115,8 @@ jobs:
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
           if [ "${{ inputs.test }}" = "widgets" ]; then
             python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          elif [ "${{ inputs.test }}" = "grid" ]; then
+            python3 build-support/devtest_grid.py out folio.apk 2>&1 | tee devtest.log
           else
             # The local test site, reached from the emulator as 10.0.2.2:8000.
             python3 -m http.server 8000 --directory build-support/devtest-feed > http.log 2>&1 &

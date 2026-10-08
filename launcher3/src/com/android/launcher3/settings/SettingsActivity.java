@@ -318,6 +318,14 @@ public class SettingsActivity extends FragmentActivity
                         return true;
                     });
                     return true;
+                case com.android.launcher3.folio.FolioGrid.SETTINGS_KEY:
+                    // Folio: home screen and drawer grid sizes.
+                    preference.setOnPreferenceClickListener(p -> {
+                        startActivity(new Intent(getContext(),
+                                com.android.launcher3.folio.GridSettingsActivity.class));
+                        return true;
+                    });
+                    return true;
                 case com.android.launcher3.folio.feed.FeedPrefs.SETTINGS:
                     // Folio: feeds, refresh and OPML.
                     preference.setOnPreferenceClickListener(p -> {
