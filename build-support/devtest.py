@@ -18,7 +18,10 @@ step_no = 0
 
 
 def adb(*args, check=False, capture=True):
-    r = subprocess.run(["adb", *args], capture_output=capture, text=True, timeout=120)
+    try:
+        r = subprocess.run(["adb", *args], capture_output=capture, text=True, timeout=120)
+    except subprocess.TimeoutExpired:
+        return ""
     if check and r.returncode:
         raise RuntimeError(f"adb {args}: {r.stderr}")
     return (r.stdout + r.stderr) if capture else ""
@@ -218,7 +221,7 @@ def main():
     sh("settings put global window_animation_scale 0; "
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
-    for attempt in range(6):
+    for attempt in range(10):
         wait_for_system()
         if "package:" not in sh(f"pm path {PKG}"):
             log(adb("install", "-r", "-g", sys.argv[2]))
