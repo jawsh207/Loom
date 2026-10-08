@@ -15,6 +15,9 @@ on:
       gpu:
         description: "Emulator -gpu mode"
         default: "swangle_indirect"
+      emu_args:
+        description: "Extra emulator arguments"
+        default: "-feature -ReadColorBufferDma"
       test:
         description: "What to test"
         type: choice
@@ -89,7 +92,7 @@ jobs:
           set +e
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
           "$ANDROID_HOME/emulator/emulator" -avd test -no-window -no-audio -no-boot-anim \
-            -gpu ${{ github.event.inputs.gpu || 'swangle_indirect' }} -no-snapshot -wipe-data -memory 4096 -cores 4 > emulator.log 2>&1 &
+            -gpu ${{ github.event.inputs.gpu || 'swangle_indirect' }} -no-snapshot -wipe-data -memory 4096 -cores 4 ${{ inputs.emu_args }} > emulator.log 2>&1 &
           {
             timeout 900 adb wait-for-device; echo "wait-for-device: $?"
             for i in $(seq 1 120); do
