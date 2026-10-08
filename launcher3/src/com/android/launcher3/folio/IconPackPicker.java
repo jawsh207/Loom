@@ -55,9 +55,13 @@ public final class IconPackPicker {
     }
 
     private static void updateSummary(Preference preference) {
-        CharSequence label = IconPackManager.get(preference.getContext()).getSelectedLabel();
-        preference.setSummary(label != null ? label
-                : preference.getContext().getString(R.string.icon_pack_system));
+        preference.setSummary(currentLabel(preference.getContext()));
+    }
+
+    /** The chosen icon pack's name, or "System icons". */
+    public static CharSequence currentLabel(Context context) {
+        CharSequence label = IconPackManager.get(context).getSelectedLabel();
+        return label != null ? label : context.getString(R.string.icon_pack_system);
     }
 
     private static void show(Context context, Runnable onChanged) {

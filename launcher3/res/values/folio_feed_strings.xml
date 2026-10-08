@@ -8,7 +8,7 @@
     <string name="feed_enable_title">Feed panel</string>
     <string name="feed_enable_summary">Swipe right from the first home screen page to read your RSS and Atom feeds. Folio only goes online for this when it\'s on.</string>
     <string name="feed_settings_title">Feeds</string>
-    <string name="feed_settings_summary">Add or import feeds, refresh interval</string>
+    <string name="feed_settings_summary">Feed panel, add or import feeds, refresh interval</string>
 
     <!-- Panel -->
     <string name="feed_title">Feed</string>
