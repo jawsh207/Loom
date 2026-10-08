@@ -24,34 +24,31 @@
         android:persistent="false"
         android:widgetLayout="@layout/notification_pref_warning" />
 
-    <!--
-      LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_ENABLED(613)
-      LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_DISABLED(614)
-    -->
     <Preference
         android:key="pref_folio_grid"
         android:title="@string/folio_grid_title"
         android:summary="@string/folio_grid_summary"
         android:persistent="false" />
 
-    <SwitchPreference
-        android:key="pref_folio_lock_home"
-        android:title="@string/folio_lock_title"
-        android:summary="@string/folio_lock_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
+    <!-- Folio: icon pack settings, on a screen of their own. -->
+    <androidx.preference.PreferenceScreen
+        android:key="pref_icons"
+        android:title="@string/icons_settings_title"
+        android:persistent="false">
 
-    <Preference
-        android:key="pref_icon_pack"
-        android:title="@string/icon_pack_title"
-        android:persistent="false" />
+        <Preference
+            android:key="pref_icon_pack"
+            android:title="@string/icon_pack_title"
+            android:persistent="false" />
 
-    <SwitchPreference
-        android:key="pref_icon_pack_fallback"
-        android:title="@string/icon_pack_fallback_title"
-        android:summary="@string/icon_pack_fallback_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
+        <SwitchPreference
+            android:key="pref_icon_pack_fallback"
+            android:title="@string/icon_pack_fallback_title"
+            android:summary="@string/icon_pack_fallback_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+    </androidx.preference.PreferenceScreen>
 
     <Preference
         android:key="pref_drawer_tabs"
@@ -59,18 +56,10 @@
         android:summary="@string/drawer_tabs_settings_summary"
         android:persistent="false" />
 
-    <SwitchPreference
-        android:key="pref_feed_enabled"
-        android:title="@string/feed_enable_title"
-        android:summary="@string/feed_enable_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
-
     <Preference
         android:key="pref_feed_settings"
         android:title="@string/feed_settings_title"
         android:summary="@string/feed_settings_summary"
-        android:dependency="pref_feed_enabled"
         android:persistent="false" />
 
     <SwitchPreference
@@ -87,6 +76,10 @@
         android:defaultValue="true"
         android:persistent="true" />
 
+    <!--
+      LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_ENABLED(613)
+      LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_DISABLED(614)
+    -->
     <SwitchPreference
         android:key="pref_add_icon_to_home"
         android:title="@string/auto_add_shortcuts_label"
@@ -95,5 +88,12 @@
         android:persistent="true"
         launcher:logIdOn="613"
         launcher:logIdOff="614" />
+
+    <SwitchPreference
+        android:key="pref_folio_lock_home"
+        android:title="@string/folio_lock_title"
+        android:summary="@string/folio_lock_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
 
 </androidx.preference.PreferenceScreen>

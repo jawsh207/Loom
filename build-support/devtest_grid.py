@@ -39,6 +39,28 @@ def scroll_down():
     time.sleep(1.5)
 
 
+def scroll_to(pattern, name, tries=5, up=False):
+    w, h = screen_size()
+    for i in range(tries):
+        n = find(snap(f"{name}-find{i}"), pattern)
+        if n:
+            return n
+        a, b = (h // 3, h * 3 // 4) if up else (h * 3 // 4, h // 3)
+        sh(f"input swipe {w // 2} {a} {w // 2} {b} 400")
+        time.sleep(1.5)
+    return None
+
+
+def tap_scrolled(pattern, name, wait=2, up=False):
+    n = scroll_to(pattern, name, up=up)
+    if not n:
+        log(f"  !! no /{pattern}/")
+        return False
+    tap(n)
+    time.sleep(wait)
+    return True
+
+
 def press(desc, times, name):
     for i in range(times):
         n = find(snap(f"{name}-{i}"), desc)
@@ -75,9 +97,26 @@ def main():
     before = home_icons(snap("home-before"))
     log(f"  home icons before: {before}")
 
-    # --- 1. Lock ---
+    # --- 0. Settings layout ---
     open_settings()
-    tap_text(r"^lock home screen$", "lock-on", wait=2)
+    nodes = snap("settings-top")
+    log(f"  no Feed panel switch on settings: {not find(nodes, '^feed panel$')}")
+    log(f"  Feeds entry present: {bool(find(nodes, '^feeds$'))}")
+    log(f"  icon pack not on main screen: {not find(nodes, '^icon pack$')}")
+    if tap_text(r"^icons$", "settings-icons", wait=3):
+        nodes = snap("icons-screen")
+        log(f"  Icons screen has Icon pack and Style other icons: "
+            f"{bool(find(nodes, '^icon pack$')) and bool(find(nodes, '^style other icons$'))}")
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(2)
+    lock = scroll_to(r"^lock home screen$", "settings-bottom")
+    titles = [n for n in snap("settings-bottom-order") if n["text"] and n["bounds"][1] > 200]
+    below = [n["text"] for n in titles if lock and n["bounds"][1] > lock["bounds"][3]
+             and not n["text"].startswith(("Shortcuts, folders", "Apps still"))]
+    log(f"  Lock home screen is last: {bool(lock)} {below}")
+
+    # --- 1. Lock ---
+    tap_scrolled(r"^lock home screen$", "lock-on")
     go_home()
     nodes = snap("locked-home")
     gallery = find(nodes, r"^gallery$")
@@ -140,14 +179,14 @@ def main():
     locked_after = home_icons(snap("locked-home-after"))
     log(f"  nothing added while locked: {locked_after == before}")
     open_settings()
-    tap_text(r"^grid$", "locked-grid", wait=3)
+    tap_scrolled(r"^grid$", "locked-grid", wait=3, up=True)
     log(f"  grid says locked: {bool(find(snap('locked-grid-screen'), 'home screen is locked'))}")
     sh("input keyevent KEYCODE_BACK")
     time.sleep(2)
-    tap_text(r"^lock home screen$", "lock-off", wait=2)
+    tap_scrolled(r"^lock home screen$", "lock-off")
 
     # --- 2. Grid change resets the home screen to the stock layout ---
-    tap_text(r"^grid$", "settings-grid", wait=4)
+    tap_scrolled(r"^grid$", "settings-grid", wait=4, up=True)
     tap_text(r"choose home screen size", "custom-home", wait=1)
     press(r"^more columns$", 1, "cols")
     tap_text(r"^apply$", "apply", wait=2)
@@ -176,7 +215,7 @@ def main():
 
     # --- 3. Drawer-only change: no warning ---
     open_settings()
-    tap_text(r"^grid$", "settings-grid-2", wait=4)
+    tap_scrolled(r"^grid$", "settings-grid-2", wait=4, up=True)
     scroll_down()
     scroll_down()
     tap_text(r"choose app drawer columns", "custom-drawer", wait=1)
