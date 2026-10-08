@@ -86,7 +86,7 @@ def main():
         popup = snap("locked-long-press")
         log(f"  long-press shows unlock popup: {bool(find(popup, 'home screen locked'))}")
         log(f"  popup has hold button: {bool(find(popup, '^hold to unlock$'))}")
-        tap_xy(w // 2, 120)  # outside the card closes it
+        tap_xy(w // 2, h * 4 // 5)  # outside the card (above the dock) closes it
         log(f"  tap outside closes popup: {not find(snap('popup-closed'), 'home screen locked')}")
         sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
         time.sleep(3)
