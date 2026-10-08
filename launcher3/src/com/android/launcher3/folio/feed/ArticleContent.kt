@@ -185,6 +185,7 @@ class ArticleHtml(private val linkColor: Color) {
 
     private fun image(img: Element, caption: AnnotatedString?) {
         val url = img.absUrl("src").ifEmpty { img.attr("src") }
+        android.util.Log.d("FolioArticle", "image ${img.outerHtml().take(300)} -> $url")
         if (!url.startsWith("http") || !seenImages.add(url)) return
         val w = img.attr("width").toIntOrNull()
         val h = img.attr("height").toIntOrNull()
