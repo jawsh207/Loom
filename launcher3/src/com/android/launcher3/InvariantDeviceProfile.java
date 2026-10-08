@@ -308,6 +308,19 @@ public class InvariantDeviceProfile {
                 FIXED_LANDSCAPE_MODE, ENABLE_TWOLINE_ALLAPPS_TOGGLE,
                 WORKSPACE_ITEMS_LABEL_HIDDEN));
 
+        // Folio: changing the grid in Folio's settings reloads the grid (and migrates the
+        // layout), like choosing a grid in the system's wallpaper & style screen.
+        android.content.SharedPreferences.OnSharedPreferenceChangeListener folioGridListener =
+                (sp, key) -> {
+                    if (com.android.launcher3.folio.FolioGrid.INSTANCE.getKEYS().contains(key)) {
+                        mMainExecutor.execute(this::onConfigChanged);
+                    }
+                };
+        com.android.launcher3.folio.FolioGrid.INSTANCE.prefs(context)
+                .registerOnSharedPreferenceChangeListener(folioGridListener);
+        lifeCycle.addCloseable(() -> com.android.launcher3.folio.FolioGrid.INSTANCE.prefs(context)
+                .unregisterOnSharedPreferenceChangeListener(folioGridListener));
+
         SimpleBroadcastReceiver localeReceiver = new SimpleBroadcastReceiver(context,
                 mMainExecutor, i -> onConfigChanged());
         localeReceiver.register(actionsFilter(Intent.ACTION_LOCALE_CHANGED));
@@ -463,6 +476,8 @@ public class InvariantDeviceProfile {
         // If the partner customization apk contains any grid overrides, apply them
         // Supported overrides: numRows, numColumns, iconSize
         applyPartnerDeviceProfileOverrides(context, metrics);
+        // Folio: the grid sizes chosen in Folio's settings.
+        com.android.launcher3.folio.FolioGrid.applyOverrides(this, context);
 
         final List<DeviceProfile> localSupportedProfiles = new ArrayList<>();
         defaultWallpaperSize = new Point(displayInfo.currentSize);

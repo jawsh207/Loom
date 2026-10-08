@@ -29,6 +29,12 @@
       LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_DISABLED(614)
     -->
     <Preference
+        android:key="pref_folio_grid"
+        android:title="@string/folio_grid_title"
+        android:summary="@string/folio_grid_summary"
+        android:persistent="false" />
+
+    <Preference
         android:key="pref_icon_pack"
         android:title="@string/icon_pack_title"
         android:persistent="false" />

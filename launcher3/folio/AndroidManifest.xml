@@ -124,6 +124,14 @@
             android:exported="false"
             android:autoRemoveFromRecents="true" />
 
+        <!-- Home screen and app drawer grid sizes -->
+        <activity
+            android:name="com.android.launcher3.folio.GridSettingsActivity"
+            android:label="@string/folio_grid_title"
+            android:theme="@style/FolioFeedSettings"
+            android:exported="false"
+            android:autoRemoveFromRecents="true" />
+
         <!-- Feed panel settings and subscriptions -->
         <activity
             android:name="com.android.launcher3.folio.feed.FeedSettingsActivity"

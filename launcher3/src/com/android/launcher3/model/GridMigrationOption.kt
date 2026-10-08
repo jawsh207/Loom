@@ -41,6 +41,9 @@ sealed class GridMigrationOption(val columns: Int, val rows: Int) {
         // We check if the destination grid is a valid destination for the current grid, or if
         // we're in a restore scenario, in which case we allow any existing grid as a
         // destination.
+        // Folio: grids can be any size from Folio's settings (a phone can be 6x5 too), and the
+        // migration logic works for any pair of sizes, so every migration is allowed.
+        if (FOLIO_ANY_SIZE) return true
         return validDestinations.contains(destGridMigrationOption) || isAfterRestore
     }
 
@@ -55,7 +58,8 @@ sealed class GridMigrationOption(val columns: Int, val rows: Int) {
                 FiveByFive,
                 FiveBySix,
                 EightByThree,
-                SevenByThree -> validDestinationsForPhone
+                SevenByThree,
+                is Custom -> validDestinationsForPhone
                 SixByFive -> validDestinationsForTablet
             }
 
@@ -96,7 +100,12 @@ sealed class GridMigrationOption(val columns: Int, val rows: Int) {
 
     data object SevenByThree : GridMigrationOption(columns = 7, rows = 3)
 
+    /** Folio: a phone grid size chosen in Folio's settings. */
+    data class Custom(val c: Int, val r: Int) : GridMigrationOption(columns = c, rows = r)
+
     companion object {
+        private const val FOLIO_ANY_SIZE = true
+
         /**
          * Factory method that creates an instance of GridMigrationOption if valid.
          *
@@ -115,6 +124,7 @@ sealed class GridMigrationOption(val columns: Int, val rows: Int) {
                 columns == 6 && rows == 5 -> SixByFive
                 columns == 8 && rows == 3 -> EightByThree
                 columns == 7 && rows == 3 -> SevenByThree
+                columns in 2..10 && rows in 2..12 -> Custom(columns, rows)
                 else -> null
             }
     }
