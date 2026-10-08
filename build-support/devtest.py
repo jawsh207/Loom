@@ -186,7 +186,9 @@ def calm_surfaceflinger():
 
 def main():
     wait_for_system()
-    calm_surfaceflinger()
+    # Nexus launcher's region sampling is what trips the emulator's GPU bug.
+    time.sleep(10)
+    wait_for_system()
     sh("settings put global window_animation_scale 0; "
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
