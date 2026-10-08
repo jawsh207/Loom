@@ -156,7 +156,7 @@ class FeedPanelView(private val launcher: Launcher) :
             dark -> SystemUiController.FLAG_DARK_STATUS or SystemUiController.FLAG_DARK_NAV
             else -> SystemUiController.FLAG_LIGHT_STATUS or SystemUiController.FLAG_LIGHT_NAV
         }
-        launcher.systemUiController.updateUiState(
+        launcher.systemUiController?.updateUiState(
             SystemUiController.UI_STATE_WIDGET_BOTTOM_SHEET, flags)
     }
 
