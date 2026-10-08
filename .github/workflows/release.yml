@@ -1,0 +1,25 @@
+# Copyright (C) 2026 The Folio Authors
+# SPDX-License-Identifier: Apache-2.0
+
+# Builds the chosen branch and publishes the APK as a GitHub release. Run it from
+# Actions › Build release › Run workflow. Ordinary pushes build but never publish.
+name: Build release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version name, e.g. 1.0 (blank: 0.2.<run number>)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: ./.github/workflows/build.yml
+    with:
+      publish: true
+      version: ${{ inputs.version }}
+    secrets: inherit
