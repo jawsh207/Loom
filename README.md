@@ -12,12 +12,7 @@ What Folio adds:
 
 ## Download
 
-Every push to `main` builds the APK on GitHub Actions:
-1. Open **Actions › Build Folio**.
-2. Pick the latest green run.
-3. Download the **Folio** artifact; it's a zip containing the APK.
-
-Tagging a commit `v1.0`, `v1.1` and so on also publishes the APK as a GitHub release.
+Every push to `main` builds Folio on GitHub Actions and publishes the APK as a release: open **Releases** and download `Folio-build-N.apk` from the newest one. Tagging a commit `v1.0`, `v1.1` and so on publishes a release with that name.
 
 ### Installing on GrapheneOS
 1. Install the APK and open Folio from your current launcher, which asks to make it your home app. You can also pick it in **Settings › Apps › Default apps › Home app**. The GrapheneOS launcher stays installed, so you can switch back.
@@ -57,7 +52,9 @@ To build locally (Linux or macOS, JDK 21, Gradle 9.8+):
 
 The APK is written to `gradle/modules/app/build/outputs/apk/release/`.
 
-The CI also pushes its logs to the `ci-logs` branch, which is handy when GitHub's own log viewer isn't available.
+The CI also pushes its logs to the `ci-logs` branch, which is handy when GitHub's own log viewer isn't available. That branch also has `hidden-api.txt`, which lists any calls to Android APIs that are private to the OS. Folio is a regular app, so Android blocks those calls, and each entry is a likely crash.
+
+The **Device test** workflow (run it by hand from Actions) installs the latest release on an Android 17 emulator, makes it the home app and adds widgets through the picker. Screenshots and logs go to the `ci-devtest` branch.
 
 ### Updating tools and libraries
 Set `folio.useLatestTools=true` in `gradle.properties`, or run the workflow by hand with **latest** ticked. CI then builds with the newest Gradle plugin, Kotlin and libraries, and puts fresh `gradle.lockfile`s on the `ci-logs` branch. Copy those into `gradle/modules/*/`, update the versions in `gradle.properties`, and set the flag back to `false`.
