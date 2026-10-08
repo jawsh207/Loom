@@ -6,7 +6,8 @@
 1. Lock the home screen: a long press shows the unlock popup and nothing moves; holding the
    popup's button unlocks it, and it locks again after 45 seconds; apps dragged from the
    drawer aren't added; the Grid screen's home screen controls are disabled.
-2. Unlock, change the home screen grid: a warning appears; confirming clears the home screen.
+2. Unlock, change the home screen grid: a warning appears; confirming resets the home screen
+   to the stock layout.
 3. Change only the drawer columns: no warning, nothing cleared.
 
 usage: devtest_grid.py OUT_DIR FOLIO_APK"""
@@ -145,20 +146,25 @@ def main():
     time.sleep(2)
     tap_text(r"^lock home screen$", "lock-off", wait=2)
 
-    # --- 2. Grid change clears the home screen ---
+    # --- 2. Grid change resets the home screen to the stock layout ---
     tap_text(r"^grid$", "settings-grid", wait=4)
     tap_text(r"choose home screen size", "custom-home", wait=1)
     press(r"^more columns$", 1, "cols")
     tap_text(r"^apply$", "apply", wait=2)
     nodes = snap("warning")
-    log(f"  warning shown: {bool(find(nodes, 'clear your home screen'))}")
-    tap_text(r"clear and change grid", "confirm", wait=10)
+    log(f"  warning shown: {bool(find(nodes, 'reset your home screen'))}")
+    tap_text(r"reset and change grid", "confirm", wait=10)
     go_home()
-    cleared = home_icons(snap("home-cleared"))
-    log(f"  home screen cleared: {cleared == []} ({cleared})")
     time.sleep(3)
+    nodes = snap("home-reset")
+    reset = home_icons(nodes)
+    log(f"  home icons after reset: {reset}")
+    log(f"  stock layout loaded: {set(['Phone', 'Messaging', 'Camera', 'Gallery']) <= set(reset)}")
+    gallery = find(nodes, r"^gallery$")
+    # Moved to the upper part while unlocked; the stock layout has it in the last row.
+    log(f"  gallery back in its stock spot: {bool(gallery) and gallery['bounds'][1] > h * 0.6}")
     in_drawer = False
-    for attempt in range(3):  # the home screen may still be reloading after the clear
+    for attempt in range(3):  # the home screen may still be reloading after the reset
         sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
         time.sleep(3)
         if find(snap(f"drawer-after-clear-{attempt}"), "^gallery$"):
@@ -177,7 +183,7 @@ def main():
     press(r"^more drawer$", 1, "drawer")
     tap_text(r"^apply$", "apply-drawer", wait=6)
     nodes = snap("after-drawer-apply")
-    log(f"  no warning for drawer change: {not find(nodes, 'clear your home screen')}")
+    log(f"  no warning for drawer change: {not find(nodes, 'reset your home screen')}")
     save_logs()
 
 
