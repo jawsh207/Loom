@@ -47,6 +47,13 @@
         android:persistent="false" />
 
     <SwitchPreference
+        android:key="pref_swipe_down_notifications"
+        android:title="@string/swipe_down_notifications_title"
+        android:summary="@string/swipe_down_notifications_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="pref_double_tap_to_lock"
         android:title="@string/double_tap_lock_title"
         android:summary="@string/double_tap_lock_summary"

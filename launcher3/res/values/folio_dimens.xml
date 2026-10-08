@@ -21,7 +21,8 @@
     <dimen name="drawer_tab_chip_padding">16dp</dimen>
     <dimen name="drawer_tab_chip_spacing">8dp</dimen>
     <dimen name="drawer_tab_dialog_padding">24dp</dimen>
-    <dimen name="folio_folder_menu_size">48dp</dimen>
+    <!-- Kept narrow: Launcher3 hides the folder name when it gets under 100dp wide. -->
+    <dimen name="folio_folder_menu_size">40dp</dimen>
     <dimen name="folio_pack_icon_size">36dp</dimen>
     <dimen name="folio_pack_icon_padding">16dp</dimen>
     <dimen name="folio_picker_cell">72dp</dimen>

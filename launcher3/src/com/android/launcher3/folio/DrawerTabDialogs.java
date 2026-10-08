@@ -176,10 +176,15 @@ public final class DrawerTabDialogs {
 
     static void showNameDialog(Context context, int titleRes, String initial,
             Consumer<String> onName) {
+        showNameDialog(context, titleRes, R.string.drawer_tab_name_hint, initial, onName);
+    }
+
+    static void showNameDialog(Context context, int titleRes, int hintRes, String initial,
+            Consumer<String> onName) {
         EditText input = new EditText(context);
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         input.setSingleLine(true);
-        input.setHint(R.string.drawer_tab_name_hint);
+        input.setHint(hintRes);
         input.setText(initial);
         input.setSelection(initial.length());
         FrameLayout frame = new FrameLayout(context);

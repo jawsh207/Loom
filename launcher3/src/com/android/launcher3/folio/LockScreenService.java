@@ -42,6 +42,12 @@ public class LockScreenService extends AccessibilityService {
         return service != null && service.performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN);
     }
 
+    /** Opens the notification shade. Returns false if the service isn't enabled. */
+    public static boolean openNotifications() {
+        LockScreenService service = sInstance;
+        return service != null && service.performGlobalAction(GLOBAL_ACTION_NOTIFICATIONS);
+    }
+
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
