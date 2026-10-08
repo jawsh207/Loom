@@ -113,7 +113,14 @@ def go_home():
     time.sleep(2)
 
 
-def add_widget_attempt(label):
+def find_id(nodes, suffix):
+    for n in nodes:
+        if n["id"].endswith(suffix):
+            return n
+    return None
+
+
+def add_widget_attempt(label, use_drag=False):
     log(f"=== attempt: {label} ===")
     go_home()
     w, h = screen_size()
@@ -121,53 +128,51 @@ def add_widget_attempt(label):
     # Long-press an empty spot of the home screen to get the options menu.
     sh(f"input swipe {w // 2} {h // 3} {w // 2} {h // 3} 1500")
     time.sleep(2)
-    if not tap_text(r"^widgets$", f"{label}-options", wait=4):
+    if not tap_text(r"^widgets$", f"{label}-options", wait=10):
         return
     nodes = snap(f"{label}-picker")
-    # Expand the first app that offers widgets: prefer Clock, else any header-like row.
-    app = find(nodes, r"^clock$") or find(nodes, r"widgets?$")
-    if app:
-        log(f"  opening app {app['text'] or app['desc']!r}")
-        tap(app)
-        time.sleep(3)
-    nodes = snap(f"{label}-app-expanded")
-    # Tap the first widget preview so its Add button appears.
-    preview = find(nodes, r"(analog|digital|clock|widget).*\d+\s*[x×]\s*\d+|\d+\s*[x×]\s*\d+")
-    if preview:
-        log(f"  selecting preview {preview['text'] or preview['desc']!r}")
-        tap(preview)
-        time.sleep(2)
-    if not tap_text(r"^add$|add widget|^add to home", f"{label}-add", wait=4):
+    details = find_id(nodes, ":id/widget_details")
+    if not details:
+        log("  !! no widget in the picker")
         return
+    name = next((n["desc"] for n in nodes if "wide by" in n["desc"]), "?")
+    log(f"  first featured widget: {name!r}")
+    if use_drag:
+        preview = find_id(nodes, ":id/widget_preview")
+        x1, y1, x2, y2 = preview["bounds"]
+        x, y = (x1 + x2) // 2, (y1 + y2) // 2
+        log(f"  dragging preview from {x},{y} to {w // 2},{h // 2}")
+        sh(f"input draganddrop {x} {y} {w // 2} {h // 2} 3000")
+        time.sleep(6)
+    else:
+        tap(details)
+        time.sleep(3)
+        nodes = snap(f"{label}-selected")
+        add = find(nodes, r"^add$|^add widget$|add to home")
+        if not add:
+            log("  !! no Add button")
+            return
+        log(f"  tapping {add['text'] or add['desc']!r}")
+        tap(add)
+        time.sleep(6)
     nodes = snap(f"{label}-after-add")
     allow = find(nodes, r"^create$|^allow$")
     if allow:
-        always = find(nodes, r"always allow")
-        if always:
+        always = find(nodes, r"always allow|allow .* to create widgets")
+        if always and always.get("click") == "true":
             tap(always)
             time.sleep(1)
         log(f"  bind dialog: tapping {allow['text']!r}")
         tap(allow)
-        time.sleep(4)
+        time.sleep(6)
+    else:
+        log("  no bind dialog")
     snap(f"{label}-result")
-    time.sleep(3)
-    snap(f"{label}-result-later")
+    time.sleep(5)
+    nodes = snap(f"{label}-result-later")
+    widgets = [n for n in nodes if "appwidget" in n["id"].lower() or "hostview" in n["id"].lower()]
+    log(f"  widget-like views on home: {len(widgets)}")
     (OUT / f"appwidget-{label}.txt").write_text(sh("dumpsys appwidget"))
-
-
-def wait_for_system():
-    """sys.boot_completed can be set before system_server has settled (it may restart once
-    on a first boot), so wait until package and activity services answer steadily."""
-    ok = 0
-    for _ in range(60):
-        pm = sh("pm path android")
-        am = sh("dumpsys activity activities | grep -c topResumedActivity")
-        ok = ok + 1 if ("package:" in pm and am.strip() not in ("", "0")) else 0
-        if ok >= 3:
-            log("system ready")
-            return
-        time.sleep(10)
-    log("!! system never settled")
 
 
 def calm_surfaceflinger():
@@ -207,9 +212,9 @@ def main():
     go_home()
     time.sleep(5)
     snap("first-home")
-    add_widget_attempt("nobind")
-    log(sh(f"cmd appwidget grantbind --package {PKG} --user 0"))
-    add_widget_attempt("granted")
+    add_widget_attempt("add-button")
+    add_widget_attempt("again")
+    add_widget_attempt("drag", use_drag=True)
     (OUT / "logcat.txt").write_text(adb("logcat", "-d", "-v", "threadtime"))
     (OUT / "logcat-folio.txt").write_text(adb(
         "logcat", "-d", "-v", "threadtime", "-s",
