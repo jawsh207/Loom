@@ -115,7 +115,7 @@ class FeedDatabase(context: Context) :
         if (title != null) {
             writableDatabase.execSQL(
                 "UPDATE feeds SET title = ? WHERE id = ? AND title = url",
-                arrayOf(title, id),
+                arrayOf<Any>(title, id),
             )
         }
     }
@@ -191,12 +191,12 @@ class FeedDatabase(context: Context) :
 
     fun setRead(id: Long, read: Boolean) {
         writableDatabase.execSQL("UPDATE items SET read = ? WHERE id = ?",
-            arrayOf(if (read) 1 else 0, id))
+            arrayOf<Any>(if (read) 1 else 0, id))
     }
 
     fun setStarred(id: Long, starred: Boolean) {
         writableDatabase.execSQL("UPDATE items SET starred = ? WHERE id = ?",
-            arrayOf(if (starred) 1 else 0, id))
+            arrayOf<Any>(if (starred) 1 else 0, id))
     }
 
     fun markAllRead(filter: FeedFilter) {
@@ -235,12 +235,12 @@ class FeedDatabase(context: Context) :
         val cutoff = System.currentTimeMillis() - days * 24L * 60 * 60 * 1000
         writableDatabase.execSQL(
             "DELETE FROM items WHERE starred = 0 AND read = 1 AND published < ?",
-            arrayOf(cutoff),
+            arrayOf<Any>(cutoff),
         )
         // Unread items are kept twice as long before they go too.
         writableDatabase.execSQL(
             "DELETE FROM items WHERE starred = 0 AND published < ?",
-            arrayOf(cutoff - days * 24L * 60 * 60 * 1000),
+            arrayOf<Any>(cutoff - days * 24L * 60 * 60 * 1000),
         )
     }
 
