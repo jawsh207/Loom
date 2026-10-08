@@ -8,20 +8,21 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.android.launcher3.InvariantDeviceProfile
 import com.android.launcher3.LauncherFiles
+import com.android.launcher3.R
 
 /**
  * Folio's home screen and app drawer grid sizes. 0 means "use the device's default grid".
  *
  * Applied on top of the grid Launcher3 picks for the display (like a device maker's partner
  * overrides), so icon sizes and spacing still come from that grid. A different home screen
- * size uses its own layout database; Launcher3's grid migration moves the icons over.
+ * size uses its own layout database, reset to the stock layout for that size.
  */
 object FolioGrid {
     const val COLUMNS = "pref_folio_grid_columns"
     const val ROWS = "pref_folio_grid_rows"
     const val HOTSEAT = "pref_folio_grid_hotseat"
     const val DRAWER_COLUMNS = "pref_folio_drawer_columns"
-    /** Set with a home screen size change: the next layout load starts empty. */
+    /** Set with a home screen size change: the next layout load starts from the stock layout. */
     private const val FRESH_START = "pref_folio_grid_fresh_start"
 
     /** Matches the entry in launcher_preferences.xml. */
@@ -51,8 +52,8 @@ object FolioGrid {
     }
 
     /**
-     * Saves new sizes. With [freshStart], the home screen and dock are cleared when the
-     * layout reloads for the new size (see ModelDbController.folioFreshStart).
+     * Saves new sizes. With [freshStart], the home screen and dock are reset to the stock
+     * layout when it reloads for the new size (see ModelDbController.folioFreshStart).
      */
     fun write(context: Context, sizes: Sizes, freshStart: Boolean) {
         prefs(context).edit()
@@ -112,6 +113,7 @@ object FolioGrid {
             // then goes through grid migration, which moves the icons over.
             idp.dbFile = "launcher_${columns}_by_${rows}" +
                 (if (hotseat != columns) "_dock_$hotseat" else "") + ".db"
+            idp.defaultLayoutId = stockLayoutFor(columns, rows, hotseat)
         }
         if (s.drawerColumns in COLUMN_RANGE) {
             idp.numAllAppsColumns = s.drawerColumns
@@ -120,6 +122,17 @@ object FolioGrid {
         fitIcons(idp, context,
             home = columns > stockColumns || hotseat > stockHotseat,
             drawer = s.drawerColumns in COLUMN_RANGE && s.drawerColumns > stock.drawerColumns)
+    }
+
+    /**
+     * The stock home screen layout for a grid size, loaded when the home screen is reset.
+     * Their home screen icons sit in the last row and their dock icons are placed by slot,
+     * so they fit any size; dock icons beyond the dock's size are left out.
+     */
+    private fun stockLayoutFor(columns: Int, rows: Int, dock: Int): Int = when {
+        dock >= 5 -> R.xml.default_workspace_5x5
+        rows >= 5 -> R.xml.default_workspace_4x5
+        else -> R.xml.default_workspace_4x4
     }
 
     /**

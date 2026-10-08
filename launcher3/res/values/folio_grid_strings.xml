@@ -22,9 +22,9 @@
     <string name="folio_grid_apply_note">Changing the home screen or dock size clears your home screen and dock so you can start fresh. Changing only the app drawer columns keeps everything.</string>
     <string name="folio_grid_preview_home">Home screen preview: %1$d columns, %2$d rows, %3$d dock icons</string>
     <string name="folio_grid_preview_drawer">App drawer preview: %1$d columns</string>
-    <string name="folio_grid_warn_title">Clear your home screen?</string>
-    <string name="folio_grid_warn_body">Changing the grid removes every shortcut, folder and widget from your home screen and dock, so you can set it up fresh at the new size. Your apps stay installed and in the app drawer.\n\nThis can\'t be undone.</string>
-    <string name="folio_grid_warn_confirm">Clear and change grid</string>
+    <string name="folio_grid_warn_title">Reset your home screen?</string>
+    <string name="folio_grid_warn_body">Changing the grid resets your home screen and dock to the standard layout for the new size. Your shortcuts, folders and widgets there are removed. Your apps stay installed and in the app drawer.\n\nThis can\'t be undone.</string>
+    <string name="folio_grid_warn_confirm">Reset and change grid</string>
     <string name="folio_grid_locked">Your home screen is locked. Unlock it in Home settings to change its size.</string>
 
     <!-- Lock home screen -->
