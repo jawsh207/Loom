@@ -23,9 +23,9 @@ class FeedOverlay private constructor(private val launcher: Launcher) :
     private var callbacks: LauncherOverlayCallbacks? = null
     private var flingVelocity = 0f
 
-    init {
-        panel.onProgress = { callbacks?.onOverlayScrollChanged(it) }
-    }
+    // The workspace isn't told about the panel's progress (LauncherOverlayCallbacks): that
+    // makes the drag layer slide and fade itself out, which suits an overlay in a separate
+    // window like Google's, but the feed panel lives inside the drag layer.
 
     private fun attach() {
         panel.attach()
