@@ -43,7 +43,8 @@ def scroll_to(pattern, name, tries=5, up=False):
     w, h = screen_size()
     for i in range(tries):
         n = find(snap(f"{name}-find{i}"), pattern)
-        if n:
+        # Only a row that's well clear of the toolbar and the navigation bar counts.
+        if n and n["bounds"][1] > h // 8 and n["bounds"][3] < h - h // 8:
             return n
         a, b = (h // 3, h * 3 // 4) if up else (h * 3 // 4, h // 3)
         sh(f"input swipe {w // 2} {a} {w // 2} {b} 400")
