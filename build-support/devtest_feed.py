@@ -61,6 +61,11 @@ def add_feed(url, label):
     return err is None
 
 
+def choose_source(pattern):
+    if tap_text(r"choose which feeds", "source-menu", wait=2):
+        tap_text(pattern, "source-pick", wait=3)
+
+
 def main():
     setup_home()
     snap("home")
@@ -97,7 +102,8 @@ def main():
     nodes = snap("panel-open")
     log(f"  panel visible: {bool(find(nodes, 'lighthouse|bread|atom'))}; top={top_activity()}")
 
-    # 4. Open the local article and read it.
+    # 4. Show only the local feed, then open its article and read it.
+    choose_source(r"^folio test gazette")
     if tap_text(r"lighthouse keepers", "panel-tap-article", wait=6):
         nodes = snap("article")
         for pattern in (r"a life measured in hours", r"you never really sleep",
@@ -113,9 +119,12 @@ def main():
         snap("panel-after-back")
 
     # 5. A real article from the web.
+    choose_source(r"^ars technica")
     nodes = snap("panel-before-real")
-    real = find(nodes, r"ars technica")
+    real = next((n for n in nodes if len(n["text"]) > 25 and n["bounds"][1] > 500
+                 and "·" not in n["text"]), None)
     if real:
+        log(f"  opening real article {real['text']!r}")
         tap(real)
         time.sleep(12)
         snap("real-article")
@@ -126,6 +135,7 @@ def main():
         time.sleep(2)
 
     # 6. Feed-only item (no link) shows the feed's own text.
+    choose_source(r"^folio test gazette")
     if tap_text(r"full text in the feed", "panel-feed-only", wait=4):
         nodes = snap("feed-only-article")
         log(f"  feed-only text shown: {bool(find(nodes, 'second point'))}")
