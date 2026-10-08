@@ -31,6 +31,9 @@
     <permission android:name="${applicationId}.permission.START_WIDGET_PICKER_ACTIVITY"
         android:protectionLevel="signature|privileged" />
 
+    <!-- Folio: swipe down on the home screen opens the notification shade. -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
         android:fullBackupOnly="true"
@@ -88,6 +91,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.PICK" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        Folio's icon in other launchers: asks to make Folio the default home app (or opens
+        Folio's settings when it already is).
+        -->
+        <activity
+            android:name="com.android.launcher3.folio.SetDefaultHomeActivity"
+            android:label="@string/folio_app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:noHistory="false"
+            android:taskAffinity="app.folio.launcher.sethome"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

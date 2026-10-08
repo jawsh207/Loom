@@ -81,6 +81,7 @@ import com.android.launcher3.allapps.search.AllAppsSearchUiDelegate;
 import com.android.launcher3.allapps.search.SearchAdapterProvider;
 import com.android.launcher3.allapps.search.SearchSessionManager;
 import com.android.launcher3.config.FeatureFlags;
+import com.android.launcher3.folio.DrawerTabSwipe;
 import com.android.launcher3.keyboard.FocusedItemDecorator;
 import com.android.launcher3.keyboard.ViewGroupFocusHelper;
 import com.android.launcher3.model.StringCache;
@@ -622,6 +623,7 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
             mainRecyclerView = (AllAppsRecyclerView) mViewPager.getChildAt(0);
             workRecyclerView = (AllAppsRecyclerView) mViewPager.getChildAt(1);
             mAH.get(AdapterHolder.MAIN).setup(mainRecyclerView, getMainAppsMatcher());
+            DrawerTabSwipe.attach(mainRecyclerView);
             mAH.get(AdapterHolder.WORK).setup(workRecyclerView, mWorkManager.getItemInfoMatcher());
             workRecyclerView.setId(R.id.apps_list_view_work);
             if (enableExpandingPauseWorkButton()
@@ -654,6 +656,7 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
             mainRecyclerView = findViewById(R.id.apps_list_view);
             workRecyclerView = null;
             mAH.get(AdapterHolder.MAIN).setup(mainRecyclerView, getMainAppsMatcher());
+            DrawerTabSwipe.attach(mainRecyclerView);
             mAH.get(AdapterHolder.WORK).mRecyclerView = null;
         }
         setUpCustomRecyclerViewPool(

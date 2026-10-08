@@ -19,7 +19,7 @@
     <string name="folio_app_name">Folio</string>
 
     <!-- Drawer tabs -->
-    <string name="drawer_tab_all">All</string>
+    <string name="drawer_tab_all">Apps</string>
     <string name="drawer_tab_new">New tab</string>
     <string name="drawer_tab_name_hint">Tab name</string>
     <string name="drawer_tab_choose_apps">Choose apps</string>
@@ -27,7 +27,7 @@
     <string name="drawer_tab_move_left">Move left</string>
     <string name="drawer_tab_move_right">Move right</string>
     <string name="drawer_tab_delete">Delete tab</string>
-    <string name="drawer_tab_delete_confirm">Delete \"<xliff:g id="name" example="Games">%1$s</xliff:g>\"? Its apps stay installed and remain under All.</string>
+    <string name="drawer_tab_delete_confirm">Delete \"<xliff:g id="name" example="Games">%1$s</xliff:g>\"? Its apps stay installed and move back to Apps.</string>
     <string name="drawer_tab_add_app">Add to tab</string>
 
     <!-- Icon packs -->
@@ -51,7 +51,7 @@
     <string name="drawer_tabs_settings_summary">Create tabs for the app drawer and choose their apps</string>
     <string name="drawer_tabs_settings_category">Your tabs</string>
     <string name="drawer_tabs_settings_empty">No tabs yet</string>
-    <string name="drawer_tabs_settings_hint">Tap a tab to choose its apps, rename, reorder or delete it. You can also manage tabs from the app drawer, and add any app to a tab from its long-press menu.</string>
+    <string name="drawer_tabs_settings_hint">Apps in a tab are shown only in that tab, not under Apps. Tap a tab to choose its apps, rename, reorder or delete it. You can also manage tabs from the app drawer, swipe left and right between them, and add any app to a tab from its long-press menu.</string>
     <plurals name="drawer_tab_app_count">
         <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> app</item>
         <item quantity="other"><xliff:g id="count" example="5">%d</xliff:g> apps</item>
@@ -61,8 +61,13 @@
     <string name="folder_cover_on">Use as folder cover</string>
     <string name="folder_cover_off">Stop using as cover</string>
     <string name="folder_menu_description">Folder options</string>
+    <string name="folder_rename">Rename folder</string>
     <string name="folder_cover_on_menu">Make cover folder</string>
     <string name="folder_cover_off_menu">Make regular folder</string>
+
+    <!-- Swipe down for notifications -->
+    <string name="swipe_down_notifications_title">Swipe down for notifications</string>
+    <string name="swipe_down_notifications_summary">Swipe down on the home screen to open the notification shade</string>
 
     <!-- Double tap to lock -->
     <string name="double_tap_lock_title">Double-tap to lock</string>
@@ -71,5 +76,5 @@
     <string name="double_tap_lock_setup_message">To turn the screen off, Folio needs its \"Folio screen lock\" accessibility service. It only locks the screen and doesn\'t read anything on screen.\n\nIn Accessibility settings, open Folio screen lock and turn it on.</string>
     <string name="double_tap_lock_open_settings">Open settings</string>
     <string name="lock_service_label">Folio screen lock</string>
-    <string name="lock_service_description">Lets Folio turn your screen off when you double-tap an empty spot. It doesn\'t observe or read anything on screen.</string>
+    <string name="lock_service_description">Lets Folio turn your screen off when you double-tap an empty spot, and open notifications when you swipe down. It doesn\'t observe or read anything on screen.</string>
 </resources>

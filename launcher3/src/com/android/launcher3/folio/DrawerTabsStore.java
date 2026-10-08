@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +51,7 @@ public final class DrawerTabsStore {
     private static final String KEY_TABS = "tabs";
     private static final String KEY_SELECTED = "selected_tab";
 
-    /** Id used for the built-in "All apps" tab, which is not stored. */
+    /** Id of the built-in main tab (apps not in any tab), which is not stored. */
     public static final String ALL_TAB_ID = "";
 
     /** One user-created tab. */
@@ -197,16 +198,43 @@ public final class DrawerTabsStore {
     }
 
     /**
-     * Filter for the drawer's main list, or null when "All apps" is selected. The predicate
-     * reads the tab live, so edits to the tab are picked up the next time the list rebuilds.
+     * Filter for the drawer's list. A tab shows its own apps; the main tab shows the apps that
+     * aren't in any tab. Null means no filtering (main tab with no apps assigned anywhere).
+     * The drawer asks for a new filter whenever the tabs change.
      */
     @Nullable
     public Predicate<ItemInfo> getSelectedFilter() {
         Tab tab = getSelectedTab();
-        if (tab == null) {
-            return null;
+        if (tab != null) {
+            Set<String> apps = new HashSet<>(tab.apps);
+            return info -> apps.contains(appKey(info));
         }
-        return info -> tab.apps.contains(appKey(info));
+        Set<String> assigned = new HashSet<>();
+        for (Tab t : mTabs) {
+            assigned.addAll(t.apps);
+        }
+        return assigned.isEmpty() ? null : info -> !assigned.contains(appKey(info));
+    }
+
+    /** Ids of the main tab followed by every user tab, in order (for swiping between them). */
+    public List<String> getTabIdsInOrder() {
+        List<String> ids = new ArrayList<>();
+        ids.add(ALL_TAB_ID);
+        for (Tab t : mTabs) {
+            ids.add(t.id);
+        }
+        return ids;
+    }
+
+    /** Selects the tab next to the current one; returns false at either end. */
+    public boolean selectAdjacent(int direction) {
+        List<String> ids = getTabIdsInOrder();
+        int next = ids.indexOf(getSelectedId()) + direction;
+        if (next < 0 || next >= ids.size()) {
+            return false;
+        }
+        select(ids.get(next));
+        return true;
     }
 
     public void addListener(Listener l) {
