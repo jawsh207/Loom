@@ -41,7 +41,7 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
         targetSdk = folioCompileSdk
         // CI passes its run number so every build can install over the previous one.
         versionCode = System.getenv("FOLIO_VERSION_CODE")?.toIntOrNull() ?: 1
-        versionName = "0.1"
+        versionName = System.getenv("FOLIO_VERSION_NAME")?.takeIf { it.isNotBlank() } ?: "0.2-dev"
     }
 
     compileOptions {

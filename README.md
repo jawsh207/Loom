@@ -12,7 +12,11 @@ What Folio adds:
 
 ## Download
 
-Every push to `main` builds Folio on GitHub Actions and publishes the APK as a release: open **Releases** and download `Folio-build-N.apk` from the newest one. Tagging a commit `v1.0`, `v1.1` and so on publishes a release with that name.
+Open **Releases** and download the APK from the newest release.
+
+Releases are only published when you ask for one: go to **Actions › Build release › Run workflow**, pick the branch (normally `main`), optionally type a version such as `1.0`, and press **Run workflow**. Leave the version blank to get `0.2.N`. Pushing a `v*` tag (for example `v1.0`) also publishes a release.
+
+Ordinary pushes still build the APK on **Actions › Build Folio**, to check the code compiles. That APK is kept as the run's **Folio** artifact but isn't published.
 
 ### Installing on GrapheneOS
 1. Install the APK and open Folio from your current launcher, which asks to make it your home app. You can also pick it in **Settings › Apps › Default apps › Home app**. The GrapheneOS launcher stays installed, so you can switch back.
