@@ -108,6 +108,15 @@ jobs:
           gradle --version 2>&1 | tee -a build.log
           gradle ${{ steps.versions.outputs.args }} --continue --stacktrace :app:assembleRelease 2>&1 | tee -a build.log
 
+      # References to non-public Android APIs crash a regular app at runtime (they work in
+      # GrapheneOS's own launcher because it is part of the OS). The list goes to ci-logs.
+      - name: Scan for hidden API use
+        continue-on-error: true
+        run: |
+          python3 -I build-support/hidden_api_scan.py "$PLATFORM_DIR/android-public.jar" \
+            "$PLATFORM_DIR/android.jar" gradle/modules/*/build > hidden-api.txt
+          tail -1 hidden-api.txt; grep -c "used by" hidden-api.txt || true
+
       - name: Show signing certificate
         run: |
           APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
@@ -153,7 +162,7 @@ jobs:
         if: always() && github.event_name != 'pull_request'
         run: |
           mkdir -p /tmp/ci-logs
-          cp sdk.log build.log /tmp/ci-logs/ 2>/dev/null || true
+          cp sdk.log build.log hidden-api.txt /tmp/ci-logs/ 2>/dev/null || true
           for f in gradle/modules/*/gradle.lockfile; do
             [ -f "$f" ] && mkdir -p "/tmp/ci-logs/$(dirname "$f")" && cp "$f" "/tmp/ci-logs/$f"
           done
