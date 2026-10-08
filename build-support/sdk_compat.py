@@ -38,6 +38,10 @@ def main():
         for f in Path(root).rglob("*"):
             if f.suffix not in (".xml", ".java", ".kt") or "/build/" in str(f):
                 continue
+            # Resources in a -vNN directory only load on that API level or later.
+            api = re.search(r"-v(\d+)(?:/|$)", str(f.parent))
+            if api and int(api.group(1)) >= 37:
+                continue
             text = f.read_text(errors="replace")
             if f.suffix == ".xml":
                 for t, name in RES_REF.findall(text):
