@@ -155,11 +155,33 @@ def add_widget_attempt(label):
     (OUT / f"appwidget-{label}.txt").write_text(sh("dumpsys appwidget"))
 
 
+def wait_for_system():
+    """sys.boot_completed can be set before system_server has settled (it may restart once
+    on a first boot), so wait until package and activity services answer steadily."""
+    ok = 0
+    for _ in range(60):
+        pm = sh("pm path android")
+        am = sh("dumpsys activity activities | grep -c topResumedActivity")
+        ok = ok + 1 if ("package:" in pm and am.strip() not in ("", "0")) else 0
+        if ok >= 3:
+            log("system ready")
+            return
+        time.sleep(10)
+    log("!! system never settled")
+
+
 def main():
+    wait_for_system()
     sh("settings put global window_animation_scale 0; "
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
-    log(adb("install", "-r", "-g", sys.argv[2]))
+    for _ in range(5):
+        out = adb("install", "-r", "-g", sys.argv[2])
+        log(out)
+        if "Success" in out:
+            break
+        time.sleep(20)
+        wait_for_system()
     log(sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0"))
     log(sh(f"cmd package set-home-activity --user 0 {PKG}/com.android.launcher3.Launcher"))
     log("home role: " + sh("cmd role get-role-holders --user 0 android.app.role.HOME"))
