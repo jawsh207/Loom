@@ -21,7 +21,7 @@ def adb(*args, check=False, capture=True):
     r = subprocess.run(["adb", *args], capture_output=capture, text=True, timeout=120)
     if check and r.returncode:
         raise RuntimeError(f"adb {args}: {r.stderr}")
-    return r.stdout if capture else ""
+    return (r.stdout + r.stderr) if capture else ""
 
 
 def sh(cmd):
@@ -105,7 +105,7 @@ def top_activity():
 
 def screen_size():
     m = re.search(r"(\d+)x(\d+)", sh("wm size"))
-    return int(m.group(1)), int(m.group(2))
+    return (int(m.group(1)), int(m.group(2))) if m else (1080, 2400)
 
 
 def go_home():
@@ -160,8 +160,9 @@ def main():
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
     log(adb("install", "-r", "-g", sys.argv[2]))
-    log(sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG}"))
-    log(sh("cmd role get-role-holders --user 0 android.app.role.HOME"))
+    log(sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0"))
+    log(sh(f"cmd package set-home-activity --user 0 {PKG}/com.android.launcher3.Launcher"))
+    log("home role: " + sh("cmd role get-role-holders --user 0 android.app.role.HOME"))
     sh("logcat -c")
     go_home()
     time.sleep(5)
