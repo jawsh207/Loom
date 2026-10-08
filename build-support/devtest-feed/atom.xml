@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Folio Atom Notes</title>
+  <link href="http://10.0.2.2:8000/"/>
+  <id>urn:folio:atom-test</id>
+  <updated>2026-10-07T12:00:00Z</updated>
+  <entry>
+    <title type="html">Atom &lt;i&gt;entry&lt;/i&gt; with xhtml content</title>
+    <link href="http://10.0.2.2:8000/article2.html"/>
+    <id>urn:folio:atom-1</id>
+    <updated>2026-10-07T11:00:00Z</updated>
+    <author><name>Grace Hopper</name></author>
+    <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p>Inline <strong>XHTML</strong> content.</p></div></content>
+  </entry>
+</feed>
