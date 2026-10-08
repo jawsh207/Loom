@@ -66,7 +66,7 @@ sealed interface ArticleBlock {
 }
 
 /** Lower-case tag name (the jsoup version Readability4J uses has no normalName()). */
-private fun Element.tag(): String = tagName().lowercase()
+private fun Element.tagLc(): String = tagName().lowercase()
 
 /** Converts article HTML into [ArticleBlock]s. */
 class ArticleHtml(private val linkColor: Color) {
@@ -94,7 +94,7 @@ class ArticleHtml(private val linkColor: Color) {
             return
         }
         if (node !is Element) return
-        when (val tag = node.tag()) {
+        when (val tag = node.tagLc()) {
             "script", "style", "noscript", "svg", "form", "button", "input", "select",
             "textarea", "nav", "template" -> Unit
             "h1", "h2", "h3", "h4", "h5", "h6" -> {
@@ -151,10 +151,10 @@ class ArticleHtml(private val linkColor: Color) {
     private fun list(listEl: Element, depth: Int) {
         flushParagraph()
         var n = listEl.attr("start").toIntOrNull() ?: 1
-        val ordered = listEl.tag() == "ol"
+        val ordered = listEl.tagLc() == "ol"
         for (li in listEl.children()) {
-            if (li.tag() != "li") continue
-            val nested = li.children().filter { it.tag() == "ul" || it.tag() == "ol" }
+            if (li.tagLc() != "li") continue
+            val nested = li.children().filter { it.tagLc() == "ul" || it.tagLc() == "ol" }
             nested.forEach { it.remove() }
             val text = inlineOf(li, blockBreaks = true)
             if (text.isNotBlank()) {
@@ -168,7 +168,7 @@ class ArticleHtml(private val linkColor: Color) {
     private fun table(t: Element) {
         flushParagraph()
         val rows = t.select("tr").map { tr ->
-            tr.children().filter { it.tag() == "td" || it.tag() == "th" }
+            tr.children().filter { it.tagLc() == "td" || it.tagLc() == "th" }
                 .map { inlineOf(it) }
         }.filter { it.isNotEmpty() }
         if (rows.isNotEmpty()) out += ArticleBlock.Table(rows)
@@ -205,7 +205,7 @@ class ArticleHtml(private val linkColor: Color) {
             return
         }
         if (node !is Element) return
-        val style: SpanStyle? = when (node.tag()) {
+        val style: SpanStyle? = when (node.tagLc()) {
             "b", "strong" -> SpanStyle(fontWeight = FontWeight.Bold)
             "i", "em", "cite", "dfn" -> SpanStyle(fontStyle = FontStyle.Italic)
             "u", "ins" -> SpanStyle(textDecoration = TextDecoration.Underline)
@@ -217,14 +217,14 @@ class ArticleHtml(private val linkColor: Color) {
             "mark" -> SpanStyle(background = linkColor.copy(alpha = 0.2f))
             else -> null
         }
-        when (node.tag()) {
+        when (node.tagLc()) {
             "script", "style", "noscript", "svg", "img", "picture", "figure", "iframe",
             "video", "audio", "button", "form" -> return
             "br" -> { b.append('\n'); lastWasSpace = true; return }
             "p", "div", "li", "blockquote", "h1", "h2", "h3", "h4", "h5", "h6" ->
                 if (blockBreaks && b.length > 0) { b.append("\n\n"); lastWasSpace = true }
         }
-        val href = if (node.tag() == "a") node.absUrl("href") else ""
+        val href = if (node.tagLc() == "a") node.absUrl("href") else ""
         val pushed = mutableListOf<Int>()
         if (href.startsWith("http") || href.startsWith("mailto:")) {
             pushed += b.pushLink(LinkAnnotation.Url(href, TextLinkStyles(
