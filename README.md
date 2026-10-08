@@ -3,10 +3,12 @@
 A home-screen launcher for GrapheneOS, built from GrapheneOS's Launcher3 (Android 17). It has no Google services and no search bar or feed.
 
 What Folio adds:
-- **Drawer tabs**: create tabs for the app drawer and choose their apps, from the drawer or from Folio's settings.
+- **Drawer tabs**: create tabs for the app drawer and choose their apps, from the drawer or from Folio's settings. Swipe left or right to move between tabs. Apps in a tab are shown only there, not under the main **Apps** tab.
 - **Double-tap to lock**: double-tap an empty part of the home screen to turn the screen off.
-- **Cover folders**: the folder shows its first app's icon; a tap opens that app, and a swipe up opens the folder. Turn it on from the folder's ⋮ menu.
+- **Swipe down for notifications**: swipe down anywhere on the home screen to open the notification shade.
+- **Cover folders**: the folder shows its first app's icon; a tap opens that app, and a swipe up opens the folder. Turn it on from the folder's ⋮ menu, which also has **Rename folder**.
 - **Icon packs**: works with packs made for Nova and ADW, including daily calendar icons, a per-app icon picker (**Edit icon** on any app), and styling for apps the pack doesn't cover.
+- **Easy to switch to**: Folio appears in other launchers' app drawers. Opening it asks to make Folio your default home app.
 
 ## Download
 
@@ -18,8 +20,8 @@ Every push to `main` builds the APK on GitHub Actions:
 Tagging a commit `v1.0`, `v1.1` and so on also publishes the APK as a GitHub release.
 
 ### Installing on GrapheneOS
-1. Install the APK, then pick Folio in **Settings › Apps › Default apps › Home app**. The GrapheneOS launcher stays installed, so you can switch back.
-2. Double-tap to lock uses an accessibility service. If **Folio screen lock** is greyed out in Accessibility settings, first go to **Settings › Apps › Folio › ⋮ › Allow restricted settings**.
+1. Install the APK and open Folio from your current launcher, which asks to make it your home app. You can also pick it in **Settings › Apps › Default apps › Home app**. The GrapheneOS launcher stays installed, so you can switch back.
+2. Double-tap to lock (and the most reliable swipe-down for notifications) uses an accessibility service. If **Folio screen lock** is greyed out in Accessibility settings, first go to **Settings › Apps › Folio › ⋮ › Allow restricted settings**.
 
 ### Signing
 Without a key, CI signs the APK with a throwaway debug key that changes every run, so each new build has to be uninstalled and reinstalled. For updates that install over the previous version, add your own key as repository secrets:
