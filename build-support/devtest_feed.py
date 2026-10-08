@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
-"""Emulator test of the feed panel: turn it on in settings, add feeds (a local RSS feed, a
+"""Emulator test of the feed panel: turn it on in Settings › Feeds, add feeds (a local RSS feed, a
 local site found through autodiscovery, and a real one), open the panel with a swipe, read an
 article, and swipe the panel away. Screenshots and logs go to the output directory.
 
@@ -70,21 +70,21 @@ def main():
     setup_home()
     snap("home")
 
-    # 1. Turn the feed panel on in Folio's settings.
+    # 1. Open Feeds in Folio's settings and turn the feed panel on there.
     open_folio_settings()
-    n = scroll_to(r"^feed panel$", "settings")
+    n = scroll_to(r"^feeds$", "settings")
     if not n:
-        log("!! no Feed panel setting")
+        log("!! no Feeds setting")
         save_logs()
         return
     tap(n)
-    time.sleep(2)
-    snap("settings-enabled")
-
-    # 2. Open the feeds screen and add feeds.
-    if not tap_text(r"^feeds$", "settings-feeds", wait=4):
+    time.sleep(4)
+    if not tap_text(r"^feed panel$", "feeds-enable", wait=2):
         save_logs()
         return
+    snap("settings-enabled")
+
+    # 2. Add feeds.
     snap("feeds-screen")
     add_feed(LOCAL_RSS, "rss")
     add_feed(LOCAL_SITE, "site")
