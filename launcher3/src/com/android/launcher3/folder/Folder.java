@@ -412,7 +412,7 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
     public boolean onLongClick(View v) {
         // Return if global dragging is not enabled
         if (!getIsLauncherDraggingEnabled()) return true;
-        // Folio: folders on a locked home screen can't be rearranged.
+        // Folio: on a locked home screen, a long press offers to unlock it instead.
         if (com.android.launcher3.folio.HomeLock.isLocked(getContext())
                 && mActivityContext instanceof com.android.launcher3.Launcher launcher) {
             return com.android.launcher3.folio.HomeLock.onLockedLongPress(launcher, v);

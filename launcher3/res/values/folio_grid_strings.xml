@@ -29,6 +29,12 @@
 
     <!-- Lock home screen -->
     <string name="folio_lock_title">Lock home screen</string>
-    <string name="folio_lock_summary">Shortcuts, folders and widgets on the home screen and dock can\'t be moved, removed or added. Apps still open and their menus still work.</string>
-    <string name="folio_lock_toast">Home screen is locked. Unlock it in Home settings.</string>
+    <string name="folio_lock_summary">Shortcuts, folders and widgets on the home screen and dock can\'t be moved, removed or added. Apps still open. Touch and hold anything on the home screen to unlock it for 45 seconds.</string>
+    <string name="folio_lock_toast">Home screen is locked. Touch and hold anything to unlock it.</string>
+    <string name="folio_lock_popup_title">Home screen locked</string>
+    <string name="folio_lock_popup_body">Touch and hold below to unlock it for 45 seconds. It locks again on its own.</string>
+    <string name="folio_lock_popup_hold">Hold to unlock</string>
+    <string name="folio_lock_popup_action">Unlock home screen</string>
+    <string name="folio_lock_unlocked">Unlocked for 45 seconds</string>
+    <string name="folio_lock_relocked">Home screen locked again</string>
 </resources>
