@@ -143,10 +143,15 @@ public final class Utilities {
     }
 
     public static boolean isRunningInstrumentationTest() {
-        final var thread = ActivityThread.currentActivityThread();
-        if (thread == null) return false;
-        final Instrumentation instrumentation = thread.getInstrumentation();
-        return instrumentation != null && instrumentation.isInstrumenting();
+        // Folio: these are hidden APIs, which a regular app may not be allowed to call.
+        try {
+            final var thread = ActivityThread.currentActivityThread();
+            if (thread == null) return false;
+            final Instrumentation instrumentation = thread.getInstrumentation();
+            return instrumentation != null && instrumentation.isInstrumenting();
+        } catch (Throwable t) {
+            return false;
+        }
     }
 
     private static boolean sIsRunningInTestHarness = ActivityManager.isRunningInUserTestHarness();
