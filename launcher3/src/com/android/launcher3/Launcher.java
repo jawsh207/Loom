@@ -2435,7 +2435,10 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     public TouchController[] createTouchControllers() {
-        return new TouchController[] {getDragController(), new AllAppsSwipeController(this)};
+        // Folio: swipe down on the home screen opens the notification shade.
+        return new TouchController[] {getDragController(),
+                new com.android.launcher3.folio.NotificationSwipeController(this),
+                new AllAppsSwipeController(this)};
     }
 
     public void onDragLayerHierarchyChanged() {

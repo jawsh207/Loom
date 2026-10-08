@@ -489,6 +489,12 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
         mIsEditingName = true;
     }
 
+    /** Folio: renames the folder (from the folder's ⋮ menu), same as editing the title field. */
+    public void renameFolder(String title) {
+        mFolderName.setText(title);
+        onBackKey();
+    }
+
     @Override
     public boolean onBackKey() {
         // Convert to a string here to ensure that no other state associated with the text field

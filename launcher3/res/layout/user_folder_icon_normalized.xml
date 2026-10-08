@@ -37,11 +37,6 @@
         android:paddingLeft="@dimen/folder_footer_horiz_padding"
         android:paddingRight="@dimen/folder_footer_horiz_padding">
 
-        <!-- Folio: balances the menu button so the folder name stays centered -->
-        <Space
-            android:layout_width="@dimen/folio_folder_menu_size"
-            android:layout_height="match_parent" />
-
         <com.android.launcher3.folder.FolderNameEditText
             android:id="@+id/folder_name"
             android:layout_width="0dp"
