@@ -158,4 +158,6 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:+")
     implementation("javax.inject:javax.inject:1")
     implementation("com.google.guava:guava:33.4.8-android")
+    // @ThreadSafe and friends; normally supplied by the hidden-API android.jar.
+    compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
