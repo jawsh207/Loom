@@ -46,7 +46,10 @@ object FeedImages {
         memory.get(key)?.let { return it }
         return lockFor(key).withLock {
             memory.get(key) ?: withContext(Dispatchers.IO) {
-                runCatching { decode(fetch(context, url), maxWidth) }.getOrNull()
+                runCatching { decode(fetch(context, url), maxWidth) }
+                    .onFailure { android.util.Log.w("FolioFeeds", "Image failed: $url", it) }
+                    .getOrNull()
+                    .also { if (it == null) android.util.Log.w("FolioFeeds", "No image: $url") }
             }?.also { memory.put(key, it) }
         }
     }
