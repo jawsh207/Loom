@@ -2415,6 +2415,11 @@ public class Launcher extends StatefulActivity<LauncherState>
      * Shows the default options popup
      */
     public void showDefaultOptions(float x, float y) {
+        // Folio: on a locked home screen, a long press offers to unlock it instead.
+        if (com.android.launcher3.folio.HomeLock.isLocked(this)) {
+            com.android.launcher3.folio.HomeLock.onLockedLongPressAt(this, x, y);
+            return;
+        }
         Rect pos = new Rect();
         pos.offsetTo((int) x, (int) y);
         pos.inset(-20, -20);

@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Emulator test of the home screen lock and grid changes.
 
-1. Lock the home screen: long-press shows the icon menu but nothing moves; apps dragged from
-   the drawer aren't added; the Grid screen's home screen controls are disabled.
+1. Lock the home screen: a long press shows the unlock popup and nothing moves; holding the
+   popup's button unlocks it, and it locks again after 45 seconds; apps dragged from the
+   drawer aren't added; the Grid screen's home screen controls are disabled.
 2. Unlock, change the home screen grid: a warning appears; confirming clears the home screen.
 3. Change only the drawer columns: no warning, nothing cleared.
 
@@ -47,6 +48,21 @@ def press(desc, times, name):
         time.sleep(0.6)
 
 
+def long_press(x, y, ms=1200):
+    sh(f"input swipe {x} {y} {x} {y} {ms}")
+    time.sleep(2)
+
+
+def tap_xy(x, y):
+    sh(f"input tap {x} {y}")
+    time.sleep(1)
+
+
+def close_popup():
+    sh("input keyevent KEYCODE_BACK")
+    time.sleep(1)
+
+
 def center(n):
     x1, y1, x2, y2 = n["bounds"]
     return (x1 + x2) // 2, (y1 + y2) // 2
@@ -66,19 +82,51 @@ def main():
     gallery = find(nodes, r"^gallery$")
     if gallery:
         x, y = center(gallery)
-        sh(f"input swipe {x} {y} {x} {y} 1200")  # long press
-        time.sleep(2)
-        menu = snap("locked-long-press")
-        log(f"  locked long-press shows menu: {bool(find(menu, 'app info'))}")
-        log(f"  menu has no Remove: {not find(menu, '^remove$')}")
-        sh("input keyevent KEYCODE_BACK")
-        time.sleep(1)
+        long_press(x, y)
+        popup = snap("locked-long-press")
+        log(f"  long-press shows unlock popup: {bool(find(popup, 'home screen locked'))}")
+        log(f"  popup has hold button: {bool(find(popup, '^hold to unlock$'))}")
+        tap_xy(w // 2, 120)  # outside the card closes it
+        log(f"  tap outside closes popup: {not find(snap('popup-closed'), 'home screen locked')}")
         sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
         time.sleep(3)
-        sh("input keyevent KEYCODE_BACK")  # the menu opens again on the long press
-        time.sleep(1)
+        close_popup()
         after_drag = find(snap("locked-after-drag"), r"^gallery$")
         log(f"  icon stayed put: {bool(after_drag) and after_drag['bounds'] == gallery['bounds']}")
+
+        # Empty space.
+        long_press(w // 2, h // 3)
+        log(f"  empty-space long-press shows popup: "
+            f"{bool(find(snap('locked-empty-press'), 'home screen locked'))}")
+        close_popup()
+
+        # A quick tap on the button doesn't unlock; holding it does.
+        long_press(x, y)
+        button = find(snap("popup-again"), r"^hold to unlock$")
+        if button:
+            bx, by = center(button)
+            tap_xy(bx, by)
+            time.sleep(1)
+            log(f"  short tap keeps it locked: "
+                f"{bool(find(snap('after-short-tap'), 'home screen locked'))}")
+            long_press(bx, by, 1800)
+            log(f"  hold closes popup: {not find(snap('after-hold'), 'home screen locked')}")
+            unlocked_at = time.time()
+            sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
+            time.sleep(3)
+            moved = find(snap("unlocked-after-drag"), r"^gallery$")
+            log(f"  icon moves while unlocked: {bool(moved) and moved['bounds'] != gallery['bounds']}")
+            if moved:
+                x, y = center(moved)
+            time.sleep(max(0, unlocked_at + 48 - time.time()))
+            snap("relocked-toast")
+            long_press(x, y)
+            log(f"  locked again after 45 s: "
+                f"{bool(find(snap('relocked-press'), 'home screen locked'))}")
+            close_popup()
+            before = home_icons(snap("home-before-drawer"))
+        else:
+            log("  !! no hold button")
     # Drag an app from the drawer onto the home screen.
     sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
     time.sleep(3)
