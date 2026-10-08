@@ -62,7 +62,8 @@ object WorkspaceLongPressOptions {
                 startWallpaperPicker(ac, v)
             }
         )
-        if (BuildConfig.WIDGETS_ENABLED) {
+        if (BuildConfig.WIDGETS_ENABLED &&
+                !com.android.launcher3.folio.HomeLock.isLocked(ctx)) {
             add(
                 PopupData(
                     R.drawable.ic_widget,

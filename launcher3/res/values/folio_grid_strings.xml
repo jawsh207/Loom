@@ -19,7 +19,16 @@
     <string name="folio_grid_drawer_default">Using the default: %1$d columns</string>
     <string name="folio_grid_reset">Back to the defaults</string>
     <string name="folio_grid_apply">Apply</string>
-    <string name="folio_grid_apply_note">Folio moves your icons and widgets to fit the new grid. Each size keeps its own arrangement, so going back to an earlier size puts things back where they were.</string>
+    <string name="folio_grid_apply_note">Changing the home screen or dock size clears your home screen and dock so you can start fresh. Changing only the app drawer columns keeps everything.</string>
     <string name="folio_grid_preview_home">Home screen preview: %1$d columns, %2$d rows, %3$d dock icons</string>
     <string name="folio_grid_preview_drawer">App drawer preview: %1$d columns</string>
+    <string name="folio_grid_warn_title">Clear your home screen?</string>
+    <string name="folio_grid_warn_body">Changing the grid removes every shortcut, folder and widget from your home screen and dock, so you can set it up fresh at the new size. Your apps stay installed and in the app drawer.\n\nThis can\'t be undone.</string>
+    <string name="folio_grid_warn_confirm">Clear and change grid</string>
+    <string name="folio_grid_locked">Your home screen is locked. Unlock it in Home settings to change its size.</string>
+
+    <!-- Lock home screen -->
+    <string name="folio_lock_title">Lock home screen</string>
+    <string name="folio_lock_summary">Shortcuts, folders and widgets on the home screen and dock can\'t be moved, removed or added. Apps still open and their menus still work.</string>
+    <string name="folio_lock_toast">Home screen is locked. Unlock it in Home settings.</string>
 </resources>

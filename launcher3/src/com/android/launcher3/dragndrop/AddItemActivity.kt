@@ -74,6 +74,12 @@ open class AddItemActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Folio: a locked home screen takes no new shortcuts or widgets.
+        if (com.android.launcher3.folio.HomeLock.isLocked(this)) {
+            com.android.launcher3.folio.HomeLock.showLockedMessage(this)
+            finish()
+            return
+        }
 
         pinItemRequest =
             PinRequestHelper.getPinItemRequest(intent)

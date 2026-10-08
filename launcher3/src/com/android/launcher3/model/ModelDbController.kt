@@ -203,6 +203,37 @@ internal constructor(
         DeviceGridState(idp).writeToPrefs(context)
     }
 
+    /**
+     * Folio: after the home screen or dock size is changed in Folio's settings, the home
+     * screen starts over empty: every saved layout (of any size) is deleted, the widgets that
+     * were placed are released, and no default layout is loaded.
+     */
+    private fun folioFreshStart(): Boolean {
+        if (!com.android.launcher3.folio.FolioGrid.consumeFreshStart(context)) return false
+        FileLog.d(TAG, "folioFreshStart: clearing the home screen for the new grid")
+        val target = DeviceGridState(idp).dbFile
+        openHelper.close()
+        for (name in context.databaseList()) {
+            if (name.startsWith("launcher") && name.endsWith(".db")) {
+                context.deleteDatabase(name)
+                prefs.putSync(getEmptyDbCreatedKey(name).to(false))
+            }
+        }
+        try {
+            val host = android.appwidget.AppWidgetHost(context,
+                com.android.launcher3.widget.LauncherWidgetHolder.APPWIDGET_HOST_ID)
+            host.appWidgetIds.forEach { host.deleteAppWidgetId(it) }
+        } catch (e: Exception) {
+            FileLog.e(TAG, "folioFreshStart: couldn't release widgets", e)
+        }
+        // A migration helper doesn't mark the new database as "load the default layout".
+        openHelper = createDatabaseHelper(forMigration = true, target)
+        openHelper.createEmptyDB(openHelper.writableDatabase)
+        prefs.putSync(getEmptyDbCreatedKey(target).to(false))
+        DeviceGridState(idp).writeToPrefs(context)
+        return true
+    }
+
     /** Determines if we should reset the DB. */
     private fun shouldResetDb(): Boolean {
         // If we already have a new DB, ignore migration
@@ -233,6 +264,7 @@ internal constructor(
         modelDelegate: ModelDelegate,
     ) {
         createDbIfNotExists()
+        if (folioFreshStart()) return
         if (shouldResetDb()) {
             resetLauncherDb(restoreEventLogger)
             return

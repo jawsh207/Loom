@@ -149,6 +149,7 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
     }
 
     public static final Factory<ActivityContext> WIDGETS = (context, itemInfo, originalView) -> {
+        if (com.android.launcher3.folio.HomeLock.isLocked(context.asContext())) return null;
         final PackageUserKey packageUserKey = PackageUserKey.fromItemInfo(itemInfo);
         if (packageUserKey == null) return null;
 

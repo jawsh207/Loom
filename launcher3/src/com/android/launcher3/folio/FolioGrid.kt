@@ -21,6 +21,8 @@ object FolioGrid {
     const val ROWS = "pref_folio_grid_rows"
     const val HOTSEAT = "pref_folio_grid_hotseat"
     const val DRAWER_COLUMNS = "pref_folio_drawer_columns"
+    /** Set with a home screen size change: the next layout load starts empty. */
+    private const val FRESH_START = "pref_folio_grid_fresh_start"
 
     /** Matches the entry in launcher_preferences.xml. */
     const val SETTINGS_KEY = "pref_folio_grid"
@@ -48,13 +50,39 @@ object FolioGrid {
         )
     }
 
-    fun write(context: Context, sizes: Sizes) {
+    /**
+     * Saves new sizes. With [freshStart], the home screen and dock are cleared when the
+     * layout reloads for the new size (see ModelDbController.folioFreshStart).
+     */
+    fun write(context: Context, sizes: Sizes, freshStart: Boolean) {
         prefs(context).edit()
+            .putBoolean(FRESH_START, freshStart)
             .putInt(COLUMNS, sizes.columns)
             .putInt(ROWS, sizes.rows)
             .putInt(HOTSEAT, sizes.hotseat)
             .putInt(DRAWER_COLUMNS, sizes.drawerColumns)
-            .apply()
+            .commit()
+    }
+
+    @JvmStatic
+    fun consumeFreshStart(context: Context): Boolean {
+        val p = prefs(context)
+        if (!p.getBoolean(FRESH_START, false)) return false
+        p.edit().putBoolean(FRESH_START, false).commit()
+        return true
+    }
+
+    /** The home screen size [sizes] works out to (columns, rows, dock) on this device. */
+    fun effectiveHome(sizes: Sizes): Triple<Int, Int, Int> {
+        val custom = sizes.columns in COLUMN_RANGE && sizes.rows in ROW_RANGE
+        val columns = if (custom) sizes.columns else stock.columns
+        val rows = if (custom) sizes.rows else stock.rows
+        val dock = when {
+            sizes.hotseat in COLUMN_RANGE -> sizes.hotseat
+            custom -> sizes.columns
+            else -> stock.hotseat
+        }
+        return Triple(columns, rows, dock)
     }
 
     /** Called by [InvariantDeviceProfile] after it has picked the device's grid. */
