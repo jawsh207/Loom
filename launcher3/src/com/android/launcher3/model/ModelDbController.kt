@@ -205,12 +205,13 @@ internal constructor(
 
     /**
      * Folio: after the home screen or dock size is changed in Folio's settings, the home
-     * screen starts over empty: every saved layout (of any size) is deleted, the widgets that
-     * were placed are released, and no default layout is loaded.
+     * screen starts over: every saved layout (of any size) is deleted, the widgets that were
+     * placed are released, and the stock layout for the new size is loaded
+     * (by [loadDefaultFavoritesIfNecessary], from [InvariantDeviceProfile.defaultLayoutId]).
      */
     private fun folioFreshStart(): Boolean {
         if (!com.android.launcher3.folio.FolioGrid.consumeFreshStart(context)) return false
-        FileLog.d(TAG, "folioFreshStart: clearing the home screen for the new grid")
+        FileLog.d(TAG, "folioFreshStart: resetting the home screen to the stock layout")
         val target = DeviceGridState(idp).dbFile
         openHelper.close()
         for (name in context.databaseList()) {
@@ -226,10 +227,10 @@ internal constructor(
         } catch (e: Exception) {
             FileLog.e(TAG, "folioFreshStart: couldn't release widgets", e)
         }
-        // A migration helper doesn't mark the new database as "load the default layout".
         openHelper = createDatabaseHelper(forMigration = true, target)
         openHelper.createEmptyDB(openHelper.writableDatabase)
-        prefs.putSync(getEmptyDbCreatedKey(target).to(false))
+        // Load the stock layout into it next.
+        prefs.putSync(getEmptyDbCreatedKey(target).to(true))
         DeviceGridState(idp).writeToPrefs(context)
         return true
     }
