@@ -122,7 +122,13 @@ def find_id(nodes, suffix):
 
 def add_widget_attempt(label, use_drag=False):
     log(f"=== attempt: {label} ===")
-    go_home()
+    for _ in range(4):
+        go_home()
+        if PKG in top_activity():
+            break
+        log("  Folio isn't on top; waiting for the system")
+        wait_for_system()
+        sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0")
     w, h = screen_size()
     snap(f"{label}-home")
     # Long-press an empty spot of the home screen to get the options menu.
@@ -212,18 +218,20 @@ def main():
     sh("settings put global window_animation_scale 0; "
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
-    for _ in range(5):
-        out = adb("install", "-r", "-g", sys.argv[2])
-        log(out)
-        if "Success" in out:
+    for attempt in range(6):
+        wait_for_system()
+        if "package:" not in sh(f"pm path {PKG}"):
+            log(adb("install", "-r", "-g", sys.argv[2]))
+        sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0")
+        sh("pm disable-user --user 0 com.google.android.apps.nexuslauncher")
+        go_home()
+        time.sleep(8)
+        top = top_activity()
+        log(f"setup {attempt}: home role={sh('cmd role get-role-holders --user 0 android.app.role.HOME').strip()} top={top}")
+        if PKG in top:
             break
         time.sleep(20)
-        wait_for_system()
-    log(sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0"))
-    log(sh(f"cmd package set-home-activity --user 0 {PKG}/com.android.launcher3.Launcher"))
-    log("home role: " + sh("cmd role get-role-holders --user 0 android.app.role.HOME"))
-    log(sh("pm disable-user --user 0 com.google.android.apps.nexuslauncher"))
-    sh("logcat -c")
+    sh("logcat -G 16M; logcat -c")
     go_home()
     time.sleep(5)
     snap("first-home")
