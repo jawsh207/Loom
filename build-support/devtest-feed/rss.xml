@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Folio Test Gazette</title>
+    <link>http://10.0.2.2:8000/</link>
+    <description>A local feed for Folio's emulator test</description>
+    <item>
+      <title>Lighthouse keepers of the northern coast</title>
+      <link>http://10.0.2.2:8000/article1.html</link>
+      <guid>article1</guid>
+      <pubDate>Wed, 07 Oct 2026 09:30:00 +0000</pubDate>
+      <dc:creator>Ada Marlow</dc:creator>
+      <description>A short teaser: the full story is only on the web page.</description>
+      <enclosure url="http://10.0.2.2:8000/photo.png" type="image/png" length="0"/>
+    </item>
+    <item>
+      <title>Why bread rises: a field guide to yeast</title>
+      <link>http://10.0.2.2:8000/article2.html</link>
+      <guid>article2</guid>
+      <pubDate>Tue, 06 Oct 2026 15:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Yeast eats sugar and breathes out <b>carbon dioxide</b>.</p>]]></description>
+    </item>
+    <item>
+      <title>Full text in the feed &amp; no web page</title>
+      <guid isPermaLink="false">feed-only-3</guid>
+      <pubDate>Mon, 05 Oct 2026 08:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>This item has <em>no link</em>, so Folio shows the feed's own text.</p><ul><li>First point</li><li>Second point</li></ul>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

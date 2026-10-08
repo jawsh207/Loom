@@ -1,8 +1,9 @@
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
 
-# Installs the latest Folio release on an Android emulator, makes it the home app and tries
-# to add a widget to the home screen. Screenshots, UI dumps and logs go to the ci-devtest branch.
+# Installs the latest Folio build of main on an Android emulator, makes it the home app and
+# runs a scripted test: adding widgets, or the feed panel. Screenshots, UI dumps and logs go to
+# the ci-devtest branch.
 name: Device test
 
 on:
@@ -14,16 +15,21 @@ on:
       gpu:
         description: "Emulator -gpu mode"
         default: "swangle_indirect"
+      test:
+        description: "What to test"
+        type: choice
+        options: [feed, widgets]
+        default: feed
 
 permissions:
   contents: write
+  actions: read  # to download the APK from the latest build
 
 env:
   ANDROID_AVD_HOME: /home/runner/avd
 
 jobs:
-  widget:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -33,12 +39,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_run" ]; then
-            TAG="build-${{ github.event.workflow_run.run_number }}"
-            gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern '*.apk' --output folio.apk
-          else
-            gh release download --repo "$GITHUB_REPOSITORY" --pattern '*.apk' --output folio.apk
-          fi
+          RUN=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow build.yml --branch main \
+            --status success --limit 1 --json databaseId -q '.[0].databaseId')
+          echo "APK from build run $RUN"
+          gh run download "$RUN" --repo "$GITHUB_REPOSITORY" --name Folio --dir apk
+          cp apk/*.apk folio.apk
           ls -l folio.apk
 
       - name: Enable KVM
@@ -101,11 +106,18 @@ jobs:
           } 2>&1 | tee boot.log
           [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" = "1" ]
 
-      - name: Add a widget
+      - name: Run the test
         continue-on-error: true
         run: |
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
-          python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          if [ "${{ inputs.test }}" = "widgets" ]; then
+            python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          else
+            # The local test site, reached from the emulator as 10.0.2.2:8000.
+            python3 -m http.server 8000 --directory build-support/devtest-feed > http.log 2>&1 &
+            python3 build-support/devtest_feed.py out folio.apk 2>&1 | tee devtest.log
+            cp http.log out/ || true
+          fi
 
       - name: Publish results to ci-devtest branch
         if: always()

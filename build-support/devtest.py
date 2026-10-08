@@ -213,7 +213,8 @@ def calm_surfaceflinger():
     wait_for_system()
 
 
-def main():
+def setup_home():
+    """Installs Folio, makes it the home app and waits until it's on screen."""
     wait_for_system()
     # Nexus launcher's region sampling is what trips the emulator's GPU bug.
     time.sleep(10)
@@ -237,16 +238,25 @@ def main():
     sh("logcat -G 16M; logcat -c")
     go_home()
     time.sleep(5)
-    snap("first-home")
-    add_widget_attempt("add-button")
-    add_widget_attempt("again")
-    add_widget_attempt("drag", use_drag=True)
+
+
+def save_logs():
     (OUT / "logcat.txt").write_text(adb("logcat", "-d", "-v", "threadtime"))
     (OUT / "logcat-folio.txt").write_text(adb(
         "logcat", "-d", "-v", "threadtime", "-s",
         "Launcher:*", "AndroidRuntime:*", "AppWidgetHostView:*", "ActivityTaskManager:*",
         "WidgetPickerDragItemListener:*", "BaseItemDragListener:*", "WidgetManagerHelper:*",
-        "LauncherWidgetHolder:*", "AppWidgetServiceImpl:*", "ContextTracker:*"))
+        "LauncherWidgetHolder:*", "AppWidgetServiceImpl:*", "ContextTracker:*",
+        "FolioFeeds:*", "FolioArticle:*"))
+
+
+def main():
+    setup_home()
+    snap("first-home")
+    add_widget_attempt("add-button")
+    add_widget_attempt("again")
+    add_widget_attempt("drag", use_drag=True)
+    save_logs()
 
 
 if __name__ == "__main__":
