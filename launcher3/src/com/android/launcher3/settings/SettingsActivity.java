@@ -318,6 +318,14 @@ public class SettingsActivity extends FragmentActivity
                         return true;
                     });
                     return true;
+                case com.android.launcher3.folio.feed.FeedPrefs.SETTINGS:
+                    // Folio: feeds, refresh and OPML.
+                    preference.setOnPreferenceClickListener(p -> {
+                        startActivity(new Intent(getContext(),
+                                com.android.launcher3.folio.feed.FeedSettingsActivity.class));
+                        return true;
+                    });
+                    return true;
                 case NOTIFICATION_DOTS_PREFERENCE_KEY:
                     return BuildConfig.NOTIFICATION_DOTS_ENABLED;
                 case DEVELOPER_OPTIONS_KEY:
