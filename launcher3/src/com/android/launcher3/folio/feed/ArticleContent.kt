@@ -76,11 +76,20 @@ class ArticleHtml(private val linkColor: Color) {
     private var lastWasSpace = true
     private val seenImages = HashSet<String>()
 
-    fun parse(html: String, baseUrl: String?, skipImage: String?): List<ArticleBlock> {
+    fun parse(html: String, baseUrl: String?, skipImage: String?, title: String? = null):
+            List<ArticleBlock> {
         skipImage?.let { seenImages += it }
         val body = Jsoup.parse(html, baseUrl ?: "").body()
         blocks(body)
         flushParagraph()
+        // Pages usually repeat the headline at the top of the article; it's already shown.
+        val norm = { t: String -> t.lowercase().filter { it.isLetterOrDigit() } }
+        if (title != null) {
+            val i = out.take(3).indexOfFirst {
+                it is ArticleBlock.Heading && norm(it.text.text) == norm(title)
+            }
+            if (i >= 0) out.removeAt(i)
+        }
         return out
     }
 

@@ -540,11 +540,15 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
     val linkColor = colors.primary
     val shown = article
     val html = shown?.html?.takeIf { it.isNotBlank() } ?: post.content ?: post.summary ?: ""
-    val heroImage = post.image
+    // The feed's picture goes on top, unless the article has it (then it keeps its caption).
+    val heroImage = post.image?.takeIf { img ->
+        !html.contains(img.substringAfterLast('/').substringBefore('?'))
+    }
     val blocks by produceState(emptyList<ArticleBlock>(), html, linkColor) {
         value = withContext(Dispatchers.Default) {
             runCatching {
-                ArticleHtml(linkColor).parse(html, shown?.baseUrl ?: post.link, heroImage)
+                ArticleHtml(linkColor).parse(html, shown?.baseUrl ?: post.link, heroImage,
+                    title = post.title)
             }.getOrDefault(emptyList())
         }
     }
