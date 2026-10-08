@@ -6,10 +6,6 @@
 name: Device test
 
 on:
-  workflow_run:
-    workflows: ["Build Folio"]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
     inputs:
       api:
