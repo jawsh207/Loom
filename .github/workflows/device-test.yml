@@ -74,6 +74,9 @@ jobs:
           "$SDKMANAGER" emulator platform-tools "$IMG" > /dev/null
           mkdir -p "$ANDROID_AVD_HOME"
           echo no | "$AVDMANAGER" create avd -n test -k "$IMG" -d pixel_6 --force
+          CFG="$ANDROID_AVD_HOME/test.avd/config.ini"
+          sed -i '/^disk.dataPartition.size/d;/^hw.ramSize/d' "$CFG"
+          printf 'disk.dataPartition.size=8G\nhw.ramSize=4096\n' >> "$CFG"
           "$ANDROID_HOME/emulator/emulator" -list-avds
 
       - name: Boot emulator
@@ -82,7 +85,7 @@ jobs:
           set +e
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
           "$ANDROID_HOME/emulator/emulator" -avd test -no-window -no-audio -no-boot-anim \
-            -gpu guest -no-snapshot -memory 4096 -cores 4 > emulator.log 2>&1 &
+            -gpu guest -no-snapshot -wipe-data -memory 4096 -cores 4 > emulator.log 2>&1 &
           {
             timeout 900 adb wait-for-device; echo "wait-for-device: $?"
             for i in $(seq 1 120); do
