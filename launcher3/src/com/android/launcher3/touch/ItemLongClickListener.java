@@ -66,6 +66,8 @@ public class ItemLongClickListener {
             return false;
         }
         if (!(v.getTag() instanceof ItemInfo)) return false;
+        // Folio: a locked home screen shows the icon's menu but doesn't pick it up.
+        if (com.android.launcher3.folio.HomeLock.isLocked(launcher)) return com.android.launcher3.folio.HomeLock.onLockedLongPress(launcher, v);
 
         launcher.setWaitingForResult(null);
         beginDrag(v, launcher, (ItemInfo) v.getTag(), new DragOptions());
@@ -99,6 +101,7 @@ public class ItemLongClickListener {
                 : view;
         Launcher launcher = Launcher.getLauncher(v.getContext());
         if (!canStartAllAppsItemDrag(launcher)) return false;
+        if (com.android.launcher3.folio.HomeLock.isLocked(launcher)) return com.android.launcher3.folio.HomeLock.onLockedLongPress(launcher, v);
 
         StatsLogger logger = launcher.getStatsLogManager().logger();
         if (v.getTag() instanceof ItemInfo itemInfo) {
