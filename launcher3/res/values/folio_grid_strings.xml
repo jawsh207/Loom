@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 The Folio Authors
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="folio_grid_title">Grid</string>
+    <string name="folio_grid_summary">Home screen, dock and app drawer sizes</string>
+    <string name="folio_grid_home">Home screen</string>
+    <string name="folio_grid_drawer">App drawer</string>
+    <string name="folio_grid_custom_home">Choose home screen size</string>
+    <string name="folio_grid_default_is">Using the default for this phone: %1$d × %2$d</string>
+    <string name="folio_grid_columns">Columns</string>
+    <string name="folio_grid_rows">Rows</string>
+    <string name="folio_grid_custom_dock">Choose dock size</string>
+    <string name="folio_grid_dock_follows">Same number of icons as columns</string>
+    <string name="folio_grid_dock">Dock icons</string>
+    <string name="folio_grid_custom_drawer">Choose app drawer columns</string>
+    <string name="folio_grid_drawer_default">Using the default: %1$d columns</string>
+    <string name="folio_grid_reset">Back to the defaults</string>
+    <string name="folio_grid_apply">Apply</string>
+    <string name="folio_grid_apply_note">Folio moves your icons and widgets to fit the new grid. Each size keeps its own arrangement, so going back to an earlier size puts things back where they were.</string>
+    <string name="folio_grid_preview_home">Home screen preview: %1$d columns, %2$d rows, %3$d dock icons</string>
+    <string name="folio_grid_preview_drawer">App drawer preview: %1$d columns</string>
+</resources>
