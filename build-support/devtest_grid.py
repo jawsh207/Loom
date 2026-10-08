@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
-"""Emulator test of the grid settings: change the home screen to 6 x 7 with a 6-icon dock and
-a 6-column drawer, check the icons survived the move, open the drawer, then go back to the
+"""Emulator test of the grid settings: change the home screen to the largest grid (8 x 10, 8-icon
+dock) and a 7-column drawer, check the icons survived the move, open the drawer, then go back to the
 defaults.  usage: devtest_grid.py OUT_DIR FOLIO_APK"""
 
 import time
@@ -20,6 +20,12 @@ def open_grid_settings():
     sh(f"am start -a android.intent.action.APPLICATION_PREFERENCES -p {PKG}")
     time.sleep(4)
     return tap_text(r"^grid$", "settings-grid", wait=4)
+
+
+def scroll_down():
+    w, h = screen_size()
+    sh(f"input swipe {w // 2} {h * 2 // 3} {w // 2} {h // 4} 400")
+    time.sleep(1.5)
 
 
 def press(desc, times, name):
@@ -53,10 +59,12 @@ def main():
         return
     snap("grid-screen")
     tap_text(r"choose home screen size", "custom-home", wait=1)
-    press(r"^more columns$", 2, "cols")
-    press(r"^more rows$", 2, "rows")
+    press(r"^more columns$", 4, "cols")   # the most: 8
+    press(r"^more rows$", 5, "rows")      # the most: 10
+    scroll_down()
+    scroll_down()
     tap_text(r"choose app drawer columns", "custom-drawer", wait=1)
-    press(r"^more drawer$", 2, "drawer")
+    press(r"^more drawer$", 3, "drawer")
     snap("grid-chosen")
     tap_text(r"^apply$", "apply", wait=8)
 
@@ -68,6 +76,8 @@ def main():
 
     # Back to the defaults.
     if open_grid_settings():
+        scroll_down()
+        scroll_down()
         tap_text(r"back to the defaults", "reset", wait=1)
         tap_text(r"^apply$", "apply-reset", wait=8)
         restored = home_icons(snap("home-restored"))
