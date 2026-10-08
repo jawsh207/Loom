@@ -47,6 +47,20 @@
         android:persistent="false" />
 
     <SwitchPreference
+        android:key="pref_feed_enabled"
+        android:title="@string/feed_enable_title"
+        android:summary="@string/feed_enable_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <Preference
+        android:key="pref_feed_settings"
+        android:title="@string/feed_settings_title"
+        android:summary="@string/feed_settings_summary"
+        android:dependency="pref_feed_enabled"
+        android:persistent="false" />
+
+    <SwitchPreference
         android:key="pref_swipe_down_notifications"
         android:title="@string/swipe_down_notifications_title"
         android:summary="@string/swipe_down_notifications_summary"
