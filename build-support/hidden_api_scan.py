@@ -144,12 +144,12 @@ def main():
     findings = defaultdict(set)
     for c in app.values():
         for owner, kind, name, desc in c.refs:
-            if owner.startswith("["):
-                continue
+            if owner.startswith("[") or owner.startswith("java/lang/invoke/"):
+                continue  # invokedynamic helpers; D8 desugars them
             if resolve(owner, kind, name, desc) == "hidden":
                 findings[f"{owner}.{name}{desc if kind == 'm' else ''}"].add(c.name)
         for ref in c.class_refs:
-            if ref.startswith("[") or ref in app or ref in public:
+            if ref.startswith(("[", "java/lang/invoke/")) or ref in app or ref in public:
                 continue
             if ref in hidden:
                 findings[f"class {ref}"].add(c.name)

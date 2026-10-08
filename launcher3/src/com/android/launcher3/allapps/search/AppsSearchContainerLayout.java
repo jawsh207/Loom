@@ -107,9 +107,17 @@ public class AppsSearchContainerLayout extends ExtendedEditText
                 getResources().getDimensionPixelSize(R.dimen.all_apps_search_bar_content_overlap);
     }
 
+    // Folio: TextView#viewClicked is a hidden API that a regular app may not call, so the
+    // search session starts from the tap itself instead.
     @Override
-    protected void viewClicked(InputMethodManager imm) {
-        super.viewClicked(imm);
+    public boolean onTouchEvent(android.view.MotionEvent event) {
+        if (event.getActionMasked() == android.view.MotionEvent.ACTION_UP) {
+            onSearchBoxTapped();
+        }
+        return super.onTouchEvent(event);
+    }
+
+    private void onSearchBoxTapped() {
         if (!mIsSearchSessionActive) {
             mIsSearchSessionActive = true;
             // non-null list to trigger animateToSearchState
