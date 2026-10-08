@@ -39,9 +39,9 @@ def snap(name):
     global step_no
     step_no += 1
     base = f"{step_no:02d}-{name}"
-    with open(OUT / f"{base}.png", "wb") as f:
-        f.write(subprocess.run(["adb", "exec-out", "screencap", "-p"],
-                               capture_output=True, timeout=60).stdout)
+    # Screenshot from the emulator host side: screencap inside the guest crashes
+    # SurfaceFlinger with the emulator's software GPU.
+    adb("emu", "screenrecord", "screenshot", str((OUT / f"{base}.png").resolve()))
     sh("uiautomator dump /sdcard/ui.xml > /dev/null 2>&1")
     xml = adb("exec-out", "cat", "/sdcard/ui.xml")
     (OUT / f"{base}.xml").write_text(xml)
