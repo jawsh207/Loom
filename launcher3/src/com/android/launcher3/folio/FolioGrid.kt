@@ -89,5 +89,45 @@ object FolioGrid {
             idp.numAllAppsColumns = s.drawerColumns
             idp.numDatabaseAllAppsColumns = s.drawerColumns
         }
+        fitIcons(idp, context,
+            home = columns > stockColumns || hotseat > stockHotseat,
+            drawer = s.drawerColumns in COLUMN_RANGE && s.drawerColumns > stock.drawerColumns)
+    }
+
+    /**
+     * Launcher3 shrinks icons when rows run out of height, but not when columns run out of
+     * width; with more columns (or dock icons) than the device's grid, scale them to fit.
+     */
+    private fun fitIcons(idp: InvariantDeviceProfile, context: Context, home: Boolean,
+            drawer: Boolean) {
+        val widthDp = context.resources.configuration.smallestScreenWidthDp.toFloat()
+        if (widthDp <= 0f) return
+        val margin = idp.horizontalMargin?.getOrNull(0) ?: 16f
+        val homeColumns = maxOf(idp.numColumns, idp.numShownHotseatIcons)
+        if (home) idp.iconSize?.let { sizes ->
+            val factor = fitFactor(widthDp - 2 * margin, homeColumns, sizes[0])
+            if (factor < 1f) {
+                idp.iconSize = FloatArray(sizes.size) { sizes[it] * factor }
+                idp.iconTextSize = idp.iconTextSize?.let { t ->
+                    FloatArray(t.size) { t[it] * maxOf(0.8f, factor) }
+                }
+            }
+        }
+        if (drawer) idp.allAppsIconSize?.let { sizes ->
+            val factor = fitFactor(widthDp - 2 * 16f, idp.numAllAppsColumns, sizes[0])
+            if (factor < 1f) {
+                idp.allAppsIconSize = FloatArray(sizes.size) { sizes[it] * factor }
+                idp.allAppsIconTextSize = idp.allAppsIconTextSize?.let { t ->
+                    FloatArray(t.size) { t[it] * maxOf(0.8f, factor) }
+                }
+            }
+        }
+    }
+
+    /** How much to shrink [iconDp] icons so [columns] of them fit in [widthDp] with space. */
+    private fun fitFactor(widthDp: Float, columns: Int, iconDp: Float): Float {
+        if (columns <= 0 || iconDp <= 0f) return 1f
+        val cellDp = widthDp / columns
+        return minOf(1f, cellDp * 0.78f / iconDp)
     }
 }
