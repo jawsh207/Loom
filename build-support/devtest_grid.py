@@ -70,10 +70,13 @@ def main():
         time.sleep(2)
         menu = snap("locked-long-press")
         log(f"  locked long-press shows menu: {bool(find(menu, 'app info'))}")
+        log(f"  menu has no Remove: {not find(menu, '^remove$')}")
         sh("input keyevent KEYCODE_BACK")
         time.sleep(1)
         sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
         time.sleep(3)
+        sh("input keyevent KEYCODE_BACK")  # the menu opens again on the long press
+        time.sleep(1)
         after_drag = find(snap("locked-after-drag"), r"^gallery$")
         log(f"  icon stayed put: {bool(after_drag) and after_drag['bounds'] == gallery['bounds']}")
     # Drag an app from the drawer onto the home screen.
@@ -105,6 +108,7 @@ def main():
     go_home()
     cleared = home_icons(snap("home-cleared"))
     log(f"  home screen cleared: {cleared == []} ({cleared})")
+    time.sleep(3)
     sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
     time.sleep(3)
     log(f"  apps still in drawer: {bool(find(snap('drawer-after-clear'), '^gallery$'))}")

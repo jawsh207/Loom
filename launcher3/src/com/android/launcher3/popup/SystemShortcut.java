@@ -386,7 +386,10 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
         }
     }
 
-    public static final Factory<ActivityContext> REMOVE = RemoveApp::new;
+    public static final Factory<ActivityContext> REMOVE = (context, itemInfo, originalView) ->
+            // Folio: nothing comes off a locked home screen.
+            com.android.launcher3.folio.HomeLock.isLocked(context.asContext())
+                    ? null : new RemoveApp<>(context, itemInfo, originalView);
 
     public static class RemoveApp<T extends ActivityContext> extends SystemShortcut<T> {
 
