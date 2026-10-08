@@ -499,6 +499,8 @@ public class Launcher extends StatefulActivity<LauncherState>
                 Themes.getAttrBoolean(this, R.attr.isWorkspaceDarkText));
 
         mOverlayManager = getDefaultOverlay();
+        // Folio: the feed panel lives in the overlay spot; follow its on/off setting.
+        com.android.launcher3.folio.feed.FeedOverlay.watchSetting(this);
 
         mRotationHelper.initialize();
         TraceHelper.INSTANCE.endSection();
@@ -587,7 +589,8 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     protected LauncherOverlayManager getDefaultOverlay() {
-        return new LauncherOverlayManager() { };
+        // Folio: the feed panel left of the first page, when it's switched on.
+        return com.android.launcher3.folio.feed.FeedOverlay.create(this);
     }
 
     /** Recreates the active overlay */
@@ -1577,6 +1580,7 @@ public class Launcher extends StatefulActivity<LauncherState>
     public void onDestroy() {
         super.onDestroy();
         ACTIVITY_TRACKER.onContextDestroyed(this);
+        com.android.launcher3.folio.feed.FeedOverlay.unwatchSetting(this);
 
         if (mNaturalScrollingChangedSafeCloseable != null) {
             mNaturalScrollingChangedSafeCloseable.close();

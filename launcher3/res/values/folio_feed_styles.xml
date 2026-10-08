@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 The Folio Authors
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- The feed settings screen draws its own Material 3 top bar with Compose. -->
+    <style name="FolioFeedSettings" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

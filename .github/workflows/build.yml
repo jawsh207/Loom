@@ -14,6 +14,10 @@ on:
         description: "Build with the newest build tools instead of gradle.properties"
         type: boolean
         default: false
+      write_locks:
+        description: "Update gradle.lockfiles for changed dependencies (written to ci-logs)"
+        type: boolean
+        default: false
   # Used by the "Build release" workflow (release.yml), the only way a release is published
   # apart from pushing a v* tag.
   workflow_call:
@@ -59,7 +63,7 @@ jobs:
           if [ "${{ inputs.latest }}" = "true" ] || grep -q '^folio.useLatestTools=true' gradle.properties; then
             # Newest tools and libraries; the resulting lockfiles go to the ci-logs branch.
             echo "args=$(python3 build-support/latest_versions.py) --write-locks" >> "$GITHUB_OUTPUT"
-          elif ! ls gradle/modules/*/gradle.lockfile > /dev/null 2>&1; then
+          elif [ "${{ inputs.write_locks }}" = "true" ] || ! ls gradle/modules/*/gradle.lockfile > /dev/null 2>&1; then
             echo "args=--write-locks" >> "$GITHUB_OUTPUT"
           else
             echo "args=" >> "$GITHUB_OUTPUT"

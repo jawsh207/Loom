@@ -158,6 +158,9 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:+")
     implementation("javax.inject:javax.inject:1")
     implementation("com.google.guava:guava:33.4.8-android")
+    // Feed panel: article extraction (a port of Firefox Reader View's Readability), which
+    // also brings jsoup for parsing HTML. Apache-2.0.
+    implementation("net.dankito.readability4j:readability4j:1.0.8")
     // @ThreadSafe and friends; normally supplied by the hidden-API android.jar.
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }

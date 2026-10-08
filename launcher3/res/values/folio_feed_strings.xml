@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 The Folio Authors
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Launcher settings -->
+    <string name="feed_enable_title">Feed panel</string>
+    <string name="feed_enable_summary">Swipe right from the first home screen page to read your RSS and Atom feeds. Folio only goes online for this when it\'s on.</string>
+    <string name="feed_settings_title">Feeds</string>
+    <string name="feed_settings_summary">Add or import feeds, refresh interval</string>
+
+    <!-- Panel -->
+    <string name="feed_title">Feed</string>
+    <string name="feed_all">All feeds</string>
+    <string name="feed_choose_source">Choose which feeds to show</string>
+    <string name="feed_refresh">Refresh</string>
+    <string name="feed_more">More options</string>
+    <string name="feed_filter_unread">Unread</string>
+    <string name="feed_filter_starred">Starred</string>
+    <string name="feed_mark_all_read">Mark all as read</string>
+    <string name="feed_mark_read">Mark as read</string>
+    <string name="feed_mark_unread">Mark as unread</string>
+    <string name="feed_star">Star</string>
+    <string name="feed_unstar">Remove star</string>
+    <string name="feed_share">Share</string>
+    <string name="feed_open_browser">Open in browser</string>
+    <string name="feed_open_original">Open original page</string>
+    <string name="feed_manage">Manage feeds</string>
+    <string name="feed_back">Back</string>
+    <string name="feed_empty_title">No feeds yet</string>
+    <string name="feed_empty_body">Add a site or a feed address, or import the OPML file from another feed reader.</string>
+    <string name="feed_caught_up_title">All caught up</string>
+    <string name="feed_caught_up_body">Nothing new here. Pull down to check again.</string>
+    <string name="feed_article_fallback">Showing the text from the feed: the full article couldn\'t be read from its page. Open the original page to see everything.</string>
+    <string name="feed_text_size">Text size</string>
+    <string name="feed_text_small">Small</string>
+    <string name="feed_text_normal">Default</string>
+    <string name="feed_text_large">Large</string>
+    <string name="feed_text_larger">Larger</string>
+    <string name="feed_text_largest">Largest</string>
+
+    <!-- Adding and editing feeds -->
+    <string name="feed_add">Add feed</string>
+    <string name="feed_add_url">Feed or website address</string>
+    <string name="feed_add_url_hint">A website works too: Folio finds its feed.</string>
+    <string name="feed_add_confirm">Add</string>
+    <string name="feed_folder_optional">Folder (optional)</string>
+    <string name="feed_edit_title">Edit feed</string>
+    <string name="feed_name">Name</string>
+    <string name="feed_save">Save</string>
+    <string name="feed_delete">Remove</string>
+    <string name="feed_delete_title">Remove feed?</string>
+    <string name="feed_delete_body">%1$s and its articles will be removed, including starred ones.</string>
+    <string name="feed_last_checked">Checked %1$s</string>
+    <string name="feed_never_checked">Not checked yet</string>
+
+    <!-- Settings screen -->
+    <string name="feed_section_refresh">Refreshing</string>
+    <string name="feed_refresh_interval">Check for new articles</string>
+    <string name="feed_refresh_manual">Only when I refresh</string>
+    <plurals name="feed_refresh_hours">
+        <item quantity="one">Every hour</item>
+        <item quantity="other">Every %d hours</item>
+    </plurals>
+    <string name="feed_wifi_only">Only on Wi-Fi</string>
+    <string name="feed_wifi_only_summary">Background checks wait for an unmetered connection</string>
+    <string name="feed_keep">Keep read articles for</string>
+    <plurals name="feed_keep_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="feed_section_feeds">
+        <item quantity="one">%d feed</item>
+        <item quantity="other">%d feeds</item>
+    </plurals>
+    <string name="feed_import_opml">Import OPML</string>
+    <string name="feed_import_summary">The subscription list format other feed readers export</string>
+    <string name="feed_export_opml">Export OPML</string>
+    <plurals name="feed_imported">
+        <item quantity="one">Imported %d feed</item>
+        <item quantity="other">Imported %d feeds</item>
+    </plurals>
+    <string name="feed_import_failed">That file couldn\'t be read as OPML</string>
+    <string name="feed_exported">Feeds exported</string>
+    <string name="feed_export_failed">Couldn\'t save the file</string>
+</resources>
