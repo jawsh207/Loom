@@ -37,6 +37,7 @@ object ArticleExtractor {
 
     fun extract(doc: Document, url: String): Article? {
         lazyLoadedImages(doc)
+        absoluteUrls(doc)
         try {
             val a = Readability4J(url, doc.outerHtml()).parse()
             val html = a.content
@@ -73,6 +74,27 @@ object ArticleExtractor {
         for (ns in doc.select("noscript")) {
             val inner = Jsoup.parseBodyFragment(ns.html()).select("img").firstOrNull()
             if (inner != null && ns.parent() != null) ns.replaceWith(inner)
+        }
+    }
+
+    /**
+     * Makes links and image sources absolute before Readability4J sees them: its own
+     * conversion drops the port ("http://host:8080/a.png" becomes "http://host/a.png").
+     */
+    private fun absoluteUrls(doc: Document) {
+        for (attr in listOf("src", "href", "poster")) {
+            for (el in doc.select("[$attr]")) {
+                val abs = el.absUrl(attr)
+                if (abs.isNotEmpty()) el.attr(attr, abs)
+            }
+        }
+        for (el in doc.select("[srcset]")) {
+            el.attr("srcset", el.attr("srcset").split(',').filter { it.isNotBlank() }.joinToString(", ") { part ->
+                val bits = part.trim().split(Regex("\\s+"), limit = 2)
+                val abs = runCatching { java.net.URL(java.net.URL(doc.location()), bits[0]) }
+                    .getOrNull()?.toString() ?: bits[0]
+                if (bits.size > 1) "$abs ${bits[1]}" else abs
+            })
         }
     }
 
