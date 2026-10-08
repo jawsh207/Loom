@@ -157,9 +157,15 @@ def main():
     cleared = home_icons(snap("home-cleared"))
     log(f"  home screen cleared: {cleared == []} ({cleared})")
     time.sleep(3)
-    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
-    time.sleep(3)
-    log(f"  apps still in drawer: {bool(find(snap('drawer-after-clear'), '^gallery$'))}")
+    in_drawer = False
+    for attempt in range(3):  # the home screen may still be reloading after the clear
+        sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+        time.sleep(3)
+        if find(snap(f"drawer-after-clear-{attempt}"), "^gallery$"):
+            in_drawer = True
+            break
+        go_home()
+    log(f"  apps still in drawer: {in_drawer}")
     go_home()
 
     # --- 3. Drawer-only change: no warning ---
