@@ -66,7 +66,7 @@ public class ItemLongClickListener {
             return false;
         }
         if (!(v.getTag() instanceof ItemInfo)) return false;
-        // Folio: a locked home screen shows the icon's menu but doesn't pick it up.
+        // Folio: on a locked home screen, a long press offers to unlock it instead.
         if (com.android.launcher3.folio.HomeLock.isLocked(launcher)) return com.android.launcher3.folio.HomeLock.onLockedLongPress(launcher, v);
 
         launcher.setWaitingForResult(null);
