@@ -8,6 +8,7 @@ What Folio adds:
 - **Swipe down for notifications**: swipe down anywhere on the home screen to open the notification shade.
 - **Cover folders**: the folder shows its first app's icon; a tap opens that app, and a swipe up opens the folder. Turn it on from the folder's ⋮ menu, which also has **Rename folder**.
 - **Icon packs**: works with packs made for Nova and ADW, including daily calendar icons, a per-app icon picker (**Edit icon** on any app), and styling for apps the pack doesn't cover.
+- **Feed panel** (off by default): swipe right from the first home screen page to read RSS, Atom and JSON feeds in a Material 3 panel. Opening an article shows just the article (text, images, headings, quotes and links), pulled from its page the way Firefox's Reader View does, instead of loading the whole website. Add a feed or just a site's address, import or export OPML, sort feeds into folders, star articles, and pick the text size. New articles are checked in the background every few hours (or only when you refresh), optionally only on Wi-Fi. Turn it on in **Home settings › Feed panel**; Folio only uses the network for this, and only while it's on.
 - **Easy to switch to**: Folio appears in other launchers' app drawers. Opening it asks to make Folio your default home app.
 
 ## Download
@@ -17,6 +18,8 @@ Open **Releases** and download the APK from the newest release.
 Releases are only published when you ask for one: go to **Actions › Build release › Run workflow**, pick the branch (normally `main`), optionally type a version such as `1.0`, and press **Run workflow**. Leave the version blank to get `0.2.N`. Pushing a `v*` tag (for example `v1.0`) also publishes a release.
 
 Ordinary pushes still build the APK on **Actions › Build Folio**, to check the code compiles. That APK is kept as the run's **Folio** artifact but isn't published.
+
+Folio is built for GrapheneOS's Android 17 and is also tested on Android 16.
 
 ### Installing on GrapheneOS
 1. Install the APK and open Folio from your current launcher, which asks to make it your home app. You can also pick it in **Settings › Apps › Default apps › Home app**. The GrapheneOS launcher stays installed, so you can switch back.
@@ -58,7 +61,7 @@ The APK is written to `gradle/modules/app/build/outputs/apk/release/`.
 
 The CI also pushes its logs to the `ci-logs` branch, which is handy when GitHub's own log viewer isn't available. That branch also has `hidden-api.txt`, which lists any calls to Android APIs that are private to the OS. Folio is a regular app, so Android blocks those calls, and each entry is a likely crash.
 
-The **Device test** workflow (run it by hand from Actions) installs the latest release on an Android 17 emulator, makes it the home app and adds widgets through the picker. Screenshots and logs go to the `ci-devtest` branch.
+The **Device test** workflow (run it by hand from Actions) installs the latest build of `main` on an emulator, makes it the home app, and either adds widgets through the picker or goes through the feed panel against a small local test site (`build-support/devtest-feed`). Screenshots and logs go to the `ci-devtest` branch. Google's Android 17 emulator image is currently unstable on CI's software graphics, so the **api** box can choose `36` to test on Android 16. Each build also lists any framework resources newer than Android 16 (`sdk-compat.txt` on `ci-logs`), which would crash there.
 
 ### Updating tools and libraries
 Set `folio.useLatestTools=true` in `gradle.properties`, or run the workflow by hand with **latest** ticked. CI then builds with the newest Gradle plugin, Kotlin and libraries, and puts fresh `gradle.lockfile`s on the `ci-logs` branch. Copy those into `gradle/modules/*/`, update the versions in `gradle.properties`, and set the flag back to `false`.
