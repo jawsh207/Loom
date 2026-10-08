@@ -170,8 +170,23 @@ def wait_for_system():
     log("!! system never settled")
 
 
+def calm_surfaceflinger():
+    """The emulator's software GPU aborts SurfaceFlinger when it samples screen regions (for
+    navigation-bar tinting). Make sampling effectively never happen, then restart the UI."""
+    log(adb("root"))
+    time.sleep(5)
+    adb("wait-for-device")
+    sh("setprop debug.sf.region_sampling_period_ns 3600000000000; "
+       "setprop debug.sf.region_sampling_timer_timeout_ns 3600000000000; "
+       "setprop debug.sf.region_sampling_duration_ns 1")
+    sh("stop; sleep 2; start")
+    time.sleep(30)
+    wait_for_system()
+
+
 def main():
     wait_for_system()
+    calm_surfaceflinger()
     sh("settings put global window_animation_scale 0; "
        "settings put global transition_animation_scale 0; "
        "settings put global animator_duration_scale 0")
@@ -185,6 +200,7 @@ def main():
     log(sh(f"cmd role add-role-holder --user 0 android.app.role.HOME {PKG} 0"))
     log(sh(f"cmd package set-home-activity --user 0 {PKG}/com.android.launcher3.Launcher"))
     log("home role: " + sh("cmd role get-role-holders --user 0 android.app.role.HOME"))
+    log(sh("pm disable-user --user 0 com.google.android.apps.nexuslauncher"))
     sh("logcat -c")
     go_home()
     time.sleep(5)
