@@ -79,19 +79,25 @@ jobs:
       - name: Boot emulator
         timeout-minutes: 20
         run: |
+          set +e
+          export PATH="$ANDROID_HOME/platform-tools:$PATH"
           "$ANDROID_HOME/emulator/emulator" -avd test -no-window -no-audio -no-boot-anim \
             -gpu swiftshader_indirect -no-snapshot -memory 4096 -cores 4 > emulator.log 2>&1 &
-          export PATH="$ANDROID_HOME/platform-tools:$PATH"
-          timeout 900 adb wait-for-device || { tail -50 emulator.log; exit 1; }
-          for i in $(seq 1 120); do
-            [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = "1" ] && break
-            sleep 5
-          done
-          tail -5 emulator.log
-          adb shell getprop ro.build.fingerprint
-          adb shell input keyevent KEYCODE_WAKEUP
-          adb shell wm dismiss-keyguard || true
-          sleep 20
+          {
+            timeout 900 adb wait-for-device; echo "wait-for-device: $?"
+            for i in $(seq 1 120); do
+              v=$(adb shell getprop sys.boot_completed 2>&1 | tr -d '\r')
+              echo "boot_completed=$v"
+              [ "$v" = "1" ] && break
+              sleep 5
+            done
+            adb devices
+            adb shell getprop ro.build.fingerprint
+            adb shell input keyevent KEYCODE_WAKEUP
+            adb shell wm dismiss-keyguard
+            sleep 20
+          } 2>&1 | tee boot.log
+          [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" = "1" ]
 
       - name: Add a widget
         continue-on-error: true
@@ -102,7 +108,7 @@ jobs:
       - name: Publish results to ci-devtest branch
         if: always()
         run: |
-          mkdir -p out && cp devtest.log emulator.log out/ 2>/dev/null || true
+          mkdir -p out && cp devtest.log emulator.log boot.log out/ 2>/dev/null || true
           echo "$IMG ${{ github.sha }} run ${{ github.run_id }}" > out/RUN
           cd out && git init -q -b ci-devtest && git add -A
           git -c user.name=folio-ci -c user.email=ci@users.noreply.github.com commit -qm "Device test ${{ github.run_id }}"
