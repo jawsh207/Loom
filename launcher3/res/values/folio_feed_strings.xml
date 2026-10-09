@@ -6,7 +6,7 @@
 <resources>
     <!-- Launcher settings -->
     <string name="feed_enable_title">Feed panel</string>
-    <string name="feed_enable_summary">Swipe right from the first home screen page to read your RSS and Atom feeds. Folio only goes online for this when it\'s on.</string>
+    <string name="feed_enable_summary">Swipe right from the first home screen page to read your RSS and Atom feeds. Loom only goes online for this when it\'s on.</string>
     <string name="feed_settings_title">Feeds</string>
     <string name="feed_settings_summary">Feed panel, add or import feeds, refresh interval</string>
 
@@ -43,7 +43,7 @@
     <!-- Adding and editing feeds -->
     <string name="feed_add">Add feed</string>
     <string name="feed_add_url">Feed or website address</string>
-    <string name="feed_add_url_hint">A website works too: Folio finds its feed.</string>
+    <string name="feed_add_url_hint">A website works too: Loom finds its feed.</string>
     <string name="feed_add_confirm">Add</string>
     <string name="feed_folder_optional">Folder (optional)</string>
     <string name="feed_edit_title">Edit feed</string>

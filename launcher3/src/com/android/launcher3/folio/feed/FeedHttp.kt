@@ -13,7 +13,7 @@ import java.net.URL
 /** Plain HTTP(S) fetching with the platform client: no extra libraries, no tracking. */
 object FeedHttp {
 
-    private const val USER_AGENT = "Folio/0.2 (Android; RSS reader)"
+    private const val USER_AGENT = "Loom/0.2 (Android; RSS reader)"
     private const val TIMEOUT_MS = 15_000
     private const val MAX_REDIRECTS = 6
 

@@ -16,7 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App name -->
-    <string name="folio_app_name">Folio</string>
+    <string name="folio_app_name">Loom</string>
 
     <!-- Drawer tabs -->
     <string name="drawer_tab_all">Apps</string>
@@ -36,7 +36,7 @@
     <string name="gestures_settings_summary">Swipe down for notifications, double-tap to lock</string>
     <string name="icon_pack_title">Icon pack</string>
     <string name="icon_pack_system">System icons</string>
-    <string name="icon_pack_none_found">No icon packs are installed. Folio works with packs made for Nova, ADW and similar launchers, which you can get from F-Droid, Accrescent and other stores.</string>
+    <string name="icon_pack_none_found">No icon packs are installed. Loom works with packs made for Nova, ADW and similar launchers, which you can get from F-Droid, Accrescent and other stores.</string>
     <string name="icon_pack_fallback_title">Style other icons</string>
     <string name="icon_pack_fallback_summary">Give apps the icon pack doesn\'t include the pack\'s background and shape, if it has one</string>
 
@@ -76,8 +76,8 @@
     <string name="double_tap_lock_title">Double-tap to lock</string>
     <string name="double_tap_lock_summary">Double-tap an empty part of the home screen to turn the screen off</string>
     <string name="double_tap_lock_setup_title">Turn on double-tap to lock</string>
-    <string name="double_tap_lock_setup_message">To turn the screen off, Folio needs its \"Folio screen lock\" accessibility service. It only locks the screen and doesn\'t read anything on screen.\n\nIn Accessibility settings, open Folio screen lock and turn it on.</string>
+    <string name="double_tap_lock_setup_message">To turn the screen off, Loom needs its \"Loom screen lock\" accessibility service. It only locks the screen and doesn\'t read anything on screen.\n\nIn Accessibility settings, open Loom screen lock and turn it on.</string>
     <string name="double_tap_lock_open_settings">Open settings</string>
-    <string name="lock_service_label">Folio screen lock</string>
-    <string name="lock_service_description">Lets Folio turn your screen off when you double-tap an empty spot, and open notifications when you swipe down. It doesn\'t observe or read anything on screen.</string>
+    <string name="lock_service_label">Loom screen lock</string>
+    <string name="lock_service_description">Lets Loom turn your screen off when you double-tap an empty spot, and open notifications when you swipe down. It doesn\'t observe or read anything on screen.</string>
 </resources>
