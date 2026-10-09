@@ -5,7 +5,7 @@ A home-screen launcher for GrapheneOS, built from GrapheneOS's Launcher3 (Androi
 What Folio adds:
 - **Drawer tabs**: create tabs for the app drawer and choose their apps, from the drawer or from Folio's settings. Swipe left or right to move between tabs. Apps in a tab are shown only there, not under the main **Apps** tab.
 - **Double-tap to lock**: double-tap an empty part of the home screen to turn the screen off.
-- **Swipe down for notifications**: swipe down anywhere on the home screen to open the notification shade.
+- **Swipe down for notifications**: swipe down anywhere on the home screen to open the notification shade. This and double-tap to lock can be turned off in **Home settings › Gestures**.
 - **Cover folders**: the folder shows its first app's icon; a tap opens that app, and a swipe up opens the folder. Turn it on from the folder's ⋮ menu, which also has **Rename folder**.
 - **Icon packs** (**Home settings › Icons**): works with packs made for Nova and ADW, including daily calendar icons, a per-app icon picker (**Edit icon** on any app), and styling for apps the pack doesn't cover.
 - **Grid sizes**: in **Home settings › Grid**, choose the home screen's columns (3–8) and rows (3–10), how many icons the dock holds, and the app drawer's columns, with a live preview. Changing the home screen or dock size asks first, then resets the home screen and dock to the standard layout for the new size (your shortcuts, folders and widgets there are removed); apps stay in the drawer. Changing only the drawer columns keeps everything. Icons shrink when there are more columns than the phone's default.

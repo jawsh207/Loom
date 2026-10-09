@@ -62,19 +62,28 @@
         android:summary="@string/feed_settings_summary"
         android:persistent="false" />
 
-    <SwitchPreference
-        android:key="pref_swipe_down_notifications"
-        android:title="@string/swipe_down_notifications_title"
-        android:summary="@string/swipe_down_notifications_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
+    <!-- Folio: home screen gestures, on a screen of their own. -->
+    <androidx.preference.PreferenceScreen
+        android:key="pref_gestures"
+        android:title="@string/gestures_settings_title"
+        android:summary="@string/gestures_settings_summary"
+        android:persistent="false">
 
-    <SwitchPreference
-        android:key="pref_double_tap_to_lock"
-        android:title="@string/double_tap_lock_title"
-        android:summary="@string/double_tap_lock_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
+        <SwitchPreference
+            android:key="pref_swipe_down_notifications"
+            android:title="@string/swipe_down_notifications_title"
+            android:summary="@string/swipe_down_notifications_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:key="pref_double_tap_to_lock"
+            android:title="@string/double_tap_lock_title"
+            android:summary="@string/double_tap_lock_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+    </androidx.preference.PreferenceScreen>
 
     <!--
       LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_ENABLED(613)
