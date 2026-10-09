@@ -1,0 +1,247 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :appfunctions:preBuild UP-TO-DATE
+> Task :dynamiccolors:preBuild UP-TO-DATE
+> Task :animationlib:preBuild UP-TO-DATE
+> Task :appfunctions:preReleaseBuild UP-TO-DATE
+> Task :animationlib:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:processReleaseNavigationResources FROM-CACHE
+> Task :flags:preBuild UP-TO-DATE
+> Task :flags:preReleaseBuild UP-TO-DATE
+> Task :appfunctions:processReleaseNavigationResources FROM-CACHE
+> Task :animationlib:generateReleaseResources FROM-CACHE
+> Task :iconloaderlib:preBuild UP-TO-DATE
+> Task :iconloaderlib:preReleaseBuild UP-TO-DATE
+> Task :iconloaderlib:processReleaseNavigationResources FROM-CACHE
+> Task :launcher3-res:preBuild UP-TO-DATE
+> Task :launcher3-res:preReleaseBuild UP-TO-DATE
+> Task :flags:processReleaseNavigationResources FROM-CACHE
+> Task :msdllib:preBuild UP-TO-DATE
+> Task :msdllib:preReleaseBuild UP-TO-DATE
+> Task :animationlib:packageReleaseResources FROM-CACHE
+> Task :msdllib:processReleaseNavigationResources FROM-CACHE
+> Task :plugins:preBuild UP-TO-DATE
+> Task :plugins:preReleaseBuild UP-TO-DATE
+> Task :animationlib:processReleaseNavigationResources FROM-CACHE
+> Task :plugins:processReleaseNavigationResources FROM-CACHE
+> Task :usertypelib:preBuild UP-TO-DATE
+> Task :usertypelib:preReleaseBuild UP-TO-DATE
+> Task :app:generateLauncherProtos
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :usertypelib:processReleaseNavigationResources FROM-CACHE
+> Task :widgetpicker:preBuild UP-TO-DATE
+> Task :widgetpicker:preReleaseBuild UP-TO-DATE
+> Task :app:generateReleaseResources FROM-CACHE
+> Task :widgetpicker:processReleaseNavigationResources FROM-CACHE
+> Task :wmshellshared:preBuild UP-TO-DATE
+> Task :wmshellshared:preReleaseBuild UP-TO-DATE
+> Task :app:packageReleaseResources FROM-CACHE
+> Task :appfunctions:generateReleaseResources FROM-CACHE
+> Task :appfunctions:packageReleaseResources FROM-CACHE
+> Task :launcher3-res:processReleaseNavigationResources
+> Task :dynamiccolors:generateReleaseResources FROM-CACHE
+> Task :dynamiccolors:packageReleaseResources FROM-CACHE
+> Task :wmshellshared:processReleaseNavigationResources FROM-CACHE
+> Task :appfunctions:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:parseReleaseLocalResources FROM-CACHE
+> Task :animationlib:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:generateReleaseRFile FROM-CACHE
+> Task :flags:generateReleaseResources FROM-CACHE
+> Task :flags:packageReleaseResources FROM-CACHE
+> Task :flags:parseReleaseLocalResources FROM-CACHE
+> Task :flags:generateReleaseRFile FROM-CACHE
+> Task :iconloaderlib:generateReleaseResources FROM-CACHE
+> Task :iconloaderlib:packageReleaseResources FROM-CACHE
+> Task :animationlib:generateReleaseRFile FROM-CACHE
+> Task :iconloaderlib:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:generateReleaseResources FROM-CACHE
+> Task :usertypelib:packageReleaseResources FROM-CACHE
+> Task :usertypelib:parseReleaseLocalResources FROM-CACHE
+> Task :appfunctions:generateReleaseRFile FROM-CACHE
+> Task :launcher3-res:generateReleaseResources
+> Task :usertypelib:generateReleaseRFile FROM-CACHE
+> Task :app:processReleaseNavigationResources FROM-CACHE
+> Task :app:parseReleaseLocalResources FROM-CACHE
+> Task :msdllib:generateReleaseResources FROM-CACHE
+> Task :iconloaderlib:generateReleaseRFile FROM-CACHE
+> Task :plugins:generateReleaseResources FROM-CACHE
+> Task :msdllib:packageReleaseResources FROM-CACHE
+> Task :msdllib:parseReleaseLocalResources FROM-CACHE
+> Task :plugins:packageReleaseResources FROM-CACHE
+> Task :msdllib:generateReleaseRFile FROM-CACHE
+> Task :widgetpicker:generateReleaseResources FROM-CACHE
+> Task :plugins:parseReleaseLocalResources FROM-CACHE
+> Task :plugins:generateReleaseRFile FROM-CACHE
+> Task :wmshellshared:generateReleaseResources FROM-CACHE
+> Task :wmshellshared:packageReleaseResources FROM-CACHE
+> Task :wmshellshared:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:generateReleaseRFile FROM-CACHE
+> Task :animationlib:compileReleaseKotlin FROM-CACHE
+> Task :animationlib:javaPreCompileRelease FROM-CACHE
+> Task :widgetpicker:packageReleaseResources FROM-CACHE
+> Task :widgetpicker:parseReleaseLocalResources FROM-CACHE
+> Task :appfunctions:kspReleaseKotlin FROM-CACHE
+> Task :widgetpicker:generateReleaseRFile FROM-CACHE
+> Task :dynamiccolors:compileReleaseKotlin NO-SOURCE
+> Task :dynamiccolors:javaPreCompileRelease FROM-CACHE
+> Task :dynamiccolors:compileReleaseJavaWithJavac NO-SOURCE
+> Task :dynamiccolors:bundleLibCompileToJarRelease
+> Task :flags:compileReleaseKotlin NO-SOURCE
+> Task :flags:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:compileReleaseKotlin FROM-CACHE
+> Task :appfunctions:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:compileReleaseJavaWithJavac NO-SOURCE
+> Task :appfunctions:bundleLibCompileToJarRelease
+> Task :usertypelib:compileReleaseKotlin FROM-CACHE
+> Task :usertypelib:javaPreCompileRelease FROM-CACHE
+> Task :usertypelib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :usertypelib:bundleLibCompileToJarRelease
+> Task :iconloaderlib:javaPreCompileRelease FROM-CACHE
+> Task :msdllib:compileReleaseKotlin FROM-CACHE
+> Task :msdllib:javaPreCompileRelease FROM-CACHE
+> Task :msdllib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :msdllib:bundleLibCompileToJarRelease
+> Task :plugins:compileReleaseKotlin FROM-CACHE
+> Task :plugins:javaPreCompileRelease FROM-CACHE
+> Task :flags:compileReleaseJavaWithJavac FROM-CACHE
+> Task :animationlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :flags:bundleLibCompileToJarRelease
+> Task :animationlib:bundleLibCompileToJarRelease
+> Task :plugins:compileReleaseJavaWithJavac FROM-CACHE
+> Task :plugins:bundleLibCompileToJarRelease
+> Task :wmshellshared:compileReleaseKotlin FROM-CACHE
+> Task :wmshellshared:javaPreCompileRelease FROM-CACHE
+> Task :iconloaderlib:compileReleaseKotlin FROM-CACHE
+> Task :wmshellshared:compileReleaseJavaWithJavac FROM-CACHE
+> Task :wmshellshared:bundleLibCompileToJarRelease
+> Task :app:javaPreCompileRelease FROM-CACHE
+> Task :iconloaderlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :iconloaderlib:bundleLibCompileToJarRelease
+> Task :widgetpicker:kaptGenerateStubsReleaseKotlin FROM-CACHE
+> Task :widgetpicker:kaptReleaseKotlin FROM-CACHE
+> Task :widgetpicker:compileReleaseKotlin FROM-CACHE
+> Task :widgetpicker:javaPreCompileRelease FROM-CACHE
+> Task :widgetpicker:compileReleaseJavaWithJavac FROM-CACHE
+> Task :widgetpicker:bundleLibCompileToJarRelease
+> Task :launcher3-res:packageReleaseResources
+> Task :launcher3-res:javaPreCompileRelease FROM-CACHE
+> Task :launcher3-res:parseReleaseLocalResources
+> Task :launcher3-res:generateReleaseRFile FROM-CACHE
+> Task :launcher3-res:compileReleaseKotlin NO-SOURCE
+> Task :launcher3-res:compileReleaseJavaWithJavac NO-SOURCE
+> Task :launcher3-res:bundleLibCompileToJarRelease
+> Task :app:generateReleaseRFile FROM-CACHE
+> Task :app:kaptGenerateStubsReleaseKotlin FROM-CACHE
+> Task :app:kaptReleaseKotlin FROM-CACHE
+> Task :app:compileReleaseKotlin FROM-CACHE
+
+> Task :app:compileReleaseJavaWithJavac
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+import android.app.ActivityThread;
+                  ^
+  symbol:   class ActivityThread
+  location: package android.app
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:65: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
+                                           ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:75: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor ORDERED_BG_EXECUTOR =
+                                       ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:84: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor MAIN_EXECUTOR =
+                                       ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:99: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor UI_HELPER_EXECUTOR =
+                                       ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:110: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor DATA_HELPER_EXECUTOR =
+                                       ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:125: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static LooperExecutor getPackageExecutor(String packageName) {
+                                 ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:152: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static class SimpleThreadFactory implements ThreadFactory {
+                  ^
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+            final var thread = ActivityThread.currentActivityThread();
+                               ^
+  symbol:   variable ActivityThread
+  location: class Utilities
+/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+            return instrumentation != null && instrumentation.isInstrumenting();
+                                                             ^
+  symbol:   method isInstrumenting()
+  location: variable instrumentation of type Instrumentation
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+3 errors
+7 warnings
+
+> Task :app:compileReleaseJavaWithJavac FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1791532090591.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/folio/folio/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileReleaseJavaWithJavac' (registered by plugin 'com.android.internal.application').
+> Compilation failed; see the compiler output below.
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+  import android.app.ActivityThread;
+                    ^
+    symbol:   class ActivityThread
+    location: package android.app
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+              final var thread = ActivityThread.currentActivityThread();
+                                 ^
+    symbol:   variable ActivityThread
+    location: class Utilities
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:65: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
+                                             ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:75: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static final LooperExecutor ORDERED_BG_EXECUTOR =
+                                         ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:84: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static final LooperExecutor MAIN_EXECUTOR =
+                                         ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:99: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static final LooperExecutor UI_HELPER_EXECUTOR =
+                                         ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:110: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static final LooperExecutor DATA_HELPER_EXECUTOR =
+                                         ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:125: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static LooperExecutor getPackageExecutor(String packageName) {
+                                   ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/util/Executors.java:152: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+      public static class SimpleThreadFactory implements ThreadFactory {
+                    ^
+  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+              return instrumentation != null && instrumentation.isInstrumenting();
+                                                               ^
+    symbol:   method isInstrumenting()
+    location: variable instrumentation of type Instrumentation
+  Note: Some input files use or override a deprecated API.
+  Note: Recompile with -Xlint:deprecation for details.
+  Note: Some input files use unchecked or unsafe operations.
+  Note: Recompile with -Xlint:unchecked for details.
+  3 errors
+  7 warnings
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 27s
+105 actionable tasks: 17 executed, 88 from cache

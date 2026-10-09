@@ -1,0 +1,19 @@
+140:/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+143:  symbol:   class ActivityThread
+144:  location: package android.app
+166:/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+169:  symbol:   variable ActivityThread
+170:  location: class Utilities
+171:/home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+174:  symbol:   method isInstrumenting()
+175:  location: variable instrumentation of type Instrumentation
+190:* What went wrong:
+193:  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+196:    symbol:   class ActivityThread
+197:    location: package android.app
+198:  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+201:    symbol:   variable ActivityThread
+202:    location: class Utilities
+224:  /home/runner/work/folio/folio/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+227:    symbol:   method isInstrumenting()
+228:    location: variable instrumentation of type Instrumentation
