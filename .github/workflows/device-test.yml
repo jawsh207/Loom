@@ -1,7 +1,7 @@
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
 
-# Installs the latest Folio build of main on an Android emulator, makes it the home app and
+# Installs the latest Loom build of main on an Android emulator, makes it the home app and
 # runs a scripted test: adding widgets, or the feed panel. Screenshots, UI dumps and logs go to
 # the ci-devtest branch.
 name: Device test
@@ -45,7 +45,7 @@ jobs:
           RUN=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow build.yml --branch main \
             --status success --limit 1 --json databaseId -q '.[0].databaseId')
           echo "APK from build run $RUN"
-          gh run download "$RUN" --repo "$GITHUB_REPOSITORY" --name Folio --dir apk
+          gh run download "$RUN" --repo "$GITHUB_REPOSITORY" --name Loom --dir apk
           cp apk/*.apk folio.apk
           ls -l folio.apk
 

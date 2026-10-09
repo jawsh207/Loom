@@ -31,7 +31,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Folio"
+rootProject.name = "Loom"
 
 // Each module's build file lives in gradle/modules/<name>; its sources stay in the vendored
 // directories (launcher3/, systemui/, frameworks/, flags/) so upstream syncs stay simple.

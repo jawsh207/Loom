@@ -1,7 +1,7 @@
 # Copyright (C) 2026 The Folio Authors
 # SPDX-License-Identifier: Apache-2.0
 
-name: Build Folio
+name: Build Loom
 
 on:
   push:
@@ -120,9 +120,14 @@ jobs:
           VERSION_INPUT: ${{ inputs.version }}
         run: |
           CODE=$(( ($(date -u +%s) - 1767225600) / 60 ))
+          # Releases without a typed version count up within this series: 0.3.0, 0.3.1, ...
+          SERIES=0.3
           if [ "${{ inputs.publish }}" = "true" ]; then
             NAME="${VERSION_INPUT#v}"
-            [ -n "$NAME" ] || NAME="0.2.${{ github.run_number }}"
+            if [ -z "$NAME" ]; then
+              LAST=$(git tag -l "v${SERIES}.*" | sed "s/^v${SERIES}\.//" | grep -E '^[0-9]+$' | sort -n | tail -1)
+              NAME="${SERIES}.$(( ${LAST:--1} + 1 ))"
+            fi
             if ! [[ "$NAME" =~ ^[0-9A-Za-z._-]+$ ]]; then
               echo "::error::Use only letters, digits, dots, dashes and underscores in the version."
               exit 1
@@ -130,11 +135,11 @@ jobs:
           elif [ "${GITHUB_REF_TYPE}" = "tag" ]; then
             NAME="${GITHUB_REF_NAME#v}"
           else
-            NAME="0.2-dev.${{ github.run_number }}"
+            NAME="${SERIES}-dev.${{ github.run_number }}"
           fi
           echo "name=$NAME" >> "$GITHUB_OUTPUT"
           echo "code=$CODE" >> "$GITHUB_OUTPUT"
-          echo "Folio $NAME (versionCode $CODE)"
+          echo "Loom $NAME (versionCode $CODE)"
 
       - name: Build
         env:
@@ -174,13 +179,13 @@ jobs:
           APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
           "$APKSIGNER" verify --print-certs gradle/modules/app/build/outputs/apk/release/*.apk \
             | grep -E "SHA-256|DN" | tee -a build.log
-          # Folio's release key: SHA-256 5acbbd65b56a3da013474344a728f1a6cdcfeefce22f45ca916f5f8141124018
+          # The release key: SHA-256 5acbbd65b56a3da013474344a728f1a6cdcfeefce22f45ca916f5f8141124018
 
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: Folio
+          name: Loom
           path: gradle/modules/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
 
@@ -198,7 +203,7 @@ jobs:
             echo "::error::A release named $TAG already exists; pick another version."
             exit 1
           fi
-          APK="Folio-${VERSION}.apk"
+          APK="Loom-${VERSION}.apk"
           cp gradle/modules/app/build/outputs/apk/release/*.apk "$APK"
           # The recap: CHANGELOG.md's "Unreleased" section (or the commits since the last
           # release if it's empty), then build details.
@@ -215,7 +220,7 @@ jobs:
             echo "Signing certificate SHA-256: \`$(grep -oE 'SHA-256 digest: [0-9a-f]+' build.log | head -1 | cut -d' ' -f3)\`"
           } > notes.md
           cat notes.md
-          gh release create "$TAG" "$APK" --target "$GITHUB_SHA" --title "Folio ${VERSION}" \
+          gh release create "$TAG" "$APK" --target "$GITHUB_SHA" --title "Loom ${VERSION}" \
             --notes-file notes.md --latest
 
           # File the recap under this version in CHANGELOG.md on main, leaving "Unreleased"
@@ -224,7 +229,7 @@ jobs:
           python3 build-support/release_notes.py file CHANGELOG.md "$VERSION" "$(date -u +%Y-%m-%d)"
           if ! git diff --quiet CHANGELOG.md; then
             git -c user.name=folio-ci -c user.email=ci@users.noreply.github.com \
-              commit -qm "CHANGELOG: Folio ${VERSION}" CHANGELOG.md
+              commit -qm "CHANGELOG: Loom ${VERSION}" CHANGELOG.md
             git push -q origin changelog:main || echo "::warning::Couldn't update CHANGELOG.md on main"
           fi
 

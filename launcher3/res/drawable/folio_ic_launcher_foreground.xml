@@ -14,29 +14,14 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<!-- Three stacked pages, the front one with a folded corner: a folio. 108dp adaptive canvas,
+<!-- Loom app icon: three threads each way, woven over and under. 108dp adaptive canvas,
      artwork kept inside the 66dp safe zone (21..87). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- back page -->
     <path
         android:fillColor="#FFFFFF"
-        android:fillAlpha="0.45"
-        android:pathData="M44,30h22a4,4 0,0 1,4 4v34a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
-    <!-- middle page -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:fillAlpha="0.7"
-        android:pathData="M39,34h22a4,4 0,0 1,4 4v34a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
-    <!-- front page with folded corner -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M34,38h16l10,10v28a4,4 0,0 1,-4 4h-22a4,4 0,0 1,-4 -4v-34a4,4 0,0 1,4 -4z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:fillAlpha="0.55"
-        android:pathData="M50,38v6a4,4 0,0 0,4 4h6z" />
+        android:pathData="M35,29H43V47.5H35ZM35,60.5H43V79H35ZM35,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM35,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,35H32.5V43H29ZM45.5,35H62.5V43H45.5ZM75.5,35H79V43H75.5ZM25,39a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,39a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM50,29H58V32.5H50ZM50,45.5H58V62.5H50ZM50,75.5H58V79H50ZM50,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM50,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,50H47.5V58H29ZM60.5,50H79V58H60.5ZM25,54a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,54a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM65,29H73V47.5H65ZM65,60.5H73V79H65ZM65,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM65,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,65H32.5V73H29ZM45.5,65H62.5V73H45.5ZM75.5,65H79V73H75.5ZM25,69a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,69a4,4 0,1 1,8,0a4,4 0,1 1,-8,0Z" />
 </vector>
