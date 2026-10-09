@@ -110,11 +110,39 @@ def main():
             f"{bool(find(nodes, '^icon pack$')) and bool(find(nodes, '^style other icons$'))}")
         sh("input keyevent KEYCODE_BACK")
         time.sleep(2)
+    log(f"  gesture switches not on main screen: "
+        f"{not find(nodes, '^double-tap to lock$') and not find(nodes, '^swipe down for notifications$')}")
+    if tap_scrolled(r"^gestures$", "settings-gestures", wait=3):
+        nodes = snap("gestures-screen")
+        log(f"  Gestures screen has both switches: "
+            f"{bool(find(nodes, '^double-tap to lock$')) and bool(find(nodes, '^swipe down for notifications$'))}")
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(2)
     lock = scroll_to(r"^lock home screen$", "settings-bottom")
     titles = [n for n in snap("settings-bottom-order") if n["text"] and n["bounds"][1] > 200]
     below = [n["text"] for n in titles if lock and n["bounds"][1] > lock["bounds"][3]
              and not n["text"].startswith(("Shortcuts, folders", "Apps still"))]
     log(f"  Lock home screen is last: {bool(lock)} {below}")
+
+    # --- 0b. Long-press menus ---
+    go_home()
+    long_press(w // 2, h // 3)
+    menu = snap("home-menu")
+    log(f"  home menu shown: {bool(find(menu, 'wallpaper'))}")
+    log(f"  home menu has no Apps list: {not find(menu, '^apps list$')}")
+    close_popup()
+    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+    time.sleep(3)
+    clock = find(snap("drawer-for-menu"), r"^clock$")
+    if clock:
+        cx, cy = center(clock)
+        long_press(cx, cy)
+        menu = snap("drawer-menu")
+        log(f"  drawer menu shown: {bool(find(menu, 'app info'))}")
+        log(f"  drawer menu has no Add to home screen: {not find(menu, 'add to home screen')}")
+        close_popup()
+    go_home()
+    open_settings()
 
     # --- 1. Lock ---
     tap_scrolled(r"^lock home screen$", "lock-on")

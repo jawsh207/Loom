@@ -32,6 +32,8 @@
 
     <!-- Icon packs -->
     <string name="icons_settings_title">Icons</string>
+    <string name="gestures_settings_title">Gestures</string>
+    <string name="gestures_settings_summary">Swipe down for notifications, double-tap to lock</string>
     <string name="icon_pack_title">Icon pack</string>
     <string name="icon_pack_system">System icons</string>
     <string name="icon_pack_none_found">No icon packs are installed. Folio works with packs made for Nova, ADW and similar launchers, which you can get from F-Droid, Accrescent and other stores.</string>
