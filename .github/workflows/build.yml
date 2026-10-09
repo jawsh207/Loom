@@ -51,6 +51,9 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Releases list the commits since the last one when the changelog has no recap.
+          fetch-depth: ${{ inputs.publish && '0' || '1' }}
 
       - uses: actions/setup-java@v4
         with:
@@ -197,13 +200,33 @@ jobs:
           fi
           APK="Folio-${VERSION}.apk"
           cp gradle/modules/app/build/outputs/apk/release/*.apk "$APK"
+          # The recap: CHANGELOG.md's "Unreleased" section (or the commits since the last
+          # release if it's empty), then build details.
+          PREV=$(git describe --tags --abbrev=0 --match 'v*' HEAD 2>/dev/null || true)
           {
-            echo "Built from ${GITHUB_SHA::7}: $(git log -1 --format=%s)"
+            echo "## What's changed"
+            echo
+            python3 build-support/release_notes.py notes CHANGELOG.md "$PREV"
+            echo
+            echo "---"
+            echo
+            echo "Built from ${GITHUB_SHA::7}${PREV:+ (changes since $PREV)}."
             echo
             echo "Signing certificate SHA-256: \`$(grep -oE 'SHA-256 digest: [0-9a-f]+' build.log | head -1 | cut -d' ' -f3)\`"
           } > notes.md
+          cat notes.md
           gh release create "$TAG" "$APK" --target "$GITHUB_SHA" --title "Folio ${VERSION}" \
             --notes-file notes.md --latest
+
+          # File the recap under this version in CHANGELOG.md on main, leaving "Unreleased"
+          # empty for the next release.
+          git fetch -q origin main && git checkout -q -B changelog origin/main
+          python3 build-support/release_notes.py file CHANGELOG.md "$VERSION" "$(date -u +%Y-%m-%d)"
+          if ! git diff --quiet CHANGELOG.md; then
+            git -c user.name=folio-ci -c user.email=ci@users.noreply.github.com \
+              commit -qm "CHANGELOG: Folio ${VERSION}" CHANGELOG.md
+            git push -q origin changelog:main || echo "::warning::Couldn't update CHANGELOG.md on main"
+          fi
 
       # GitHub's log storage isn't reachable from every environment, so the logs are also
       # pushed to the ci-logs branch (one commit, overwritten each run).
