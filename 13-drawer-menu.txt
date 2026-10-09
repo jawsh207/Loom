@@ -1,0 +1,17 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[171, 773, 738, 1321] text='' desc='' id=app.folio.launcher:id/popup_container click=false
+[171, 773, 738, 1321] text='' desc='' id=app.folio.launcher:id/system_shortcuts_container click=false
+[171, 773, 738, 910] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[171, 773, 738, 910] text='App info' desc='' id=app.folio.launcher:id/bubble_text click=false
+[213, 815, 266, 868] text='' desc='' id=app.folio.launcher:id/icon click=false
+[171, 910, 738, 1047] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[171, 910, 738, 1047] text='Widgets' desc='' id=app.folio.launcher:id/bubble_text click=false
+[213, 952, 266, 1005] text='' desc='' id=app.folio.launcher:id/icon click=false
+[171, 1047, 738, 1184] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[171, 1047, 738, 1184] text='Edit icon' desc='' id=app.folio.launcher:id/bubble_text click=false
+[213, 1089, 266, 1142] text='' desc='' id=app.folio.launcher:id/icon click=false
+[171, 1184, 738, 1321] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[171, 1184, 738, 1321] text='Add to tab' desc='' id=app.folio.launcher:id/bubble_text click=false
+[213, 1226, 266, 1279] text='' desc='' id=app.folio.launcher:id/icon click=false

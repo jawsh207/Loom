@@ -1,0 +1,30 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/scrim_view click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/apps_view click=false
+[50, 223, 1030, 349] text='  Search apps' desc='' id=app.folio.launcher:id/search_container_all_apps click=true
+[0, 128, 1080, 2400] text='' desc='' id=app.folio.launcher:id/bottom_sheet_background click=false
+[0, 128, 1080, 223] text='' desc='' id=app.folio.launcher:id/bottom_sheet_handle_area click=false
+[498, 170, 582, 181] text='' desc='' id=app.folio.launcher:id/bottom_sheet_handle click=false
+[0, 310, 1080, 2400] text='' desc='' id=app.folio.launcher:id/apps_list_view click=false
+[21, 531, 280, 846] text='Calendar' desc='Calendar' id=app.folio.launcher:id/icon click=true
+[280, 531, 540, 846] text='Camera' desc='Camera' id=app.folio.launcher:id/icon click=true
+[540, 531, 799, 846] text='Clock' desc='Clock' id=app.folio.launcher:id/icon click=true
+[799, 531, 1059, 846] text='Contacts' desc='Contacts' id=app.folio.launcher:id/icon click=true
+[21, 846, 280, 1161] text='Files' desc='Files' id=app.folio.launcher:id/icon click=true
+[280, 846, 540, 1161] text='Gallery' desc='Gallery' id=app.folio.launcher:id/icon click=true
+[540, 846, 799, 1161] text='Loom' desc='Loom' id=app.folio.launcher:id/icon click=true
+[799, 846, 1059, 1161] text='Messaging' desc='Messaging' id=app.folio.launcher:id/icon click=true
+[21, 1161, 280, 1476] text='Phone' desc='Phone' id=app.folio.launcher:id/icon click=true
+[280, 1161, 540, 1476] text='Search' desc='Search' id=app.folio.launcher:id/icon click=true
+[540, 1161, 799, 1476] text='Settings' desc='Settings' id=app.folio.launcher:id/icon click=true
+[799, 1161, 1059, 1476] text='TMoble' desc='TMoble' id=app.folio.launcher:id/icon click=true
+[21, 1476, 280, 1791] text='WebView Browser Tester' desc='WebView Browser Tester' id=app.folio.launcher:id/icon click=true
+[0, 310, 1080, 568] text='' desc='' id=app.folio.launcher:id/all_apps_header click=false
+[21, 405, 1059, 531] text='' desc='' id=app.folio.launcher:id/drawer_tab_strip click=false
+[32, 415, 199, 520] text='Apps' desc='' id= click=true
+[220, 415, 367, 520] text='+' desc='New tab' id= click=true
+[954, 347, 1080, 2400] text='' desc='' id=app.folio.launcher:id/scroll_letter_layout click=false
+[996, 347, 1080, 2400] text='' desc='' id=app.folio.launcher:id/fast_scroller click=false
+[0, 128, 1080, 2274] text='' desc='Home' id=app.folio.launcher:id/accessibility_action_view click=false

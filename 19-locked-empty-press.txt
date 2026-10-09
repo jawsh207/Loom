@@ -1,0 +1,6 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[289, 321, 687, 384] text='Home screen locked' desc='' id= click=false
+[147, 431, 933, 537] text='Touch and hold below to unlock it for 45 seconds. It locks again on its own.' desc='' id= click=false
+[456, 621, 692, 674] text='Hold to unlock' desc='' id= click=false

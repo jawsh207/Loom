@@ -1,0 +1,20 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[63, 328, 513, 1253] text='' desc='Home screen preview: 5 columns, 5 rows, 5 dock icons' id= click=false
+[179, 1274, 397, 1327] text='Home screen' desc='' id= click=false
+[566, 328, 1017, 1255] text='' desc='App drawer preview: 4 columns' id= click=false
+[698, 1276, 885, 1329] text='App drawer' desc='' id= click=false
+[63, 1414, 281, 1467] text='Home screen' desc='' id= click=false
+[63, 1520, 571, 1583] text='Choose home screen size' desc='' id= click=false
+[63, 1673, 639, 1736] text='Columns' desc='' id= click=false
+[640, 1642, 766, 1768] text='' desc='Fewer columns' id= click=true
+[765, 1667, 891, 1741] text='5' desc='' id= click=false
+[892, 1642, 1018, 1768] text='' desc='More columns' id= click=true
+[63, 1831, 639, 1894] text='Rows' desc='' id= click=false
+[640, 1800, 766, 1906] text='' desc='Fewer rows' id= click=true
+[765, 1825, 891, 1899] text='5' desc='' id= click=false
+[892, 1800, 1018, 1906] text='' desc='More rows' id= click=true
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text='Changing the home screen or dock size resets your home screen and dock to the standard layout for the new size. Changing only the app drawer columns keeps everything.' desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

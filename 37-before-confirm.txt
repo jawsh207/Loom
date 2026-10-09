@@ -1,0 +1,5 @@
+[120, 742, 960, 1659] text='' desc='' id=android:id/content click=false
+[188, 910, 893, 994] text='Reset your home screen?' desc='' id= click=false
+[183, 1036, 897, 1407] text="Changing the grid resets your home screen and dock to the standard layout for the new size. Your shortcuts, folders and widgets there are removed. Your apps stay installed and in the app drawer.\n\nThis can't be undone." desc='' id= click=false
+[501, 1507, 865, 1560] text='Reset and change grid' desc='' id= click=false
+[303, 1507, 416, 1560] text='Cancel' desc='' id= click=false

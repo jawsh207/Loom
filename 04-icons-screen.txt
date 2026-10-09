@@ -1,0 +1,16 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/content_parent click=false
+[0, 0, 1080, 593] text='' desc='' id=app.folio.launcher:id/app_bar click=false
+[0, 0, 1080, 593] text='' desc='Icons' id=app.folio.launcher:id/collapsing_toolbar click=false
+[0, 128, 1080, 275] text='' desc='' id=app.folio.launcher:id/action_bar click=false
+[0, 128, 147, 275] text='' desc='Navigate up' id= click=true
+[0, 593, 1080, 1174] text='' desc='' id=app.folio.launcher:id/content_frame click=false
+[0, 593, 1080, 1174] text='' desc='' id=android:id/list_container click=false
+[0, 593, 1080, 1174] text='' desc='' id=app.folio.launcher:id/recycler_view click=false
+[63, 635, 291, 706] text='Icon pack' desc='' id=android:id/title click=false
+[63, 706, 283, 757] text='System icons' desc='' id=android:id/summary click=false
+[63, 841, 452, 912] text='Style other icons' desc='' id=android:id/title click=false
+[63, 912, 850, 1006] text="Give apps the icon pack doesn't include the pack's background and shape, if it has one" desc='' id=android:id/summary click=false
+[850, 799, 1038, 1048] text='' desc='' id=android:id/widget_frame click=false
+[892, 887, 1038, 960] text='' desc='' id=android:id/switch_widget click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

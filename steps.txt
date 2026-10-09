@@ -1,0 +1,89 @@
+system ready
+system ready
+system ready
+Performing Streamed Install
+Success
+
+Success
+
+setup 0: home role=app.folio.launcher top=topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[01-home-before] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  home icons before: ['Camera', 'Gallery', 'Messaging', 'Phone', 'WebView Browser Tester']
+[02-settings-top] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+  no Feed panel switch on settings: True
+  Feeds entry present: True
+  icon pack not on main screen: True
+[03-before-settings-icons] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+  tapping 'Icons' at [63, 1047, 191, 1118]
+[04-icons-screen] activity: topResumedActivity=ActivityRecord{225353169 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+  Icons screen has Icon pack and Style other icons: True
+  gesture switches not on main screen: True
+[05-settings-gestures-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[06-gestures-screen] activity: topResumedActivity=ActivityRecord{253092888 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+  Gestures screen has both switches: True
+[07-settings-bottom-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[08-settings-bottom-find1] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[09-settings-bottom-order] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+  Lock home screen is last: True []
+[10-home-menu] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  home menu shown: True
+  home menu has no Apps list: True
+[11-drawer-for-menu-0] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[12-drawer-for-menu-1] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  app is named Loom in the drawer: True (no Folio: True)
+[13-drawer-menu] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  drawer menu shown: True
+  drawer menu has no Add to home screen: True
+[14-lock-on-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[15-locked-home] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[16-locked-long-press] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  long-press shows unlock popup: True
+  popup has hold button: True
+[17-popup-closed] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tap outside closes popup: True
+[18-locked-after-drag] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  icon stayed put: True
+[19-locked-empty-press] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  empty-space long-press shows popup: True
+[20-popup-again] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[21-after-short-tap] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  short tap keeps it locked: True
+[22-after-hold] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  hold closes popup: True
+[23-unlocked-after-drag] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  icon moves while unlocked: True
+[24-relocked-toast] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[25-relocked-press] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  locked again after 45 s: True
+[26-home-before-drawer] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[27-locked-drawer-0] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[28-locked-home-after] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  nothing added while locked: True
+[29-locked-grid-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[30-locked-grid-screen] activity: topResumedActivity=ActivityRecord{79677079 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  grid says locked: True
+[31-lock-off-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[32-settings-grid-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[33-before-custom-home] activity: topResumedActivity=ActivityRecord{135979729 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Choose home screen size' at [63, 1515, 571, 1578]
+[34-cols-0] activity: topResumedActivity=ActivityRecord{135979729 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[35-before-apply] activity: topResumedActivity=ActivityRecord{135979729 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Apply' at [494, 2143, 587, 2196]
+[36-warning] activity: topResumedActivity=ActivityRecord{135979729 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  warning shown: True
+[37-before-confirm] activity: topResumedActivity=ActivityRecord{135979729 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Reset and change grid' at [501, 1507, 865, 1560]
+[38-home-reset] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  home icons after reset: ['Camera', 'Gallery', 'Messaging', 'Phone', 'Settings', 'WebView Browser Tester']
+  stock layout loaded: True
+  gallery back in its stock spot: True
+[39-drawer-after-clear-0] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  apps still in drawer: True
+[40-settings-grid-2-find0] activity: topResumedActivity=ActivityRecord{111803766 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[41-before-custom-drawer] activity: topResumedActivity=ActivityRecord{54504435 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Choose app drawer columns' at [63, 1386, 628, 1449]
+[42-drawer-0] activity: topResumedActivity=ActivityRecord{54504435 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[43-before-apply-drawer] activity: topResumedActivity=ActivityRecord{54504435 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Apply' at [494, 2143, 587, 2196]
+[44-after-drawer-apply] activity: topResumedActivity=ActivityRecord{112564821 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  no warning for drawer change: True

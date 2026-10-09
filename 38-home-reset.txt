@@ -1,0 +1,16 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/scrim_view click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/workspace click=false
+[230, 1648, 437, 2021] text='Gallery' desc='Gallery' id= click=true
+[0, 128, 1080, 2274] text='' desc='Home' id=app.folio.launcher:id/accessibility_action_view click=false
+[0, 2022, 1080, 2085] text='' desc='' id=app.folio.launcher:id/page_indicator click=false
+[513, 2027, 566, 2080] text='' desc='' id=app.folio.launcher:id/page_indicator_content_container click=false
+[524, 2038, 555, 2069] text='' desc='' id=app.folio.launcher:id/page_indicator_dots click=false
+[0, 2085, 1080, 2400] text='' desc='' id=app.folio.launcher:id/hotseat click=false
+[23, 2085, 230, 2274] text='Phone' desc='Phone' id= click=true
+[230, 2085, 437, 2274] text='Messaging' desc='Messaging' id= click=true
+[437, 2085, 644, 2274] text='Settings' desc='Settings' id= click=true
+[644, 2085, 851, 2274] text='WebView Browser Tester' desc='WebView Browser Tester' id= click=true
+[851, 2085, 1057, 2274] text='Camera' desc='Camera' id= click=true
