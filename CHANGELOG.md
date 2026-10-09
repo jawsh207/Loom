@@ -5,6 +5,8 @@ What's new in each Folio release. The **Unreleased** section collects changes as
 
 ## Unreleased
 
+## 0.2.5 (2026-10-09)
+
 - New **Gestures** screen in settings with **Swipe down for notifications** and **Double-tap to lock**.
 - **Apps list** is gone from the home screen's long-press menu (swipe up to open the app drawer).
 - **Add to home screen** is gone from the app drawer's long-press menu (drag an app to the home screen instead).
