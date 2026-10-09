@@ -87,7 +87,6 @@ import static com.android.launcher3.logging.StatsLogManager.LauncherLatencyEvent
 import static com.android.launcher3.model.ItemInstallQueue.FLAG_ACTIVITY_PAUSED;
 import static com.android.launcher3.model.ItemInstallQueue.FLAG_DRAG_AND_DROP;
 import static com.android.launcher3.model.data.ItemInfoWithIcon.FLAG_NOT_PINNABLE;
-import static com.android.launcher3.popup.SystemShortcut.ADD_TO_HOME_SCREEN;
 import static com.android.launcher3.popup.SystemShortcut.APP_INFO;
 import static com.android.launcher3.popup.SystemShortcut.INSTALL;
 import static com.android.launcher3.popup.SystemShortcut.REMOVE;
@@ -2426,7 +2425,7 @@ public class Launcher extends StatefulActivity<LauncherState>
         PopupContainer.Companion.showForMenuItems(
                 this,
                 getRootView(),
-                WorkspaceLongPressOptions.getAll(this),
+                WorkspaceLongPressOptions.getAll(this, /* includeAllApps= */ false),
                 pos
         );
     }
@@ -2810,14 +2809,8 @@ public class Launcher extends StatefulActivity<LauncherState>
         if (container == CONTAINER_DESKTOP || container == CONTAINER_HOTSEAT) {
             return Stream.of(APP_INFO, WIDGETS, INSTALL, REMOVE);
         } else if (container == CONTAINER_ALL_APPS || container == CONTAINER_ALL_APPS_PREDICTION) {
-            // TODO(b/444744861): Update private space apps to have its own container.
-            boolean isPinnable = itemInfo instanceof ItemInfoWithIcon info
-                    && (info.runtimeStatusFlags & FLAG_NOT_PINNABLE) == 0;
-            if (isPinnable) {
-                return Stream.of(APP_INFO, WIDGETS, INSTALL, ADD_TO_HOME_SCREEN);
-            } else {
-                return Stream.of(APP_INFO, WIDGETS, INSTALL);
-            }
+            // Folio: no "Add to home screen" here; drag the app to the home screen instead.
+            return Stream.of(APP_INFO, WIDGETS, INSTALL);
         }
         return Stream.of(APP_INFO, WIDGETS, INSTALL
                 , com.android.launcher3.popup.SystemShortcut.STORAGE_SCOPES

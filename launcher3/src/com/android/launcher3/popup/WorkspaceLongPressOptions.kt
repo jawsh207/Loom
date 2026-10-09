@@ -50,8 +50,13 @@ import com.android.launcher3.views.OptionsPopupView.OptionItem
 /** Class to create default set of long-press options. */
 object WorkspaceLongPressOptions {
 
+    /**
+     * Folio: [includeAllApps] false leaves out "Apps list" (the home screen's long-press menu);
+     * the accessibility actions keep it.
+     */
     @JvmStatic
-    fun getAll(ctx: Context): List<PopupData> = buildList {
+    @JvmOverloads
+    fun getAll(ctx: Context, includeAllApps: Boolean = true): List<PopupData> = buildList {
         add(
             PopupData(
                 R.drawable.ic_palette,
@@ -88,7 +93,7 @@ object WorkspaceLongPressOptions {
             )
         }
 
-        add(
+        if (includeAllApps) add(
             PopupData(
                 R.drawable.ic_apps,
                 R.string.all_apps_button_label,
