@@ -17,7 +17,7 @@ What Folio adds:
 
 Open **Releases** and download the APK from the newest release.
 
-Releases are only published when you ask for one: go to **Actions › Build release › Run workflow**, pick the branch (normally `main`), optionally type a version such as `1.0`, and press **Run workflow**. Leave the version blank to get `0.2.N`. Pushing a `v*` tag (for example `v1.0`) also publishes a release.
+Releases are only published when you ask for one: go to **Actions › Build release › Run workflow**, pick the branch (normally `main`), optionally type a version such as `1.0`, and press **Run workflow**. Leave the version blank to get `0.2.N`. Pushing a `v*` tag (for example `v1.0`) also publishes a release. Each release page starts with a recap of what changed, taken from the **Unreleased** section of [CHANGELOG.md](CHANGELOG.md), which is then filed under the new version number. If that section is empty, the recap lists the commits since the previous release.
 
 Ordinary pushes still build the APK on **Actions › Build Folio**, to check the code compiles. That APK is kept as the run's **Folio** artifact but isn't published.
 
