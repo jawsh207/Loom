@@ -49,7 +49,7 @@ object Opml {
         s.startDocument("UTF-8", true)
         s.startTag(null, "opml").attribute(null, "version", "2.0")
         s.startTag(null, "head")
-        s.startTag(null, "title").text("Folio feeds").endTag(null, "title")
+        s.startTag(null, "title").text("Loom feeds").endTag(null, "title")
         s.endTag(null, "head")
         s.startTag(null, "body")
         val byFolder = feeds.groupBy { it.folder }
