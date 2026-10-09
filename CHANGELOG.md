@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.3.0 (2026-10-09)
+
 - **Folio is now Loom.** A loom weaves separate threads into a single fabric, much as Loom weaves folder covers, drawer tabs, icon packs, a feed reader and more into one home screen. New woven icon to match.
 - It installs over Folio as an update: your home screen, settings and feeds carry over.
 
