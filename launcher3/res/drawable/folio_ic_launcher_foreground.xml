@@ -14,14 +14,25 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<!-- Loom app icon: three threads each way, woven over and under. 108dp adaptive canvas,
-     artwork kept inside the 66dp safe zone (21..87). -->
+<!-- Loom app icon: a house woven from threads. The roof is one thread; the walls and the
+     weave under it are threads passing over and under each other. 108dp adaptive canvas,
+     artwork kept inside the 66dp safe zone. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <group>
+        <!-- the house body, just under the roof -->
+        <clip-path android:pathData="M34.5,78H73.5V56.71L54,38.71L34.5,56.71Z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M34.5,30H42V55.35H34.5ZM34.5,67.65H42V79H34.5ZM50.25,30H57.75V43.85H50.25ZM50.25,56.15H57.75V66.85H50.25ZM66,30H73.5V55.35H66ZM66,67.65H73.5V79H66ZM44.4,46.25H63.6V53.75H44.4ZM33.5,57.75H47.85V65.25H33.5ZM60.15,57.75H74.5V65.25H60.15ZM44.4,69.25H63.6V76.75H44.4Z" />
+    </group>
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M35,29H43V47.5H35ZM35,60.5H43V79H35ZM35,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM35,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,35H32.5V43H29ZM45.5,35H62.5V43H45.5ZM75.5,35H79V43H75.5ZM25,39a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,39a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM50,29H58V32.5H50ZM50,45.5H58V62.5H50ZM50,75.5H58V79H50ZM50,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM50,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,50H47.5V58H29ZM60.5,50H79V58H60.5ZM25,54a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,54a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM65,29H73V47.5H65ZM65,60.5H73V79H65ZM65,29a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM65,79a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM29,65H32.5V73H29ZM45.5,65H62.5V73H45.5ZM75.5,65H79V73H75.5ZM25,69a4,4 0,1 1,8,0a4,4 0,1 1,-8,0ZM75,69a4,4 0,1 1,8,0a4,4 0,1 1,-8,0Z" />
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M28,54L54,30L80,54" />
 </vector>
