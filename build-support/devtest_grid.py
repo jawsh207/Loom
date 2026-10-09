@@ -133,7 +133,10 @@ def main():
     close_popup()
     sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
     time.sleep(3)
-    clock = find(snap("drawer-for-menu"), r"^clock$")
+    drawer = snap("drawer-for-menu")
+    log(f"  app is named Loom in the drawer: {bool(find(drawer, '^loom$'))}"
+        f" (no Folio: {not find(drawer, '^folio$')})")
+    clock = find(drawer, r"^clock$")
     if clock:
         cx, cy = center(clock)
         long_press(cx, cy)
