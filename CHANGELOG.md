@@ -5,7 +5,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
-- The woven icon now takes the shape of a house: a roof thread over walls woven from threads.
+- The woven icon now takes the shape of a house: the same over-and-under weave, with the top thread bent into a roof.
 
 ## 0.3.0 (2026-10-09)
 
