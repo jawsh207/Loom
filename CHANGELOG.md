@@ -5,6 +5,8 @@ What's new in each Folio release. The **Unreleased** section collects changes as
 
 ## Unreleased
 
+## 0.2.4 (2026-10-09)
+
 ### Home screen lock
 - Long-pressing anything on a locked home screen (an icon, folder, widget or an empty spot) now shows a popup. Touch and hold its **Hold to unlock** button to unlock the home screen for 45 seconds; it then locks again by itself (after any drag in progress ends).
 - While locked, long-pressing an app icon shows this popup instead of the app's menu; the menu is back once unlocked.
