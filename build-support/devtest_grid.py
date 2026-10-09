@@ -87,6 +87,20 @@ def close_popup():
     time.sleep(1)
 
 
+def open_drawer(name, marker=r"^clock$", tries=3):
+    """Swipes up to the app drawer, retrying while the home screen is still settling."""
+    w, h = screen_size()
+    for attempt in range(tries):
+        sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+        time.sleep(3)
+        nodes = snap(f"{name}-{attempt}")
+        if find(nodes, marker):
+            return nodes
+        go_home()
+        time.sleep(2)
+    return None
+
+
 def center(n):
     x1, y1, x2, y2 = n["bounds"]
     return (x1 + x2) // 2, (y1 + y2) // 2
@@ -131,9 +145,7 @@ def main():
     log(f"  home menu shown: {bool(find(menu, 'wallpaper'))}")
     log(f"  home menu has no Apps list: {not find(menu, '^apps list$')}")
     close_popup()
-    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
-    time.sleep(3)
-    drawer = snap("drawer-for-menu")
+    drawer = open_drawer("drawer-for-menu") or []
     log(f"  app is named Loom in the drawer: {bool(find(drawer, '^loom$'))}"
         f" (no Folio: {not find(drawer, '^folio$')})")
     clock = find(drawer, r"^clock$")
@@ -200,9 +212,7 @@ def main():
         else:
             log("  !! no hold button")
     # Drag an app from the drawer onto the home screen.
-    sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
-    time.sleep(3)
-    clock = find(snap("locked-drawer"), r"^clock$")
+    clock = find(open_drawer("locked-drawer") or [], r"^clock$")
     if clock:
         x, y = center(clock)
         sh(f"input draganddrop {x} {y} {w // 2} {h // 2} 3000")
@@ -234,15 +244,8 @@ def main():
     gallery = find(nodes, r"^gallery$")
     # Moved to the upper part while unlocked; the stock layout has it in the last row.
     log(f"  gallery back in its stock spot: {bool(gallery) and gallery['bounds'][1] > h * 0.6}")
-    in_drawer = False
-    for attempt in range(3):  # the home screen may still be reloading after the reset
-        sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
-        time.sleep(3)
-        if find(snap(f"drawer-after-clear-{attempt}"), "^gallery$"):
-            in_drawer = True
-            break
-        go_home()
-    log(f"  apps still in drawer: {in_drawer}")
+    # The home screen may still be reloading after the reset.
+    log(f"  apps still in drawer: {bool(open_drawer('drawer-after-clear', '^gallery$'))}")
     go_home()
 
     # --- 3. Drawer-only change: no warning ---
