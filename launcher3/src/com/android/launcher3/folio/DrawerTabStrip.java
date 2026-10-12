@@ -57,9 +57,12 @@ public class DrawerTabStrip extends HorizontalScrollView
         setHorizontalScrollBarEnabled(false);
         setOverScrollMode(OVER_SCROLL_NEVER);
         setClipToPadding(false);
+        // Tabs that fit are centred (the row stretches to the full width); more than fit
+        // scroll sideways as before.
+        setFillViewport(true);
         mChips = new LinearLayout(context);
         mChips.setOrientation(LinearLayout.HORIZONTAL);
-        mChips.setGravity(Gravity.CENTER_VERTICAL);
+        mChips.setGravity(Gravity.CENTER);
         addView(mChips, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
     }
 

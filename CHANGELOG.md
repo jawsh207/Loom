@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- The home screen lock popup now always opens in the middle of the screen.
+- The app drawer's tabs are centred when they fit; when there are more than fit, they scroll as before.
 - The back gesture now works in the feed panel: it closes the article you're reading, and from the list it closes the panel.
 
 ## 0.3.0 (2026-10-09)

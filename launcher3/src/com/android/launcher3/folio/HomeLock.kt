@@ -6,7 +6,6 @@ package com.android.launcher3.folio
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Rect
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -57,23 +56,16 @@ object HomeLock {
 
     /** What a long press on [v] does on a locked home screen: shows the unlock popup. */
     @JvmStatic
-    fun onLockedLongPress(launcher: Launcher, v: View): Boolean {
-        val rect = Rect()
-        try {
-            launcher.dragLayer.getDescendantRectRelativeToSelf(v, rect)
-        } catch (e: Exception) {
-            rect.setEmpty()
-        }
-        HomeLockPopup.show(launcher, rect)
+    fun onLockedLongPress(launcher: Launcher, @Suppress("UNUSED_PARAMETER") v: View): Boolean {
+        HomeLockPopup.show(launcher)
         return true
     }
 
-    /** A long press on an empty part of the home screen at ([x], [y]); negative: no point. */
+    /** A long press on an empty part of the home screen while it's locked. */
     @JvmStatic
-    fun onLockedLongPressAt(launcher: Launcher, x: Float, y: Float) {
-        val rect = Rect()
-        if (x >= 0 && y >= 0) rect.set(x.toInt(), y.toInt(), x.toInt(), y.toInt())
-        HomeLockPopup.show(launcher, rect)
+    fun onLockedLongPressAt(launcher: Launcher, @Suppress("UNUSED_PARAMETER") x: Float,
+            @Suppress("UNUSED_PARAMETER") y: Float) {
+        HomeLockPopup.show(launcher)
     }
 
     /** Unlocks the home screen for [UNLOCK_MS]. */
