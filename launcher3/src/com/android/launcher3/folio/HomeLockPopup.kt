@@ -65,7 +65,6 @@ import kotlinx.coroutines.launch
  */
 class HomeLockPopup private constructor(
     private val launcher: Launcher,
-    private val anchor: Rect,
 ) : AbstractFloatingView(launcher, null), Insettable {
 
     private val density = resources.displayMetrics.density
@@ -97,24 +96,14 @@ class HomeLockPopup private constructor(
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        // Always in the middle of the screen (between the status and navigation bars).
         val w = card.measuredWidth
         val h = card.measuredHeight
-        val margin = (16 * density).toInt()
-        val gap = (12 * density).toInt()
-        val width = r - l
-        val height = b - t
-        val top = insets.top + margin
-        val bottom = height - insets.bottom - margin
-        val (cx, y) = if (anchor.isEmpty && anchor.left == 0 && anchor.top == 0) {
-            width / 2 to (height - h) / 2
-        } else {
-            // Above what was pressed if it fits, otherwise below it.
-            val above = anchor.top - gap - h
-            anchor.centerX() to (if (above >= top) above else anchor.bottom + gap)
-        }
-        val x = (cx - w / 2).coerceIn(margin, (width - w - margin).coerceAtLeast(margin))
-        val cy = y.coerceIn(top, (bottom - h).coerceAtLeast(top))
-        card.layout(x, cy, x + w, cy + h)
+        val x = ((r - l) - w) / 2
+        val top = insets.top
+        val bottom = (b - t) - insets.bottom
+        val y = (top + (bottom - top - h) / 2).coerceAtLeast(top)
+        card.layout(x, y, x + w, y + h)
     }
 
     override fun onTouchEvent(ev: MotionEvent): Boolean {
@@ -174,10 +163,10 @@ class HomeLockPopup private constructor(
         private const val HOLD_MS = 900
 
         @JvmStatic
-        fun show(launcher: Launcher, anchor: Rect) {
+        fun show(launcher: Launcher) {
             closeOpenViews(launcher, false,
                 TYPE_ACTION_POPUP or TYPE_OPTIONS_POPUP or TYPE_OPTIONS_POPUP_DIALOG)
-            HomeLockPopup(launcher, Rect(anchor)).open()
+            HomeLockPopup(launcher).open()
         }
 
         @Composable

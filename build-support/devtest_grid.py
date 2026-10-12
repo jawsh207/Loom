@@ -146,6 +146,9 @@ def main():
     log(f"  home menu has no Apps list: {not find(menu, '^apps list$')}")
     close_popup()
     drawer = open_drawer("drawer-for-menu") or []
+    apps_tab = find(drawer, r"^apps$")
+    if apps_tab:
+        log(f"  drawer tabs centred: {apps_tab['bounds'][0] > w // 4} (Apps tab at {apps_tab['bounds']})")
     log(f"  app is named Loom in the drawer: {bool(find(drawer, '^loom$'))}"
         f" (no Folio: {not find(drawer, '^folio$')})")
     clock = find(drawer, r"^clock$")
@@ -170,6 +173,11 @@ def main():
         popup = snap("locked-long-press")
         log(f"  long-press shows unlock popup: {bool(find(popup, 'home screen locked'))}")
         log(f"  popup has hold button: {bool(find(popup, '^hold to unlock$'))}")
+        hold = find(popup, '^hold to unlock$')
+        if hold:
+            hx, hy = center(hold)
+            log(f"  popup centred: {abs(hx - w // 2) < w // 20 and abs(hy - h // 2) < h // 6}"
+                f" (button at {hx},{hy} on {w}x{h})")
         tap_xy(w // 2, h * 4 // 5)  # outside the card (above the dock) closes it
         log(f"  tap outside closes popup: {not find(snap('popup-closed'), 'home screen locked')}")
         sh(f"input draganddrop {x} {y} {w // 2} {h // 3} 2500")
