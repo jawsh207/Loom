@@ -41,6 +41,14 @@ def scroll_to(pattern, name, tries=6):
     return None
 
 
+def back_gesture(name):
+    """A back swipe in from the right edge (gesture navigation), not the Back key."""
+    w, h = screen_size()
+    sh(f"input swipe {w - 2} {h // 2} {w * 3 // 5} {h // 2} 250")
+    time.sleep(2)
+    return snap(name)
+
+
 def add_feed(url, label):
     if not tap_text(r"^add feed$", f"add-{label}", wait=2):
         return False
@@ -68,6 +76,10 @@ def choose_source(pattern):
 
 def main():
     setup_home()
+    # Gesture navigation, so Back is the edge swipe the home screen can switch off.
+    sh("cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.gestural")
+    time.sleep(4)
+    log(f"  navigation mode: {sh('settings get secure navigation_mode').strip()} (2 = gestures)")
     snap("home")
 
     # 1. Open Feeds in Folio's settings and turn the feed panel on there.
@@ -114,9 +126,9 @@ def main():
         time.sleep(2)
         nodes = snap("article-scrolled")
         log(f"  boilerplate leaked: {bool(find(nodes, 'subscribe now|section 3|copyright'))}")
-        sh("input keyevent KEYCODE_BACK")  # back to the list
-        time.sleep(2)
-        snap("panel-after-back")
+        nodes = back_gesture("panel-after-back")  # back to the list
+        log(f"  back gesture closes the article: {not find(nodes, 'a life measured in hours')}")
+        log(f"  ... and the feed list is still showing: {bool(find(nodes, 'lighthouse keepers'))}")
 
     # 5. A real article from the web.
     choose_source(r"^ars technica")
@@ -142,7 +154,13 @@ def main():
         sh("input keyevent KEYCODE_BACK")
         time.sleep(2)
 
-    # 7. Swipe the panel away to the left.
+    # 7. A back gesture on the list closes the panel; open it again.
+    nodes = back_gesture("panel-back-gesture")
+    log(f"  back gesture closes the panel: {not find(nodes, 'lighthouse|full text in the feed')}")
+    sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
+    time.sleep(4)
+
+    # 8. Swipe the panel away to the left.
     sh(f"input swipe {w * 7 // 8} {h // 2} {w // 8} {h // 2} 300")
     time.sleep(3)
     nodes = snap("panel-closed")
