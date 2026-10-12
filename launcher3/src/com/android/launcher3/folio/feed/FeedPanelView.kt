@@ -139,6 +139,9 @@ class FeedPanelView(private val launcher: Launcher) :
                 state.openItem = null
                 state.showAddDialog = false
             }
+            // The home screen turns the system back gesture off while nothing is open on it,
+            // and only re-checks when views are added. The panel stays attached, so tell it.
+            launcher.updateDisallowBack()
         }
         updateStatusBar(p > 0.5f)
         onProgress?.invoke(p)
