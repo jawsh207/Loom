@@ -167,6 +167,23 @@ def main():
         log(f"  back at the top: {bool(first) and bool(find(nodes, '^' + re.escape(first['text']) + '$'))}"
             f"; button hidden again: {not find(nodes, '^back to top$')}")
 
+    # 5c. Back from an article returns to the same place in the list, not the top.
+    for i in range(2):
+        sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+        time.sleep(1.5)
+    nodes = snap("list-down-before-article")
+    pick = next((n for n in nodes if len(n["text"]) > 25 and h // 3 < n["bounds"][1] < h * 2 // 3
+                 and "·" not in n["text"]), None)
+    if pick:
+        tap(pick)
+        time.sleep(6)
+        snap("mid-list-article")
+        nodes = back_gesture("list-after-article")
+        log(f"  list kept its place after an article: {bool(find(nodes, '^' + re.escape(pick['text']) + '$'))}"
+            f" ({pick['text']!r}); not at the top: {not (first and find(nodes, '^' + re.escape(first['text']) + '$'))}")
+    else:
+        log("  !! nothing to open mid-list")
+
     # 6. Feed-only item (no link) shows the feed's own text.
     choose_source(r"^folio test gazette")
     if tap_text(r"full text in the feed", "panel-feed-only", wait=4):

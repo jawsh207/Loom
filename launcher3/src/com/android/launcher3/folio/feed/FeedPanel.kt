@@ -113,6 +113,13 @@ class FeedPanelState(context: Context) {
     var filter by mutableStateOf(FeedFilter(
         unreadOnly = FeedPrefs.prefs(context).getBoolean(FeedPrefs.UNREAD_ONLY, false)))
     var openItem by mutableStateOf<FeedItem?>(null)
+    /**
+     * Where the feed list is scrolled to. Kept here, not in the list, so it survives the list
+     * being swapped out while an article is open.
+     */
+    val listState = LazyListState()
+    /** The filter the list was last scrolled to the top for. */
+    var listFilter: FeedFilter? = null
     var textScale by mutableFloatStateOf(FeedPrefs.textScale(context))
     var showAddDialog by mutableStateOf(false)
     /** System bar sizes, from the launcher (which keeps window insets to itself). */
@@ -178,8 +185,12 @@ private fun FeedList(state: FeedPanelState, onOpenSettings: () -> Unit, onImport
             items.map { Entry(it, snippetOf(it)) }
         }
     }
-    val listState = rememberLazyListState()
-    LaunchedEffect(state.filter) { listState.scrollToItem(0) }
+    val listState = state.listState
+    // Back to the top when the source or filters change, not when returning from an article.
+    LaunchedEffect(state.filter) {
+        if (state.listFilter != null && state.listFilter != state.filter) listState.scrollToItem(0)
+        state.listFilter = state.filter
+    }
     // Check for new items when the panel opens (skipped if checked a few minutes ago).
     LaunchedEffect(Unit) { state.repo.refresh() }
 
