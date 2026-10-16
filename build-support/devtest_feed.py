@@ -9,6 +9,7 @@ usage: devtest_feed.py OUT_DIR FOLIO_APK
 The local test site (build-support/devtest-feed) must be served on the host at port 8000,
 which the emulator reaches as 10.0.2.2."""
 
+import re
 import time
 
 from devtest import (PKG, find, log, save_logs, screen_size, setup_home, sh, snap, tap,
@@ -145,6 +146,26 @@ def main():
         snap("real-article-scrolled")
         sh("input keyevent KEYCODE_BACK")
         time.sleep(2)
+
+    # 5b. "Back to top": hidden while scrolling down, shown when scrolling back up.
+    top_before = snap("list-top")
+    first = next((n for n in top_before if len(n["text"]) > 25 and n["bounds"][1] > 400), None)
+    for i in range(3):
+        sh(f"input swipe {w // 2} {h * 4 // 5} {w // 2} {h // 5} 300")
+        time.sleep(1.5)
+    nodes = snap("list-scrolled-down")
+    log(f"  no top button while scrolling down: {not find(nodes, '^back to top$')}")
+    sh(f"input swipe {w // 2} {h // 2} {w // 2} {h * 3 // 5} 300")
+    time.sleep(1.5)
+    nodes = snap("list-scrolled-up")
+    button = find(nodes, '^back to top$')
+    log(f"  top button after scrolling up a little: {bool(button)}")
+    if button:
+        tap(button)
+        time.sleep(3)
+        nodes = snap("list-after-top")
+        log(f"  back at the top: {bool(first) and bool(find(nodes, '^' + re.escape(first['text']) + '$'))}"
+            f"; button hidden again: {not find(nodes, '^back to top$')}")
 
     # 6. Feed-only item (no link) shows the feed's own text.
     choose_source(r"^folio test gazette")

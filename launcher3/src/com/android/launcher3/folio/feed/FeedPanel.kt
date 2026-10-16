@@ -9,6 +9,9 @@ import android.content.Intent
 import android.net.Uri
 import android.text.format.DateUtils
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -35,6 +38,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
@@ -44,6 +48,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DoneAll
@@ -62,6 +67,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -83,6 +89,7 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -92,6 +99,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.android.launcher3.R
 import kotlinx.coroutines.Dispatchers
@@ -250,6 +258,7 @@ private fun FeedList(state: FeedPanelState, onOpenSettings: () -> Unit, onImport
                     }
                 }
             }
+            ScrollToTopButton(listState, state.bottomInset, Modifier.align(Alignment.BottomEnd))
         }
     }
 }
@@ -594,59 +603,111 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
         Box(Modifier.fillMaxWidth().height(4.dp)) {
             if (loading) LinearProgressIndicator(Modifier.fillMaxWidth())
         }
-        LazyColumn(
-            Modifier.fillMaxSize().testTag("folio_feed_article"),
-            contentPadding = PaddingValues(bottom = 24.dp + state.bottomInset),
+        val articleState = rememberLazyListState()
+        Box(Modifier.fillMaxSize()) {
+            LazyColumn(
+                Modifier.fillMaxSize().testTag("folio_feed_article"),
+                state = articleState,
+                contentPadding = PaddingValues(bottom = 24.dp + state.bottomInset),
+            ) {
+                item {
+                    Text(post.title, Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
+                        style = MaterialTheme.typography.headlineSmall.let {
+                            it.copy(fontSize = it.fontSize * state.textScale)
+                        })
+                }
+                item {
+                    val meta = listOfNotNull(shown?.byline ?: post.author,
+                        if (post.published > 0) DateUtils.formatDateTime(context, post.published,
+                            DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_TIME or
+                                DateUtils.FORMAT_ABBREV_MONTH) else null)
+                    if (meta.isNotEmpty()) {
+                        Text(meta.joinToString(" · "),
+                            Modifier.padding(horizontal = 20.dp).padding(bottom = 8.dp),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = colors.onSurfaceVariant)
+                    }
+                }
+                if (heroImage != null) {
+                    item {
+                        RemoteImage(heroImage, null,
+                            Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)
+                                .clip(RoundedCornerShape(20.dp)),
+                            contentScale = androidx.compose.ui.layout.ContentScale.FillWidth)
+                    }
+                }
+                if (!loading && shown?.extracted != true && post.link != null) {
+                    item {
+                        Surface(
+                            Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                            shape = RoundedCornerShape(16.dp), color = colors.secondaryContainer,
+                        ) {
+                            Text(stringResource(context, R.string.feed_article_fallback),
+                                Modifier.padding(14.dp), style = MaterialTheme.typography.bodyMedium,
+                                color = colors.onSecondaryContainer)
+                        }
+                    }
+                }
+                articleBlocks(blocks, body)
+                post.link?.let { link ->
+                    item {
+                        FilledTonalButton({ openInBrowser(context, link) },
+                            Modifier.padding(horizontal = 20.dp, vertical = 16.dp)) {
+                            Icon(Icons.AutoMirrored.Outlined.OpenInNew, null, Modifier.size(18.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text(stringResource(context, R.string.feed_open_original))
+                        }
+                    }
+                }
+            }
+            ScrollToTopButton(articleState, state.bottomInset, Modifier.align(Alignment.BottomEnd))
+        }
+    }
+}
+
+/**
+ * A "back to top" button for [listState]: hidden while scrolling down and at the top, shown as
+ * soon as the reader starts scrolling back up.
+ */
+@Composable
+private fun ScrollToTopButton(listState: LazyListState, bottomInset: Dp, modifier: Modifier) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var show by remember(listState) { mutableStateOf(false) }
+    LaunchedEffect(listState) {
+        var lastIndex = listState.firstVisibleItemIndex
+        var lastOffset = listState.firstVisibleItemScrollOffset
+        snapshotFlow { listState.firstVisibleItemIndex to listState.firstVisibleItemScrollOffset }
+            .collect { (index, offset) ->
+                val up = index < lastIndex || (index == lastIndex && offset < lastOffset)
+                val down = index > lastIndex || (index == lastIndex && offset > lastOffset)
+                show = when {
+                    index == 0 && offset == 0 -> false
+                    up -> true
+                    down -> false
+                    else -> show
+                }
+                lastIndex = index
+                lastOffset = offset
+            }
+    }
+    AnimatedVisibility(
+        visible = show,
+        modifier = modifier.padding(end = 16.dp, bottom = 16.dp + bottomInset),
+        enter = scaleIn() + fadeIn(),
+        exit = scaleOut() + fadeOut(),
+    ) {
+        FloatingActionButton(
+            onClick = {
+                scope.launch {
+                    // From far down, jump most of the way first so it doesn't take ages.
+                    if (listState.firstVisibleItemIndex > 12) listState.scrollToItem(6)
+                    listState.animateScrollToItem(0)
+                }
+            },
+            modifier = Modifier.testTag("folio_feed_top"),
         ) {
-            item {
-                Text(post.title, Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
-                    style = MaterialTheme.typography.headlineSmall.let {
-                        it.copy(fontSize = it.fontSize * state.textScale)
-                    })
-            }
-            item {
-                val meta = listOfNotNull(shown?.byline ?: post.author,
-                    if (post.published > 0) DateUtils.formatDateTime(context, post.published,
-                        DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_TIME or
-                            DateUtils.FORMAT_ABBREV_MONTH) else null)
-                if (meta.isNotEmpty()) {
-                    Text(meta.joinToString(" · "),
-                        Modifier.padding(horizontal = 20.dp).padding(bottom = 8.dp),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = colors.onSurfaceVariant)
-                }
-            }
-            if (heroImage != null) {
-                item {
-                    RemoteImage(heroImage, null,
-                        Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)
-                            .clip(RoundedCornerShape(20.dp)),
-                        contentScale = androidx.compose.ui.layout.ContentScale.FillWidth)
-                }
-            }
-            if (!loading && shown?.extracted != true && post.link != null) {
-                item {
-                    Surface(
-                        Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
-                        shape = RoundedCornerShape(16.dp), color = colors.secondaryContainer,
-                    ) {
-                        Text(stringResource(context, R.string.feed_article_fallback),
-                            Modifier.padding(14.dp), style = MaterialTheme.typography.bodyMedium,
-                            color = colors.onSecondaryContainer)
-                    }
-                }
-            }
-            articleBlocks(blocks, body)
-            post.link?.let { link ->
-                item {
-                    FilledTonalButton({ openInBrowser(context, link) },
-                        Modifier.padding(horizontal = 20.dp, vertical = 16.dp)) {
-                        Icon(Icons.AutoMirrored.Outlined.OpenInNew, null, Modifier.size(18.dp))
-                        Spacer(Modifier.width(8.dp))
-                        Text(stringResource(context, R.string.feed_open_original))
-                    }
-                }
-            }
+            Icon(Icons.Filled.KeyboardArrowUp, stringResource(context, R.string.feed_scroll_top))
         }
     }
 }
