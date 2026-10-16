@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Feed panel: going back from an article returns you to the same place in the feed list instead of the top.
+
 ## 0.3.2 (2026-10-16)
 
 - Feed panel: a **Back to top** button appears when you start scrolling back up through the feed list or an article; tap it to jump to the top.
