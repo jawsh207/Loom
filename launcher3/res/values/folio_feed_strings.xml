@@ -28,6 +28,7 @@
     <string name="feed_open_original">Open original page</string>
     <string name="feed_manage">Manage feeds</string>
     <string name="feed_back">Back</string>
+    <string name="feed_scroll_top">Back to top</string>
     <string name="feed_empty_title">No feeds yet</string>
     <string name="feed_empty_body">Add a site or a feed address, or import the OPML file from another feed reader.</string>
     <string name="feed_caught_up_title">All caught up</string>
