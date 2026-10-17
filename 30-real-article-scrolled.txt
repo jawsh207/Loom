@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 565, 234] text='Ars Technica - All content' desc='' id= click=false
+[597, 171, 660, 234] text='' desc='Star' id= click=false
+[723, 171, 786, 234] text='' desc='Text size' id= click=false
+[849, 171, 912, 234] text='' desc='Share' id= click=false
+[975, 171, 1038, 234] text='' desc='Open in browser' id= click=false
+[53, 287, 1027, 552] text='In the other incident, a model instructed to retrieve figures from a public research dashboard bypassed the organization’s security controls and used the unauthorized access to steal credentials. It then made configuration changes on the server.' desc='' id= click=false
+[53, 594, 1027, 1278] text='In one evaluation, the changes let the model make an internal search tool relay queries to the public dashboard. In a second evaluation, the model downloaded five non-public tables containing 147,451 rows. OpenAI researchers had prompted the agents to retrieve only five dashboard figures. Even after resetting the setting, the model continued using the token to retrieve non-public data.' desc='' id= click=false
+[53, 1320, 1027, 1852] text='“The evaluation ended without the model disclosing that it had guessed answers, accessed the organization’s internal systems, downloaded non-public tables, or changed the authentication configuration,” OpenAI said. “All five answers in this evaluation were marked incorrect.”' desc='' id= click=false
+[53, 1894, 1027, 2400] text='In a third report, the company said a model prompted to update a cryptocurrency trading application used funds from a locked wallet on a test network. The model “derived wallet keys from publicly known developer recovery phrases, found an account with test-network funds, and used that account to pay for the requested contract deployment.”' desc='' id= click=false

@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 565, 234] text='Ars Technica - All content' desc='' id= click=false
+[597, 171, 660, 234] text='' desc='Star' id= click=false
+[723, 171, 786, 234] text='' desc='Text size' id= click=false
+[849, 171, 912, 234] text='' desc='Share' id= click=false
+[975, 171, 1038, 234] text='' desc='Open in browser' id= click=false
+[53, 308, 1027, 560] text='Tesla turns to 50-year-old stunt technology as it tries to Roadster again' desc='' id= click=false
+[53, 581, 639, 634] text='Jonathan M. Gitlin · Oct 16, 2:03\u202fPM' desc='' id= click=false
+[53, 1266, 1027, 1950] text='Nine years after first trying to resurrect the Roadster, Tesla is apparently trying again. CEO Elon Musk might have relocated its HQ to Texas, but yet again he has returned to California’s showbiz industry to hawk his wares; last time it was a Hollywood back lot for the remote-controlled Cybercab demo, last night it was decades-old stunt technology to make a show car do tricks in the air.' desc='' id= click=false
+[53, 1992, 1027, 2400] text='The new Roadster, we’re told, will be unlike anything else, although the angular, wedge-shaped styling owes more than a little to Giorgetto Giugiaro’s original Lotus Esprit—Musk is known to own a James Bond prop car—as well as the more recent Lamborghini Gallardo. At the rear are four giant exhaust pipes; these do not signal Tesla’s sudden embrace of hydrocarbons beyond those emitted by private aviation.' desc='' id= click=false

@@ -1,0 +1,24 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[84, 312, 201, 338] text='Unread' desc='' id= click=false
+[306, 312, 427, 338] text='Starred' desc='' id= click=false
+[74, 401, 769, 407] text='Watch an exclusive clip from Super Scam Me where a victim tracks down her scammer.' desc='' id= click=false
+[74, 512, 648, 554] text='Ars Technica - All content · 12 hr. ago' desc='' id= click=false
+[74, 565, 769, 691] text="The Surface Laptop Ultra delivers on most of Microsoft's promises" desc='' id= click=false
+[74, 702, 769, 808] text='Microsoft promises one machine for dev, AI, and gaming, and mostly gets there.' desc='' id= click=false
+[74, 913, 648, 955] text='Ars Technica - All content · 13 hr. ago' desc='' id= click=false
+[74, 966, 769, 1155] text="Rocket Report: FAA eyes more Starbase traffic; India's Skyroot snares US customer" desc='' id= click=false
+[74, 1166, 769, 1272] text="The pioneering reusable upper stage for Stoke Space's Nova rocket ships out for testing." desc='' id= click=false
+[74, 1377, 648, 1419] text='Ars Technica - All content · 14 hr. ago' desc='' id= click=false
+[74, 1430, 769, 1556] text='Blue Origin is going all in on the New Glenn rocket' desc='' id= click=false
+[74, 1567, 769, 1673] text='The infrastructure is designed to support multiple flights per week by the end of the decade.' desc='' id= click=false
+[74, 1778, 648, 1820] text='Ars Technica - All content · 14 hr. ago' desc='' id= click=false
+[74, 1831, 769, 1957] text='Googlebook review: Android on a laptop is still Android' desc='' id= click=false
+[74, 1968, 769, 2074] text='Android laptops are here, but Google has a lot of work ahead to make them good.' desc='' id= click=false
+[74, 2179, 660, 2221] text='Ars Technica - All content · 2 days ago' desc='' id= click=false
+[74, 2232, 769, 2400] text='KDE turns 30 with Plasma 6.8, remote upgrades, and an X11 farewell' desc='' id= click=false

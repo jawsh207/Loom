@@ -1,0 +1,7 @@
+[120, 749, 960, 1716] text='' desc='' id=android:id/content click=false
+[414, 917, 667, 1001] text='Add feed' desc='' id= click=false
+[225, 1106, 711, 1169] text='Feed or website address' desc='' id= click=false
+[225, 1222, 838, 1264] text='A website works too: Loom finds its feed.' desc='' id= click=false
+[225, 1359, 555, 1422] text='Folder (optional)' desc='' id= click=false
+[788, 1564, 854, 1617] text='Add' desc='' id= click=false
+[579, 1564, 692, 1617] text='Cancel' desc='' id= click=false

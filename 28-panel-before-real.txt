@@ -1,0 +1,23 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[84, 312, 201, 365] text='Unread' desc='' id= click=false
+[306, 312, 427, 365] text='Starred' desc='' id= click=false
+[74, 464, 629, 506] text='Ars Technica - All content · 3 hr. ago' desc='' id= click=false
+[74, 517, 769, 643] text='OpenAI models hacked a crypto wallet and breached more websites' desc='' id= click=false
+[74, 654, 769, 760] text='The actions could have resulted in criminal charges had humans been behind the keyboard.' desc='' id= click=false
+[74, 865, 629, 907] text='Ars Technica - All content · 3 hr. ago' desc='' id= click=false
+[74, 918, 769, 1107] text='“thegentlemanpervert” producing AI CSAM is a NJ prosecutor, say cops' desc='' id= click=false
+[74, 1118, 769, 1224] text='Discord user flagged AI CSAM, triggering arrest of New Jersey deputy AG.' desc='' id= click=false
+[74, 1329, 629, 1371] text='Ars Technica - All content · 4 hr. ago' desc='' id= click=false
+[74, 1382, 769, 1571] text='US Rep proposes bill to give video game buyers "ownership," not "a license"' desc='' id= click=false
+[74, 1582, 769, 1688] text='There are still significant hurdles ahead, both technical and legislative.' desc='' id= click=false
+[74, 1793, 629, 1835] text='Ars Technica - All content · 4 hr. ago' desc='' id= click=false
+[74, 1846, 769, 2035] text='Bug turns one of the biggest fears about Ray-Ban Meta smart glasses into reality' desc='' id= click=false
+[74, 2046, 769, 2152] text='The bug is fixed, but privacy concerns remain.' desc='' id= click=false
+[74, 2257, 629, 2299] text='Ars Technica - All content · 6 hr. ago' desc='' id= click=false
+[74, 2310, 769, 2400] text='RFK Jr. proposes FDA look the other way on unproven peptides, report says' desc='' id= click=false

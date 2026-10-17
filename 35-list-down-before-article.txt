@@ -1,0 +1,23 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[84, 312, 201, 338] text='Unread' desc='' id= click=false
+[306, 312, 427, 338] text='Starred' desc='' id= click=false
+[74, 486, 629, 528] text='Ars Technica - All content · 9 hr. ago' desc='' id= click=false
+[74, 539, 769, 728] text='Polymarket saw $600 million in election trades after the elections were over' desc='' id= click=false
+[74, 739, 769, 845] text='Millions kept changing hands long after the election outcomes were effectively settled.' desc='' id= click=false
+[74, 950, 629, 992] text='Ars Technica - All content · 9 hr. ago' desc='' id= click=false
+[74, 1003, 769, 1192] text='Tesla turns to 50-year-old stunt technology as it tries to Roadster again' desc='' id= click=false
+[74, 1203, 769, 1309] text='If you want to make a car spin in the air, compressed gas is a good way to do it.' desc='' id= click=false
+[74, 1414, 648, 1456] text='Ars Technica - All content · 10 hr. ago' desc='' id= click=false
+[74, 1467, 769, 1656] text='Super Scam Me documentary shows what it takes to catch a romance scammer' desc='' id= click=false
+[74, 1667, 769, 1773] text='Watch an exclusive clip from Super Scam Me where a victim tracks down her scammer.' desc='' id= click=false
+[74, 1878, 648, 1920] text='Ars Technica - All content · 12 hr. ago' desc='' id= click=false
+[74, 1931, 769, 2057] text="The Surface Laptop Ultra delivers on most of Microsoft's promises" desc='' id= click=false
+[74, 2068, 769, 2174] text='Microsoft promises one machine for dev, AI, and gaming, and mostly gets there.' desc='' id= click=false
+[74, 2279, 648, 2321] text='Ars Technica - All content · 13 hr. ago' desc='' id= click=false
+[74, 2332, 769, 2400] text="Rocket Report: FAA eyes more Starbase traffic; India's Skyroot snares US customer" desc='' id= click=false

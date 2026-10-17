@@ -1,0 +1,17 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[42, 559, 258, 622] text='Feed panel' desc='' id= click=false
+[42, 622, 859, 781] text="Swipe right from the first home screen page to read your RSS and Atom feeds. Loom only goes online for this when it's on." desc='' id= click=false
+[42, 865, 220, 918] text='Refreshing' desc='' id= click=false
+[42, 966, 484, 1029] text='Check for new articles' desc='' id= click=false
+[42, 1029, 264, 1082] text='Every 3 hours' desc='' id= click=false
+[42, 1150, 300, 1213] text='Only on Wi-Fi' desc='' id= click=false
+[42, 1213, 859, 1319] text='Background checks wait for an unmetered connection' desc='' id= click=false
+[42, 1387, 468, 1450] text='Keep read articles for' desc='' id= click=false
+[42, 1450, 171, 1503] text='30 days' desc='' id= click=false
+[42, 1592, 164, 1645] text='0 feeds' desc='' id= click=false
+[147, 1698, 325, 1761] text='Add feed' desc='' id= click=false
+[147, 1840, 413, 1903] text='Import OPML' desc='' id= click=false
+[147, 1903, 1036, 1956] text='The subscription list format other feed readers export' desc='' id= click=false
+[147, 2034, 410, 2097] text='Export OPML' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[43, 381, 240, 476] text='Feeds' desc='' id= click=false

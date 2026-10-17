@@ -1,0 +1,9 @@
+[32, 275, 612, 824] text='' desc='' id=android:id/content click=false
+[64, 333, 208, 386] text='All feeds' desc='' id= click=false
+[517, 333, 559, 386] text='24' desc='' id= click=false
+[64, 462, 485, 515] text='Ars Technica - All content' desc='' id= click=false
+[517, 462, 559, 515] text='20' desc='' id= click=false
+[64, 588, 347, 641] text='Folio Atom Notes' desc='' id= click=false
+[517, 588, 538, 641] text='1' desc='' id= click=false
+[64, 714, 360, 767] text='Folio Test Gazette' desc='' id= click=false
+[517, 714, 538, 767] text='3' desc='' id= click=false
