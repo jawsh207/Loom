@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.3.3 (2026-10-17)
+
 - Feed panel: going back from an article returns you to the same place in the feed list instead of the top.
 
 ## 0.3.2 (2026-10-16)
