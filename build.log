@@ -1,0 +1,844 @@
+tool versions: 
+
+------------------------------------------------------------
+Gradle 9.8.1
+------------------------------------------------------------
+
+Build time:    2026-10-07 16:57:46 UTC
+Revision:      39daf39feb60a18b1b6ddccde53366522fef516f
+
+Kotlin:        2.4.10
+Groovy:        4.0.33
+Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
+Launcher JVM:  21.0.12.1 (Eclipse Adoptium 21.0.12.1+1-LTS)
+Daemon JVM:    /usr/lib/jvm/temurin-21-jdk-amd64 (no Daemon JVM specified, using current Java home)
+OS:            Linux 6.17.0-1022-azure amd64
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :appfunctions:preBuild UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :dynamiccolors:preBuild UP-TO-DATE
+> Task :animationlib:preBuild UP-TO-DATE
+> Task :animationlib:preReleaseBuild UP-TO-DATE
+> Task :appfunctions:preReleaseBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:mergeReleaseJniLibFolders
+> Task :animationlib:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseJniLibFolders
+> Task :appfunctions:mergeReleaseJniLibFolders
+> Task :flags:preBuild UP-TO-DATE
+> Task :flags:preReleaseBuild UP-TO-DATE
+> Task :appfunctions:mergeReleaseNativeLibs NO-SOURCE
+> Task :animationlib:mergeReleaseNativeLibs NO-SOURCE
+> Task :dynamiccolors:mergeReleaseNativeLibs NO-SOURCE
+> Task :flags:mergeReleaseJniLibFolders
+> Task :animationlib:copyReleaseJniLibsProjectOnly
+> Task :iconloaderlib:preBuild UP-TO-DATE
+> Task :iconloaderlib:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:copyReleaseJniLibsProjectOnly
+> Task :appfunctions:copyReleaseJniLibsProjectOnly
+> Task :launcher3-res:preBuild UP-TO-DATE
+> Task :launcher3-res:preReleaseBuild UP-TO-DATE
+> Task :msdllib:preBuild UP-TO-DATE
+> Task :msdllib:preReleaseBuild UP-TO-DATE
+> Task :flags:mergeReleaseNativeLibs NO-SOURCE
+> Task :flags:copyReleaseJniLibsProjectOnly
+> Task :launcher3-res:mergeReleaseJniLibFolders
+> Task :plugins:preBuild UP-TO-DATE
+> Task :iconloaderlib:mergeReleaseJniLibFolders
+> Task :plugins:preReleaseBuild UP-TO-DATE
+> Task :msdllib:mergeReleaseJniLibFolders
+> Task :iconloaderlib:mergeReleaseNativeLibs NO-SOURCE
+> Task :launcher3-res:mergeReleaseNativeLibs NO-SOURCE
+> Task :plugins:mergeReleaseJniLibFolders
+> Task :launcher3-res:copyReleaseJniLibsProjectOnly
+> Task :msdllib:mergeReleaseNativeLibs NO-SOURCE
+> Task :iconloaderlib:copyReleaseJniLibsProjectOnly
+> Task :widgetpicker:preBuild UP-TO-DATE
+> Task :widgetpicker:preReleaseBuild UP-TO-DATE
+> Task :usertypelib:preBuild UP-TO-DATE
+> Task :usertypelib:preReleaseBuild UP-TO-DATE
+> Task :plugins:mergeReleaseNativeLibs NO-SOURCE
+> Task :msdllib:copyReleaseJniLibsProjectOnly
+> Task :wmshellshared:preBuild UP-TO-DATE
+> Task :wmshellshared:preReleaseBuild UP-TO-DATE
+> Task :plugins:copyReleaseJniLibsProjectOnly
+> Task :widgetpicker:mergeReleaseJniLibFolders
+> Task :usertypelib:mergeReleaseJniLibFolders
+> Task :widgetpicker:mergeReleaseNativeLibs NO-SOURCE
+> Task :usertypelib:mergeReleaseNativeLibs NO-SOURCE
+> Task :wmshellshared:mergeReleaseJniLibFolders
+> Task :wmshellshared:mergeReleaseNativeLibs NO-SOURCE
+> Task :widgetpicker:copyReleaseJniLibsProjectOnly
+> Task :usertypelib:copyReleaseJniLibsProjectOnly
+> Task :wmshellshared:copyReleaseJniLibsProjectOnly
+> Task :appfunctions:generateReleaseResources FROM-CACHE
+> Task :dynamiccolors:generateReleaseResources FROM-CACHE
+> Task :animationlib:generateReleaseResources FROM-CACHE
+> Task :appfunctions:packageReleaseResources FROM-CACHE
+> Task :animationlib:packageReleaseResources FROM-CACHE
+> Task :dynamiccolors:packageReleaseResources FROM-CACHE
+> Task :appfunctions:processReleaseNavigationResources FROM-CACHE
+> Task :animationlib:processReleaseNavigationResources FROM-CACHE
+> Task :dynamiccolors:processReleaseNavigationResources FROM-CACHE
+> Task :app:mergeReleaseNativeLibs
+
+> Task :app:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+
+> Task :app:extractReleaseNativeSymbolTables FROM-CACHE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :flags:generateReleaseResources FROM-CACHE
+> Task :flags:packageReleaseResources FROM-CACHE
+> Task :flags:processReleaseNavigationResources FROM-CACHE
+> Task :appfunctions:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:parseReleaseLocalResources FROM-CACHE
+> Task :animationlib:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:generateReleaseRFile FROM-CACHE
+> Task :dynamiccolors:compileReleaseKotlin NO-SOURCE
+> Task :dynamiccolors:javaPreCompileRelease FROM-CACHE
+> Task :dynamiccolors:compileReleaseJavaWithJavac NO-SOURCE
+> Task :animationlib:generateReleaseRFile FROM-CACHE
+> Task :appfunctions:generateReleaseRFile FROM-CACHE
+> Task :dynamiccolors:bundleLibCompileToJarRelease
+> Task :iconloaderlib:generateReleaseResources FROM-CACHE
+> Task :iconloaderlib:packageReleaseResources FROM-CACHE
+> Task :iconloaderlib:processReleaseNavigationResources FROM-CACHE
+> Task :iconloaderlib:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:generateReleaseResources FROM-CACHE
+> Task :usertypelib:packageReleaseResources FROM-CACHE
+> Task :usertypelib:processReleaseNavigationResources FROM-CACHE
+> Task :usertypelib:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:generateReleaseRFile FROM-CACHE
+> Task :animationlib:compileReleaseKotlin FROM-CACHE
+> Task :animationlib:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:kspReleaseKotlin FROM-CACHE
+> Task :flags:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:compileReleaseKotlin FROM-CACHE
+> Task :flags:generateReleaseRFile FROM-CACHE
+> Task :usertypelib:javaPreCompileRelease FROM-CACHE
+> Task :flags:compileReleaseKotlin NO-SOURCE
+> Task :flags:javaPreCompileRelease FROM-CACHE
+> Task :iconloaderlib:generateReleaseRFile FROM-CACHE
+> Task :usertypelib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :appfunctions:compileReleaseKotlin FROM-CACHE
+> Task :usertypelib:bundleLibCompileToJarRelease
+> Task :iconloaderlib:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:compileReleaseJavaWithJavac NO-SOURCE
+> Task :appfunctions:bundleLibCompileToJarRelease
+> Task :msdllib:generateReleaseResources FROM-CACHE
+> Task :msdllib:packageReleaseResources FROM-CACHE
+> Task :msdllib:processReleaseNavigationResources FROM-CACHE
+> Task :msdllib:parseReleaseLocalResources FROM-CACHE
+> Task :launcher3-res:generateReleaseResources FROM-CACHE
+> Task :msdllib:generateReleaseRFile FROM-CACHE
+> Task :plugins:generateReleaseResources FROM-CACHE
+> Task :plugins:packageReleaseResources FROM-CACHE
+> Task :plugins:processReleaseNavigationResources FROM-CACHE
+> Task :plugins:parseReleaseLocalResources FROM-CACHE
+> Task :plugins:generateReleaseRFile FROM-CACHE
+> Task :widgetpicker:generateReleaseResources FROM-CACHE
+> Task :launcher3-res:packageReleaseResources FROM-CACHE
+> Task :launcher3-res:processReleaseNavigationResources FROM-CACHE
+> Task :widgetpicker:packageReleaseResources FROM-CACHE
+> Task :widgetpicker:processReleaseNavigationResources FROM-CACHE
+> Task :launcher3-res:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:generateReleaseResources FROM-CACHE
+> Task :widgetpicker:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:packageReleaseResources FROM-CACHE
+> Task :wmshellshared:processReleaseNavigationResources FROM-CACHE
+> Task :wmshellshared:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:generateReleaseRFile FROM-CACHE
+> Task :widgetpicker:generateReleaseRFile FROM-CACHE
+> Task :msdllib:compileReleaseKotlin FROM-CACHE
+> Task :msdllib:javaPreCompileRelease FROM-CACHE
+> Task :msdllib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :msdllib:bundleLibCompileToJarRelease
+> Task :launcher3-res:generateReleaseRFile FROM-CACHE
+> Task :plugins:compileReleaseKotlin FROM-CACHE
+> Task :plugins:javaPreCompileRelease FROM-CACHE
+> Task :widgetpicker:kaptGenerateStubsReleaseKotlin FROM-CACHE
+> Task :animationlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :animationlib:bundleLibCompileToJarRelease
+> Task :wmshellshared:javaPreCompileRelease FROM-CACHE
+> Task :launcher3-res:javaPreCompileRelease FROM-CACHE
+> Task :flags:compileReleaseJavaWithJavac FROM-CACHE
+> Task :dynamiccolors:bundleLibRuntimeToDirRelease
+> Task :flags:bundleLibCompileToJarRelease
+> Task :wmshellshared:compileReleaseKotlin FROM-CACHE
+> Task :plugins:compileReleaseJavaWithJavac FROM-CACHE
+> Task :wmshellshared:compileReleaseJavaWithJavac FROM-CACHE
+> Task :wmshellshared:bundleLibCompileToJarRelease
+> Task :plugins:bundleLibCompileToJarRelease
+> Task :iconloaderlib:compileReleaseKotlin FROM-CACHE
+> Task :animationlib:bundleLibRuntimeToDirRelease
+> Task :msdllib:bundleLibRuntimeToDirRelease
+> Task :plugins:bundleLibRuntimeToDirRelease
+> Task :wmshellshared:bundleLibRuntimeToDirRelease
+> Task :iconloaderlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :flags:bundleLibRuntimeToDirRelease
+> Task :iconloaderlib:bundleLibCompileToJarRelease
+> Task :appfunctions:bundleLibRuntimeToDirRelease
+> Task :usertypelib:bundleLibRuntimeToDirRelease
+> Task :iconloaderlib:bundleLibRuntimeToDirRelease
+> Task :widgetpicker:kaptReleaseKotlin FROM-CACHE
+> Task :animationlib:mapReleaseSourceSetPaths
+> Task :animationlib:compileReleaseLibraryResources FROM-CACHE
+> Task :appfunctions:writeReleaseAarMetadata
+> Task :animationlib:writeReleaseAarMetadata
+> Task :dynamiccolors:writeReleaseAarMetadata
+> Task :flags:writeReleaseAarMetadata
+> Task :iconloaderlib:writeReleaseAarMetadata
+> Task :launcher3-res:writeReleaseAarMetadata
+> Task :msdllib:writeReleaseAarMetadata
+> Task :plugins:writeReleaseAarMetadata
+> Task :widgetpicker:compileReleaseKotlin FROM-CACHE
+> Task :usertypelib:writeReleaseAarMetadata
+> Task :widgetpicker:javaPreCompileRelease FROM-CACHE
+> Task :wmshellshared:writeReleaseAarMetadata
+> Task :app:checkReleaseDuplicateClasses
+> Task :animationlib:extractDeepLinksRelease FROM-CACHE
+> Task :appfunctions:extractDeepLinksRelease FROM-CACHE
+> Task :animationlib:processReleaseManifest FROM-CACHE
+> Task :appfunctions:processReleaseManifest FROM-CACHE
+> Task :dynamiccolors:extractDeepLinksRelease FROM-CACHE
+> Task :flags:extractDeepLinksRelease FROM-CACHE
+> Task :flags:processReleaseManifest FROM-CACHE
+> Task :dynamiccolors:processReleaseManifest FROM-CACHE
+> Task :launcher3-res:extractDeepLinksRelease FROM-CACHE
+> Task :iconloaderlib:extractDeepLinksRelease FROM-CACHE
+> Task :app:generateLauncherProtos
+> Task :iconloaderlib:processReleaseManifest FROM-CACHE
+> Task :launcher3-res:processReleaseManifest FROM-CACHE
+> Task :plugins:extractDeepLinksRelease FROM-CACHE
+> Task :app:generateReleaseResources FROM-CACHE
+> Task :msdllib:extractDeepLinksRelease FROM-CACHE
+> Task :msdllib:processReleaseManifest FROM-CACHE
+> Task :app:packageReleaseResources FROM-CACHE
+> Task :usertypelib:extractDeepLinksRelease FROM-CACHE
+> Task :plugins:processReleaseManifest FROM-CACHE
+> Task :wmshellshared:extractDeepLinksRelease FROM-CACHE
+> Task :usertypelib:processReleaseManifest FROM-CACHE
+> Task :widgetpicker:compileReleaseJavaWithJavac FROM-CACHE
+> Task :appfunctions:mapReleaseSourceSetPaths
+> Task :wmshellshared:processReleaseManifest FROM-CACHE
+> Task :dynamiccolors:mapReleaseSourceSetPaths
+> Task :appfunctions:compileReleaseLibraryResources FROM-CACHE
+> Task :dynamiccolors:compileReleaseLibraryResources FROM-CACHE
+> Task :widgetpicker:writeReleaseAarMetadata
+> Task :widgetpicker:extractDeepLinksRelease FROM-CACHE
+> Task :widgetpicker:processReleaseManifest FROM-CACHE
+> Task :flags:mapReleaseSourceSetPaths
+> Task :flags:compileReleaseLibraryResources FROM-CACHE
+> Task :iconloaderlib:mapReleaseSourceSetPaths
+> Task :iconloaderlib:compileReleaseLibraryResources FROM-CACHE
+> Task :launcher3-res:mapReleaseSourceSetPaths
+> Task :widgetpicker:bundleLibCompileToJarRelease
+> Task :app:processReleaseNavigationResources FROM-CACHE
+> Task :msdllib:mapReleaseSourceSetPaths
+> Task :msdllib:compileReleaseLibraryResources FROM-CACHE
+> Task :app:parseReleaseLocalResources FROM-CACHE
+> Task :launcher3-res:compileReleaseLibraryResources FROM-CACHE
+> Task :plugins:mapReleaseSourceSetPaths
+> Task :launcher3-res:compileReleaseKotlin NO-SOURCE
+> Task :plugins:compileReleaseLibraryResources FROM-CACHE
+> Task :launcher3-res:compileReleaseJavaWithJavac NO-SOURCE
+> Task :usertypelib:mapReleaseSourceSetPaths
+> Task :launcher3-res:bundleLibRuntimeToDirRelease
+> Task :usertypelib:compileReleaseLibraryResources FROM-CACHE
+> Task :launcher3-res:bundleLibCompileToJarRelease
+> Task :widgetpicker:mapReleaseSourceSetPaths
+> Task :wmshellshared:mapReleaseSourceSetPaths
+> Task :widgetpicker:compileReleaseLibraryResources FROM-CACHE
+> Task :wmshellshared:compileReleaseLibraryResources FROM-CACHE
+> Task :animationlib:prepareReleaseArtProfile
+> Task :appfunctions:prepareReleaseArtProfile
+> Task :dynamiccolors:prepareReleaseArtProfile
+> Task :flags:prepareReleaseArtProfile
+> Task :iconloaderlib:prepareReleaseArtProfile
+> Task :launcher3-res:prepareReleaseArtProfile
+> Task :plugins:prepareReleaseArtProfile
+> Task :msdllib:prepareReleaseArtProfile
+> Task :usertypelib:prepareReleaseArtProfile
+> Task :wmshellshared:prepareReleaseArtProfile
+> Task :widgetpicker:prepareReleaseArtProfile
+> Task :launcher3-res:bundleLibRuntimeToJarRelease
+> Task :dynamiccolors:bundleLibRuntimeToJarRelease
+> Task :app:generateReleaseRFile FROM-CACHE
+> Task :iconloaderlib:bundleLibRuntimeToJarRelease
+> Task :widgetpicker:bundleLibRuntimeToDirRelease
+> Task :animationlib:bundleLibRuntimeToJarRelease
+> Task :msdllib:bundleLibRuntimeToJarRelease
+> Task :plugins:bundleLibRuntimeToJarRelease
+> Task :wmshellshared:bundleLibRuntimeToJarRelease
+> Task :appfunctions:bundleLibRuntimeToJarRelease
+> Task :flags:bundleLibRuntimeToJarRelease
+> Task :usertypelib:bundleLibRuntimeToJarRelease
+> Task :animationlib:generateReleaseAssets UP-TO-DATE
+> Task :widgetpicker:bundleLibRuntimeToJarRelease
+> Task :animationlib:mergeReleaseAssets
+> Task :appfunctions:generateReleaseAssets UP-TO-DATE
+> Task :appfunctions:mergeReleaseAssets
+> Task :dynamiccolors:generateReleaseAssets UP-TO-DATE
+> Task :dynamiccolors:mergeReleaseAssets
+> Task :flags:generateReleaseAssets UP-TO-DATE
+> Task :flags:mergeReleaseAssets
+> Task :iconloaderlib:generateReleaseAssets UP-TO-DATE
+> Task :launcher3-res:generateReleaseAssets UP-TO-DATE
+> Task :iconloaderlib:mergeReleaseAssets
+> Task :msdllib:generateReleaseAssets UP-TO-DATE
+> Task :msdllib:mergeReleaseAssets
+> Task :plugins:generateReleaseAssets UP-TO-DATE
+> Task :usertypelib:generateReleaseAssets UP-TO-DATE
+> Task :usertypelib:mergeReleaseAssets
+> Task :launcher3-res:mergeReleaseAssets
+> Task :wmshellshared:generateReleaseAssets UP-TO-DATE
+> Task :plugins:mergeReleaseAssets
+> Task :widgetpicker:generateReleaseAssets UP-TO-DATE
+> Task :wmshellshared:mergeReleaseAssets
+> Task :widgetpicker:mergeReleaseAssets
+> Task :animationlib:extractProguardFiles
+> Task :dynamiccolors:processReleaseJavaRes NO-SOURCE
+> Task :dynamiccolors:createFullJarRelease
+> Task :dynamiccolors:extractProguardFiles
+> Task :appfunctions:processReleaseJavaRes
+> Task :appfunctions:createFullJarRelease
+> Task :appfunctions:extractProguardFiles
+> Task :dynamiccolors:generateReleaseLintModel
+> Task :animationlib:generateReleaseLintVitalModel
+> Task :app:javaPreCompileRelease FROM-CACHE
+> Task :animationlib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :animationlib:prepareLintJarForPublish
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:compileReleaseNavigationResources FROM-CACHE
+> Task :app:checkReleaseAarMetadata
+> Task :animationlib:processReleaseJavaRes
+> Task :animationlib:createFullJarRelease
+> Task :animationlib:generateReleaseLintModel
+> Task :appfunctions:generateReleaseLintModel
+> Task :dynamiccolors:prepareLintJarForPublish
+> Task :appfunctions:prepareLintJarForPublish
+> Task :flags:processReleaseJavaRes NO-SOURCE
+> Task :iconloaderlib:processReleaseJavaRes
+> Task :flags:createFullJarRelease
+> Task :flags:extractProguardFiles
+> Task :iconloaderlib:createFullJarRelease
+> Task :iconloaderlib:extractProguardFiles
+> Task :usertypelib:processReleaseJavaRes
+> Task :flags:generateReleaseLintModel
+> Task :usertypelib:createFullJarRelease
+> Task :flags:prepareLintJarForPublish
+> Task :usertypelib:extractProguardFiles
+> Task :iconloaderlib:prepareLintJarForPublish
+> Task :launcher3-res:processReleaseJavaRes NO-SOURCE
+> Task :launcher3-res:createFullJarRelease
+> Task :launcher3-res:extractProguardFiles
+> Task :usertypelib:generateReleaseLintModel
+> Task :usertypelib:prepareLintJarForPublish
+> Task :msdllib:processReleaseJavaRes
+> Task :msdllib:createFullJarRelease
+> Task :msdllib:extractProguardFiles
+> Task :iconloaderlib:generateReleaseLintModel
+> Task :plugins:processReleaseJavaRes
+> Task :plugins:createFullJarRelease
+> Task :msdllib:generateReleaseLintModel
+> Task :plugins:extractProguardFiles
+> Task :msdllib:prepareLintJarForPublish
+> Task :widgetpicker:processReleaseJavaRes
+> Task :plugins:generateReleaseLintModel
+> Task :plugins:prepareLintJarForPublish
+> Task :wmshellshared:processReleaseJavaRes
+> Task :wmshellshared:createFullJarRelease
+> Task :widgetpicker:createFullJarRelease
+> Task :wmshellshared:extractProguardFiles
+> Task :widgetpicker:extractProguardFiles
+> Task :wmshellshared:generateReleaseLintModel
+> Task :wmshellshared:prepareLintJarForPublish
+> Task :launcher3-res:prepareLintJarForPublish
+> Task :launcher3-res:checkReleaseAarMetadata
+> Task :launcher3-res:extractDeepLinksForAarRelease FROM-CACHE
+> Task :widgetpicker:generateReleaseLintModel
+> Task :widgetpicker:prepareLintJarForPublish
+> Task :dynamiccolors:checkReleaseAarMetadata
+> Task :dynamiccolors:extractDeepLinksForAarRelease FROM-CACHE
+> Task :dynamiccolors:extractReleaseAnnotations FROM-CACHE
+> Task :app:mergeReleaseResources FROM-CACHE
+> Task :dynamiccolors:mergeReleaseGeneratedProguardFiles
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :dynamiccolors:mergeReleaseConsumerProguardFiles
+> Task :launcher3-res:extractReleaseAnnotations FROM-CACHE
+> Task :app:extractDeepLinksRelease FROM-CACHE
+> Task :dynamiccolors:mergeReleaseJavaResource
+> Task :dynamiccolors:syncReleaseLibJars FROM-CACHE
+> Task :dynamiccolors:bundleReleaseLocalLintAar
+> Task :launcher3-res:generateReleaseLintModel
+> Task :launcher3-res:mergeReleaseGeneratedProguardFiles
+> Task :launcher3-res:mergeReleaseConsumerProguardFiles
+> Task :iconloaderlib:checkReleaseAarMetadata
+> Task :launcher3-res:mergeReleaseJavaResource
+> Task :iconloaderlib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :launcher3-res:syncReleaseLibJars FROM-CACHE
+> Task :iconloaderlib:extractReleaseAnnotations FROM-CACHE
+> Task :iconloaderlib:mergeReleaseGeneratedProguardFiles
+> Task :iconloaderlib:mergeReleaseConsumerProguardFiles
+> Task :iconloaderlib:mergeReleaseJavaResource
+> Task :iconloaderlib:syncReleaseLibJars FROM-CACHE
+> Task :iconloaderlib:bundleReleaseLocalLintAar
+> Task :launcher3-res:bundleReleaseLocalLintAar
+> Task :animationlib:checkReleaseAarMetadata
+> Task :animationlib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :animationlib:extractReleaseAnnotations FROM-CACHE
+> Task :animationlib:mergeReleaseGeneratedProguardFiles
+> Task :animationlib:mergeReleaseConsumerProguardFiles
+> Task :animationlib:mergeReleaseJavaResource
+> Task :msdllib:checkReleaseAarMetadata
+> Task :msdllib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :animationlib:syncReleaseLibJars FROM-CACHE
+> Task :animationlib:bundleReleaseLocalLintAar
+> Task :msdllib:extractReleaseAnnotations FROM-CACHE
+> Task :plugins:checkReleaseAarMetadata
+> Task :msdllib:mergeReleaseGeneratedProguardFiles
+> Task :plugins:extractDeepLinksForAarRelease FROM-CACHE
+> Task :msdllib:mergeReleaseConsumerProguardFiles
+> Task :msdllib:mergeReleaseJavaResource
+> Task :plugins:extractReleaseAnnotations FROM-CACHE
+> Task :msdllib:syncReleaseLibJars FROM-CACHE
+> Task :plugins:mergeReleaseGeneratedProguardFiles
+> Task :plugins:mergeReleaseConsumerProguardFiles
+> Task :msdllib:bundleReleaseLocalLintAar
+> Task :plugins:mergeReleaseJavaResource
+> Task :wmshellshared:checkReleaseAarMetadata
+> Task :plugins:syncReleaseLibJars FROM-CACHE
+> Task :wmshellshared:extractDeepLinksForAarRelease FROM-CACHE
+> Task :plugins:bundleReleaseLocalLintAar
+> Task :wmshellshared:extractReleaseAnnotations FROM-CACHE
+> Task :wmshellshared:mergeReleaseGeneratedProguardFiles
+> Task :wmshellshared:mergeReleaseConsumerProguardFiles
+> Task :widgetpicker:checkReleaseAarMetadata
+> Task :widgetpicker:extractDeepLinksForAarRelease FROM-CACHE
+> Task :wmshellshared:mergeReleaseJavaResource
+> Task :wmshellshared:syncReleaseLibJars FROM-CACHE
+> Task :wmshellshared:bundleReleaseLocalLintAar
+> Task :widgetpicker:extractReleaseAnnotations FROM-CACHE
+> Task :widgetpicker:mergeReleaseGeneratedProguardFiles
+> Task :widgetpicker:mergeReleaseConsumerProguardFiles
+> Task :app:processReleaseMainManifest
+> Task :appfunctions:checkReleaseAarMetadata
+> Task :appfunctions:extractDeepLinksForAarRelease FROM-CACHE
+> Task :widgetpicker:mergeReleaseJavaResource
+> Task :appfunctions:extractReleaseAnnotations FROM-CACHE
+> Task :widgetpicker:syncReleaseLibJars FROM-CACHE
+> Task :appfunctions:mergeReleaseGeneratedProguardFiles
+> Task :appfunctions:mergeReleaseConsumerProguardFiles
+> Task :appfunctions:mergeReleaseJavaResource
+> Task :appfunctions:syncReleaseLibJars FROM-CACHE
+> Task :appfunctions:bundleReleaseLocalLintAar
+> Task :widgetpicker:bundleReleaseLocalLintAar
+> Task :flags:checkReleaseAarMetadata
+> Task :flags:extractDeepLinksForAarRelease FROM-CACHE
+> Task :app:processReleaseManifest
+> Task :flags:extractReleaseAnnotations FROM-CACHE
+> Task :flags:mergeReleaseGeneratedProguardFiles
+> Task :flags:mergeReleaseConsumerProguardFiles
+> Task :app:desugarReleaseFileDependencies FROM-CACHE
+> Task :app:mergeReleaseStartupProfile
+> Task :flags:mergeReleaseJavaResource
+> Task :flags:syncReleaseLibJars FROM-CACHE
+> Task :flags:bundleReleaseLocalLintAar
+> Task :usertypelib:checkReleaseAarMetadata
+> Task :usertypelib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :usertypelib:extractReleaseAnnotations FROM-CACHE
+> Task :usertypelib:mergeReleaseGeneratedProguardFiles
+> Task :usertypelib:mergeReleaseConsumerProguardFiles
+> Task :usertypelib:mergeReleaseJavaResource
+> Task :usertypelib:syncReleaseLibJars FROM-CACHE
+> Task :usertypelib:bundleReleaseLocalLintAar
+> Task :animationlib:writeReleaseLintModelMetadata
+> Task :appfunctions:lintVitalAnalyzeRelease FROM-CACHE
+> Task :appfunctions:writeReleaseLintModelMetadata
+> Task :dynamiccolors:lintVitalAnalyzeRelease FROM-CACHE
+> Task :dynamiccolors:writeReleaseLintModelMetadata
+> Task :flags:lintVitalAnalyzeRelease FROM-CACHE
+> Task :flags:writeReleaseLintModelMetadata
+> Task :usertypelib:writeReleaseLintModelMetadata
+> Task :iconloaderlib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :iconloaderlib:writeReleaseLintModelMetadata
+> Task :msdllib:writeReleaseLintModelMetadata
+> Task :plugins:writeReleaseLintModelMetadata
+> Task :widgetpicker:writeReleaseLintModelMetadata
+> Task :wmshellshared:writeReleaseLintModelMetadata
+> Task :launcher3-res:lintVitalAnalyzeRelease FROM-CACHE
+> Task :launcher3-res:writeReleaseLintModelMetadata
+> Task :msdllib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :plugins:lintVitalAnalyzeRelease FROM-CACHE
+> Task :usertypelib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :widgetpicker:lintVitalAnalyzeRelease FROM-CACHE
+> Task :wmshellshared:lintVitalAnalyzeRelease FROM-CACHE
+> Task :appfunctions:generateReleaseLintVitalModel
+> Task :dynamiccolors:generateReleaseLintVitalModel
+> Task :flags:generateReleaseLintVitalModel
+> Task :iconloaderlib:generateReleaseLintVitalModel
+> Task :launcher3-res:generateReleaseLintVitalModel
+> Task :msdllib:generateReleaseLintVitalModel
+> Task :plugins:generateReleaseLintVitalModel
+> Task :usertypelib:generateReleaseLintVitalModel
+> Task :widgetpicker:generateReleaseLintVitalModel
+> Task :wmshellshared:generateReleaseLintVitalModel
+> Task :app:mergeExtDexRelease FROM-CACHE
+> Task :app:processReleaseManifestForPackage
+> Task :app:mergeReleaseArtProfile
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets FROM-CACHE
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:extractProguardFiles
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+warn: removing resource app.folio.launcher:string/allow_rotation_title without required default value.
+warn: removing resource app.folio.launcher:string/folder_name_format_exact without required default value.
+warn: removing resource app.folio.launcher:string/folder_name_format_overflow without required default value.
+warn: removing resource app.folio.launcher:string/item_added_to_workspace without required default value.
+warn: removing resource app.folio.launcher:string/widgets_full_sheet_cancel_button_description without required default value.
+warn: removing resource app.folio.launcher:string/widgets_full_sheet_search_bar_hint without required default value.
+warn: removing resource app.folio.launcher:string/work_profile_edu_accept without required default value.
+
+> Task :app:processReleaseResources
+> Task :app:optimizeReleaseResources
+> Task :app:kaptGenerateStubsReleaseKotlin
+w: The argument '-Xjvm-default' is deprecated since Kotlin 2.2.0. It will be removed in one of the future releases. Use `-jvm-default` instead.
+
+> Task :app:kaptReleaseKotlin
+
+> Task :app:compileReleaseKotlin
+w: The argument '-Xjvm-default' is deprecated since Kotlin 2.2.0. It will be removed in one of the future releases. Use `-jvm-default` instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:39:8 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:255:13 'var reconfigureButton: ImageButton?' is deprecated. Replaced with an option in popup when homeScreenEditImprovements flag is on.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:273:18 'fun hasSeenReconfigurableWidgetEducationTip(): Boolean' is deprecated. Will be removed as part of homeScreenEditImprovements flag.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:275:25 'fun showReconfigurableWidgetEducationTip(): ArrowTipView?' is deprecated. Will be removed as part of homeScreenEditImprovements flag.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:746:31 'var reconfigureButton: ImageButton?' is deprecated. Replaced with an option in popup when homeScreenEditImprovements flag is on.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/AppWidgetResizeFrame.kt:981:31 'var reconfigureButton: ImageButton?' is deprecated. Replaced with an option in popup when homeScreenEditImprovements flag is on.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/BoxSelectionHelper.kt:158:21 Condition is always 'true'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/InMemoryLauncherPrefs.kt:23:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/InMemoryLauncherPrefs.kt:135:13 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherModel.kt:47:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:88:87 This class is not recommended for use in Kotlin. Use 'kotlin.Boolean' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:90:83 This class is not recommended for use in Kotlin. Use 'kotlin.Int' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:92:83 This class is not recommended for use in Kotlin. Use 'kotlin.Float' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:94:81 This class is not recommended for use in Kotlin. Use 'kotlin.Long' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:164:87 This class is not recommended for use in Kotlin. Use 'kotlin.Boolean' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:166:83 This class is not recommended for use in Kotlin. Use 'kotlin.Int' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:168:83 This class is not recommended for use in Kotlin. Use 'kotlin.Float' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:170:81 This class is not recommended for use in Kotlin. Use 'kotlin.Long' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/LauncherPrefs.kt:390:60 'val backedUpPrefs: SharedPreferences' is deprecated. Don't use shared preferences directly. Use other LauncherPref methods.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:38:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:39:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:85:44 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:340:13 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:484:55 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:507:9 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:542:52 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:555:9 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:561:13 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:620:21 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:627:40 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:627:59 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:632:21 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:650:21 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/ModelCallbacks.kt:654:21 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/PillColorProvider.kt:24:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/PillColorProvider.kt:41:34 'static field ORDERED_BG_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/UtilitiesKt.kt:77:61 The corresponding parameter in the supertype 'ViewGroupAttrModifier' is named 'attr'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/UtilitiesKt.kt:90:61 The corresponding parameter in the supertype 'ViewGroupAttrModifier' is named 'attr'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/apppairs/AppPairIcon.kt:31:8 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/BottomSheetProfile.kt:76:79 Redundant call of conversion method.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/TaskbarDeviceProfileFactory.kt:42:44 'fun changeIconSize(iconSizePx: Int): WorkspaceProfile' is deprecated. This classes should be treated as immutable, in order to change it weshould use a factory and create a new one.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/WorkspaceProfile.kt:30:8 'object WorkspaceProfileNonResponsiveFactory : Any' is deprecated. Non responsive grids are deprecated, please refer to responsive grid for a replacement. Nexus Launcher doesn't use Non Scalable grids anymore.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/WorkspaceProfile.kt:153:13 'object WorkspaceProfileNonResponsiveFactory : Any' is deprecated. Non responsive grids are deprecated, please refer to responsive grid for a replacement. Nexus Launcher doesn't use Non Scalable grids anymore.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/WorkspaceProfileNonResponsiveFactory.kt:692:34 'fun calculateAndSetWorkspaceVerticalPadding(context: Context, inv: InvariantDeviceProfile): WorkspaceProfile' is deprecated. This is only used for scalable which is deprecated. This should also go away once we add extraSpace into the WorkspaceProfile.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/deviceprofile/WorkspaceProfileNonResponsiveFactory.kt:697:33 'fun recalculateWorkspacePadding(isVerticalLayout: Boolean, isSeascape: Boolean, isFixedLandscape: Boolean, isScalableGrid: Boolean, hotseatProfile: HotseatProfileInitialValues, deviceProperties: DeviceProperties, res: Resources, inv: InvariantDeviceProfile): WorkspaceProfile' is deprecated. This classes should be treated as immutable, in order to change it weshould use a factory and create a new one.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:62:54 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:62:64 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:72:17 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:84:13 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:86:21 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:105:14 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:117:13 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:118:13 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayControllerImpl.kt:129:13 'val perDisplayInfo: SparseArray<DisplayInfoContainer>' is deprecated. Will replace it with threadSafePerDisplayInfo.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/DisplayInfoContainer.kt:92:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/display/PortraitSize.kt:22:25 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/dragndrop/AddItemActivity.kt:36:8 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/dragndrop/AddItemActivity.kt:62:31 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/dragndrop/AddItemActivity.kt:211:78 'field label: String!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/dragndrop/AddItemActivity.kt:287:44 'static fun obtain(p0: Int): AccessibilityEvent!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/dragndrop/AddItemActivity.kt:287:70 'static field TYPE_ANNOUNCEMENT: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folder/FolderNameSuggestionLoader.kt:24:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/GridSettingsActivity.kt:74:9 'fun ComponentActivity.enableEdgeToEdge(statusBarStyle: SystemBarStyle = ..., navigationBarStyle: SystemBarStyle = ...): Unit' is deprecated. Use {@link WindowCompat#enableEdgeToEdge(Window)} to enable edge-to-edge display.
+      To adjust the light/dark appearance of system bar icons, use
+      {@link WindowInsetsControllerCompat#setAppearanceLightStatusBars(boolean)} or
+      {@link WindowInsetsControllerCompat#setAppearanceLightNavigationBars(boolean)}. To add scrim
+      or background protection, use {@link ProtectionLayout} or handle insets directly in your view
+      hierarchy.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/GridSettingsActivity.kt:77:9 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/GridSettingsActivity.kt:245:9 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedRefreshJob.kt:72:30 'val networkType: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedRefreshJob.kt:72:50 'val networkType: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:72:9 'fun ComponentActivity.enableEdgeToEdge(statusBarStyle: SystemBarStyle = ..., navigationBarStyle: SystemBarStyle = ...): Unit' is deprecated. Use {@link WindowCompat#enableEdgeToEdge(Window)} to enable edge-to-edge display.
+      To adjust the light/dark appearance of system bar icons, use
+      {@link WindowInsetsControllerCompat#setAppearanceLightStatusBars(boolean)} or
+      {@link WindowInsetsControllerCompat#setAppearanceLightNavigationBars(boolean)}. To add scrim
+      or background protection, use {@link ProtectionLayout} or handle insets directly in your view
+      hierarchy.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:145:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:159:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:166:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:178:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:189:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:197:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:205:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/folio/feed/FeedSettingsActivity.kt:215:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/graphics/LauncherCustomizationProvider.kt:46:70 'static field GET_SIGNATURES: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/graphics/LauncherCustomizationProvider.kt:46:87 'field signatures: Array<(out) Signature!>?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/graphics/PreloadIconDelegate.kt:427:53 'fun getColor(p0: Int): Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/graphics/PreloadIconDelegate.kt:428:57 'fun getColor(p0: Int): Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/graphics/PreloadIconDelegate.kt:429:61 'fun getColor(p0: Int): Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/homescreenfiles/HomeScreenFilesUpdateTask.kt:69:5 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/homescreenfiles/HomeScreenFilesUpdateTask.kt:143:46 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:131:70 The corresponding parameter in the supertype 'CachingLogic' is named 'iconProvider'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:73:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:101:20 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:111:41 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:150:9 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:191:17 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:207:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/icons/IconCache.kt:587:13 Condition is always 'false'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/keyboard/KeyboardStateManager.kt:106:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/keyboard/KeyboardStateManager.kt:106:23 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/keyboard/KeyboardStateManager.kt:110:21 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/keyboard/KeyboardStateManager.kt:110:31 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/logging/FileLog.kt:255:30 Unchecked cast of 'Any!' to 'Pair<PrintWriter?, CountDownLatch?>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/logging/RecreateTaskbarLatencyLogger.kt:22:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/logging/StartupLatencyLogger.kt:85:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/logging/StartupLatencyLogger.kt:85:23 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/BgDataModel.kt:117:9 'val extraItems: IntSparseArrayMap<BgDataModel.FixedContainerItems>' is deprecated. Use independent repository for each extra item.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/BgDataModel.kt:127:9 'val extraItems: IntSparseArrayMap<BgDataModel.FixedContainerItems>' is deprecated. Use independent repository for each extra item.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/BgDataModel.kt:422:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/BgDataModel.kt:422:23 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/DbEntry.kt:130:80 'fun toURI(): String!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/FirstScreenBroadcastHelper.kt:116:61 Unchecked cast of 'Map<String?, Set<String>>' to 'Map<String, Set<String>>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/FirstScreenBroadcastHelper.kt:138:37 Unchecked cast of 'MutableMap<String?, MutableList<ItemInfo>>' to 'Map<String, List<ItemInfo>>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/FirstScreenBroadcastHelper.kt:212:20 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/FirstScreenBroadcastHelper.kt:212:30 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelDbController.kt:35:8 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:55:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:56:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:57:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:122:28 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:133:50 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:148:17 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:156:78 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelInitializer.kt:208:48 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelProxyProvider.kt:204:20 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelProxyProvider.kt:216:69 Unchecked cast of 'Array<out String>' to 'Array<String>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelTaskController.kt:29:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelTaskController.kt:46:30 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelWriter.kt:52:45 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelWriter.kt:257:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelWriter.kt:309:28 'static field IS_DEBUG_DEVICE: Boolean' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelWriter.kt:310:35 'static field IS_STUDIO_BUILD: Boolean' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/ModelWriterFactory.kt:28:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/StringCache.kt:28:1 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/model/testing/FakeModelWriter.kt:172:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/organizer/creation/screen/ui/foldercreator/FolderCreator.kt:65:22 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/pm/UserCache.kt:98:27 'fun <T : Parcelable!> getParcelableExtra(p0: String!): T?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/AppLockShortcut.kt:71:17 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/AppLockShortcut.kt:71:27 'static field ORDERED_BG_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PinToTaskbarShortcut.kt:76:13 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PopupContainer.kt:219:41 Expression is unused.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PopupContainerWithArrow.kt:102:59 Unchecked cast of 'PopupContainerWithArrow<T (of class PopupContainerWithArrow<T : ActivityContext>)>' to 'PopupContainerWithArrow<Launcher>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PopupContainerWithArrow.kt:198:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PopupContainerWithArrow.kt:208:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/popup/PopupControllerAppIcons.kt:59:68 Unchecked cast of '(SystemShortcut<ActivityContext!>?..SystemShortcut<*>?)' to 'SystemShortcut<T (of class PopupControllerForAppIcon<T : Context, ActivityContext>)>?'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewContext.kt:132:27 Java type mismatch: inferred type is 'Array<(out) File!>?', but 'Array<(out) File!>' was expected.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:51:90 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:70:13 'val MESSAGE_ID_UPDATE_SHAPE: Int' is deprecated. Use [MESSAGE_ID_UPDATE_COMMAND] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:72:13 'val MESSAGE_ID_UPDATE_GRID: Int' is deprecated. Use [MESSAGE_ID_UPDATE_COMMAND] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:74:13 'val MESSAGE_ID_UPDATE_ICON_THEMED: Int' is deprecated. Use [MESSAGE_ID_UPDATE_COMMAND] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:82:17 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:82:27 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:90:9 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/preview/PreviewLifecycleObserver.kt:90:19 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/LauncherDbUtils.kt:170:91 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LoaderCursor'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/LauncherDbUtils.kt:278:14 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LoaderCursor'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/RestoreDbTask.kt:370:28 'val db: SQLiteDatabase' is deprecated. Use [getTable] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/RestoreDbTask.kt:400:38 'val db: SQLiteDatabase' is deprecated. Use [getTable] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/RestoreDbTask.kt:401:9 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/RestoreDbTask.kt:483:33 'val db: SQLiteDatabase' is deprecated. Use [getTable] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/provider/RestoreDbTask.kt:541:28 'val db: SQLiteDatabase' is deprecated. Use [getTable] instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/qsb/OseWidgetView.kt:209:33 This class is not recommended for use in Kotlin. Use 'kotlin.Any' instead.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/AsyncObjectAllocator.kt:23:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/AsyncObjectAllocator.kt:41:13 'constructor(namePrefix: String!, priority: Int): Executors.SimpleThreadFactory' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/HybridHotseatOrganizer.kt:83:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/HybridHotseatOrganizer.kt:83:23 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/HybridHotseatOrganizer.kt:84:13 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/HybridHotseatOrganizer.kt:84:23 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/ItemInflater.kt:56:33 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/RetryingExecutor.kt:24:55 'constructor(): Handler' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperColorHints.kt:29:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperColorHints.kt:30:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperColorHints.kt:57:9 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperColorHints.kt:60:17 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperColorHints.kt:64:13 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/WallpaperThemeManager.kt:55:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:28:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:82:57 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:82:67 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:92:63 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:92:73 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:97:70 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:97:80 'static field DATA_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:102:65 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:102:75 'static field ORDERED_BG_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:108:46 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/dagger/LauncherExecutorsModule.kt:108:56 'static field THREAD_POOL_EXECUTOR: ThreadPoolExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/window/RefreshRateTracker.kt:43:50 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/window/RefreshRateTracker.kt:43:60 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/views/DialogView.kt:85:64 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/views/DialogView.kt:109:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/views/DoubleShadowIconDrawable.kt:115:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:24:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:25:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:36:9 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:50:13 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:81:63 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/ListenableAppWidgetHost.kt:81:73 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/resize/ResizeFrame.kt:323:29 Unnecessary safe call on a non-null receiver of type 'ResizeButtonState'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:59:30 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:59:40 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:67:30 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:67:40 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:83:30 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:83:40 'static field UI_HELPER_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widget/util/WidgetSizeHandler.kt:142:42 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widgetpicker/repository/WidgetAppIconsRepositoryImpl.kt:23:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widgetpicker/repository/WidgetAppIconsRepositoryImpl.kt:53:13 'static field MAIN_EXECUTOR: LooperExecutor!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/widgetpicker/repository/WidgetsRepositoryImpl.kt:31:8 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/LauncherInstalledWidgetsProvider.kt:44:21 'class Executors : Any' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:43:25 The corresponding parameter in the supertype 'WorkspaceItemTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:48:38 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:48:77 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:49:36 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:51:37 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:59:25 The corresponding parameter in the supertype 'HotseatItemTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:62:38 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:62:77 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:63:36 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:72:25 The corresponding parameter in the supertype 'AppInFolderTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:74:37 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:74:75 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:75:35 Unnecessary safe call on a non-null receiver of type 'Intent'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:84:25 The corresponding parameter in the supertype 'WorkspaceItemTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:101:25 The corresponding parameter in the supertype 'WorkspaceItemTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/ItemInfoTranslators.kt:118:25 The corresponding parameter in the supertype 'HotseatItemTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/LauncherUnplacedAppTranslator.kt:32:25 The corresponding parameter in the supertype 'UnplacedAppTypeTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/LauncherWorkspaceTypeTranslator.kt:38:25 The corresponding parameter in the supertype 'WorkspaceTypeTranslator' is named 'info'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/TranslatorRegistry.kt:74:32 Unchecked cast of 'Translator<*, out Any>?' to 'Translator<Any, Any>'.
+w: file:///home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/workspacefunctions/translators/TranslatorRegistry.kt:84:64 Unchecked cast of 'Translator<Any, Any>' to 'Translator<Any, Target (of fun <Target : Any> translate)>'.
+
+> Task :app:compileReleaseJavaWithJavac
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:65: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
+                                           ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:75: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor ORDERED_BG_EXECUTOR =
+                                       ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:84: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor MAIN_EXECUTOR =
+                                       ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:99: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor UI_HELPER_EXECUTOR =
+                                       ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:110: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static final LooperExecutor DATA_HELPER_EXECUTOR =
+                                       ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:125: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static LooperExecutor getPackageExecutor(String packageName) {
+                                 ^
+/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/util/Executors.java:152: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public static class SimpleThreadFactory implements ThreadFactory {
+                  ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+7 warnings
+
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseGlobalSynthetics FROM-CACHE
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseJavaResource
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseArtProfile
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792195519708.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/Loom/Loom/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 3m 2s
+440 actionable tasks: 266 executed, 174 from cache
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html
+V2 Signer: certificate DN: CN=Folio
+V2 Signer: certificate SHA-256 digest: 5acbbd65b56a3da013474344a728f1a6cdcfeefce22f45ca916f5f8141124018
