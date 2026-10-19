@@ -279,7 +279,40 @@ public final class IconPackManager {
     /** The icon picked for this app ("pack/drawable" or {@link #OVERRIDE_ORIGINAL}), or null. */
     @Nullable
     public String getOverride(ComponentName cn) {
-        return mOverrides.getString(cn.flattenToString(), null);
+        String value = mOverrides.getString(cn.flattenToString(), null);
+        if (value != null) {
+            return value;
+        }
+        // Some apps rename their launcher activity in updates. If this app's package has
+        // exactly one picked icon, it's still this app's.
+        String prefix = cn.getPackageName() + "/";
+        String foundKey = null;
+        for (java.util.Map.Entry<String, ?> e : mOverrides.getAll().entrySet()) {
+            if (e.getKey().startsWith(prefix) && e.getValue() instanceof String) {
+                if (foundKey != null) {
+                    return null;
+                }
+                foundKey = e.getKey();
+            }
+        }
+        if (foundKey == null) {
+            return null;
+        }
+        // Only if that activity is gone (a package can have two launcher activities).
+        ComponentName old = ComponentName.unflattenFromString(foundKey);
+        try {
+            android.content.pm.LauncherApps la =
+                    mContext.getSystemService(android.content.pm.LauncherApps.class);
+            for (android.content.pm.LauncherActivityInfo lai : la.getActivityList(
+                    cn.getPackageName(), android.os.Process.myUserHandle())) {
+                if (old != null && lai.getComponentName().equals(old)) {
+                    return null;
+                }
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return mOverrides.getString(foundKey, null);
     }
 
     /**
@@ -287,11 +320,23 @@ public final class IconPackManager {
      * or null to go back to the default. Only that app's icon is redrawn.
      */
     public void setOverride(ComponentName cn, @Nullable String value) {
-        if (value == null) {
-            mOverrides.edit().remove(cn.flattenToString()).commit();
-        } else {
-            mOverrides.edit().putString(cn.flattenToString(), value).commit();
+        android.content.SharedPreferences.Editor edit = mOverrides.edit();
+        String key = cn.flattenToString();
+        if (!mOverrides.contains(key)) {
+            // Replace an icon saved under the app's old launcher activity (see getOverride).
+            String prefix = cn.getPackageName() + "/";
+            java.util.List<String> old = new java.util.ArrayList<>();
+            for (String k : mOverrides.getAll().keySet()) {
+                if (k.startsWith(prefix)) old.add(k);
+            }
+            if (old.size() == 1) edit.remove(old.get(0));
         }
+        if (value == null) {
+            edit.remove(key);
+        } else {
+            edit.putString(key, value);
+        }
+        edit.commit();
         notifyAppIconChanged(cn.getPackageName());
     }
 

@@ -11,6 +11,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import com.android.launcher3.AbstractFloatingView
+import com.android.launcher3.BubbleTextView
 import com.android.launcher3.Launcher
 import com.android.launcher3.LauncherFiles
 import com.android.launcher3.R
@@ -20,9 +21,9 @@ import java.lang.ref.WeakReference
  * "Lock home screen": while it's on, shortcuts, folders and widgets on the home screen and
  * dock can't be moved, removed, resized or added. Apps still open normally.
  *
- * Long-pressing anything while locked shows [HomeLockPopup]; holding its button unlocks the
- * home screen for [UNLOCK_MS], after which it locks again by itself (once any drag in
- * progress has finished).
+ * Long-pressing an app still shows its menu; long-pressing an empty spot shows [HomeLockPopup],
+ * whose button, held down, unlocks the home screen for [UNLOCK_MS]. It then locks again by
+ * itself (once any drag in progress has finished).
  */
 object HomeLock {
     /** Matches the switch in launcher_preferences.xml. */
@@ -54,10 +55,18 @@ object HomeLock {
         Toast.makeText(context, R.string.folio_lock_toast, Toast.LENGTH_SHORT).show()
     }
 
-    /** What a long press on [v] does on a locked home screen: shows the unlock popup. */
+    /**
+     * A long press on [v] while the home screen is locked: an app icon shows its menu (app
+     * shortcuts, app info, Rename...; Remove and the like stay hidden) without being picked up.
+     * Anything else (folders, widgets) gets a note on how to unlock: touch and hold an empty spot.
+     */
     @JvmStatic
-    fun onLockedLongPress(launcher: Launcher, @Suppress("UNUSED_PARAMETER") v: View): Boolean {
-        HomeLockPopup.show(launcher)
+    fun onLockedLongPress(launcher: Launcher, v: View): Boolean {
+        if (v is BubbleTextView && v.canShowLongPressPopup() &&
+                launcher.popupControllerForAppIcons.show(v) != null) {
+            return true
+        }
+        showLockedMessage(launcher)
         return true
     }
 

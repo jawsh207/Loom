@@ -44,6 +44,31 @@ public final class FolioShortcuts {
                 return new AddToTab(launcher, itemInfo, originalView);
             };
 
+    /** "Rename": a name of the user's own for this app, in the drawer and on the home screen. */
+    public static final SystemShortcut.Factory<Launcher> RENAME =
+            (launcher, itemInfo, originalView) -> {
+                if (itemInfo.itemType != LauncherSettings.Favorites.ITEM_TYPE_APPLICATION
+                        || itemInfo.getTargetComponent() == null || itemInfo.user == null) {
+                    return null;
+                }
+                return new Rename(launcher, itemInfo, originalView);
+            };
+
+    /** "Hide" / "Unhide" for apps in the drawer (and in its search results). */
+    public static final SystemShortcut.Factory<Launcher> HIDE =
+            (launcher, itemInfo, originalView) -> {
+                if (itemInfo.itemType != LauncherSettings.Favorites.ITEM_TYPE_APPLICATION
+                        || itemInfo.getTargetComponent() == null
+                        || (itemInfo.container != LauncherSettings.Favorites.CONTAINER_ALL_APPS
+                            && itemInfo.container
+                                    != LauncherSettings.Favorites.CONTAINER_ALL_APPS_PREDICTION)
+                        || !DrawerTabDialogs.isPersonalApp(itemInfo)) {
+                    return null;
+                }
+                return new Hide(launcher, itemInfo, originalView,
+                        AppActions.isHidden(launcher, itemInfo));
+            };
+
     /** "Edit icon": pick this app's icon from any installed icon pack, or reset it. */
     public static final SystemShortcut.Factory<Launcher> EDIT_ICON =
             (launcher, itemInfo, originalView) -> {
@@ -81,6 +106,36 @@ public final class FolioShortcuts {
         public void onClick(View view) {
             AbstractFloatingView.closeAllOpenViews(mTarget);
             DrawerTabDialogs.showTabsForApp(mTarget, mItemInfo);
+        }
+    }
+
+    static class Rename extends SystemShortcut<Launcher> {
+        Rename(Launcher launcher, ItemInfo info, @NonNull View originalView) {
+            super(R.drawable.ic_folio_rename, R.string.folio_rename, launcher, info,
+                    originalView);
+        }
+
+        @Override
+        public void onClick(View view) {
+            AbstractFloatingView.closeAllOpenViews(mTarget);
+            AppActions.showRenameDialog(mTarget, mItemInfo);
+        }
+    }
+
+    static class Hide extends SystemShortcut<Launcher> {
+        private final boolean mHidden;
+
+        Hide(Launcher launcher, ItemInfo info, @NonNull View originalView, boolean hidden) {
+            super(hidden ? R.drawable.ic_folio_unhide : R.drawable.ic_folio_hide,
+                    hidden ? R.string.folio_unhide : R.string.folio_hide,
+                    launcher, info, originalView);
+            mHidden = hidden;
+        }
+
+        @Override
+        public void onClick(View view) {
+            AbstractFloatingView.closeAllOpenViews(mTarget);
+            AppActions.setHidden(mTarget, mItemInfo, !mHidden);
         }
     }
 

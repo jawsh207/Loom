@@ -79,8 +79,20 @@ public class DefaultAppSearchAlgorithm implements SearchAlgorithm<AdapterItem> {
         mSearchGeneration++;
         final long searchGeneration = mSearchGeneration;
         mAppState.getModel().enqueueModelUpdateTask((taskController, dataModel, apps) ->  {
-            ArrayList<AdapterItem> result = getTitleMatchResult(
-                    apps.data.stream().filter(this::isSearchableApp).toList(), query);
+            // Folio: hidden apps only turn up when searching for "hidden".
+            List<AppInfo> searchable = apps.data.stream().filter(this::isSearchableApp).toList();
+            ArrayList<AdapterItem> result = getTitleMatchResult(searchable.stream()
+                    .filter(a -> !com.android.launcher3.folio.AppActions.isHidden(mContext, a))
+                    .toList(), query);
+            if (com.android.launcher3.folio.AppActions.isHiddenQuery(mContext, query)) {
+                ArrayList<AdapterItem> hidden = new ArrayList<>();
+                searchable.stream()
+                        .filter(a -> com.android.launcher3.folio.AppActions.isHidden(mContext, a))
+                        .sorted(java.util.Comparator.comparing(
+                                a -> a.title == null ? "" : a.title.toString().toLowerCase()))
+                        .forEach(a -> hidden.add(AdapterItem.asApp(a)));
+                result.addAll(0, hidden);
+            }
             if (isPrivateSpaceQuery(query) && isPrivateSpaceAvailable()) {
                 if (result.size() == MAX_RESULTS_COUNT) {
                     result.remove(result.size() - 1);
