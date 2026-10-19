@@ -12,6 +12,7 @@
 
 usage: devtest_apps.py OUT_DIR LOOM_APK TESTBANK_V1_APK TESTBANK_V2_APK"""
 
+import re
 import sys
 import time
 
@@ -34,7 +35,9 @@ def clear_field():
 
 
 def drawer_has(nodes, name):
-    return bool(find(nodes, "^" + name + "$"))
+    """An app icon called [name] (icons carry their name as description; the search box doesn't)."""
+    rx = re.compile("^" + re.escape(name) + "$", re.I)
+    return any(rx.search(n["desc"]) for n in nodes)
 
 
 def menu_for(name, where, nodes=None):
@@ -52,7 +55,7 @@ def menu_for(name, where, nodes=None):
 def search(text, name):
     w, h = screen_size()
     nodes = snap(f"{name}-before-search")
-    bar = find(nodes, "search apps")
+    bar = next((n for n in nodes if n.get("id", "").endswith("search_container_all_apps")), None)
     if bar:
         tap(bar)
         time.sleep(1.5)
