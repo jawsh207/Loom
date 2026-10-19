@@ -582,6 +582,16 @@ constructor(
                 )
             else entry.contentDescription
         info.bitmap = entry.bitmap
+        // Folio: a name the user gave this app (drawer, home screen and search).
+        if (info.itemType == com.android.launcher3.LauncherSettings.Favorites.ITEM_TYPE_APPLICATION) {
+            val cn = info.targetComponent
+            val custom = if (cn != null && info.user != null)
+                com.android.launcher3.folio.AppPrefs.labels(context).get(cn, info.user) else null
+            if (!custom.isNullOrBlank()) {
+                info.title = custom
+                info.contentDescription = getUserBadgedLabel(custom, info.user)
+            }
+        }
         // Clear any previously set appTitle, if the packageOverride is no longer valid
         info.appTitle = null
         if (entry.bitmap == null) {

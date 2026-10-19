@@ -92,8 +92,11 @@ public final class DrawerTabsStore {
     }
 
     /**
-     * Key identifying an app for a given user, e.g.
-     * {@code com.example/.MainActivity#0}. Work-profile copies of an app get a different key.
+     * Key identifying an app for a given user: its package and user, e.g. {@code com.example#0}.
+     * Work-profile copies of an app get a different key.
+     *
+     * <p>The package, not the launcher activity: some apps (banking apps especially) rename
+     * their launcher activity in updates, which used to drop them out of their tab.
      */
     @Nullable
     public static String appKey(ItemInfo info) {
@@ -101,12 +104,22 @@ public final class DrawerTabsStore {
         if (cn == null || info.user == null) {
             return null;
         }
-        return cn.flattenToString() + "#" + info.user.hashCode();
+        return appKey(cn, info.user);
     }
 
     /** Same key as {@link #appKey(ItemInfo)}, for an app known by component and user. */
     public static String appKey(@NonNull ComponentName cn, @NonNull UserHandle user) {
-        return cn.flattenToString() + "#" + user.hashCode();
+        return cn.getPackageName() + "#" + user.hashCode();
+    }
+
+    /**
+     * Keys saved before 0.3.4 named the activity too ({@code com.example/.Main#0}); keep just
+     * the package and user.
+     */
+    static String normalizeKey(String key) {
+        int slash = key.indexOf('/');
+        int hash = key.lastIndexOf('#');
+        return slash > 0 && hash > slash ? key.substring(0, slash) + key.substring(hash) : key;
     }
 
     public List<Tab> getTabs() {
@@ -254,6 +267,7 @@ public final class DrawerTabsStore {
     private void load() {
         mTabs.clear();
         mSelectedId = mPrefs.getString(KEY_SELECTED, ALL_TAB_ID);
+        boolean migrated = false;
         try {
             JSONArray arr = new JSONArray(mPrefs.getString(KEY_TABS, "[]"));
             for (int i = 0; i < arr.length(); i++) {
@@ -262,13 +276,20 @@ public final class DrawerTabsStore {
                 JSONArray apps = o.optJSONArray("apps");
                 if (apps != null) {
                     for (int j = 0; j < apps.length(); j++) {
-                        tab.apps.add(apps.getString(j));
+                        String key = apps.getString(j);
+                        String normalized = normalizeKey(key);
+                        migrated |= !normalized.equals(key);
+                        tab.apps.add(normalized);
                     }
                 }
                 mTabs.add(tab);
             }
         } catch (JSONException e) {
             mTabs.clear();
+            return;
+        }
+        if (migrated) {
+            save();
         }
     }
 

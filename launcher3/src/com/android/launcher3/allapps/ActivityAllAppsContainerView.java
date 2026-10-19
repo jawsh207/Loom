@@ -1352,9 +1352,10 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
     }
 
     private Predicate<ItemInfo> getMainAppsMatcher() {
-        return mDrawerTabFilter == null
-                ? mPersonalMatcher
-                : mPersonalMatcher.and(mDrawerTabFilter);
+        // Folio: hidden apps are left out of every tab (search "hidden" to find them).
+        Predicate<ItemInfo> visible = mPersonalMatcher.and(
+                info -> !com.android.launcher3.folio.AppActions.isHidden(getContext(), info));
+        return mDrawerTabFilter == null ? visible : visible.and(mDrawerTabFilter);
     }
 
     public AlphabeticalAppsList getPersonalAppList() {
