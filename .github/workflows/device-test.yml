@@ -21,8 +21,11 @@ on:
       test:
         description: "What to test"
         type: choice
-        options: [feed, widgets, grid]
+        options: [feed, widgets, grid, apps]
         default: feed
+      release:
+        description: "Test a published release (e.g. v0.3.3) instead of the latest build of main"
+        default: ""
 
 permissions:
   contents: write
@@ -41,13 +44,53 @@ jobs:
       - name: Download the APK
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE: ${{ inputs.release }}
         run: |
+          if [ -n "$RELEASE" ]; then
+            gh release download "$RELEASE" --repo "$GITHUB_REPOSITORY" --pattern '*.apk' --dir apk
+            cp apk/*.apk folio.apk
+            ls -l folio.apk
+            exit 0
+          fi
           RUN=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow build.yml --branch main \
             --status success --limit 1 --json databaseId -q '.[0].databaseId')
           echo "APK from build run $RUN"
           gh run download "$RUN" --repo "$GITHUB_REPOSITORY" --name Loom --dir apk
           cp apk/*.apk folio.apk
           ls -l folio.apk
+
+      - name: Build the Test Bank app (two versions, launcher activity renamed in v2)
+        if: inputs.test == 'apps'
+        run: |
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          JAR=$(ls -d "$ANDROID_HOME"/platforms/android-* | sort -V | tail -1)/android.jar
+          echo "build tools $BT, $JAR"
+          keytool -genkeypair -keystore tb.jks -storepass android -keypass android -alias tb \
+            -keyalg RSA -keysize 2048 -validity 1000 -dname "CN=Test Bank" > /dev/null
+          for v in 1 2; do
+            if [ $v = 1 ]; then ALIAS=MainOld; else ALIAS=MainNew; fi
+            mkdir -p tb$v
+            cat > tb$v/AndroidManifest.xml <<EOF
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+              package="com.loom.testbank" android:versionCode="$v" android:versionName="$v">
+            <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34" />
+            <application android:label="Test Bank" android:hasCode="false">
+              <activity android:name="android.app.Activity" android:exported="false" />
+              <activity-alias android:name="com.loom.testbank.$ALIAS" android:exported="true"
+                  android:targetActivity="android.app.Activity" android:label="Test Bank">
+                <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+                  <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+              </activity-alias>
+            </application>
+          </manifest>
+          EOF
+            "$BT/aapt2" link -o tb$v/u.apk -I "$JAR" --manifest tb$v/AndroidManifest.xml
+            "$BT/zipalign" -f 4 tb$v/u.apk tb$v/a.apk
+            "$BT/apksigner" sign --ks tb.jks --ks-pass pass:android --out testbank$v.apk tb$v/a.apk
+          done
+          ls -l testbank*.apk
 
       - name: Enable KVM
         run: |
@@ -115,6 +158,8 @@ jobs:
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
           if [ "${{ inputs.test }}" = "widgets" ]; then
             python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          elif [ "${{ inputs.test }}" = "apps" ]; then
+            python3 build-support/devtest_apps.py out folio.apk testbank1.apk testbank2.apk 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "grid" ]; then
             python3 build-support/devtest_grid.py out folio.apk 2>&1 | tee devtest.log
           else
