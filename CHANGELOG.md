@@ -5,6 +5,16 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+### Fixed
+- Apps no longer drop out of their drawer tab after an update. Some apps (banking apps especially) rename their launch screen in updates, and tabs used to track apps by that name; they now track the app itself. Apps that already fell out of a tab this way go back into it. A custom icon picked with **Edit icon** survives such updates too.
+
+### New
+- **Rename** apps from their long-press menu, in the app drawer or on the home screen. The new name shows everywhere, including search; **Original name** puts it back.
+- **Hide** apps from the app drawer from their long-press menu. Type **hidden** in the drawer's search bar to list them; long-press one and pick **Unhide** to bring it back.
+
+### Changed
+- On a locked home screen, long-pressing an app shows its usual menu again (shortcuts, App info, Rename...); moving and removing stay blocked. Touch and hold an empty spot to unlock.
+
 ## 0.3.3 (2026-10-17)
 
 - Feed panel: going back from an article returns you to the same place in the feed list instead of the top.
