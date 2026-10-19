@@ -169,9 +169,15 @@ def main():
     gallery = find(nodes, r"^gallery$")
     if gallery:
         x, y = center(gallery)
+        ex, ey = w * 3 // 4, h // 2  # an empty spot
         long_press(x, y)
+        menu = snap("locked-icon-press")
+        log(f"  icon long-press shows its menu, not the unlock popup: "
+            f"{bool(find(menu, 'app info')) and not find(menu, 'home screen locked')}")
+        close_popup()
+        long_press(ex, ey)
         popup = snap("locked-long-press")
-        log(f"  long-press shows unlock popup: {bool(find(popup, 'home screen locked'))}")
+        log(f"  empty-spot long-press shows unlock popup: {bool(find(popup, 'home screen locked'))}")
         log(f"  popup has hold button: {bool(find(popup, '^hold to unlock$'))}")
         hold = find(popup, '^hold to unlock$')
         if hold:
@@ -186,14 +192,8 @@ def main():
         after_drag = find(snap("locked-after-drag"), r"^gallery$")
         log(f"  icon stayed put: {bool(after_drag) and after_drag['bounds'] == gallery['bounds']}")
 
-        # Empty space.
-        long_press(w // 2, h // 3)
-        log(f"  empty-space long-press shows popup: "
-            f"{bool(find(snap('locked-empty-press'), 'home screen locked'))}")
-        close_popup()
-
         # A quick tap on the button doesn't unlock; holding it does.
-        long_press(x, y)
+        long_press(ex, ey)
         button = find(snap("popup-again"), r"^hold to unlock$")
         if button:
             bx, by = center(button)
@@ -212,7 +212,7 @@ def main():
                 x, y = center(moved)
             time.sleep(max(0, unlocked_at + 48 - time.time()))
             snap("relocked-toast")
-            long_press(x, y)
+            long_press(ex, ey)
             log(f"  locked again after 45 s: "
                 f"{bool(find(snap('relocked-press'), 'home screen locked'))}")
             close_popup()
