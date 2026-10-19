@@ -2801,7 +2801,8 @@ public class Launcher extends StatefulActivity<LauncherState>
         // Folio entries hide themselves (return null) where they don't apply.
         return Stream.concat(getLauncherSystemShortcuts(itemInfo),
                 Stream.<SystemShortcut.Factory>of(FolioShortcuts.EDIT_ICON,
-                        FolioShortcuts.ADD_TO_TAB, FolioShortcuts.FOLDER_COVER));
+                        FolioShortcuts.RENAME, FolioShortcuts.ADD_TO_TAB,
+                        FolioShortcuts.HIDE, FolioShortcuts.FOLDER_COVER));
     }
 
     private Stream<SystemShortcut.Factory> getLauncherSystemShortcuts(ItemInfo itemInfo) {

@@ -80,4 +80,14 @@
     <string name="double_tap_lock_open_settings">Open settings</string>
     <string name="lock_service_label">Loom screen lock</string>
     <string name="lock_service_description">Lets Loom turn your screen off when you double-tap an empty spot, and open notifications when you swipe down. It doesn\'t observe or read anything on screen.</string>
+    <!-- Renaming and hiding apps -->
+    <string name="folio_rename">Rename</string>
+    <string name="folio_rename_title">Rename app</string>
+    <string name="folio_rename_reset">Original name</string>
+    <string name="folio_hide">Hide</string>
+    <string name="folio_unhide">Unhide</string>
+    <!-- Typed in the app drawer's search bar to list hidden apps. -->
+    <string name="folio_hidden_query">hidden</string>
+    <string name="folio_hidden_toast"><xliff:g id="app" example="Bank">%1$s</xliff:g> is hidden. Search \"hidden\" in the app drawer to find it.</string>
+    <string name="folio_unhidden_toast"><xliff:g id="app" example="Bank">%1$s</xliff:g> is back in the app drawer.</string>
 </resources>
