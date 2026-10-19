@@ -18,7 +18,7 @@ import com.android.launcher3.LauncherSettings
 import com.android.launcher3.R
 import com.android.launcher3.allapps.search.AppsSearchContainerLayout
 import com.android.launcher3.model.data.ItemInfo
-import com.android.launcher3.LauncherComponentProvider
+import com.android.launcher3.dagger.LauncherComponentProvider
 
 /** Renaming apps and hiding them from the app drawer. */
 object AppActions {
