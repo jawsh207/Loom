@@ -158,8 +158,11 @@ private data class Entry(val item: FeedItem, val snippet: String)
 @Composable
 fun FeedPanel(state: FeedPanelState, onOpenSettings: () -> Unit, onImport: () -> Unit) {
     FeedTheme {
+        // The drawer's colour isn't one of the theme's own, so say which text colour goes on
+        // it (otherwise text and icons fall back to black, even in dark mode).
         Surface(Modifier.fillMaxSize().testTag("folio_feed_panel"),
-            color = state.sheetColor?.let { Color(it) } ?: MaterialTheme.colorScheme.surface) {
+            color = state.sheetColor?.let { Color(it) } ?: MaterialTheme.colorScheme.surface,
+            contentColor = MaterialTheme.colorScheme.onSurface) {
             AnimatedContent(
                 targetState = state.openItem,
                 transitionSpec = {

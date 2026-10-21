@@ -12,7 +12,7 @@ which the emulator reaches as 10.0.2.2."""
 import re
 import time
 
-from devtest import (PKG, find, log, save_logs, screen_size, setup_home, sh, snap, tap,
+from devtest import (OUT, PKG, find, log, save_logs, screen_size, setup_home, sh, snap, tap,
                      tap_text, top_activity)
 
 LOCAL_RSS = "http://10.0.2.2:8000/rss.xml"
@@ -242,7 +242,48 @@ def main():
     time.sleep(3)
     nodes = snap("panel-closed")
     log(f"  panel closed: {not find(nodes, 'lighthouse')}")
+
+    # 9. Dark mode: text and icons in the panel and in articles are light.
+    sh("cmd uimode night yes")
+    time.sleep(6)
+    sh("input keyevent KEYCODE_HOME")
+    time.sleep(2)
+    sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
+    time.sleep(4)
+    nodes = snap("dark-panel")
+    more = find(nodes, "^more options$")
+    if more:
+        log(f"  dark: menu icon is light: {light_share(more['bounds']) > 0.03}")
+    choose_source(r"^folio test gazette")
+    if tap_text(r"lighthouse keepers", "dark-article-open", wait=6):
+        nodes = snap("dark-article")
+        para = find(nodes, r"a life measured in hours")
+        title = find(nodes, r"^lighthouse keepers")
+        for label, n in (("title", title), ("text", para)):
+            if n:
+                # On the dark background only light text gives near-white pixels.
+                log(f"  dark: article {label} is light text: {light_share(n['bounds']) > 0.03}"
+                    f" ({light_share(n['bounds']):.0%} light pixels)")
+        back_gesture("dark-back")
+    sh("cmd uimode night no")
+    time.sleep(3)
     save_logs()
+
+
+def _pixels(bounds):
+    import glob
+    from PIL import Image
+    png = sorted(glob.glob(str(OUT / "*.png")))[-1]
+    img = Image.open(png).convert("RGB")
+    x1, y1, x2, y2 = bounds
+    return list(img.crop((x1, y1, x2, y2)).getdata())
+
+
+def light_share(bounds):
+    """Share of near-white pixels (light text or icons) in a box of the last screenshot."""
+    px = _pixels(bounds)
+    return sum(1 for r, g, b in px if min(r, g, b) > 190) / max(1, len(px))
+
 
 
 if __name__ == "__main__":

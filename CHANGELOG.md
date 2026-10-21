@@ -5,6 +5,9 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Fixed: in dark mode, article text and the feed panel's icons (refresh, ⋮) were black. They're light again.
+- Loom's own screens (feed panel, Manage feeds, Style, Grid, the lock popup) use Material 3 Expressive with the system's color roles, so they match Settings and the other system apps. The home screen, app drawer, folders and menus already used the system's colors.
+
 ## 0.3.6 (2026-10-21)
 
 - Feed panel: **Large images** card style, with the article's picture across the top and the title, source and time underneath. Choose it in **Manage feeds › Style** (below the Feed panel switch).
