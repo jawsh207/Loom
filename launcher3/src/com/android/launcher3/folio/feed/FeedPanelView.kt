@@ -9,12 +9,15 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.Outline
 import android.graphics.Rect
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.view.animation.DecelerateInterpolator
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -22,8 +25,11 @@ import androidx.compose.ui.unit.dp
 import com.android.launcher3.AbstractFloatingView
 import com.android.launcher3.Insettable
 import com.android.launcher3.Launcher
+import com.android.launcher3.R
 import com.android.launcher3.Utilities
 import com.android.launcher3.util.SystemUiController
+import com.android.launcher3.util.Themes
+import androidx.core.graphics.ColorUtils
 import com.android.launcher3.views.BaseDragLayer
 import kotlin.math.abs
 
@@ -47,18 +53,42 @@ class FeedPanelView(private val launcher: Launcher) :
     private var dragging = false
     private var velocity: VelocityTracker? = null
 
+    /**
+     * Same look as the app drawer: the home screen fades behind it to the drawer's backdrop
+     * colour, and the panel slides over it as a sheet in the drawer's colour with rounded
+     * corners on its leading edge.
+     */
+    private val scrimColor = Themes.getAttrColor(launcher, R.attr.allAppsScrimColor)
+    private val cornerRadius = Themes.getDialogCornerRadius(launcher)
+
+    /** The sliding sheet; this view itself stays put and only draws the fading backdrop. */
+    private val sheet = ComposeView(launcher).apply {
+        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+        setContent {
+            FeedPanel(state, onOpenSettings = { openSettings(false) },
+                onImport = { openSettings(true) })
+        }
+        // Round the corners facing the home screen; the others are off-screen.
+        outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                val r = cornerRadius
+                val extra = r.toInt() + 1
+                if (Utilities.isRtl(view.resources)) {
+                    outline.setRoundRect(0, 0, view.width + extra, view.height, r)
+                } else {
+                    outline.setRoundRect(-extra, 0, view.width, view.height, r)
+                }
+            }
+        }
+        clipToOutline = true
+    }
+
     init {
         orientation = VERTICAL
         visibility = View.GONE
         // Keep clicks from reaching the workspace underneath.
         isClickable = true
-        addView(ComposeView(launcher).apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
-            setContent {
-                FeedPanel(state, onOpenSettings = { openSettings(false) },
-                    onImport = { openSettings(true) })
-            }
-        }, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
+        addView(sheet, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
     }
 
     /** Adds the panel to the launcher's drag layer (once). */
@@ -130,10 +160,17 @@ class FeedPanelView(private val launcher: Launcher) :
         progress = p
         val w = if (width > 0) width else resources.displayMetrics.widthPixels
         val rtl = Utilities.isRtl(resources)
-        translationX = (if (rtl) 1 else -1) * (1f - p) * w
+        sheet.translationX = (if (rtl) 1 else -1) * (1f - p) * w
+        // The home screen fades out behind the panel, as it does behind the app drawer.
+        setBackgroundColor(ColorUtils.setAlphaComponent(scrimColor,
+            (Color.alpha(scrimColor) * p.coerceIn(0f, 1f)).toInt()))
         val visible = p > 0f
         mIsOpen = visible
         if (visible != (visibility == View.VISIBLE)) {
+            if (visible) {
+                // The drawer's current sheet colour (it follows light/dark and the wallpaper).
+                state.sheetColor = launcher.appsView?.backgroundColor ?: scrimColor
+            }
             visibility = if (visible) View.VISIBLE else View.GONE
             if (!visible) {
                 state.openItem = null

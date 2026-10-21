@@ -836,7 +836,8 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
                 : ColorUtils.blendARGB(getBackgroundColor(), mHeaderProtectionColor, blendRatio);
     }
 
-    int getBackgroundColor() {
+    /** The sheet's color (Folio's feed panel uses it too, to look the same). */
+    public int getBackgroundColor() {
         return isBackgroundBlurEnabled()
                 ? mBottomSheetBackgroundColorOverBlur
                 : mBottomSheetBackgroundColorBlurFallback;

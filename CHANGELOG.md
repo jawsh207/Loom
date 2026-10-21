@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- The feed panel now looks like the app drawer: the home screen fades out behind it as it slides in, its edge has the drawer's rounded corners, and it uses the drawer's colors (following light and dark mode).
+
 ## 0.3.5 (2026-10-21)
 
 ### Icons
