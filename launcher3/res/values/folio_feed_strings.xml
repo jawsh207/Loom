@@ -19,6 +19,11 @@
     <string name="feed_filter_unread">Unread</string>
     <string name="feed_filter_starred">Starred</string>
     <string name="feed_large_images">Large images</string>
+    <string name="feed_style_title">Style</string>
+    <string name="feed_style_cards">Stories</string>
+    <string name="feed_style_compact">Compact</string>
+    <string name="feed_style_compact_summary">Headline and summary, with a small picture on the right</string>
+    <string name="feed_style_large_summary">The story\'s picture across the top, with the headline, source and time underneath</string>
     <string name="feed_mark_all_read">Mark all as read</string>
     <string name="feed_mark_read">Mark as read</string>
     <string name="feed_mark_unread">Mark as unread</string>

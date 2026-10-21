@@ -63,6 +63,9 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.android.launcher3.R
+import androidx.activity.compose.BackHandler
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.selection.selectableGroup
 import kotlinx.coroutines.launch
 
 /** Feed settings and subscriptions: on/off, refresh, adding, OPML, renaming, folders. */
@@ -71,12 +74,70 @@ class FeedSettingsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        setContent { FeedTheme { SettingsScreen(onBack = ::finish) } }
+        setContent {
+            FeedTheme {
+                var showStyle by rememberSaveable { mutableStateOf(false) }
+                if (showStyle) {
+                    StyleScreen(onBack = { showStyle = false })
+                } else {
+                    SettingsScreen(onBack = ::finish, onStyle = { showStyle = true })
+                }
+            }
+        }
+    }
+
+    /** "Style": how the feed panel shows its stories. */
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    private fun StyleScreen(onBack: () -> Unit) {
+        BackHandler(onBack = onBack)
+        val prefs = remember { FeedPrefs.prefs(this) }
+        var large by remember { mutableStateOf(FeedPrefs.largeImages(this)) }
+        val scroll = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+        Scaffold(
+            Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection),
+            topBar = {
+                LargeTopAppBar(
+                    title = { Text(getString(R.string.feed_style_title)) },
+                    navigationIcon = {
+                        IconButton(onBack) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack,
+                                getString(R.string.feed_back))
+                        }
+                    },
+                    scrollBehavior = scroll,
+                )
+            },
+        ) { padding ->
+            LazyColumn(Modifier.fillMaxSize().selectableGroup().testTag("folio_feed_style"),
+                contentPadding = PaddingValues(top = padding.calculateTopPadding(),
+                    bottom = padding.calculateBottomPadding() + 16.dp)) {
+                item { SectionHeader(getString(R.string.feed_style_cards)) }
+                for ((isLarge, title, summary) in listOf(
+                    Triple(false, R.string.feed_style_compact, R.string.feed_style_compact_summary),
+                    Triple(true, R.string.feed_large_images, R.string.feed_style_large_summary),
+                )) {
+                    item {
+                        ListItem(
+                            headlineContent = { Text(getString(title)) },
+                            supportingContent = { Text(getString(summary)) },
+                            leadingContent = { RadioButton(large == isLarge, null) },
+                            modifier = Modifier.selectable(
+                                selected = large == isLarge, role = Role.RadioButton,
+                                onClick = {
+                                    large = isLarge
+                                    prefs.edit().putBoolean(FeedPrefs.LARGE_IMAGES, isLarge).apply()
+                                }),
+                        )
+                    }
+                }
+            }
+        }
     }
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    private fun SettingsScreen(onBack: () -> Unit) {
+    private fun SettingsScreen(onBack: () -> Unit, onStyle: () -> Unit) {
         val repo = remember { FeedRepository.get(this) }
         val prefs = remember { FeedPrefs.prefs(this) }
         val scope = rememberCoroutineScope()
@@ -152,6 +213,18 @@ class FeedSettingsActivity : ComponentActivity() {
                             enabled = !enabled
                             prefs.edit().putBoolean(FeedPrefs.ENABLED, enabled).apply()
                         },
+                    )
+                }
+                item {
+                    // Re-read when coming back from the Style screen.
+                    val large = FeedPrefs.largeImages(this@FeedSettingsActivity)
+                    ListItem(
+                        headlineContent = { Text(getString(R.string.feed_style_title)) },
+                        supportingContent = {
+                            Text(getString(if (large) R.string.feed_large_images
+                                else R.string.feed_style_compact))
+                        },
+                        modifier = Modifier.clickable(onClick = onStyle),
                     )
                 }
                 item { SectionHeader(getString(R.string.feed_section_refresh)) }
