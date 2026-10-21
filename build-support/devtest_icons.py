@@ -96,7 +96,7 @@ def main():
     time.sleep(6)
     go_home()
 
-    if not open_drawer("drawer-icons", r"^camera$"):
+    if not open_drawer("drawer-icons", r"^loom$"):
         log("!! drawer didn't open")
     on = scan("colored")
     for label in EXPECTED:
@@ -129,7 +129,7 @@ def main():
     tap_scrolled(r"^colorful grapheneos icons$", "colored-off", wait=4)
     go_home()
     time.sleep(3)
-    open_drawer("drawer-off", r"^camera$")
+    open_drawer("drawer-off", r"^loom$")
     off = scan("plain")
     for label in EXPECTED:
         share = off.get(label, (None,))[0]
