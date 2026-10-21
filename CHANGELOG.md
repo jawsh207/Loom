@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Feed panel: **Large images** card style, with the article's picture across the top and the title, source and time underneath. Switch it on or off in the panel's ⋮ menu.
+- Feed panel: **Unread** and **Starred** moved from the top of the list into the ⋮ menu.
 - The feed panel now looks like the app drawer: the home screen fades out behind it as it slides in, its edge has the drawer's rounded corners, and it uses the drawer's colors (following light and dark mode).
 
 ## 0.3.5 (2026-10-21)

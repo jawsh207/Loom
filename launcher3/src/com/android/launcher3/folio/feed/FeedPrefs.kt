@@ -18,6 +18,7 @@ object FeedPrefs {
     const val KEEP_DAYS = "pref_feed_keep_days"
     const val TEXT_SCALE = "pref_feed_text_scale"
     const val UNREAD_ONLY = "pref_feed_unread_only"
+    const val LARGE_IMAGES = "pref_feed_large_images"
 
     val REFRESH_CHOICES = intArrayOf(0, 1, 3, 6, 12, 24)
     val KEEP_CHOICES = intArrayOf(7, 30, 90, 365)
@@ -35,4 +36,6 @@ object FeedPrefs {
     fun keepDays(context: Context) = prefs(context).getInt(KEEP_DAYS, 30)
 
     fun textScale(context: Context) = prefs(context).getFloat(TEXT_SCALE, 1f)
+
+    fun largeImages(context: Context) = prefs(context).getBoolean(LARGE_IMAGES, false)
 }
