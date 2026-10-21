@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.3.5 (2026-10-21)
+
 ### Icons
 - **Colorful GrapheneOS icons**: GrapheneOS's own apps (Camera, Apps, PDF Viewer, Auditor, Info, Vanadium, and Phone, Messaging, Contacts and the other built-in apps with GrapheneOS's black-on-white icons) now show their symbol in white on a color of their own, and Brave shows its lion in white on orange. Only icons that really are a symbol on a light background change. An icon pack's own icon or one picked with **Edit icon** still comes first, and the switch is in **Home settings › Icons**.
 
