@@ -104,6 +104,21 @@ def main():
         log(f"  {label}: colored {share is not None and share > 0.2}"
             f" ({'not found' if share is None else f'{share:.0%} of the icon in its colour'})")
 
+    # Open Camera's icon colour (most common strongly coloured pixel), for reference.
+    nodes = snap("drawer-opencamera")
+    oc = find_icon(nodes, "Open Camera")
+    if oc:
+        from collections import Counter
+        img = Image.open(last_png()).convert("RGB")
+        px = list(img.crop(icon_box(oc)).getdata())
+        sat = [((r // 8) * 8, (g // 8) * 8, (b // 8) * 8) for r, g, b in px
+               if max(r, g, b) - min(r, g, b) > 40]
+        top = Counter(sat).most_common(3)
+        log("  Open Camera icon colours: " + ", ".join(
+            f"#{r:02X}{g:02X}{b:02X} ({n})" for (r, g, b), n in top))
+    else:
+        log("  !! Open Camera not on this page")
+
     # Other apps keep their own icons: Settings on this (non-GrapheneOS) emulator isn't white.
     nodes = snap("drawer-others")
     s = find_icon(nodes, "Settings")
