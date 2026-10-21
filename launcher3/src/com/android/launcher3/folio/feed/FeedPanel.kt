@@ -102,6 +102,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.material3.Checkbox
 import com.android.launcher3.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -124,6 +128,8 @@ class FeedPanelState(context: Context) {
     /** The filter the list was last scrolled to the top for. */
     var listFilter: FeedFilter? = null
     var textScale by mutableFloatStateOf(FeedPrefs.textScale(context))
+    /** Cards with the picture across the top instead of a thumbnail on the right. */
+    var largeImages by mutableStateOf(FeedPrefs.largeImages(context))
     var showAddDialog by mutableStateOf(false)
     /** System bar sizes, from the launcher (which keeps window insets to itself). */
     var topInset by mutableStateOf(0.dp)
@@ -211,32 +217,6 @@ private fun FeedList(state: FeedPanelState, onOpenSettings: () -> Unit, onImport
                 }
             }
             OverflowMenu(state, onOpenSettings)
-        }
-        Row(
-            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FilterChip(
-                selected = state.filter.unreadOnly,
-                onClick = {
-                    val unread = !state.filter.unreadOnly
-                    state.filter = state.filter.copy(unreadOnly = unread)
-                    FeedPrefs.prefs(context).edit().putBoolean(FeedPrefs.UNREAD_ONLY, unread)
-                        .apply()
-                },
-                label = { Text(stringResource(context, R.string.feed_filter_unread)) },
-            )
-            FilterChip(
-                selected = state.filter.starredOnly,
-                onClick = {
-                    state.filter = state.filter.copy(starredOnly = !state.filter.starredOnly)
-                },
-                label = { Text(stringResource(context, R.string.feed_filter_starred)) },
-                leadingIcon = if (state.filter.starredOnly) {
-                    { Icon(Icons.Filled.Star, null, Modifier.size(18.dp)) }
-                } else null,
-            )
         }
         val list = entries
         PullToRefreshBox(
@@ -348,6 +328,23 @@ private fun OverflowMenu(state: FeedPanelState, onOpenSettings: () -> Unit) {
             Icon(Icons.Outlined.MoreVert, stringResource(context, R.string.feed_more))
         }
         DropdownMenu(open, { open = false }) {
+            // Show only unread / starred articles, and the card style.
+            CheckItem(stringResource(context, R.string.feed_filter_unread),
+                state.filter.unreadOnly) {
+                val unread = !state.filter.unreadOnly
+                state.filter = state.filter.copy(unreadOnly = unread)
+                FeedPrefs.prefs(context).edit().putBoolean(FeedPrefs.UNREAD_ONLY, unread).apply()
+            }
+            CheckItem(stringResource(context, R.string.feed_filter_starred),
+                state.filter.starredOnly) {
+                state.filter = state.filter.copy(starredOnly = !state.filter.starredOnly)
+            }
+            CheckItem(stringResource(context, R.string.feed_large_images), state.largeImages) {
+                state.largeImages = !state.largeImages
+                FeedPrefs.prefs(context).edit()
+                    .putBoolean(FeedPrefs.LARGE_IMAGES, state.largeImages).apply()
+            }
+            HorizontalDivider()
             DropdownMenuItem(
                 text = { Text(stringResource(context, R.string.feed_mark_all_read)) },
                 leadingIcon = { Icon(Icons.Outlined.DoneAll, null) },
@@ -370,6 +367,17 @@ private fun OverflowMenu(state: FeedPanelState, onOpenSettings: () -> Unit) {
     }
 }
 
+/** A menu entry with a tick box; the menu stays open so several can be changed. */
+@Composable
+private fun CheckItem(label: String, checked: Boolean, onToggle: () -> Unit) {
+    DropdownMenuItem(
+        text = { Text(label) },
+        trailingIcon = { Checkbox(checked = checked, onCheckedChange = null) },
+        onClick = onToggle,
+        modifier = Modifier.semantics { this.stateDescription = if (checked) "on" else "off" },
+    )
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
@@ -385,6 +393,9 @@ private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
             modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp))
                 .combinedClickable(onClick = onOpen, onLongClick = { menu = true }),
         ) {
+            if (state.largeImages) {
+                LargeCardContent(item)
+            } else
             Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -443,6 +454,52 @@ private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
                 DropdownMenuItem(
                     text = { Text(stringResource(context, R.string.feed_open_browser)) },
                     onClick = { menu = false; openInBrowser(context, link) },
+                )
+            }
+        }
+    }
+}
+
+/** Large style: the picture across the top, then the title, then source and time. */
+@Composable
+private fun LargeCardContent(item: FeedItem) {
+    val colors = MaterialTheme.colorScheme
+    Column {
+        if (item.image != null) {
+            var failed by remember(item.image) { mutableStateOf(false) }
+            if (!failed) {
+                Box(Modifier.fillMaxWidth().aspectRatio(16f / 9f)
+                    .background(colors.surfaceContainerHighest)) {
+                    RemoteImage(item.image, null, Modifier.fillMaxSize(),
+                        onResult = { ok -> if (!ok) failed = true })
+                }
+            }
+        }
+        Column(Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
+            Text(
+                item.title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = if (item.read) FontWeight.Normal else FontWeight.Bold,
+                color = if (item.read) colors.onSurfaceVariant else colors.onSurface,
+                maxLines = 2, overflow = TextOverflow.Ellipsis,
+            )
+            Spacer(Modifier.height(6.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    item.feedTitle,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = if (item.read) colors.onSurfaceVariant else colors.primary,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                if (item.starred) {
+                    Icon(Icons.Filled.Star, null, Modifier.padding(horizontal = 6.dp)
+                        .size(16.dp), tint = colors.tertiary)
+                }
+                Text(
+                    relativeTime(item.published),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = colors.onSurfaceVariant,
                 )
             }
         }
