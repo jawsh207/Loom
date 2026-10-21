@@ -21,7 +21,7 @@ on:
       test:
         description: "What to test"
         type: choice
-        options: [feed, widgets, grid, apps]
+        options: [feed, widgets, grid, apps, icons]
         default: feed
       release:
         description: "Test a published release (e.g. v0.3.3) instead of the latest build of main"
@@ -92,6 +92,24 @@ jobs:
           done
           ls -l testbank*.apk
 
+      - name: Download GrapheneOS apps and Brave (official releases)
+        if: inputs.test == 'icons'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p extra-apks
+          for repo in GrapheneOS/Camera GrapheneOS/PdfViewer GrapheneOS/Auditor GrapheneOS/AppStore GrapheneOS/Info; do
+            d=$(mktemp -d)
+            if gh release download --repo "$repo" --pattern '*.apk' --dir "$d"; then
+              for f in "$d"/*.apk; do cp "$f" "extra-apks/$(basename "$repo")-$(basename "$f")"; done
+            else
+              echo "::warning::no APK from $repo"
+            fi
+          done
+          gh release download --repo brave/brave-browser --pattern 'BraveMonox64.apk' --dir extra-apks \
+            || echo "::warning::no Brave APK"
+          ls -l extra-apks
+
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -158,6 +176,9 @@ jobs:
           export PATH="$ANDROID_HOME/platform-tools:$PATH"
           if [ "${{ inputs.test }}" = "widgets" ]; then
             python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          elif [ "${{ inputs.test }}" = "icons" ]; then
+            pip install --quiet pillow
+            python3 build-support/devtest_icons.py out folio.apk extra-apks 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "apps" ]; then
             python3 build-support/devtest_apps.py out folio.apk testbank1.apk testbank2.apk 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "grid" ]; then

@@ -42,6 +42,13 @@
             android:persistent="false" />
 
         <SwitchPreference
+            android:key="pref_folio_colored_icons"
+            android:title="@string/folio_colored_icons_title"
+            android:summary="@string/folio_colored_icons_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <SwitchPreference
             android:key="pref_icon_pack_fallback"
             android:title="@string/icon_pack_fallback_title"
             android:summary="@string/icon_pack_fallback_summary"
