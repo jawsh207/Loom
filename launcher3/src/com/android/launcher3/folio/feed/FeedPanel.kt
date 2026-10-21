@@ -93,6 +93,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
@@ -113,6 +114,8 @@ class FeedPanelState(context: Context) {
     var filter by mutableStateOf(FeedFilter(
         unreadOnly = FeedPrefs.prefs(context).getBoolean(FeedPrefs.UNREAD_ONLY, false)))
     var openItem by mutableStateOf<FeedItem?>(null)
+    /** The app drawer's sheet colour, so the panel looks the same (from the launcher). */
+    var sheetColor by mutableStateOf<Int?>(null)
     /**
      * Where the feed list is scrolled to. Kept here, not in the list, so it survives the list
      * being swapped out while an article is open.
@@ -141,7 +144,7 @@ private data class Entry(val item: FeedItem, val snippet: String)
 fun FeedPanel(state: FeedPanelState, onOpenSettings: () -> Unit, onImport: () -> Unit) {
     FeedTheme {
         Surface(Modifier.fillMaxSize().testTag("folio_feed_panel"),
-            color = MaterialTheme.colorScheme.surface) {
+            color = state.sheetColor?.let { Color(it) } ?: MaterialTheme.colorScheme.surface) {
             AnimatedContent(
                 targetState = state.openItem,
                 transitionSpec = {
@@ -378,7 +381,7 @@ private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
     Box {
         Surface(
             shape = RoundedCornerShape(20.dp),
-            color = if (item.read) colors.surface else colors.surfaceContainerLow,
+            color = if (item.read) colors.surfaceContainerLow else colors.surfaceContainerHigh,
             modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp))
                 .combinedClickable(onClick = onOpen, onLongClick = { menu = true }),
         ) {
