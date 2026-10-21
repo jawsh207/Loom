@@ -130,6 +130,15 @@ class FeedPanelState(context: Context) {
     var textScale by mutableFloatStateOf(FeedPrefs.textScale(context))
     /** Cards with the picture across the top instead of a thumbnail on the right. */
     var largeImages by mutableStateOf(FeedPrefs.largeImages(context))
+    /** Follows Manage feeds › Style, even while the panel is open. Kept as a strong reference. */
+    private val styleListener =
+        android.content.SharedPreferences.OnSharedPreferenceChangeListener { p, key ->
+            if (key == FeedPrefs.LARGE_IMAGES) largeImages = p.getBoolean(key, false)
+        }
+
+    init {
+        FeedPrefs.prefs(context).registerOnSharedPreferenceChangeListener(styleListener)
+    }
     var showAddDialog by mutableStateOf(false)
     /** System bar sizes, from the launcher (which keeps window insets to itself). */
     var topInset by mutableStateOf(0.dp)
@@ -328,7 +337,7 @@ private fun OverflowMenu(state: FeedPanelState, onOpenSettings: () -> Unit) {
             Icon(Icons.Outlined.MoreVert, stringResource(context, R.string.feed_more))
         }
         DropdownMenu(open, { open = false }) {
-            // Show only unread / starred articles, and the card style.
+            // Show only unread / starred articles.
             CheckItem(stringResource(context, R.string.feed_filter_unread),
                 state.filter.unreadOnly) {
                 val unread = !state.filter.unreadOnly
@@ -338,11 +347,6 @@ private fun OverflowMenu(state: FeedPanelState, onOpenSettings: () -> Unit) {
             CheckItem(stringResource(context, R.string.feed_filter_starred),
                 state.filter.starredOnly) {
                 state.filter = state.filter.copy(starredOnly = !state.filter.starredOnly)
-            }
-            CheckItem(stringResource(context, R.string.feed_large_images), state.largeImages) {
-                state.largeImages = !state.largeImages
-                FeedPrefs.prefs(context).edit()
-                    .putBoolean(FeedPrefs.LARGE_IMAGES, state.largeImages).apply()
             }
             HorizontalDivider()
             DropdownMenuItem(
