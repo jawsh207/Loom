@@ -110,7 +110,14 @@ def main():
     sh("input keyevent KEYCODE_HOME")  # back to the first page
     time.sleep(2)
     w, h = screen_size()
-    sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
+    # Halfway through the swipe: the home screen fading behind the panel's rounded edge.
+    sh(f"input motionevent DOWN {w // 8} {h // 2}")
+    for x in range(w // 8, w // 2, w // 16):
+        sh(f"input motionevent MOVE {x} {h // 2}")
+    time.sleep(1)
+    snap("panel-half")
+    sh(f"input motionevent MOVE {w * 7 // 8} {h // 2}")
+    sh(f"input motionevent UP {w * 7 // 8} {h // 2}")
     time.sleep(4)
     nodes = snap("panel-open")
     log(f"  panel visible: {bool(find(nodes, 'lighthouse|bread|atom'))}; top={top_activity()}")
