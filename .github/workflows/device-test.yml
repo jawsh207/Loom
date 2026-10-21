@@ -23,6 +23,9 @@ on:
         type: choice
         options: [feed, widgets, grid, apps, icons]
         default: feed
+      flavor:
+        description: "System image type to prefer (default, google_apis, aosp_atd...); blank: default"
+        default: ""
       release:
         description: "Test a published release (e.g. v0.3.3) instead of the latest build of main"
         default: ""
@@ -125,7 +128,9 @@ jobs:
           tail -20 images.txt
           WANT="${{ github.event.inputs.api }}"
           IMG=""
-          for flavor in default google_apis aosp_atd google_atd google_apis_playstore; do
+          FLAVORS="default google_apis aosp_atd google_atd google_apis_playstore"
+          [ -n "${{ inputs.flavor }}" ] && FLAVORS="${{ inputs.flavor }}"
+          for flavor in $FLAVORS; do
             if [ -n "$WANT" ]; then
               c=$(grep -E "android-${WANT};${flavor};" images.txt | tail -1)
             else
