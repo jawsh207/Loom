@@ -191,7 +191,7 @@ def main():
     else:
         log("  !! nothing to open mid-list")
 
-    # 5d. Unread / Starred / Large images live in the ⋮ menu now.
+    # 5d. Unread / Starred are in the ⋮ menu; the card style is in Manage feeds › Style.
     sh(f"input swipe {w // 2} {h // 4} {w // 2} {h * 4 // 5} 300")  # back near the top
     time.sleep(1.5)
     nodes = snap("list-compact")
@@ -199,15 +199,29 @@ def main():
         f"{not find(nodes, '^unread$') and not find(nodes, '^starred$')}")
     if tap_text(r"^more options$", "menu", wait=1.5):
         nodes = snap("menu-open")
-        log(f"  menu has Unread, Starred and Large images: "
-            f"{bool(find(nodes, '^unread$')) and bool(find(nodes, '^starred$')) and bool(find(nodes, '^large images$'))}")
-        tap_text(r"^large images$", "large-on", wait=1)
-        sh("input keyevent KEYCODE_BACK")  # close the menu
-        time.sleep(3)
-        nodes = snap("list-large")
-        titles = [n for n in nodes if len(n["text"]) > 25 and "·" not in n["text"]]
-        # Large cards: the first title sits well below the top of its card (picture above it).
-        log(f"  large-image layout: {bool(titles)} (first title at y={titles[0]['bounds'][1] if titles else '?'})")
+        log(f"  menu has Unread and Starred, not Large images: "
+            f"{bool(find(nodes, '^unread$')) and bool(find(nodes, '^starred$')) and not find(nodes, '^large images$')}")
+        if tap_text(r"^manage feeds$", "manage", wait=4):
+            nodes = snap("manage-feeds")
+            panel_row = find(nodes, "^feed panel$")
+            style_row = find(nodes, "^style$")
+            log(f"  Style is right below the Feed panel switch: "
+                f"{bool(panel_row and style_row and style_row['bounds'][1] > panel_row['bounds'][1])}")
+            if style_row:
+                tap(style_row)
+                time.sleep(2)
+                nodes = snap("style-screen")
+                log(f"  Style screen offers Compact and Large images: "
+                    f"{bool(find(nodes, '^compact$')) and bool(find(nodes, '^large images$'))}")
+                tap_text(r"^large images$", "style-large", wait=1)
+                sh("input keyevent KEYCODE_BACK")
+                time.sleep(1.5)
+                log(f"  Style row shows the choice: {bool(find(snap('manage-after-style'), '^large images$'))}")
+                sh("input keyevent KEYCODE_BACK")
+                time.sleep(3)
+                nodes = snap("list-large")
+                titles = [n for n in nodes if len(n["text"]) > 25 and "·" not in n["text"]]
+                log(f"  panel switched to large images: {bool(titles) and not find(nodes, ' · ')}")
 
     # 6. Feed-only item (no link) shows the feed's own text.
     choose_source(r"^folio test gazette")
