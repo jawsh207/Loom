@@ -26,8 +26,7 @@ EXPECTED = {
     "Camera": (0xD9, 0x30, 0x25),
     "PDF Viewer": (0xBF, 0x36, 0x0C),
     "Auditor": (0x6D, 0x4C, 0x41),
-    "Apps": (0x2E, 0x7D, 0x32),
-    "Info": (0x37, 0x47, 0x4F),
+    "App Store": (0x2E, 0x7D, 0x32),  # GrapheneOS's Apps (its name in the release APK)
     "Brave": (0xFB, 0x54, 0x2B),
 }
 
@@ -48,7 +47,7 @@ def icon_box(node):
 
 def share_of_color(img, box, rgb, tol=48):
     crop = img.crop(box).convert("RGB")
-    px = list(crop.getdata())
+    px = list(crop.get_flattened_data()) if hasattr(crop, "get_flattened_data") else list(crop.getdata())
     near = sum(1 for p in px if sum(abs(p[i] - rgb[i]) for i in range(3)) < tol)
     return near / max(1, len(px))
 
