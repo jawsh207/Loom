@@ -111,6 +111,9 @@ jobs:
           done
           gh release download --repo brave/brave-browser --pattern 'BraveMonox64.apk' --dir extra-apks \
             || echo "::warning::no Brave APK"
+          # Open Camera (F-Droid), to compare its icon colour.
+          curl -fsSL -o extra-apks/OpenCamera.apk https://f-droid.org/repo/net.sourceforge.opencamera_96.apk \
+            || echo "::warning::no Open Camera APK"
           ls -l extra-apks
 
       - name: Enable KVM
