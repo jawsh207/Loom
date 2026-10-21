@@ -37,6 +37,8 @@
     <string name="icon_pack_title">Icon pack</string>
     <string name="icon_pack_system">System icons</string>
     <string name="icon_pack_none_found">No icon packs are installed. Loom works with packs made for Nova, ADW and similar launchers, which you can get from F-Droid, Accrescent and other stores.</string>
+    <string name="folio_colored_icons_title">Colorful GrapheneOS icons</string>
+    <string name="folio_colored_icons_summary">Show GrapheneOS\'s apps and Brave in color, with their symbol in white. An icon pack\'s own icon for an app, or one picked with Edit icon, still comes first.</string>
     <string name="icon_pack_fallback_title">Style other icons</string>
     <string name="icon_pack_fallback_summary">Give apps the icon pack doesn\'t include the pack\'s background and shape, if it has one</string>
 

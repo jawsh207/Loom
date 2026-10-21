@@ -46,6 +46,14 @@ public final class IconPackPicker {
         });
     }
 
+    /** Sets up the "Colorful GrapheneOS icons" switch so a change re-renders icons. */
+    public static void bindColored(Preference preference) {
+        preference.setOnPreferenceChangeListener((p, value) -> {
+            IconPackManager.get(p.getContext()).setColoredEnabled((Boolean) value);
+            return true;
+        });
+    }
+
     /** Sets up the "style other icons" switch so a change re-renders icons. */
     public static void bindFallback(Preference preference) {
         preference.setOnPreferenceChangeListener((p, value) -> {

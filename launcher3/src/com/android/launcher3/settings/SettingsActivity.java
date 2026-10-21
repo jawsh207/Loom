@@ -317,6 +317,9 @@ public class SettingsActivity extends FragmentActivity
                 case IconPackManager.PREF_FALLBACK:
                     IconPackPicker.bindFallback(preference);
                     return true;
+                case IconPackManager.PREF_COLORED:
+                    IconPackPicker.bindColored(preference);
+                    return true;
                 case DrawerTabsActivity.PREF_KEY:
                     // Folio: opens the drawer tabs screen.
                     preference.setOnPreferenceClickListener(p -> {

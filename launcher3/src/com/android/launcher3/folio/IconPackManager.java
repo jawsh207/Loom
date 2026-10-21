@@ -55,6 +55,8 @@ public final class IconPackManager {
 
     public static final String PREF_ICON_PACK = "pref_icon_pack";
     public static final String PREF_FALLBACK = "pref_icon_pack_fallback";
+    /** Colourful icons for GrapheneOS's apps and Brave (see {@link ColoredIcons}). */
+    public static final String PREF_COLORED = "pref_folio_colored_icons";
 
     /** Per-app override value meaning "the app's own icon, even with a pack selected". */
     public static final String OVERRIDE_ORIGINAL = "!original";
@@ -175,6 +177,15 @@ public final class IconPackManager {
         onChanged();
     }
 
+    public boolean isColoredEnabled() {
+        return mPrefs.getBoolean(PREF_COLORED, true);
+    }
+
+    public void setColoredEnabled(boolean enabled) {
+        mPrefs.edit().putBoolean(PREF_COLORED, enabled).commit();
+        onChanged();
+    }
+
     /** Installed icon packs, sorted by name. */
     public List<PackInfo> getInstalledPacks() {
         PackageManager pm = mContext.getPackageManager();
@@ -218,12 +229,13 @@ public final class IconPackManager {
      */
     @NonNull
     public String getStateCode() {
+        String colored = isColoredEnabled() ? "|colored:1" : "";
         IconPack pack = getActivePack();
         if (pack == null) {
-            return "";
+            return colored;
         }
         return "|iconpack:" + pack.packageName + ":" + pack.versionCode
-                + (isFallbackEnabled() ? ":fb" : "");
+                + (isFallbackEnabled() ? ":fb" : "") + colored;
     }
 
     /**
@@ -247,14 +259,27 @@ public final class IconPackManager {
         }
 
         IconPack pack = getActivePack();
-        if (pack == null) {
-            return null;
+        Drawable d = null;
+        if (pack != null) {
+            d = pack.getIcon(cn, density);
+            if (d == null) {
+                d = pack.getIconForPackage(info.packageName, density);
+            }
         }
-        Drawable d = pack.getIcon(cn, density);
-        if (d == null) {
-            d = pack.getIconForPackage(info.packageName, density);
+        if (d != null) {
+            return new IconPackDrawable(d);
         }
-        if (d == null && isFallbackEnabled() && pack.hasFallbackStyle()) {
+        // The pack has nothing for this app: GrapheneOS's apps and Brave in colour.
+        Integer color = isColoredEnabled() ? ColoredIcons.INSTANCE.colorFor(info.packageName)
+                : null;
+        if (color != null) {
+            Drawable colored = ColoredIcons.INSTANCE.recolor(
+                    mContext.getResources(), systemIcon.get(), color);
+            if (colored != null) {
+                return colored;
+            }
+        }
+        if (pack != null && isFallbackEnabled() && pack.hasFallbackStyle()) {
             d = pack.compose(systemIcon.get(), density, cn.hashCode());
         }
         return d == null ? null : new IconPackDrawable(d);
