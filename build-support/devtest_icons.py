@@ -81,7 +81,17 @@ def scan(name):
                         best = (share, box, last_png())
             if best:
                 found[label] = best
-        if len(found) == len(EXPECTED):
+        oc = find_icon(nodes, "Open Camera")
+        if oc and oc["bounds"][3] < h - 250 and name == "colored":
+            from collections import Counter
+            px = list(img.convert("RGB").crop(icon_box(oc)).getdata())
+            sat = [((r // 8) * 8, (g // 8) * 8, (b // 8) * 8) for r, g, b in px
+                   if max(r, g, b) - min(r, g, b) > 40]
+            top = Counter(sat).most_common(3)
+            log("  Open Camera icon colours: " + ", ".join(
+                f"#{r:02X}{g:02X}{b:02X} ({n})" for (r, g, b), n in top))
+            img.crop(icon_box(oc)).save(OUT / "opencamera-icon.png")
+        if len(found) == len(EXPECTED) and page > 0:
             break
         sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 3} 400")
         time.sleep(1.5)
@@ -96,28 +106,13 @@ def main():
     time.sleep(6)
     go_home()
 
-    if not open_drawer("drawer-icons", r"^loom$"):
+    if not open_drawer("drawer-icons", r"search apps"):
         log("!! drawer didn't open")
     on = scan("colored")
     for label in EXPECTED:
         share = on.get(label, (None,))[0]
         log(f"  {label}: colored {share is not None and share > 0.2}"
             f" ({'not found' if share is None else f'{share:.0%} of the icon in its colour'})")
-
-    # Open Camera's icon colour (most common strongly coloured pixel), for reference.
-    nodes = snap("drawer-opencamera")
-    oc = find_icon(nodes, "Open Camera")
-    if oc:
-        from collections import Counter
-        img = Image.open(last_png()).convert("RGB")
-        px = list(img.crop(icon_box(oc)).getdata())
-        sat = [((r // 8) * 8, (g // 8) * 8, (b // 8) * 8) for r, g, b in px
-               if max(r, g, b) - min(r, g, b) > 40]
-        top = Counter(sat).most_common(3)
-        log("  Open Camera icon colours: " + ", ".join(
-            f"#{r:02X}{g:02X}{b:02X} ({n})" for (r, g, b), n in top))
-    else:
-        log("  !! Open Camera not on this page")
 
     # Other apps keep their own icons: Settings on this (non-GrapheneOS) emulator isn't white.
     nodes = snap("drawer-others")
@@ -144,7 +139,7 @@ def main():
     tap_scrolled(r"^colorful grapheneos icons$", "colored-off", wait=4)
     go_home()
     time.sleep(3)
-    open_drawer("drawer-off", r"^loom$")
+    open_drawer("drawer-off", r"search apps")
     off = scan("plain")
     for label in EXPECTED:
         share = off.get(label, (None,))[0]
