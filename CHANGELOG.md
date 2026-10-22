@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.3.7 (2026-10-22)
+
 - Colorful GrapheneOS icons: Camera is now light blue (the blue of Open Camera's icon) instead of red.
 - Fixed: in dark mode, article text and the feed panel's icons (refresh, ⋮) were black. They're light again.
 - Loom's own screens (feed panel, Manage feeds, Style, Grid, the lock popup) use Material 3 Expressive with the system's color roles, so they match Settings and the other system apps. The home screen, app drawer, folders and menus already used the system's colors.
