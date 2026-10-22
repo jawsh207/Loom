@@ -60,7 +60,8 @@ def shoot(mode):
         shots.append(("Loom menu", last_png(), c))
         close_popup()
 
-    open_settings()
+    sh(f"am start -W -f 0x10008000 -a android.intent.action.APPLICATION_PREFERENCES -p app.folio.launcher")
+    time.sleep(4)
     snap(f"{mode}-home-settings")
     shots.append(("Home settings", last_png(), color_at(12, h // 2)))
     if tap_scrolled(r"^icons$", f"{mode}-icons", wait=3):
@@ -111,6 +112,9 @@ def setup_feed():
         from devtest import tap_text
         tap_text(r"^feed panel$", "setup-feed-on", wait=2)
         add_feed(LOCAL_RSS, "rss")
+    for _ in range(3):
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(1)
     go_home()
 
 
