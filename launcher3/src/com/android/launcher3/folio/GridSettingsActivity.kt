@@ -66,6 +66,10 @@ import androidx.compose.ui.unit.dp
 import com.android.launcher3.LauncherAppState
 import com.android.launcher3.R
 import com.android.launcher3.folio.feed.FeedTheme
+import androidx.compose.material3.TopAppBarDefaults
+import com.android.launcher3.folio.feed.groupItemColors
+import com.android.launcher3.folio.feed.groupCard
+import com.android.launcher3.folio.feed.Group
 
 /** Home screen and app drawer grid sizes, with a live preview. */
 class GridSettingsActivity : ComponentActivity() {
@@ -139,6 +143,7 @@ class GridSettingsActivity : ComponentActivity() {
         }
 
         Scaffold(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer,
             topBar = {
                 TopAppBar(
                     title = { Text(getString(R.string.folio_grid_title)) },
@@ -148,10 +153,12 @@ class GridSettingsActivity : ComponentActivity() {
                                 getString(R.string.feed_back))
                         }
                     },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer),
                 )
             },
             bottomBar = {
-                Surface(tonalElevation = 3.dp) {
+                Surface(color = MaterialTheme.colorScheme.surfaceContainer) {
                     Column(Modifier.fillMaxWidth().navigationBarsPadding().padding(16.dp)) {
                         Text(getString(R.string.folio_grid_apply_note),
                             style = MaterialTheme.typography.bodySmall,
@@ -194,24 +201,29 @@ class GridSettingsActivity : ComponentActivity() {
                 SwitchRow(getString(R.string.folio_grid_custom_home),
                     if (customHome) null else getString(R.string.folio_grid_default_is,
                         stock.columns, stock.rows),
-                    customHome, "folio_grid_custom_home", enabled = !locked) { customHome = it }
+                    customHome, "folio_grid_custom_home", enabled = !locked,
+                    group = Group.Top) { customHome = it }
                 Stepper(getString(R.string.folio_grid_columns), columns,
-                    FolioGrid.COLUMN_RANGE, customHome && !locked, "columns") { columns = it }
+                    FolioGrid.COLUMN_RANGE, customHome && !locked, "columns",
+                    Group.Middle) { columns = it }
                 Stepper(getString(R.string.folio_grid_rows), rows,
-                    FolioGrid.ROW_RANGE, customHome && !locked, "rows") { rows = it }
+                    FolioGrid.ROW_RANGE, customHome && !locked, "rows",
+                    Group.Middle) { rows = it }
                 SwitchRow(getString(R.string.folio_grid_custom_dock),
                     if (customDock) null else getString(R.string.folio_grid_dock_follows),
-                    customDock, "folio_grid_custom_dock", enabled = !locked) { customDock = it }
+                    customDock, "folio_grid_custom_dock", enabled = !locked,
+                    group = Group.Middle) { customDock = it }
                 Stepper(getString(R.string.folio_grid_dock), dock,
-                    FolioGrid.COLUMN_RANGE, customDock && !locked, "dock") { dock = it }
+                    FolioGrid.COLUMN_RANGE, customDock && !locked, "dock",
+                    Group.Bottom) { dock = it }
 
                 Section(getString(R.string.folio_grid_drawer))
                 SwitchRow(getString(R.string.folio_grid_custom_drawer),
                     if (customDrawer) null else getString(R.string.folio_grid_drawer_default,
                         stock.drawerColumns),
-                    customDrawer, "folio_grid_custom_drawer") { customDrawer = it }
+                    customDrawer, "folio_grid_custom_drawer", group = Group.Top) { customDrawer = it }
                 Stepper(getString(R.string.folio_grid_columns), drawer,
-                    FolioGrid.COLUMN_RANGE, customDrawer, "drawer") { drawer = it }
+                    FolioGrid.COLUMN_RANGE, customDrawer, "drawer", Group.Bottom) { drawer = it }
 
                 if (saved != FolioGrid.Sizes(0, 0, 0, 0)) {
                     TextButton(
@@ -232,7 +244,7 @@ class GridSettingsActivity : ComponentActivity() {
 
     @Composable
     private fun Section(title: String) {
-        Text(title, Modifier.padding(start = 24.dp, top = 20.dp, bottom = 4.dp),
+        Text(title, Modifier.padding(start = 28.dp, top = 24.dp, bottom = 8.dp),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary)
     }
@@ -240,25 +252,25 @@ class GridSettingsActivity : ComponentActivity() {
     @Composable
     private fun SwitchRow(
         title: String, summary: String?, checked: Boolean, tag: String,
-        enabled: Boolean = true, onChange: (Boolean) -> Unit,
+        enabled: Boolean = true, group: Group = Group.Single, onChange: (Boolean) -> Unit,
     ) {
         ListItem(
             headlineContent = { Text(title) },
             supportingContent = summary?.let { { Text(it) } },
             trailingContent = { Switch(checked, null, Modifier.testTag(tag), enabled = enabled) },
-            modifier = Modifier.clickable(enabled = enabled) { onChange(!checked) }
-                .padding(horizontal = 8.dp),
+            colors = groupItemColors(),
+            modifier = Modifier.groupCard(group).clickable(enabled = enabled) { onChange(!checked) },
         )
     }
 
     @Composable
     private fun Stepper(
         label: String, value: Int, range: IntRange, enabled: Boolean, tag: String,
-        onChange: (Int) -> Unit,
+        group: Group = Group.Single, onChange: (Int) -> Unit,
     ) {
         val alpha = if (enabled) 1f else 0.38f
         Row(
-            Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 6.dp),
+            Modifier.fillMaxWidth().groupCard(group).padding(horizontal = 16.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge,

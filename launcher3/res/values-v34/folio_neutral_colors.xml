@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Folio Authors
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Loom: menus and folders in the same neutral colours as Settings and the other system apps
+     (the system's surface roles, Android 14+), instead of Launcher3's wallpaper-tinted
+     palette shades. The accent colour is kept for highlights. -->
+<resources>
+    <!-- Long-press menus: Settings' card colour, with the next shades for stacked rows. -->
+    <color name="popup_color_primary_light">@android:color/system_surface_bright_light</color>
+    <color name="popup_color_secondary_light">@android:color/system_surface_container_high_light</color>
+    <color name="popup_color_tertiary_light">@android:color/system_surface_container_highest_light</color>
+    <color name="popup_color_primary_dark">@android:color/system_surface_bright_dark</color>
+    <color name="popup_color_secondary_dark">@android:color/system_surface_container_high_dark</color>
+    <color name="popup_color_tertiary_dark">@android:color/system_surface_container_highest_dark</color>
+    <!-- Open folders: Settings' page colour. -->
+    <color name="folder_background_light">@android:color/system_surface_container_light</color>
+    <color name="folder_background_dark">@android:color/system_surface_container_dark</color>
+</resources>
