@@ -27,7 +27,7 @@ object ColoredIcons {
     /** Background colour per app package. */
     private val COLORS: Map<String, Int> = mapOf(
         // GrapheneOS apps
-        "app.grapheneos.camera" to 0xFFD93025.toInt(),     // red
+        "app.grapheneos.camera" to 0xFF2A9AF2.toInt(),     // light blue, like Open Camera
         "app.grapheneos.apps" to 0xFF2E7D32.toInt(),       // green
         "app.grapheneos.pdfviewer" to 0xFFBF360C.toInt(),  // deep orange
         "app.grapheneos.info" to 0xFF37474F.toInt(),       // slate

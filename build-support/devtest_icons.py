@@ -23,7 +23,7 @@ APK_DIR = sys.argv[3]
 
 # Label in the drawer -> expected background colour.
 EXPECTED = {
-    "Camera": (0xD9, 0x30, 0x25),
+    "Camera": (0x2A, 0x9A, 0xF2),
     "PDF Viewer": (0xBF, 0x36, 0x0C),
     "Auditor": (0x6D, 0x4C, 0x41),
     "App Store": (0x2E, 0x7D, 0x32),  # GrapheneOS's Apps (its name in the release APK)
@@ -82,7 +82,8 @@ def scan(name):
             if best:
                 found[label] = best
         oc = find_icon(nodes, "Open Camera")
-        if oc and oc["bounds"][3] < h - 250 and name == "colored":
+        if oc and oc["bounds"][3] < h - 250 and name == "colored" \
+                and not (OUT / "opencamera-icon.png").exists():
             from collections import Counter
             px = list(img.convert("RGB").crop(icon_box(oc)).getdata())
             sat = [((r // 8) * 8, (g // 8) * 8, (b // 8) * 8) for r, g, b in px
