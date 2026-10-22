@@ -6,6 +6,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 ## Unreleased
 
 - Neutral backgrounds like Settings and Contacts: the app drawer, folders, long-press menus and the feed panel use the system's neutral page and card colors instead of a wallpaper-tinted shade; the accent color is kept for highlights. Manage feeds, Style and Grid now group their rows into rounded cards, like Settings.
+- Home settings (and its Icons and Gestures pages) now looks like Settings too: a neutral page with its rows grouped into rounded cards.
 
 ## 0.3.7 (2026-10-22)
 
