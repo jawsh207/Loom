@@ -24,7 +24,10 @@ def last_png():
 
 
 def color_at(x, y):
-    return Image.open(last_png()).convert("RGB").getpixel((x, y))
+    img = Image.open(last_png()).convert("RGB")
+    x = min(max(0, x), img.width - 1)
+    y = min(max(0, y), img.height - 1)
+    return img.getpixel((x, y))
 
 
 def hexc(c):
@@ -38,11 +41,11 @@ def shoot(mode):
     sh("am start -a android.settings.SETTINGS")
     time.sleep(4)
     snap(f"{mode}-settings")
-    shots.append(("Settings", last_png(), color_at(w // 2, h - 120)))
+    shots.append(("Settings", last_png(), color_at(12, h // 2)))
     go_home()
 
     open_drawer(f"{mode}-drawer", r"search apps")
-    shots.append(("Loom drawer", last_png(), color_at(w // 2, h - 120)))
+    shots.append(("Loom drawer", last_png(), color_at(12, h // 2)))
     go_home()
 
     nodes = snap(f"{mode}-home")
@@ -60,7 +63,7 @@ def shoot(mode):
     open_settings()
     if tap_scrolled(r"^feeds$", f"{mode}-feeds", wait=4):
         snap(f"{mode}-manage-feeds")
-        shots.append(("Manage feeds", last_png(), color_at(w // 2, h - 120)))
+        shots.append(("Manage feeds", last_png(), color_at(12, h // 2)))
         sh("input keyevent KEYCODE_BACK")
         time.sleep(2)
     if tap_scrolled(r"^grid$", f"{mode}-grid", wait=4, up=True):
@@ -89,8 +92,10 @@ def main():
     time.sleep(4)
     shoot("light")
     sh("cmd uimode night yes")
-    time.sleep(8)
+    time.sleep(10)
     go_home()
+    time.sleep(3)
+    snap("dark-settle")  # first screenshot after the switch can be partial
     shoot("dark")
     sh("cmd uimode night no")
     save_logs()
