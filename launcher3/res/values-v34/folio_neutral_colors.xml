@@ -17,4 +17,7 @@
     <!-- Open folders: Settings' page colour. -->
     <color name="folder_background_light">@android:color/system_surface_container_light</color>
     <color name="folder_background_dark">@android:color/system_surface_container_dark</color>
+    <!-- Home settings' header: the page colour, as in Settings. -->
+    <color name="home_settings_header_expanded">@android:color/system_surface_container_light</color>
+    <color name="home_settings_header_collapsed">@android:color/system_surface_container_light</color>
 </resources>

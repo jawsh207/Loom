@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The Folio Authors
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Loom: dark versions of the day/night colours in values-v34/folio_neutral_colors.xml
+     (night colours in values-night-v31 would otherwise win over values-v34). -->
+<resources>
+    <color name="home_settings_header_expanded">@android:color/system_surface_container_dark</color>
+    <color name="home_settings_header_collapsed">@android:color/system_surface_container_dark</color>
+</resources>
