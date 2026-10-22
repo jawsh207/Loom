@@ -21,7 +21,7 @@ on:
       test:
         description: "What to test"
         type: choice
-        options: [feed, widgets, grid, apps, icons]
+        options: [feed, widgets, grid, apps, icons, theme]
         default: feed
       flavor:
         description: "System image type to prefer (default, google_apis, aosp_atd...); blank: default"
@@ -185,6 +185,8 @@ jobs:
           pip install --quiet pillow || true
           if [ "${{ inputs.test }}" = "widgets" ]; then
             python3 build-support/devtest.py out folio.apk 2>&1 | tee devtest.log
+          elif [ "${{ inputs.test }}" = "theme" ]; then
+            python3 build-support/devtest_theme.py out folio.apk 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "icons" ]; then
             pip install --quiet pillow
             python3 build-support/devtest_icons.py out folio.apk extra-apks 2>&1 | tee devtest.log

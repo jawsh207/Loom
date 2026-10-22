@@ -838,9 +838,9 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
 
     /** The sheet's color (Folio's feed panel uses it too, to look the same). */
     public int getBackgroundColor() {
-        return isBackgroundBlurEnabled()
-                ? mBottomSheetBackgroundColorOverBlur
-                : mBottomSheetBackgroundColorBlurFallback;
+        // Folio: the system's neutral container colour, as Settings uses for its pages,
+        // instead of a wallpaper-tinted shade.
+        return getContext().getColor(R.color.materialColorSurfaceContainer);
     }
 
     boolean isBackgroundBlurEnabled() {

@@ -183,11 +183,12 @@
     <!-- Theme overrides in All Apps when blur is enabled. -->
     <style name="AllAppsBlurStyle" />
 
+    <!-- Folio: folders stay neutral (Settings' page colour) with or without blur. -->
     <style name="FolderBlurStyle">
-        <item name="folderBackgroundColor">@color/customColorSurfaceEffect0</item>
+        <item name="folderBackgroundColor">@color/materialColorSurfaceContainer</item>
     </style>
     <style name="FolderBlurFallbackStyle">
-        <item name="folderBackgroundColor">@color/customColorSurfaceEffect0Fallback</item>
+        <item name="folderBackgroundColor">@color/materialColorSurfaceContainer</item>
     </style>
 
     <style name="HomeSettings.Theme" parent="@android:style/Theme.DeviceDefault.Settings">
