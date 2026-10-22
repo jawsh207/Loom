@@ -20,7 +20,7 @@ from devtest_grid import center, close_popup, go_home, long_press, open_drawer, 
 
 
 def last_png():
-    return sorted(glob.glob(str(OUT / "*.png")))[-1]
+    return sorted(p for p in glob.glob(str(OUT / "*.png")) if "/theme-" not in p)[-1]
 
 
 def color_at(x, y):
