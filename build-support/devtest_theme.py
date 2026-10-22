@@ -61,6 +61,13 @@ def shoot(mode):
         close_popup()
 
     open_settings()
+    snap(f"{mode}-home-settings")
+    shots.append(("Home settings", last_png(), color_at(12, h // 2)))
+    if tap_scrolled(r"^icons$", f"{mode}-icons", wait=3):
+        snap(f"{mode}-icons-screen")
+        shots.append(("Icons", last_png(), color_at(12, h // 2)))
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(2)
     if tap_scrolled(r"^feeds$", f"{mode}-feeds", wait=4):
         snap(f"{mode}-manage-feeds")
         shots.append(("Manage feeds", last_png(), color_at(12, h // 2)))
@@ -72,6 +79,16 @@ def shoot(mode):
         sh("input keyevent KEYCODE_BACK")
         time.sleep(2)
     go_home()
+
+    # The feed panel (swipe right from the first page).
+    sh("input keyevent KEYCODE_HOME")
+    time.sleep(2)
+    sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
+    time.sleep(5)
+    snap(f"{mode}-feed-panel")
+    shots.append(("Feed panel", last_png(), color_at(12, h // 2)))
+    sh(f"input swipe {w * 7 // 8} {h // 2} {w // 8} {h // 2} 300")
+    time.sleep(2)
 
     for name, _, c in shots:
         log(f"  {mode}: {name} background {hexc(c)}")
@@ -86,8 +103,20 @@ def shoot(mode):
     sheet.save(OUT / f"theme-{mode}.png")
 
 
+def setup_feed():
+    """Feed panel on, with the local test feed, so the panel has stories to show."""
+    from devtest_feed import LOCAL_RSS, add_feed
+    open_settings()
+    if tap_scrolled(r"^feeds$", "setup-feeds", wait=4):
+        from devtest import tap_text
+        tap_text(r"^feed panel$", "setup-feed-on", wait=2)
+        add_feed(LOCAL_RSS, "rss")
+    go_home()
+
+
 def main():
     setup_home()
+    setup_feed()
     sh("cmd uimode night no")
     time.sleep(4)
     shoot("light")
