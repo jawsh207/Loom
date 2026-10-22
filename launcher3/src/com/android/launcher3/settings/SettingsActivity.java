@@ -46,6 +46,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceFragmentCompat.OnPreferenceStartFragmentCallback;
 import androidx.preference.PreferenceFragmentCompat.OnPreferenceStartScreenCallback;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceGroup.PreferencePositionCallback;
 import androidx.preference.PreferenceScreen;
@@ -213,12 +214,7 @@ public class SettingsActivity extends FragmentActivity
             setPreferencesFromResource(R.xml.launcher_preferences, rootKey);
 
             PreferenceScreen screen = getPreferenceScreen();
-            for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
-                Preference preference = screen.getPreference(i);
-                if (!initPreference(preference)) {
-                    screen.removePreference(preference);
-                }
-            }
+            initGroup(screen);
 
             // If the target preference is not in the current preference screen, find the parent
             // preference screen that contains the target preference and set it as the preference
@@ -241,10 +237,34 @@ public class SettingsActivity extends FragmentActivity
             }
         }
 
+        /**
+         * Folio: initializes every row, including those inside the (untitled) categories that
+         * group the rows into cards; removes rows that don't apply, and groups left empty.
+         * Nested screens are set up when they're opened.
+         */
+        private void initGroup(PreferenceGroup group) {
+            for (int i = group.getPreferenceCount() - 1; i >= 0; i--) {
+                Preference preference = group.getPreference(i);
+                if (preference instanceof PreferenceCategory category) {
+                    initGroup(category);
+                    if (category.getPreferenceCount() == 0) {
+                        group.removePreference(category);
+                    }
+                } else if (!initPreference(preference)) {
+                    group.removePreference(preference);
+                }
+            }
+        }
+
         private boolean isKeyInPreferenceGroup(String targetKey, PreferenceGroup parent) {
             for (int i = 0; i < parent.getPreferenceCount(); i++) {
                 Preference pref = parent.getPreference(i);
                 if (pref.getKey() != null && pref.getKey().equals(targetKey)) {
+                    return true;
+                }
+                // Folio: rows inside card groups.
+                if (pref instanceof PreferenceCategory category
+                        && isKeyInPreferenceGroup(targetKey, category)) {
                     return true;
                 }
             }
@@ -267,6 +287,20 @@ public class SettingsActivity extends FragmentActivity
                             targetKey);
                     if (foundKey != null) {
                         return foundKey;
+                    }
+                } else if (pref instanceof PreferenceCategory category) {
+                    // Folio: rows (and nested screens) inside card groups.
+                    for (int j = 0; j < category.getPreferenceCount(); j++) {
+                        Preference child = category.getPreference(j);
+                        if (child instanceof PreferenceScreen) {
+                            PreferenceScreen found = findParentPreference(
+                                    (PreferenceScreen) child, targetKey);
+                            if (found != null) {
+                                return found;
+                            }
+                        } else if (targetKey.equals(child.getKey())) {
+                            return parent;
+                        }
                     }
                 } else if (pref.getKey() != null && pref.getKey().equals(targetKey)) {
                     return parent;
@@ -291,6 +325,9 @@ public class SettingsActivity extends FragmentActivity
 
             // Overriding Text Direction in the Androidx preference library to support RTL
             view.setTextDirection(View.TEXT_DIRECTION_LOCALE);
+
+            // Folio: rows grouped into rounded cards, like the system Settings app.
+            com.android.launcher3.folio.SettingsCards.attach(getListView());
         }
 
         @Override

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2026 The Folio Authors. SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- View tag: which corners a Home settings row's card has (SettingsCards). -->
+    <item type="id" name="folio_settings_card" />
+</resources>
