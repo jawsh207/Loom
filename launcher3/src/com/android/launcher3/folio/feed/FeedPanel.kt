@@ -396,7 +396,9 @@ private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
     Box {
         Surface(
             shape = RoundedCornerShape(20.dp),
-            color = if (item.read) colors.surfaceContainerLow else colors.surfaceContainerHigh,
+            // Like Settings' cards: unread stories in the bright surface colour, read ones in
+            // a quieter shade, on the neutral panel.
+            color = if (item.read) colors.surfaceContainerHigh else colors.surfaceBright,
             modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp))
                 .combinedClickable(onClick = onOpen, onLongClick = { menu = true }),
         ) {

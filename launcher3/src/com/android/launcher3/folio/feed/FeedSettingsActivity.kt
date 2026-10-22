@@ -66,6 +66,9 @@ import com.android.launcher3.R
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import kotlinx.coroutines.launch
 
 /** Feed settings and subscriptions: on/off, refresh, adding, OPML, renaming, folders. */
@@ -96,6 +99,7 @@ class FeedSettingsActivity : ComponentActivity() {
         val scroll = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         Scaffold(
             Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection),
+            containerColor = MaterialTheme.colorScheme.surfaceContainer,
             topBar = {
                 LargeTopAppBar(
                     title = { Text(getString(R.string.feed_style_title)) },
@@ -106,6 +110,9 @@ class FeedSettingsActivity : ComponentActivity() {
                         }
                     },
                     scrollBehavior = scroll,
+                    colors = TopAppBarDefaults.largeTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                        scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer),
                 )
             },
         ) { padding ->
@@ -122,7 +129,9 @@ class FeedSettingsActivity : ComponentActivity() {
                             headlineContent = { Text(getString(title)) },
                             supportingContent = { Text(getString(summary)) },
                             leadingContent = { RadioButton(large == isLarge, null) },
-                            modifier = Modifier.selectable(
+                            colors = groupItemColors(),
+                            modifier = Modifier.groupCard(if (isLarge) Group.Bottom else Group.Top)
+                                .selectable(
                                 selected = large == isLarge, role = Role.RadioButton,
                                 onClick = {
                                     large = isLarge
@@ -195,9 +204,13 @@ class FeedSettingsActivity : ComponentActivity() {
                         }
                     },
                     scrollBehavior = scroll,
+                    colors = TopAppBarDefaults.largeTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                        scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer),
                 )
             },
             snackbarHost = { SnackbarHost(snackbar) },
+            containerColor = MaterialTheme.colorScheme.surfaceContainer,
         ) { padding ->
             LazyColumn(Modifier.fillMaxSize().testTag("folio_feed_settings"),
                 contentPadding = PaddingValues(top = padding.calculateTopPadding(),
@@ -209,7 +222,8 @@ class FeedSettingsActivity : ComponentActivity() {
                         trailingContent = {
                             Switch(enabled, null, Modifier.testTag("folio_feed_enable"))
                         },
-                        modifier = Modifier.clickable {
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Top).clickable {
                             enabled = !enabled
                             prefs.edit().putBoolean(FeedPrefs.ENABLED, enabled).apply()
                         },
@@ -224,7 +238,8 @@ class FeedSettingsActivity : ComponentActivity() {
                             Text(getString(if (large) R.string.feed_large_images
                                 else R.string.feed_style_compact))
                         },
-                        modifier = Modifier.clickable(onClick = onStyle),
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Bottom).clickable(onClick = onStyle),
                     )
                 }
                 item { SectionHeader(getString(R.string.feed_section_refresh)) }
@@ -232,7 +247,8 @@ class FeedSettingsActivity : ComponentActivity() {
                     ListItem(
                         headlineContent = { Text(getString(R.string.feed_refresh_interval)) },
                         supportingContent = { Text(intervalLabel(hours)) },
-                        modifier = Modifier.clickable { dialog = "interval" },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Top).clickable { dialog = "interval" },
                     )
                 }
                 item {
@@ -240,7 +256,8 @@ class FeedSettingsActivity : ComponentActivity() {
                         headlineContent = { Text(getString(R.string.feed_wifi_only)) },
                         supportingContent = { Text(getString(R.string.feed_wifi_only_summary)) },
                         trailingContent = { Switch(wifiOnly, null) },
-                        modifier = Modifier.clickable {
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Middle).clickable {
                             wifiOnly = !wifiOnly
                             prefs.edit().putBoolean(FeedPrefs.WIFI_ONLY, wifiOnly).apply()
                             FeedRefreshJob.schedule(this@FeedSettingsActivity)
@@ -251,7 +268,8 @@ class FeedSettingsActivity : ComponentActivity() {
                     ListItem(
                         headlineContent = { Text(getString(R.string.feed_keep)) },
                         supportingContent = { Text(keepLabel(keepDays)) },
-                        modifier = Modifier.clickable { dialog = "keep" },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Bottom).clickable { dialog = "keep" },
                     )
                 }
                 item {
@@ -262,7 +280,8 @@ class FeedSettingsActivity : ComponentActivity() {
                     ListItem(
                         headlineContent = { Text(getString(R.string.feed_add)) },
                         leadingContent = { Icon(Icons.Outlined.Add, null) },
-                        modifier = Modifier.clickable { dialog = "add" }
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Top).clickable { dialog = "add" }
                             .testTag("folio_feed_settings_add"),
                     )
                 }
@@ -271,20 +290,22 @@ class FeedSettingsActivity : ComponentActivity() {
                         headlineContent = { Text(getString(R.string.feed_import_opml)) },
                         supportingContent = { Text(getString(R.string.feed_import_summary)) },
                         leadingContent = { Icon(Icons.Outlined.FileDownload, null) },
-                        modifier = Modifier.clickable { importer.launch(OPML_TYPES) },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Middle).clickable { importer.launch(OPML_TYPES) },
                     )
                 }
                 item {
                     ListItem(
                         headlineContent = { Text(getString(R.string.feed_export_opml)) },
                         leadingContent = { Icon(Icons.Outlined.FileUpload, null) },
-                        modifier = Modifier.clickable(enabled = feeds.isNotEmpty()) {
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Bottom).clickable(enabled = feeds.isNotEmpty()) {
                             exporter.launch("folio-feeds.opml")
                         },
                     )
                 }
-                item { HorizontalDivider(Modifier.padding(vertical = 8.dp)) }
-                items(feeds, key = { it.id }) { feed ->
+                item { Spacer(Modifier.height(16.dp)) }
+                itemsIndexed(feeds, key = { _, it -> it.id }) { i, feed ->
                     ListItem(
                         headlineContent = {
                             Text(feed.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -301,7 +322,9 @@ class FeedSettingsActivity : ComponentActivity() {
                             Icon(if (feed.lastError != null) Icons.Outlined.ErrorOutline
                                 else Icons.Outlined.RssFeed, null)
                         },
-                        modifier = Modifier.clickable { editing = feed },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(groupOf(i, feeds.size))
+                            .clickable { editing = feed },
                     )
                 }
             }
@@ -343,7 +366,7 @@ class FeedSettingsActivity : ComponentActivity() {
 
     @Composable
     private fun SectionHeader(text: String) {
-        Text(text, Modifier.padding(start = 16.dp, top = 20.dp, bottom = 4.dp),
+        Text(text, Modifier.padding(start = 28.dp, top = 24.dp, bottom = 8.dp),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary)
     }
