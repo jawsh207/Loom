@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.0 (2026-10-24)
+
 - Feed reader: **Listen** reads the article out loud with your phone's default text-to-speech engine. Tap it again to pause and once more to carry on from the same paragraph; the article scrolls along as it's read, and reading stops when you leave the article.
 - Feed reader: the **Open in browser** button is gone from articles (and from the long-press menu on stories). **Share** now sends just the article's web address, so you can pick a browser from the share sheet to open it there, or send the link to someone.
 - Feed reader: **Text size** moved from the article's toolbar to **Manage feeds › Style**, under the story style.
