@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version name, e.g. 1.0 (blank: next 0.3.N)"
+        description: "Version name, e.g. 1.0 (blank: next 0.4.N)"
         type: string
         default: ""
 
