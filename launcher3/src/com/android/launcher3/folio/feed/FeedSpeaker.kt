@@ -38,6 +38,14 @@ class FeedSpeaker(context: Context) {
 
     private var chunks: List<Chunk> = emptyList()
     private var next = 0
+    /** Set when the engine reports it began speaking; checked by [watchdog]. */
+    private var heard = false
+    private val watchdog = Runnable {
+        if (speaking && !heard) {
+            stop()
+            Toast.makeText(app, R.string.feed_listen_silent, Toast.LENGTH_LONG).show()
+        }
+    }
 
     /** The article being read (its item id), or null. */
     var articleId by mutableStateOf<Long?>(null)
@@ -75,6 +83,7 @@ class FeedSpeaker(context: Context) {
 
     /** Stops and forgets the article. */
     fun stop() {
+        main.removeCallbacks(watchdog)
         pendingStart = false
         speaking = false
         articleId = null
@@ -127,6 +136,11 @@ class FeedSpeaker(context: Context) {
     private fun speakFromNext() {
         val engine = tts ?: return
         engine.stop()
+        // Some engines accept the text but never speak (no voice data yet, say). Don't sit
+        // there showing Pause forever.
+        heard = false
+        main.removeCallbacks(watchdog)
+        main.postDelayed(watchdog, 10_000)
         if (next >= chunks.size) { finished(); return }
         for (i in next until chunks.size) {
             val mode = if (i == next) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD
@@ -143,6 +157,7 @@ class FeedSpeaker(context: Context) {
         override fun onStart(utteranceId: String) {
             val i = utteranceId.toIntOrNull() ?: return
             main.post {
+                heard = true
                 if (speaking && i < chunks.size) { next = i; block = chunks[i].block }
             }
         }
