@@ -311,11 +311,23 @@ def check_article_toolbar(w, h):
     if para:
         log(f"  article text height at Largest: {para['bounds'][3] - para['bounds'][1]}px")
     # Listen: read aloud with the system's default text-to-speech engine.
+    import os
+    if os.path.exists("extra-apks/espeak.apk") and not getattr(check_article_toolbar, "tts", False):
+        check_article_toolbar.tts = True
+        from devtest import adb
+        out = adb("install", "-r", "-g", "extra-apks/espeak.apk").strip().splitlines()
+        log(f"  install eSpeak NG: {out[-1] if out else '?'}")
+        sh("settings put secure tts_default_synth com.reecedunn.espeak")
+        time.sleep(2)
     log(f"  tts engines: {sh('cmd package query-services -a android.intent.action.TTS_SERVICE | grep -i packageName').strip()[:200]!r}; "
         f"default {sh('settings get secure tts_default_synth').strip()!r}")
     if tap_text(r"^listen$", "listen", wait=4):
         nodes = snap("listening")
         log(f"  Listen turns into Pause: {bool(find(nodes, '^pause reading$'))}")
+        time.sleep(20)
+        later = snap("listening-later")
+        log(f"  still reading after 20s: {bool(find(later, '^pause reading$'))}; "
+            f"scrolled along (title gone): {not find(later, '^lighthouse keepers')}")
         log(f"  speaking (audio playback active): "
             f"{'tts' in sh('dumpsys audio | grep -iA2 \"playback activity\" ; dumpsys media_session | grep -i tts').lower() or 'TTS' in sh('dumpsys audio')}")
         if tap_text(r"^pause reading$", "listen-pause", wait=2):
