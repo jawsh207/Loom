@@ -52,7 +52,6 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DoneAll
-import androidx.compose.material.icons.outlined.FormatSize
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.RssFeed
@@ -134,6 +133,7 @@ class FeedPanelState(context: Context) {
     private val styleListener =
         android.content.SharedPreferences.OnSharedPreferenceChangeListener { p, key ->
             if (key == FeedPrefs.LARGE_IMAGES) largeImages = p.getBoolean(key, false)
+            if (key == FeedPrefs.TEXT_SCALE) textScale = p.getFloat(key, 1f)
         }
 
     init {
@@ -460,10 +460,6 @@ private fun ItemCard(state: FeedPanelState, e: Entry, onOpen: () -> Unit) {
                     text = { Text(stringResource(context, R.string.feed_share)) },
                     onClick = { menu = false; share(context, item.title, link) },
                 )
-                DropdownMenuItem(
-                    text = { Text(stringResource(context, R.string.feed_open_browser)) },
-                    onClick = { menu = false; openInBrowser(context, link) },
-                )
             }
         }
     }
@@ -669,14 +665,9 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
                     Icon(Icons.Outlined.StarOutline, stringResource(context, R.string.feed_star))
                 }
             }
-            TextSizeMenu(state)
             post.link?.let { link ->
                 IconButton({ share(context, post.title, link) }) {
                     Icon(Icons.Outlined.Share, stringResource(context, R.string.feed_share))
-                }
-                IconButton({ openInBrowser(context, link) }) {
-                    Icon(Icons.AutoMirrored.Outlined.OpenInNew,
-                        stringResource(context, R.string.feed_open_browser))
                 }
             }
         }
@@ -792,35 +783,6 @@ private fun ScrollToTopButton(listState: LazyListState, bottomInset: Dp, modifie
     }
 }
 
-@Composable
-private fun TextSizeMenu(state: FeedPanelState) {
-    val context = LocalContext.current
-    var open by remember { mutableStateOf(false) }
-    Box {
-        IconButton({ open = true }) {
-            Icon(Icons.Outlined.FormatSize, stringResource(context, R.string.feed_text_size))
-        }
-        DropdownMenu(open, { open = false }) {
-            for ((label, scale) in listOf(R.string.feed_text_small to 0.9f,
-                    R.string.feed_text_normal to 1f, R.string.feed_text_large to 1.15f,
-                    R.string.feed_text_larger to 1.3f, R.string.feed_text_largest to 1.5f)) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(context, label)) },
-                    trailingIcon = if (state.textScale == scale) {
-                        { Icon(Icons.Outlined.DoneAll, null) }
-                    } else null,
-                    onClick = {
-                        open = false
-                        state.textScale = scale
-                        FeedPrefs.prefs(context).edit().putFloat(FeedPrefs.TEXT_SCALE, scale)
-                            .apply()
-                    },
-                )
-            }
-        }
-    }
-}
-
 // --- Helpers ---
 
 private fun stringResource(context: Context, id: Int) = context.getString(id)
@@ -842,10 +804,14 @@ fun openInBrowser(context: Context, url: String) {
     }
 }
 
+/**
+ * Shares the article's web address on its own, so the share sheet also offers browsers (to
+ * open the page in one) next to messaging and other apps.
+ */
 private fun share(context: Context, title: String, url: String) {
     val send = Intent(Intent.ACTION_SEND).setType("text/plain")
         .putExtra(Intent.EXTRA_SUBJECT, title)
-        .putExtra(Intent.EXTRA_TEXT, "$title\n$url")
+        .putExtra(Intent.EXTRA_TEXT, url)
     runCatching {
         context.startActivity(Intent.createChooser(send, null)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))

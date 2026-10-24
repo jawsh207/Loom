@@ -5,6 +5,9 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Feed reader: the **Open in browser** button is gone from articles (and from the long-press menu on stories). **Share** now sends just the article's web address, so you can pick a browser from the share sheet to open it there, or send the link to someone.
+- Feed reader: **Text size** moved from the article's toolbar to **Manage feeds › Style**, under the story style.
+
 ## 0.3.8 (2026-10-22)
 
 - Neutral backgrounds like Settings and Contacts: the app drawer, folders, long-press menus and the feed panel take their page and card colors straight from the system, as Settings does: neutral greys with **Other colors** in Wallpaper & style, tinted by the wallpaper with **Wallpaper colors**; the accent color is kept for highlights. Manage feeds, Style and Grid now group their rows into rounded cards, like Settings.
