@@ -48,7 +48,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DoneAll
@@ -79,6 +82,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -140,6 +144,8 @@ class FeedPanelState(context: Context) {
         FeedPrefs.prefs(context).registerOnSharedPreferenceChangeListener(styleListener)
     }
     var showAddDialog by mutableStateOf(false)
+    /** Reads articles out loud (Listen). */
+    val speaker = FeedSpeaker(context)
     /** System bar sizes, from the launcher (which keeps window insets to itself). */
     var topInset by mutableStateOf(0.dp)
     var bottomInset by mutableStateOf(0.dp)
@@ -665,6 +671,29 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
                     Icon(Icons.Outlined.StarOutline, stringResource(context, R.string.feed_star))
                 }
             }
+            val speaker = state.speaker
+            val thisOne = speaker.articleId == post.id
+            IconButton(
+                onClick = {
+                    when {
+                        thisOne && speaker.speaking -> speaker.pause()
+                        thisOne -> speaker.resume()
+                        else -> speaker.start(post.id, FeedSpeaker.chunksOf(post.title, blocks))
+                    }
+                },
+                enabled = blocks.isNotEmpty() || thisOne,
+            ) {
+                when {
+                    thisOne && speaker.speaking ->
+                        Icon(Icons.Filled.Pause, stringResource(context, R.string.feed_listen_pause))
+                    thisOne ->
+                        Icon(Icons.Filled.PlayArrow,
+                            stringResource(context, R.string.feed_listen_resume))
+                    else ->
+                        Icon(Icons.AutoMirrored.Outlined.VolumeUp,
+                            stringResource(context, R.string.feed_listen))
+                }
+            }
             post.link?.let { link ->
                 IconButton({ share(context, post.title, link) }) {
                     Icon(Icons.Outlined.Share, stringResource(context, R.string.feed_share))
@@ -675,6 +704,23 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
             if (loading) LinearProgressIndicator(Modifier.fillMaxWidth())
         }
         val articleState = rememberLazyListState()
+        // Reading stops when the article is closed (or the panel is).
+        DisposableEffect(post.id) {
+            onDispose { if (state.speaker.articleId == post.id) state.speaker.stop() }
+        }
+        // Follow along: keep the paragraph being read on screen.
+        val blocksStart = 2 + (if (heroImage != null) 1 else 0) +
+            (if (!loading && shown?.extracted != true && post.link != null) 1 else 0)
+        val readingBlock = state.speaker.block
+        LaunchedEffect(readingBlock, state.speaker.speaking) {
+            val speaker = state.speaker
+            if (speaker.articleId != post.id || !speaker.speaking) return@LaunchedEffect
+            val target = if (readingBlock < 0) 0 else blocksStart + readingBlock
+            val visible = articleState.layoutInfo.visibleItemsInfo
+            val shownFully = visible.any { it.index == target &&
+                it.offset >= 0 && it.offset + it.size <= articleState.layoutInfo.viewportEndOffset }
+            if (!shownFully) articleState.animateScrollToItem(target)
+        }
         Box(Modifier.fillMaxSize()) {
             LazyColumn(
                 Modifier.fillMaxSize().testTag("folio_feed_article"),

@@ -102,6 +102,7 @@ class FeedPanelView(private val launcher: Launcher) :
 
     fun detach() {
         animator?.cancel()
+        state.speaker.shutdown()
         setProgress(0f)
         (parent as? ViewGroup)?.removeView(this)
     }
