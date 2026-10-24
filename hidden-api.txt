@@ -1,0 +1,8 @@
+android/app/ActivityThread.currentActivityThread()Landroid/app/ActivityThread;
+    used by: com/android/launcher3/Utilities
+android/app/ActivityThread.getInstrumentation()Landroid/app/Instrumentation;
+    used by: com/android/launcher3/Utilities
+android/app/Instrumentation.isInstrumenting()Z
+    used by: com/android/launcher3/Utilities
+class android/app/ActivityThread
+    used by: com/android/launcher3/Utilities
