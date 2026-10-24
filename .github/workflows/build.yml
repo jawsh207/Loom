@@ -120,8 +120,8 @@ jobs:
           VERSION_INPUT: ${{ inputs.version }}
         run: |
           CODE=$(( ($(date -u +%s) - 1767225600) / 60 ))
-          # Releases without a typed version count up within this series: 0.3.0, 0.3.1, ...
-          SERIES=0.3
+          # Releases without a typed version count up within this series: 0.4.0, 0.4.1, ...
+          SERIES=0.4
           if [ "${{ inputs.publish }}" = "true" ]; then
             NAME="${VERSION_INPUT#v}"
             if [ -z "$NAME" ]; then
