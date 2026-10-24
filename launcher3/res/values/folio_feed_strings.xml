@@ -41,6 +41,7 @@
     <string name="feed_caught_up_body">Nothing new here. Pull down to check again.</string>
     <string name="feed_article_fallback">Showing the text from the feed: the full article couldn\'t be read from its page. Open the original page to see everything.</string>
     <string name="feed_text_size">Text size</string>
+    <string name="feed_text_size_summary">%1$s text</string>
     <string name="feed_text_small">Small</string>
     <string name="feed_text_normal">Default</string>
     <string name="feed_text_large">Large</string>

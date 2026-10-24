@@ -37,5 +37,21 @@ object FeedPrefs {
 
     fun textScale(context: Context) = prefs(context).getFloat(TEXT_SCALE, 1f)
 
+    /** Article text sizes offered in Manage feeds › Style: label to scale. */
+    @JvmField
+    val TEXT_SIZES = listOf(
+        com.android.launcher3.R.string.feed_text_small to 0.9f,
+        com.android.launcher3.R.string.feed_text_normal to 1f,
+        com.android.launcher3.R.string.feed_text_large to 1.15f,
+        com.android.launcher3.R.string.feed_text_larger to 1.3f,
+        com.android.launcher3.R.string.feed_text_largest to 1.5f,
+    )
+
+    /** The label of the current text size. */
+    fun textSizeLabel(context: Context): Int {
+        val scale = textScale(context)
+        return TEXT_SIZES.minByOrNull { kotlin.math.abs(it.second - scale) }!!.first
+    }
+
     fun largeImages(context: Context) = prefs(context).getBoolean(LARGE_IMAGES, false)
 }
