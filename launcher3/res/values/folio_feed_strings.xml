@@ -30,6 +30,10 @@
     <string name="feed_star">Star</string>
     <string name="feed_unstar">Remove star</string>
     <string name="feed_share">Share</string>
+    <string name="feed_listen">Listen</string>
+    <string name="feed_listen_pause">Pause reading</string>
+    <string name="feed_listen_resume">Continue reading</string>
+    <string name="feed_listen_no_engine">No text-to-speech engine is set up. Install one and choose it in Text-to-speech output.</string>
     <string name="feed_open_browser">Open in browser</string>
     <string name="feed_open_original">Open original page</string>
     <string name="feed_manage">Manage feeds</string>

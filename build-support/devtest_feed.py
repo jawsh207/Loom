@@ -310,6 +310,20 @@ def check_article_toolbar(w, h):
     para = find(nodes, r"a life measured in hours")
     if para:
         log(f"  article text height at Largest: {para['bounds'][3] - para['bounds'][1]}px")
+    # Listen: read aloud with the system's default text-to-speech engine.
+    log(f"  tts engines: {sh('cmd package query-services -a android.intent.action.TTS_SERVICE | grep -i packageName').strip()[:200]!r}; "
+        f"default {sh('settings get secure tts_default_synth').strip()!r}")
+    if tap_text(r"^listen$", "listen", wait=4):
+        nodes = snap("listening")
+        log(f"  Listen turns into Pause: {bool(find(nodes, '^pause reading$'))}")
+        log(f"  speaking (audio playback active): "
+            f"{'tts' in sh('dumpsys audio | grep -iA2 \"playback activity\" ; dumpsys media_session | grep -i tts').lower() or 'TTS' in sh('dumpsys audio')}")
+        if tap_text(r"^pause reading$", "listen-pause", wait=2):
+            log(f"  Pause turns into Continue: {bool(find(snap('paused'), '^continue reading$'))}")
+            tap_text(r"^continue reading$", "listen-resume", wait=3)
+            log(f"  Continue resumes: {bool(find(snap('resumed'), '^pause reading$'))}")
+    else:
+        log("  !! no Listen button")
     if tap_text(r"^share$", "share-open", wait=3):
         nodes = snap("share-sheet")
         texts = " | ".join(n["text"] for n in nodes if n["text"])[:400]
