@@ -96,6 +96,7 @@ class FeedSettingsActivity : ComponentActivity() {
         BackHandler(onBack = onBack)
         val prefs = remember { FeedPrefs.prefs(this) }
         var large by remember { mutableStateOf(FeedPrefs.largeImages(this)) }
+        var textScale by remember { mutableStateOf(FeedPrefs.textScale(this)) }
         val scroll = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         Scaffold(
             Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection),
@@ -136,6 +137,23 @@ class FeedSettingsActivity : ComponentActivity() {
                                 onClick = {
                                     large = isLarge
                                     prefs.edit().putBoolean(FeedPrefs.LARGE_IMAGES, isLarge).apply()
+                                }),
+                        )
+                    }
+                }
+                item { SectionHeader(getString(R.string.feed_text_size)) }
+                val sizes = FeedPrefs.TEXT_SIZES
+                sizes.forEachIndexed { i, (label, scale) ->
+                    item {
+                        ListItem(
+                            headlineContent = { Text(getString(label)) },
+                            leadingContent = { RadioButton(textScale == scale, null) },
+                            colors = groupItemColors(),
+                            modifier = Modifier.groupCard(groupOf(i, sizes.size)).selectable(
+                                selected = textScale == scale, role = Role.RadioButton,
+                                onClick = {
+                                    textScale = scale
+                                    prefs.edit().putFloat(FeedPrefs.TEXT_SCALE, scale).apply()
                                 }),
                         )
                     }
@@ -236,7 +254,9 @@ class FeedSettingsActivity : ComponentActivity() {
                         headlineContent = { Text(getString(R.string.feed_style_title)) },
                         supportingContent = {
                             Text(getString(if (large) R.string.feed_large_images
-                                else R.string.feed_style_compact))
+                                else R.string.feed_style_compact) + " · " +
+                                getString(R.string.feed_text_size_summary,
+                                    getString(FeedPrefs.textSizeLabel(this@FeedSettingsActivity))))
                         },
                         colors = groupItemColors(),
                         modifier = Modifier.groupCard(Group.Bottom).clickable(onClick = onStyle),

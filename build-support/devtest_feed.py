@@ -214,14 +214,21 @@ def main():
                 log(f"  Style screen offers Compact and Large images: "
                     f"{bool(find(nodes, '^compact$')) and bool(find(nodes, '^large images$'))}")
                 tap_text(r"^large images$", "style-large", wait=1)
+                # Text size moved here from the article's toolbar.
+                nodes = snap("style-text-size")
+                log(f"  Style screen offers text sizes: "
+                    f"{bool(find(nodes, '^text size$')) and bool(find(nodes, '^default$'))}")
+                tap_scrolled_feed(r"^largest$", "style-largest")
                 sh("input keyevent KEYCODE_BACK")
                 time.sleep(1.5)
-                log(f"  Style row shows the choice: {bool(find(snap('manage-after-style'), '^large images$'))}")
+                after = snap('manage-after-style')
+                log(f"  Style row shows the choice: {bool(find(after, '^large images · largest text$'))}")
                 sh("input keyevent KEYCODE_BACK")
                 time.sleep(3)
                 nodes = snap("list-large")
                 titles = [n for n in nodes if len(n["text"]) > 25 and "·" not in n["text"]]
                 log(f"  panel switched to large images: {bool(titles) and not find(nodes, ' · ')}")
+                check_article_toolbar(w, h)
 
     # 6. Feed-only item (no link) shows the feed's own text.
     choose_source(r"^folio test gazette")
@@ -277,6 +284,40 @@ def _pixels(bounds):
     img = Image.open(png).convert("RGB")
     x1, y1, x2, y2 = bounds
     return list(img.crop((x1, y1, x2, y2)).getdata())
+
+
+def tap_scrolled_feed(pattern, name):
+    w, h = screen_size()
+    for _ in range(3):
+        if tap_text(pattern, name, wait=1.5):
+            return True
+        sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 3} 400")
+        time.sleep(1.5)
+    log(f"  !! no /{pattern}/")
+    return False
+
+
+def check_article_toolbar(w, h):
+    """An article: Share but no Open in browser or Text size; Share sends only the page URL."""
+    choose_source(r"^folio test gazette")
+    if not tap_text(r"lighthouse keepers", "toolbar-article", wait=6):
+        log("  !! couldn't open an article for the toolbar check")
+        return
+    nodes = snap("toolbar")
+    log(f"  article toolbar: share {bool(find(nodes, '^share$'))}, "
+        f"no open in browser {not find(nodes, '^open in browser$')}, "
+        f"no text size {not find(nodes, '^text size$')}")
+    para = find(nodes, r"a life measured in hours")
+    if para:
+        log(f"  article text height at Largest: {para['bounds'][3] - para['bounds'][1]}px")
+    if tap_text(r"^share$", "share-open", wait=3):
+        nodes = snap("share-sheet")
+        texts = " | ".join(n["text"] for n in nodes if n["text"])[:400]
+        log(f"  share sheet shows a URL: {bool(find(nodes, 'https?://'))} ({texts})")
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(2)
+    sh("input keyevent KEYCODE_BACK")
+    time.sleep(2)
 
 
 def light_share(bounds):
