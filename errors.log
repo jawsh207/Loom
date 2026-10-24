@@ -1,0 +1,19 @@
+140:/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+143:  symbol:   class ActivityThread
+144:  location: package android.app
+145:/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+148:  symbol:   variable ActivityThread
+149:  location: class Utilities
+150:/home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+153:  symbol:   method isInstrumenting()
+154:  location: variable instrumentation of type Instrumentation
+190:* What went wrong:
+193:  /home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:32: error: cannot find symbol
+196:    symbol:   class ActivityThread
+197:    location: package android.app
+198:  /home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:148: error: cannot find symbol
+201:    symbol:   variable ActivityThread
+202:    location: class Utilities
+203:  /home/runner/work/Loom/Loom/launcher3/src/com/android/launcher3/Utilities.java:151: error: cannot find symbol
+206:    symbol:   method isInstrumenting()
+207:    location: variable instrumentation of type Instrumentation
