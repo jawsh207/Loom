@@ -318,7 +318,25 @@ def check_article_toolbar(w, h):
         out = adb("install", "-r", "-g", "extra-apks/espeak.apk").strip().splitlines()
         log(f"  install eSpeak NG: {out[-1] if out else '?'}")
         sh("settings put secure tts_default_synth com.reecedunn.espeak")
+        # eSpeak unpacks its voice data the first time it's opened.
+        sh("monkey -p com.reecedunn.espeak -c android.intent.category.LAUNCHER 1")
+        time.sleep(15)
+        snap("espeak-setup")
+        sh("am start -n com.reecedunn.espeak/.DownloadVoiceData")
+        time.sleep(15)
+        snap("espeak-data")
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(1)
+        sh("input keyevent KEYCODE_BACK")
+        time.sleep(1)
+        # Back to the article.
+        sh("input keyevent KEYCODE_HOME")
         time.sleep(2)
+        w2, h2 = screen_size()
+        sh(f"input swipe {w2 // 8} {h2 // 2} {w2 * 7 // 8} {h2 // 2} 350")
+        time.sleep(4)
+        choose_source(r"^folio test gazette")
+        tap_text(r"lighthouse keepers", "toolbar-article-again", wait=6)
     log(f"  tts engines: {sh('cmd package query-services -a android.intent.action.TTS_SERVICE | grep -i packageName').strip()[:200]!r}; "
         f"default {sh('settings get secure tts_default_synth').strip()!r}")
     if tap_text(r"^listen$", "listen", wait=4):
