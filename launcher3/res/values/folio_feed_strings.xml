@@ -33,6 +33,7 @@
     <string name="feed_listen">Listen</string>
     <string name="feed_listen_pause">Pause reading</string>
     <string name="feed_listen_resume">Continue reading</string>
+    <string name="feed_listen_silent">The text-to-speech engine didn\'t start reading. Open it once to finish setting it up, or pick another in Text-to-speech output.</string>
     <string name="feed_listen_no_engine">No text-to-speech engine is set up. Install one and choose it in Text-to-speech output.</string>
     <string name="feed_open_browser">Open in browser</string>
     <string name="feed_open_original">Open original page</string>
