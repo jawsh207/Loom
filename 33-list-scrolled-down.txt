@@ -1,0 +1,22 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 212] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 212] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 212] text='' desc='More options' id= click=false
+[74, 341, 629, 383] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 394, 769, 520] text='RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns' desc='' id= click=false
+[74, 531, 769, 637] text='"Trust is slow to build and quick to lose," board chair Jack Leslie said.' desc='' id= click=false
+[74, 742, 629, 784] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 795, 769, 984] text='Knicks sent employees fake offer of championship rings in phishing test: Report' desc='' id= click=false
+[74, 995, 769, 1101] text='Corporate phishing tests are common, but this one was especially cruel.' desc='' id= click=false
+[74, 1206, 629, 1248] text='Ars Technica - All content · 9 hr. ago' desc='' id= click=false
+[74, 1259, 769, 1385] text='Everybody panic: A Valve developer said "HLX" in public' desc='' id= click=false
+[74, 1396, 769, 1502] text='Sound designer lets Half Life-related codename slip at a conference.' desc='' id= click=false
+[74, 1607, 648, 1649] text='Ars Technica - All content · 12 hr. ago' desc='' id= click=false
+[74, 1660, 769, 1849] text='The reactor meant to showcase nuclear’s comeback keeps hitting problems' desc='' id= click=false
+[74, 1860, 769, 1966] text='A contractor fell into a reactor cavity and a bundle of fuel rods almost fell over.' desc='' id= click=false
+[74, 2071, 648, 2113] text='Ars Technica - All content · 14 hr. ago' desc='' id= click=false
+[74, 2124, 769, 2313] text='Ukraine learns to fight without Starlink as Musk plays politics with satellites' desc='' id= click=false
+[74, 2324, 769, 2400] text='Ukraine has changed drone and war-fighting tech to reduce reliance on Starlink.' desc='' id= click=false

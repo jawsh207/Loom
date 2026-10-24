@@ -1,0 +1,6 @@
+[650, 275, 1069, 950] text='' desc='' id=android:id/content click=false
+[682, 333, 799, 386] text='Unread' desc='' id= click=false
+[682, 459, 803, 512] text='Starred' desc='' id= click=false
+[777, 588, 1037, 641] text='Mark all as read' desc='' id= click=false
+[777, 714, 924, 767] text='Add feed' desc='' id= click=false
+[777, 840, 1008, 893] text='Manage feeds' desc='' id= click=false

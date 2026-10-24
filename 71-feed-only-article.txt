@@ -1,0 +1,14 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 817, 234] text='Folio Test Gazette' desc='' id= click=false
+[849, 171, 912, 234] text='' desc='Star' id= click=false
+[975, 171, 1038, 234] text='' desc='Listen' id= click=false
+[53, 308, 1027, 504] text='Full text in the feed & no web page' desc='' id= click=false
+[53, 525, 294, 578] text='Oct 5, 8:00\u202fAM' desc='' id= click=false
+[53, 620, 1027, 848] text="This item has no link, so Folio shows the feed's own text." desc='' id= click=false
+[53, 890, 76, 1004] text='•' desc='' id= click=false
+[102, 890, 412, 1004] text='First point' desc='' id= click=false
+[53, 1046, 76, 1160] text='•' desc='' id= click=false
+[102, 1046, 503, 1160] text='Second point' desc='' id= click=false

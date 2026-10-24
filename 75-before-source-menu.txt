@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 296, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 201, 254] text='Feed' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 905, 1006, 1031] text='NASA updates lander plans for Moon landings, finally solves long-festering Orion issue' desc='' id= click=false
+[74, 1047, 865, 1100] text='Ars Technica - All content' desc='' id= click=false
+[865, 1047, 1006, 1100] text='3 hr. ago' desc='' id= click=false
+[74, 1767, 1006, 1893] text='Hegseth warns prediction market bets warp military judgment, endanger troops' desc='' id= click=false
+[74, 1909, 865, 1962] text='Ars Technica - All content' desc='' id= click=false
+[865, 1909, 1006, 1962] text='5 hr. ago' desc='' id= click=false

@@ -1,0 +1,16 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 665, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 570, 254] text='Folio Test Gazette' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 905, 862, 968] text='Lighthouse keepers of the northern coast' desc='' id= click=false
+[74, 984, 846, 1037] text='Folio Test Gazette' desc='' id= click=false
+[846, 984, 1006, 1037] text='October 7' desc='' id= click=false
+[74, 1132, 811, 1195] text='Why bread rises: a field guide to yeast' desc='' id= click=false
+[74, 1211, 846, 1264] text='Folio Test Gazette' desc='' id= click=false
+[846, 1211, 1006, 1264] text='October 6' desc='' id= click=false
+[74, 1359, 728, 1422] text='Full text in the feed & no web page' desc='' id= click=false
+[74, 1438, 846, 1491] text='Folio Test Gazette' desc='' id= click=false
+[846, 1438, 1006, 1491] text='October 5' desc='' id= click=false

@@ -1,0 +1,14 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 874, 1006, 1000] text='Inside the Pentagon, the pressure is on to find a home for a new spaceport' desc='' id= click=false
+[74, 1016, 865, 1069] text='Ars Technica - All content' desc='' id= click=false
+[865, 1016, 1006, 1069] text='6 hr. ago' desc='' id= click=false
+[74, 1736, 1006, 1862] text='Spotify ramps up policy enforcement on family plans' desc='' id= click=false
+[74, 1878, 865, 1931] text='Ars Technica - All content' desc='' id= click=false
+[865, 1878, 1006, 1931] text='6 hr. ago' desc='' id= click=false
+[933, 2190, 996, 2253] text='' desc='Back to top' id= click=false

@@ -1,0 +1,22 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 212] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 212] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 212] text='' desc='More options' id= click=false
+[74, 275, 769, 370] text="Birds' compact nervous system seems to help them handle tasks very quickly." desc='' id= click=false
+[74, 475, 629, 517] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 528, 769, 717] text='Intel gets waiver after worries fuzzy US ban on foreign-made robots may hit fabs' desc='' id= click=false
+[74, 728, 769, 834] text='Company says foreign-made robotic vehicles are crucial to US chip production.' desc='' id= click=false
+[74, 939, 629, 981] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 992, 769, 1118] text='RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns' desc='' id= click=false
+[74, 1129, 769, 1235] text='"Trust is slow to build and quick to lose," board chair Jack Leslie said.' desc='' id= click=false
+[74, 1340, 629, 1382] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 1393, 769, 1582] text='Knicks sent employees fake offer of championship rings in phishing test: Report' desc='' id= click=false
+[74, 1593, 769, 1699] text='Corporate phishing tests are common, but this one was especially cruel.' desc='' id= click=false
+[74, 1804, 629, 1846] text='Ars Technica - All content · 9 hr. ago' desc='' id= click=false
+[74, 1857, 769, 1983] text='Everybody panic: A Valve developer said "HLX" in public' desc='' id= click=false
+[74, 1994, 769, 2100] text='Sound designer lets Half Life-related codename slip at a conference.' desc='' id= click=false
+[74, 2205, 648, 2247] text='Ars Technica - All content · 12 hr. ago' desc='' id= click=false
+[74, 2258, 769, 2400] text='The reactor meant to showcase nuclear’s comeback keeps hitting problems' desc='' id= click=false

@@ -1,0 +1,27 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/content_parent click=false
+[0, 0, 1080, 593] text='' desc='' id=app.folio.launcher:id/app_bar click=false
+[0, 0, 1080, 593] text='' desc='Home settings' id=app.folio.launcher:id/collapsing_toolbar click=false
+[0, 128, 1080, 275] text='' desc='' id=app.folio.launcher:id/action_bar click=false
+[0, 593, 1080, 2400] text='' desc='' id=app.folio.launcher:id/content_frame click=false
+[0, 593, 1080, 2400] text='' desc='' id=android:id/list_container click=false
+[0, 593, 1080, 2400] text='' desc='' id=app.folio.launcher:id/recycler_view click=false
+[95, 698, 485, 769] text='Notification dots' desc='' id=android:id/title click=false
+[95, 769, 541, 820] text='Notification access needed' desc='' id=android:id/summary click=false
+[828, 656, 996, 862] text='' desc='' id=android:id/widget_frame click=false
+[95, 967, 192, 1038] text='Grid' desc='' id=android:id/title click=false
+[95, 1038, 768, 1089] text='Home screen, dock and app drawer sizes' desc='' id=android:id/summary click=false
+[95, 1180, 223, 1251] text='Icons' desc='' id=android:id/title click=false
+[95, 1251, 315, 1302] text='System icons' desc='' id=android:id/summary click=false
+[95, 1393, 378, 1464] text='Drawer tabs' desc='' id=android:id/title click=false
+[95, 1464, 968, 1515] text='Create tabs for the app drawer and choose their apps' desc='' id=android:id/summary click=false
+[95, 1662, 237, 1733] text='Feeds' desc='' id=android:id/title click=false
+[95, 1733, 879, 1784] text='Feed panel, add or import feeds, refresh interval' desc='' id=android:id/summary click=false
+[95, 1875, 305, 1946] text='Gestures' desc='' id=android:id/title click=false
+[95, 1946, 872, 1997] text='Swipe down for notifications, double-tap to lock' desc='' id=android:id/summary click=false
+[95, 2088, 808, 2159] text='Add app icons to home screen' desc='' id=android:id/title click=false
+[95, 2159, 316, 2210] text='For new apps' desc='' id=android:id/summary click=false
+[808, 2046, 996, 2252] text='' desc='' id=android:id/widget_frame click=false
+[850, 2112, 996, 2185] text='' desc='' id=android:id/switch_widget click=false
+[95, 2357, 526, 2400] text='Lock home screen' desc='' id=android:id/title click=false
+[808, 2315, 996, 2400] text='' desc='' id=android:id/widget_frame click=false

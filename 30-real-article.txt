@@ -1,0 +1,12 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 691, 234] text='Ars Technica - All content' desc='' id= click=false
+[723, 171, 786, 234] text='' desc='Star' id= click=false
+[849, 171, 912, 234] text='' desc='Listen' id= click=false
+[975, 171, 1038, 234] text='' desc='Share' id= click=false
+[53, 308, 1027, 560] text='NASA updates lander plans for Moon landings, finally solves long-festering Orion issue' desc='' id= click=false
+[53, 581, 542, 634] text='Eric Berger · Oct 23, 10:48\u202fPM' desc='' id= click=false
+[53, 1912, 938, 1954] text='Blue Moon lunar lander concept of operations. Credit: NASA' desc='' id= click=false
+[53, 1996, 1027, 2400] text='The chart shared by NASA showed Orion docking with the Blue Moon lander in an elliptical lunar orbit, approximately 8,500 km above the Moon’s surface. However NASA is also working to have the option of docking with Orion in low-Lunar orbit.' desc='' id= click=false

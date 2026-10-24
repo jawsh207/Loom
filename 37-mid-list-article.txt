@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 691, 234] text='Ars Technica - All content' desc='' id= click=false
+[723, 171, 786, 234] text='' desc='Star' id= click=false
+[849, 171, 912, 234] text='' desc='Listen' id= click=false
+[975, 171, 1038, 234] text='' desc='Share' id= click=false
+[53, 308, 1027, 476] text='RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns' desc='' id= click=false
+[53, 497, 506, 550] text='Beth Mole · Oct 23, 4:58\u202fPM' desc='' id= click=false
+[53, 1203, 1027, 1287] text='Political ends' desc='' id= click=false
+[53, 1329, 1027, 1937] text='“The space in which this protocol will be conducted, the vaccine evaluation center inside the clinical center, has been in existence for decades,” Green said. Like all protocols, it needs to undergo rigorous scientific and ethical reviews before it’s implemented at the hospital. Green said the protocol is still under review.' desc='' id= click=false
+[53, 1979, 1027, 2400] text='None of this was made clear in Kennedy’s ceremony, and Leslie condemned the optics of the event, particularly the signs labeling patients “vaccine injured.” Those patients “must come first,” Leslie said. “They deserve our care and respect and they deserve answers.” But Kennedy does them—and the hospital—a disservice, Leslie argued.' desc='' id= click=false

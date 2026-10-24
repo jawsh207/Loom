@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 691, 234] text='Ars Technica - All content' desc='' id= click=false
+[723, 171, 786, 234] text='' desc='Star' id= click=false
+[849, 171, 912, 234] text='' desc='Listen' id= click=false
+[975, 171, 1038, 234] text='' desc='Share' id= click=false
+[53, 650, 938, 692] text='Blue Moon lunar lander concept of operations. Credit: NASA' desc='' id= click=false
+[53, 734, 1027, 1190] text='The chart shared by NASA showed Orion docking with the Blue Moon lander in an elliptical lunar orbit, approximately 8,500 km above the Moon’s surface. However NASA is also working to have the option of docking with Orion in low-Lunar orbit.' desc='' id= click=false
+[53, 1232, 1027, 2144] text='According to Jeremy Parsons, the manager of the Artemis Program for NASA, such an orbit a few hundred km above the Moon would significantly reduce the propellant needed by Blue Moon to bring astronauts down to the lunar surface and back up. This mass could be used elsewhere on the vehicle. The lower orbit would also offer more, and faster opportunities for astronauts to get off the lunar surface if needed. In short, it makes some aspects of a lunar landing significantly easier for Blue Origin.' desc='' id= click=false
+[53, 2207, 1027, 2291] text='Extended Centaur' desc='' id= click=false
+[53, 2333, 1027, 2400] text='As part of this, NASA announced Friday that it is working with United Launch Alliance to develop an “extended” version of the Centaur V upper stage. In concert with the core stage of the Space Launch System, this upper stage would allow Orion to reach low-lunar orbit.' desc='' id= click=false

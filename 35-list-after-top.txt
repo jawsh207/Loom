@@ -1,0 +1,22 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 338, 629, 380] text='Ars Technica - All content · 2 hr. ago' desc='' id= click=false
+[74, 391, 769, 580] text='NASA updates lander plans for Moon landings, finally solves long-festering Orion issue' desc='' id= click=false
+[74, 591, 769, 697] text='"We have the mandate, we have the resources, and the support from our stakeholders."' desc='' id= click=false
+[74, 802, 629, 844] text='Ars Technica - All content · 5 hr. ago' desc='' id= click=false
+[74, 855, 769, 1044] text='Hegseth warns prediction market bets warp military judgment, endanger troops' desc='' id= click=false
+[74, 1055, 769, 1161] text='Pentagon memo: Insider trading gives US enemies key intel on military operations.' desc='' id= click=false
+[74, 1266, 629, 1308] text='Ars Technica - All content · 5 hr. ago' desc='' id= click=false
+[74, 1319, 769, 1508] text='Updated Google privacy policy says your Gmail might be used for advertising' desc='' id= click=false
+[74, 1519, 769, 1625] text='Turning on Personal Intelligence gives the company more data for ad targeting.' desc='' id= click=false
+[74, 1730, 629, 1772] text='Ars Technica - All content · 6 hr. ago' desc='' id= click=false
+[74, 1783, 769, 1972] text='Inside the Pentagon, the pressure is on to find a home for a new spaceport' desc='' id= click=false
+[74, 1983, 769, 2089] text='Space Force considering options: public-private, federal installation, state land.' desc='' id= click=false
+[74, 2194, 629, 2236] text='Ars Technica - All content · 6 hr. ago' desc='' id= click=false
+[74, 2247, 769, 2373] text='Spotify ramps up policy enforcement on family plans' desc='' id= click=false
+[74, 2384, 769, 2400] text='If you share Spotify sub with family, you may need to scan QR code to prove it.' desc='' id= click=false

@@ -1,0 +1,17 @@
+[0, 0, 1080, 2337] text='' desc='' id=android:id/decor_content_parent click=false
+[0, 128, 1080, 275] text='' desc='' id=android:id/action_bar_container click=false
+[0, 128, 1080, 275] text='' desc='' id=android:id/action_bar click=false
+[42, 166, 217, 237] text='eSpeak' desc='' id= click=false
+[975, 138, 1080, 264] text='' desc='More options' id= click=true
+[0, 275, 1080, 2337] text='' desc='' id=android:id/content click=false
+[21, 296, 1059, 913] text='' desc='' id=com.reecedunn.espeak:id/success click=false
+[21, 296, 1059, 443] text='' desc='' id=com.reecedunn.espeak:id/properties click=false
+[21, 296, 1059, 442] text='' desc='' id=com.reecedunn.espeak:id/LinearLayout1 click=false
+[37, 312, 1043, 375] text='Voices installed' desc='' id=android:id/title click=false
+[37, 375, 1043, 426] text='141' desc='' id=android:id/summary click=false
+[21, 443, 517, 521] text='Enter text to speak:' desc='' id=com.reecedunn.espeak:id/textView1 click=false
+[21, 521, 1059, 787] text='' desc='' id=com.reecedunn.espeak:id/editText1 click=true
+[21, 787, 252, 913] text='SPEAK' desc='' id=com.reecedunn.espeak:id/speak click=true
+[252, 787, 708, 913] text='LOAD SSML TEMPLATE' desc='' id=com.reecedunn.espeak:id/ssml click=true
+[0, 0, 1080, 128] text='' desc='' id=android:id/statusBarBackground click=false
+[0, 2337, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

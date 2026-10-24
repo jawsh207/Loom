@@ -1,0 +1,11 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[43, 171, 106, 234] text='' desc='Back' id= click=false
+[137, 171, 691, 234] text='Folio Test Gazette' desc='' id= click=false
+[723, 171, 786, 234] text='' desc='Star' id= click=false
+[849, 171, 912, 234] text='' desc='Listen' id= click=false
+[975, 171, 1038, 234] text='' desc='Share' id= click=false
+[53, 308, 1027, 504] text='Lighthouse keepers of the northern coast' desc='' id= click=false
+[53, 525, 516, 578] text='Ada Marlow · Oct 7, 9:30\u202fAM' desc='' id= click=false
+[53, 620, 1027, 2400] text='The lamp had to be wound every four hours, and in winter the brass would freeze to your fingers if you forgot your gloves. Keepers wrote everything down: the wind, the ships that passed, the birds that struck the glass at night. The lamp had to be wound every four hours, and in winter the brass would freeze to your fingers if you forgot your gloves. Keepers wrote everything down: the wind, the ships that passed, the birds that struck the glass at night.' desc='' id= click=false

@@ -1,0 +1,27 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=android:id/contentPanel click=false
+[0, 1359, 1080, 1412] text='' desc='' id=android:id/chooser_header click=false
+[456, 1380, 624, 1391] text='' desc='' id=android:id/drag click=false
+[0, 1412, 1080, 1517] text='' desc='' id=com.android.intentresolver:id/chooser_headline_row_container click=false
+[0, 1412, 1080, 1475] text='' desc='' id=com.android.intentresolver:id/chooser_headline_row click=false
+[42, 1412, 285, 1475] text='Sharing link' desc='' id=com.android.intentresolver:id/headline click=false
+[0, 1517, 1080, 2400] text='' desc='' id=com.android.intentresolver:id/chooser_scrollable_container click=false
+[0, 1517, 1080, 1756] text='' desc='' id=android:id/content_preview_container click=false
+[0, 1517, 1080, 1756] text='' desc='' id=android:id/content_preview_text_area click=false
+[42, 1517, 1038, 1685] text='' desc='' id=com.android.intentresolver:id/text_preview_layout click=false
+[63, 1576, 890, 1627] text='http://10.0.2.2:8000/article1.html' desc='' id=android:id/content_preview_text click=false
+[901, 1538, 1027, 1664] text='' desc='Copy link' id=com.android.intentresolver:id/copy click=true
+[0, 1756, 1080, 2400] text='' desc='' id=android:id/profile_tabhost click=false
+[0, 1756, 1080, 2400] text='' desc='' id=android:id/tabcontent click=false
+[0, 1756, 1080, 2400] text='' desc='' id=android:id/profile_pager click=false
+[0, 1756, 1080, 2400] text='' desc='' id=android:id/resolver_list click=false
+[0, 1756, 1080, 2044] text='' desc='' id=com.android.intentresolver:id/shortcuts_container click=false
+[0, 1756, 1080, 2044] text='' desc='' id=com.android.intentresolver:id/suggested_apps_container click=false
+[0, 1874, 1080, 1925] text='No recommended people to share with' desc='' id=android:id/chooser_row_text_option click=false
+[0, 2044, 1080, 2337] text='' desc='' id=com.android.intentresolver:id/suggested_apps_container click=false
+[0, 2044, 216, 2337] text='' desc='' id=com.android.intentresolver:id/item click=true
+[34, 2065, 181, 2212] text='' desc='' id=android:id/icon click=false
+[11, 2230, 205, 2273] text='Bluetooth' desc='' id=android:id/text1 click=false
+[216, 2044, 432, 2337] text='' desc='' id=com.android.intentresolver:id/item click=true
+[250, 2065, 397, 2212] text='' desc='' id=android:id/icon click=false
+[227, 2230, 421, 2273] text='Messaging' desc='' id=android:id/text1 click=false

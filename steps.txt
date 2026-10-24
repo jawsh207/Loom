@@ -1,0 +1,159 @@
+system ready
+system ready
+system ready
+Performing Streamed Install
+Success
+
+Success
+
+setup 0: home role=app.folio.launcher top=topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  navigation mode: 2 (2 = gestures)
+[01-home] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[02-settings-find0] activity: topResumedActivity=ActivityRecord{110992319 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t12}
+[03-before-feeds-enable] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Feed panel' at [84, 559, 300, 622]
+[04-settings-enabled] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[05-feeds-screen] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[06-before-add-rss] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add feed' at [189, 1951, 367, 2014]
+[07-add-rss-dialog] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[08-before-add-rss-confirm] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add' at [788, 1532, 854, 1585]
+[09-add-rss-done] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  add http://10.0.2.2:8000/rss.xml: ok
+[10-before-add-site] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add feed' at [189, 1951, 367, 2014]
+[11-add-site-dialog] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[12-before-add-site-confirm] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add' at [788, 1564, 854, 1617]
+[13-add-site-done] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  add http://10.0.2.2:8000/: ok
+[14-before-add-real] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add feed' at [189, 1951, 367, 2014]
+[15-add-real-dialog] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[16-before-add-real-confirm] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  tapping 'Add' at [788, 1564, 854, 1617]
+[17-add-real-done] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+  add https://feeds.arstechnica.com/arstechnica/index: ok
+[18-feeds-added] activity: topResumedActivity=ActivityRecord{232638802 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t12}
+[19-panel-half] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[20-panel-open] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  panel visible: False; top=topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[21-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 296, 275]
+[22-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 714, 360, 767]
+[23-before-panel-tap-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Lighthouse keepers of the northern coast' at [74, 391, 769, 517]
+[24-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  article shows /a life measured in hours/: True
+  article shows /you never really sleep/: False
+  article shows /wind the clockwork/: False
+  article shows /the north light at dusk/: True
+  boilerplate leaked: False
+[25-article-scrolled] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  boilerplate leaked: False
+[26-panel-after-back] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  back gesture closes the article: True
+  ... and the feed list is still showing: True
+[27-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 665, 275]
+[28-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Ars Technica - All content' at [64, 462, 485, 515]
+[29-panel-before-real] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  opening real article '"We have the mandate, we have the resources, and the support from our stakeholders."'
+[30-real-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[31-real-article-scrolled] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[32-list-top] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[33-list-scrolled-down] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  no top button while scrolling down: True
+[34-list-scrolled-up] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  top button after scrolling up a little: True
+[35-list-after-top] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  back at the top: True; button hidden again: True
+[36-list-down-before-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[37-mid-list-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[38-list-after-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  list kept its place after an article: True ('RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns'); not at the top: True
+[39-list-compact] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  no Unread/Starred chips on the list: True
+[40-before-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'More options' at [975, 181, 1038, 244]
+[41-menu-open] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  menu has Unread and Starred, not Large images: True
+[42-before-manage] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Manage feeds' at [777, 840, 1008, 893]
+[43-manage-feeds] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  Style is right below the Feed panel switch: True
+[44-style-screen] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  Style screen offers Compact and Large images: True
+[45-before-style-large] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  tapping 'Large images' at [189, 936, 459, 999]
+[46-style-text-size] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  Style screen offers text sizes: True
+[47-before-style-largest] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  tapping 'Largest' at [189, 1935, 340, 1998]
+[48-manage-after-style] activity: topResumedActivity=ActivityRecord{1296855 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t8}
+  Style row shows the choice: True
+[49-list-large] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  panel switched to large images: True
+[50-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 817, 275]
+[51-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 714, 360, 767]
+[52-before-toolbar-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Lighthouse keepers of the northern coast' at [74, 905, 862, 968]
+[53-toolbar] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  article toolbar: share True, no open in browser True, no text size True
+  install eSpeak NG: Success
+[54-espeak-setup] activity: topResumedActivity=ActivityRecord{129899852 u0 com.reecedunn.espeak/.eSpeakActivity t13}
+[55-espeak-data] activity: topResumedActivity=ActivityRecord{129899852 u0 com.reecedunn.espeak/.eSpeakActivity t13}
+[56-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 665, 275]
+[57-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 714, 360, 767]
+[58-before-toolbar-article-again] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Lighthouse keepers of the northern coast' at [74, 905, 862, 968]
+  tts engines: 'packageName=com.reecedunn.espeak\n        packageName=com.reecedunn.espeak'; default 'com.reecedunn.espeak'
+[59-before-listen] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Listen' at [849, 171, 912, 234]
+[60-listening] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Listen turns into Pause: True
+[61-listening-later] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  still reading after 20s: True; scrolled along (title gone): True
+  speaking (audio playback active): True
+[62-before-listen-pause] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Pause reading' at [849, 171, 912, 234]
+[63-paused] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Pause turns into Continue: True
+[64-before-listen-resume] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Continue reading' at [849, 171, 912, 234]
+[65-resumed] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Continue resumes: True
+[66-before-share-open] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Share' at [975, 171, 1038, 234]
+[67-share-sheet] activity: topResumedActivity=ActivityRecord{35212729 u0 com.android.intentresolver/.ChooserActivityLauncher t14}
+  share sheet shows a URL: True (Sharing link | http://10.0.2.2:8000/article1.html | No recommended people to share with | Bluetooth | Messaging)
+[68-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 665, 275]
+[69-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 714, 360, 767]
+[70-before-panel-feed-only] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Full text in the feed & no web page' at [74, 1359, 741, 1422]
+[71-feed-only-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  feed-only text shown: True
+[72-panel-back-gesture] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  back gesture closes the panel: True
+[73-panel-closed] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  panel closed: True
+[74-dark-panel] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  dark: menu icon is light: True
+[75-before-source-menu] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 296, 275]
+[76-before-source-pick] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 714, 360, 767]
+[77-before-dark-article-open] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Lighthouse keepers of the northern coast' at [74, 905, 862, 968]
+[78-dark-article] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  dark: article title is light text: True (17% light pixels)
+[79-dark-back] activity: topResumedActivity=ActivityRecord{191285009 u0 app.folio.launcher/com.android.launcher3.Launcher t8}

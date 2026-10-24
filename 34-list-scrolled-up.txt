@@ -1,0 +1,24 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 212] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 212] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 212] text='' desc='More options' id= click=false
+[74, 275, 769, 287] text='Intel gets waiver after worries fuzzy US ban on foreign-made robots may hit fabs' desc='' id= click=false
+[74, 298, 769, 404] text='Company says foreign-made robotic vehicles are crucial to US chip production.' desc='' id= click=false
+[74, 509, 629, 551] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 562, 769, 688] text='RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns' desc='' id= click=false
+[74, 699, 769, 805] text='"Trust is slow to build and quick to lose," board chair Jack Leslie said.' desc='' id= click=false
+[74, 910, 629, 952] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 963, 769, 1152] text='Knicks sent employees fake offer of championship rings in phishing test: Report' desc='' id= click=false
+[74, 1163, 769, 1269] text='Corporate phishing tests are common, but this one was especially cruel.' desc='' id= click=false
+[74, 1374, 629, 1416] text='Ars Technica - All content · 9 hr. ago' desc='' id= click=false
+[74, 1427, 769, 1553] text='Everybody panic: A Valve developer said "HLX" in public' desc='' id= click=false
+[74, 1564, 769, 1670] text='Sound designer lets Half Life-related codename slip at a conference.' desc='' id= click=false
+[74, 1775, 648, 1817] text='Ars Technica - All content · 12 hr. ago' desc='' id= click=false
+[74, 1828, 769, 2017] text='The reactor meant to showcase nuclear’s comeback keeps hitting problems' desc='' id= click=false
+[74, 2028, 769, 2134] text='A contractor fell into a reactor cavity and a bundle of fuel rods almost fell over.' desc='' id= click=false
+[74, 2239, 648, 2281] text='Ars Technica - All content · 14 hr. ago' desc='' id= click=false
+[74, 2292, 769, 2400] text='Ukraine learns to fight without Starlink as Musk plays politics with satellites' desc='' id= click=false
+[933, 2190, 996, 2253] text='' desc='Back to top' id= click=false

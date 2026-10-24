@@ -1,0 +1,23 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 817, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 722, 254] text='Ars Technica - All content' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 307, 629, 349] text='Ars Technica - All content · 6 hr. ago' desc='' id= click=false
+[74, 360, 769, 549] text='Inside the Pentagon, the pressure is on to find a home for a new spaceport' desc='' id= click=false
+[74, 560, 769, 666] text='Space Force considering options: public-private, federal installation, state land.' desc='' id= click=false
+[74, 771, 629, 813] text='Ars Technica - All content · 6 hr. ago' desc='' id= click=false
+[74, 824, 769, 950] text='Spotify ramps up policy enforcement on family plans' desc='' id= click=false
+[74, 961, 769, 1067] text='If you share Spotify sub with family, you may need to scan QR code to prove it.' desc='' id= click=false
+[74, 1172, 629, 1214] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 1225, 769, 1351] text='Crows can evaluate visual info twice as fast as mammals' desc='' id= click=false
+[74, 1362, 769, 1468] text="Birds' compact nervous system seems to help them handle tasks very quickly." desc='' id= click=false
+[74, 1573, 629, 1615] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 1626, 769, 1815] text='Intel gets waiver after worries fuzzy US ban on foreign-made robots may hit fabs' desc='' id= click=false
+[74, 1826, 769, 1932] text='Company says foreign-made robotic vehicles are crucial to US chip production.' desc='' id= click=false
+[74, 2037, 629, 2079] text='Ars Technica - All content · 8 hr. ago' desc='' id= click=false
+[74, 2090, 769, 2216] text='RFK Jr.’s vaccine injury clinic could damage NIH hospital, board warns' desc='' id= click=false
+[74, 2227, 769, 2333] text='"Trust is slow to build and quick to lose," board chair Jack Leslie said.' desc='' id= click=false
+[933, 2190, 996, 2253] text='' desc='Back to top' id= click=false
