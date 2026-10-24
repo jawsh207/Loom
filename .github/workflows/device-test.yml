@@ -116,6 +116,15 @@ jobs:
             || echo "::warning::no Open Camera APK"
           ls -l extra-apks
 
+      - name: Download a text-to-speech engine (eSpeak NG, F-Droid)
+        if: inputs.test == 'feed'
+        run: |
+          mkdir -p extra-apks
+          vc=$(curl -fsSL https://f-droid.org/api/v1/packages/com.reecedunn.espeak | jq -r .suggestedVersionCode)
+          curl -fsSL -o extra-apks/espeak.apk "https://f-droid.org/repo/com.reecedunn.espeak_${vc}.apk" \
+            || echo "::warning::no eSpeak NG APK"
+          ls -l extra-apks
+
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
