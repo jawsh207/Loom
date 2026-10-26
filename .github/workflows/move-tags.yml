@@ -13,40 +13,54 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Point each release tag at its rewritten commit
+      - name: Point each release tag at its rewritten commit, and fix the release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git tag -f build-17 d88c8393db730679a2e61d37e1a26e33513d0c93
-          git tag -f build-19 41aa4e8d76440affcec398abfb5705a744339763
-          git tag -f build-20 779163a79635935b84ad0336d58227c8c80b5a64
-          git tag -f build-21 6d344aaa22973292a2e1154e582bd08073d88428
-          git tag -f build-22 a4d768c687dc4f7e7cbc6a76cd2fb2e0ac792b71
-          git tag -f build-23 62305666c34826d42c7db35cc341334db8c0ff98
-          git tag -f build-24 a213e1b3a1ee7e7907d3fe1e6c00abff552cb53f
-          git tag -f build-25 e2c0cd4bc7a77b83b67af8b481604fa1c839102a
-          git tag -f build-26 2aa8a9f9e3e46cbd06823b7bdba66060a7eeef61
-          git tag -f build-28 c05cba774b2757a2e02a4cae3d2e6d2cadcdecfd
-          git tag -f build-29 dcaf3cc53bc269d2ac899542d428b38c7e8c5752
-          git tag -f build-30 cd4d7dd5e28fb4d9874ed089f35805a2276cb3d0
-          git tag -f build-31 4fd15c3b63c0e0f6ce95f298993df3c1dac1bda3
-          git tag -f build-32 66ff3683b228ea4b3d3bad993c71e3bd2713910b
-          git tag -f build-33 30eaab351969b89f829b23b11cca4d46f7f13927
-          git tag -f build-34 5e97b9df64bd9644170257509f8f4dc3d2b2f276
-          git tag -f build-35 ab3ca557f6e37087ff30245031878fd5090e3ee8
-          git tag -f build-36 69bf28c73a6078ca615304948bcfe67a92f32eea
-          git tag -f build-37 2ffa5eaa5018568be437d07892a90464bf90e66d
-          git tag -f v0.2.1 ac9f5cba796c1f90bf471fc2a9229360ff03689a
-          git tag -f v0.2.2 0f15eea3457ce6953cc96877f97b9b753f66b877
-          git tag -f v0.2.3 6443e8e18d3de6f29ef5e25a5b5ff81bfd4cbf3e
-          git tag -f v0.2.4 15e97b2c61d9e863260040f7f3e9cfa33e65d4a5
-          git tag -f v0.2.5 c6008c16986af6162e2b0309c5b06fa2d5f661ed
-          git tag -f v0.3.0 66ec36b7c19f6ebf5d9dd76f1e0ba3d1484e96d2
-          git tag -f v0.3.1 1f7a49fb7b69803638b994f794ecf8c19414d7c0
-          git tag -f v0.3.2 7a4d402e69e333f9d3ef3c784e0c27d4b4b26e39
-          git tag -f v0.3.3 2afd7f1be4aea56ec311f222ea6a5fb3edbc15b9
-          git tag -f v0.3.4 d227346c575b874e1eb7a6b6aa1956a0d88165b5
-          git tag -f v0.3.5 510028e1c98a91eba8591ad3614489433d4cba99
-          git tag -f v0.3.6 c7f643f8dbd11758e44359fa1cf28f85b12557f9
-          git tag -f v0.3.7 7ddf80fad7372552768abed772789e924afd2cb5
-          git tag -f v0.3.8 abe8b82038e56de0e330ede501751ac21e436c16
-          git tag -f v0.4.0 0e96784a7ec9f62a8285c84fec6b6f314f54c111
+          set -e
+          move() {  # tag old-short new-short
+            git tag -f "$1" "$(git rev-parse "$3")"
+            body=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/$1" -q .body 2>/dev/null || true)
+            if [ -n "$body" ] && printf '%s' "$body" | grep -q "$2"; then
+              id=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/$1" -q .id)
+              printf '%s' "$body" | sed "s/$2/$3/g" > body.md
+              gh api -X PATCH "repos/${GITHUB_REPOSITORY}/releases/$id" -F body=@body.md > /dev/null
+              echo "$1: notes now say $3"
+            fi
+          }
+          move build-17 2c2737e d88c839
+          move build-19 afc6e74 41aa4e8
+          move build-20 3fcbdb9 779163a
+          move build-21 9227b21 6d344aa
+          move build-22 9432bcd a4d768c
+          move build-23 241eff0 6230566
+          move build-24 e363fbf a213e1b
+          move build-25 be9f04c e2c0cd4
+          move build-26 b20e867 2aa8a9f
+          move build-28 931b2e1 c05cba7
+          move build-29 93c585e dcaf3cc
+          move build-30 f044bfe cd4d7dd
+          move build-31 fe455f0 4fd15c3
+          move build-32 745fdd8 66ff368
+          move build-33 4831559 30eaab3
+          move build-34 ac56f8b 5e97b9d
+          move build-35 56c4806 ab3ca55
+          move build-36 6b71344 69bf28c
+          move build-37 e182b25 2ffa5ea
+          move v0.2.1 973c6dd ac9f5cb
+          move v0.2.2 c8154cd 0f15eea
+          move v0.2.3 bfc28c7 6443e8e
+          move v0.2.4 1e1fb41 15e97b2
+          move v0.2.5 74c04e8 c6008c1
+          move v0.3.0 5f314f0 66ec36b
+          move v0.3.1 ecf6dbd 1f7a49f
+          move v0.3.2 cdb88a7 7a4d402
+          move v0.3.3 ae7d645 2afd7f1
+          move v0.3.4 968c34f d227346
+          move v0.3.5 e112170 510028e
+          move v0.3.6 847f065 c7f643f
+          move v0.3.7 343652c 7ddf80f
+          move v0.3.8 3398e23 abe8b82
+          move v0.4.0 ea1992c 0e96784
           git push -f origin --tags
+          git ls-remote --tags origin
