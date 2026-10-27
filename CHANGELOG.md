@@ -6,6 +6,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 ## Unreleased
 
 - Fixed: home screen accessibility actions (Widgets, Home settings and the others TalkBack offers on the home screen) did nothing when chosen. Fix from GrapheneOS's launcher.
+
 ## 0.4.0 (2026-10-24)
 
 - Feed reader: **Listen** reads the article out loud with your phone's default text-to-speech engine. Tap it again to pause and once more to carry on from the same paragraph; the article scrolls along as it's read, and reading stops when you leave the article.
