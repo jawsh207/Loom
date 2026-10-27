@@ -11,3 +11,6 @@
 # slf4j (pulled in by the article reader) looks for an optional logging backend that isn't
 # there; it falls back to doing nothing.
 -dontwarn org.slf4j.impl.**
+
+# protobuf-lite reads its generated messages' fields by name (the launcher's logging and saved data).
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite { <fields>; }
