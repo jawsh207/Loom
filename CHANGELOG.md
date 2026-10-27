@@ -6,6 +6,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 ## Unreleased
 
 - Smaller and faster: release builds are now shrunk and optimized (R8), as GrapheneOS builds its launcher. The APK drops from about 69 MB to under 9 MB, and the Compose screens (feed panel, Manage feeds, Grid) run smoother.
+
 ## 0.4.1 (2026-10-27)
 
 - Fixed: home screen accessibility actions (Widgets, Home settings and the others TalkBack offers on the home screen) did nothing when chosen. Fix from GrapheneOS's launcher.
