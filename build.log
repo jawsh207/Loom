@@ -1,0 +1,554 @@
+tool versions: 
+
+------------------------------------------------------------
+Gradle 9.8.2
+------------------------------------------------------------
+
+Build time:    2026-10-19 16:29:26 UTC
+Revision:      8de7bcf76e785507ad92f0741ab9235a430c95e6
+
+Kotlin:        2.4.10
+Groovy:        4.0.33
+Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
+Launcher JVM:  21.0.13 (Eclipse Adoptium 21.0.13+9-LTS)
+Daemon JVM:    /usr/lib/jvm/temurin-21-jdk-amd64 (no Daemon JVM specified, using current Java home)
+OS:            Linux 7.0.0-1017-azure amd64
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Configure project :app
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:94:10: 'fun setSrcDirs(srcDirs: Iterable<*>): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:95:12: 'fun setSrcDirs(srcDirs: Iterable<*>): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:96:9: 'fun setSrcDirs(srcDirs: Iterable<*>): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:110:45: 'fun provideDelegate(thisRef: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<Configuration>' is deprecated. Use 'val element = create(name)' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:110:45: 'val <T : Any> NamedDomainObjectContainer<T>.creating: NamedDomainObjectContainerCreatingDelegateProvider<T>' is deprecated. Use 'val element = create(name)' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/Loom/Loom/gradle/modules/app/build.gradle.kts:110:45: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :animationlib:preBuild UP-TO-DATE
+> Task :dynamiccolors:preBuild UP-TO-DATE
+> Task :appfunctions:preBuild UP-TO-DATE
+> Task :animationlib:preReleaseBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :appfunctions:preReleaseBuild UP-TO-DATE
+> Task :dynamiccolors:preReleaseBuild UP-TO-DATE
+> Task :appfunctions:mergeReleaseJniLibFolders
+> Task :dynamiccolors:mergeReleaseJniLibFolders
+> Task :animationlib:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseJniLibFolders
+> Task :flags:preBuild UP-TO-DATE
+> Task :flags:preReleaseBuild UP-TO-DATE
+> Task :animationlib:mergeReleaseNativeLibs NO-SOURCE
+> Task :appfunctions:mergeReleaseNativeLibs NO-SOURCE
+> Task :dynamiccolors:mergeReleaseNativeLibs NO-SOURCE
+> Task :flags:mergeReleaseJniLibFolders
+> Task :appfunctions:copyReleaseJniLibsProjectOnly
+> Task :flags:mergeReleaseNativeLibs NO-SOURCE
+> Task :dynamiccolors:copyReleaseJniLibsProjectOnly
+> Task :animationlib:copyReleaseJniLibsProjectOnly
+> Task :iconloaderlib:preBuild UP-TO-DATE
+> Task :launcher3-res:preBuild UP-TO-DATE
+> Task :launcher3-res:preReleaseBuild UP-TO-DATE
+> Task :iconloaderlib:preReleaseBuild UP-TO-DATE
+> Task :msdllib:preBuild UP-TO-DATE
+> Task :msdllib:preReleaseBuild UP-TO-DATE
+> Task :flags:copyReleaseJniLibsProjectOnly
+> Task :plugins:preBuild UP-TO-DATE
+> Task :plugins:preReleaseBuild UP-TO-DATE
+> Task :msdllib:mergeReleaseJniLibFolders
+> Task :msdllib:mergeReleaseNativeLibs NO-SOURCE
+> Task :plugins:mergeReleaseJniLibFolders
+> Task :iconloaderlib:mergeReleaseJniLibFolders
+> Task :msdllib:copyReleaseJniLibsProjectOnly
+> Task :launcher3-res:mergeReleaseJniLibFolders
+> Task :usertypelib:preBuild UP-TO-DATE
+> Task :usertypelib:preReleaseBuild UP-TO-DATE
+> Task :iconloaderlib:mergeReleaseNativeLibs NO-SOURCE
+> Task :plugins:mergeReleaseNativeLibs NO-SOURCE
+> Task :iconloaderlib:copyReleaseJniLibsProjectOnly
+> Task :widgetpicker:preBuild UP-TO-DATE
+> Task :widgetpicker:preReleaseBuild UP-TO-DATE
+> Task :launcher3-res:mergeReleaseNativeLibs NO-SOURCE
+> Task :plugins:copyReleaseJniLibsProjectOnly
+> Task :wmshellshared:preBuild UP-TO-DATE
+> Task :wmshellshared:preReleaseBuild UP-TO-DATE
+> Task :usertypelib:mergeReleaseJniLibFolders
+> Task :widgetpicker:mergeReleaseJniLibFolders
+> Task :usertypelib:mergeReleaseNativeLibs NO-SOURCE
+> Task :launcher3-res:copyReleaseJniLibsProjectOnly
+> Task :wmshellshared:mergeReleaseJniLibFolders
+> Task :widgetpicker:mergeReleaseNativeLibs NO-SOURCE
+> Task :wmshellshared:mergeReleaseNativeLibs NO-SOURCE
+> Task :wmshellshared:copyReleaseJniLibsProjectOnly
+> Task :widgetpicker:copyReleaseJniLibsProjectOnly
+> Task :usertypelib:copyReleaseJniLibsProjectOnly
+> Task :appfunctions:generateReleaseResources FROM-CACHE
+> Task :dynamiccolors:generateReleaseResources FROM-CACHE
+> Task :animationlib:generateReleaseResources FROM-CACHE
+> Task :animationlib:packageReleaseResources FROM-CACHE
+> Task :animationlib:processReleaseNavigationResources FROM-CACHE
+> Task :appfunctions:packageReleaseResources FROM-CACHE
+> Task :appfunctions:processReleaseNavigationResources FROM-CACHE
+> Task :dynamiccolors:packageReleaseResources FROM-CACHE
+> Task :dynamiccolors:processReleaseNavigationResources FROM-CACHE
+> Task :app:mergeReleaseNativeLibs
+
+> Task :app:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+
+> Task :app:extractReleaseNativeSymbolTables FROM-CACHE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :flags:generateReleaseResources FROM-CACHE
+> Task :flags:packageReleaseResources FROM-CACHE
+> Task :flags:processReleaseNavigationResources FROM-CACHE
+> Task :animationlib:parseReleaseLocalResources FROM-CACHE
+> Task :animationlib:generateReleaseRFile FROM-CACHE
+> Task :appfunctions:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:generateReleaseRFile FROM-CACHE
+> Task :dynamiccolors:compileReleaseKotlin NO-SOURCE
+> Task :dynamiccolors:javaPreCompileRelease FROM-CACHE
+> Task :dynamiccolors:compileReleaseJavaWithJavac NO-SOURCE
+> Task :animationlib:compileReleaseKotlin FROM-CACHE
+> Task :animationlib:javaPreCompileRelease FROM-CACHE
+> Task :flags:parseReleaseLocalResources FROM-CACHE
+> Task :flags:generateReleaseRFile FROM-CACHE
+> Task :appfunctions:generateReleaseRFile FROM-CACHE
+> Task :flags:compileReleaseKotlin NO-SOURCE
+> Task :flags:javaPreCompileRelease FROM-CACHE
+> Task :dynamiccolors:bundleLibCompileToJarRelease
+> Task :iconloaderlib:generateReleaseResources FROM-CACHE
+> Task :iconloaderlib:packageReleaseResources FROM-CACHE
+> Task :iconloaderlib:processReleaseNavigationResources FROM-CACHE
+> Task :iconloaderlib:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:generateReleaseResources FROM-CACHE
+> Task :usertypelib:packageReleaseResources FROM-CACHE
+> Task :usertypelib:processReleaseNavigationResources FROM-CACHE
+> Task :appfunctions:kspReleaseKotlin FROM-CACHE
+> Task :usertypelib:parseReleaseLocalResources FROM-CACHE
+> Task :usertypelib:generateReleaseRFile FROM-CACHE
+> Task :iconloaderlib:generateReleaseRFile FROM-CACHE
+> Task :appfunctions:compileReleaseKotlin FROM-CACHE
+> Task :appfunctions:javaPreCompileRelease FROM-CACHE
+> Task :appfunctions:compileReleaseJavaWithJavac NO-SOURCE
+> Task :appfunctions:bundleLibCompileToJarRelease
+> Task :iconloaderlib:javaPreCompileRelease FROM-CACHE
+> Task :usertypelib:compileReleaseKotlin FROM-CACHE
+> Task :usertypelib:javaPreCompileRelease FROM-CACHE
+> Task :usertypelib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :usertypelib:bundleLibCompileToJarRelease
+> Task :msdllib:generateReleaseResources FROM-CACHE
+> Task :msdllib:packageReleaseResources FROM-CACHE
+> Task :msdllib:processReleaseNavigationResources FROM-CACHE
+> Task :msdllib:parseReleaseLocalResources FROM-CACHE
+> Task :launcher3-res:generateReleaseResources FROM-CACHE
+> Task :msdllib:generateReleaseRFile FROM-CACHE
+> Task :plugins:generateReleaseResources FROM-CACHE
+> Task :plugins:packageReleaseResources FROM-CACHE
+> Task :plugins:processReleaseNavigationResources FROM-CACHE
+> Task :plugins:parseReleaseLocalResources FROM-CACHE
+> Task :plugins:generateReleaseRFile FROM-CACHE
+> Task :widgetpicker:generateReleaseResources FROM-CACHE
+> Task :widgetpicker:packageReleaseResources FROM-CACHE
+> Task :widgetpicker:processReleaseNavigationResources FROM-CACHE
+> Task :widgetpicker:parseReleaseLocalResources FROM-CACHE
+> Task :launcher3-res:packageReleaseResources FROM-CACHE
+> Task :launcher3-res:processReleaseNavigationResources FROM-CACHE
+> Task :launcher3-res:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:generateReleaseResources FROM-CACHE
+> Task :wmshellshared:packageReleaseResources FROM-CACHE
+> Task :wmshellshared:processReleaseNavigationResources FROM-CACHE
+> Task :widgetpicker:generateReleaseRFile FROM-CACHE
+> Task :wmshellshared:parseReleaseLocalResources FROM-CACHE
+> Task :wmshellshared:generateReleaseRFile FROM-CACHE
+> Task :msdllib:compileReleaseKotlin FROM-CACHE
+> Task :msdllib:javaPreCompileRelease FROM-CACHE
+> Task :msdllib:compileReleaseJavaWithJavac NO-SOURCE
+> Task :launcher3-res:generateReleaseRFile FROM-CACHE
+> Task :msdllib:bundleLibCompileToJarRelease
+> Task :plugins:compileReleaseKotlin FROM-CACHE
+> Task :plugins:javaPreCompileRelease FROM-CACHE
+> Task :widgetpicker:kaptGenerateStubsReleaseKotlin FROM-CACHE
+> Task :widgetpicker:kaptReleaseKotlin FROM-CACHE
+> Task :widgetpicker:compileReleaseKotlin FROM-CACHE
+> Task :widgetpicker:javaPreCompileRelease FROM-CACHE
+> Task :flags:compileReleaseJavaWithJavac FROM-CACHE
+> Task :animationlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :plugins:compileReleaseJavaWithJavac FROM-CACHE
+> Task :widgetpicker:compileReleaseJavaWithJavac FROM-CACHE
+> Task :animationlib:bundleLibCompileToJarRelease
+> Task :flags:bundleLibCompileToJarRelease
+> Task :plugins:bundleLibCompileToJarRelease
+> Task :wmshellshared:javaPreCompileRelease FROM-CACHE
+> Task :widgetpicker:bundleLibCompileToJarRelease
+> Task :launcher3-res:javaPreCompileRelease FROM-CACHE
+> Task :dynamiccolors:mergeReleaseGeneratedProguardFiles
+> Task :animationlib:mergeReleaseGeneratedProguardFiles
+> Task :dynamiccolors:exportReleaseConsumerProguardFiles
+> Task :animationlib:exportReleaseConsumerProguardFiles
+> Task :wmshellshared:compileReleaseKotlin FROM-CACHE
+> Task :msdllib:mergeReleaseGeneratedProguardFiles
+> Task :plugins:mergeReleaseGeneratedProguardFiles
+> Task :msdllib:exportReleaseConsumerProguardFiles
+> Task :plugins:exportReleaseConsumerProguardFiles
+> Task :widgetpicker:mergeReleaseGeneratedProguardFiles
+> Task :appfunctions:mergeReleaseGeneratedProguardFiles
+> Task :appfunctions:exportReleaseConsumerProguardFiles
+> Task :widgetpicker:exportReleaseConsumerProguardFiles
+> Task :flags:mergeReleaseGeneratedProguardFiles
+> Task :usertypelib:mergeReleaseGeneratedProguardFiles
+> Task :wmshellshared:compileReleaseJavaWithJavac FROM-CACHE
+> Task :flags:exportReleaseConsumerProguardFiles
+> Task :usertypelib:exportReleaseConsumerProguardFiles
+> Task :wmshellshared:bundleLibCompileToJarRelease
+> Task :wmshellshared:mergeReleaseGeneratedProguardFiles
+> Task :animationlib:bundleLibRuntimeToJarRelease
+> Task :animationlib:prepareReleaseArtProfile
+> Task :appfunctions:prepareReleaseArtProfile
+> Task :dynamiccolors:prepareReleaseArtProfile
+> Task :flags:prepareReleaseArtProfile
+> Task :launcher3-res:prepareReleaseArtProfile
+> Task :iconloaderlib:compileReleaseKotlin FROM-CACHE
+> Task :msdllib:prepareReleaseArtProfile
+> Task :plugins:prepareReleaseArtProfile
+> Task :usertypelib:prepareReleaseArtProfile
+> Task :widgetpicker:prepareReleaseArtProfile
+> Task :wmshellshared:prepareReleaseArtProfile
+> Task :wmshellshared:exportReleaseConsumerProguardFiles
+> Task :animationlib:mapReleaseSourceSetPaths
+> Task :animationlib:compileReleaseLibraryResources FROM-CACHE
+> Task :iconloaderlib:compileReleaseJavaWithJavac FROM-CACHE
+> Task :appfunctions:writeReleaseAarMetadata
+> Task :animationlib:writeReleaseAarMetadata
+> Task :iconloaderlib:mergeReleaseGeneratedProguardFiles
+> Task :iconloaderlib:exportReleaseConsumerProguardFiles
+> Task :iconloaderlib:bundleLibCompileToJarRelease
+> Task :iconloaderlib:prepareReleaseArtProfile
+> Task :launcher3-res:compileReleaseKotlin NO-SOURCE
+> Task :dynamiccolors:writeReleaseAarMetadata
+> Task :launcher3-res:compileReleaseJavaWithJavac NO-SOURCE
+> Task :launcher3-res:mergeReleaseGeneratedProguardFiles
+> Task :flags:writeReleaseAarMetadata
+> Task :iconloaderlib:writeReleaseAarMetadata
+> Task :launcher3-res:exportReleaseConsumerProguardFiles
+> Task :app:checkReleaseDuplicateClasses
+> Task :msdllib:writeReleaseAarMetadata
+> Task :launcher3-res:writeReleaseAarMetadata
+> Task :plugins:writeReleaseAarMetadata
+> Task :launcher3-res:bundleLibCompileToJarRelease
+> Task :widgetpicker:writeReleaseAarMetadata
+> Task :usertypelib:writeReleaseAarMetadata
+> Task :app:generateLauncherProtos
+> Task :wmshellshared:writeReleaseAarMetadata
+> Task :appfunctions:extractDeepLinksRelease FROM-CACHE
+> Task :animationlib:extractDeepLinksRelease FROM-CACHE
+> Task :dynamiccolors:extractDeepLinksRelease FROM-CACHE
+> Task :app:generateReleaseResources FROM-CACHE
+> Task :app:packageReleaseResources FROM-CACHE
+> Task :appfunctions:processReleaseManifest FROM-CACHE
+> Task :dynamiccolors:processReleaseManifest FROM-CACHE
+> Task :animationlib:processReleaseManifest FROM-CACHE
+> Task :launcher3-res:extractDeepLinksRelease FROM-CACHE
+> Task :iconloaderlib:extractDeepLinksRelease FROM-CACHE
+> Task :flags:extractDeepLinksRelease FROM-CACHE
+> Task :flags:processReleaseManifest FROM-CACHE
+> Task :iconloaderlib:processReleaseManifest FROM-CACHE
+> Task :msdllib:extractDeepLinksRelease FROM-CACHE
+> Task :launcher3-res:processReleaseManifest FROM-CACHE
+> Task :plugins:extractDeepLinksRelease FROM-CACHE
+> Task :usertypelib:extractDeepLinksRelease FROM-CACHE
+> Task :msdllib:processReleaseManifest FROM-CACHE
+> Task :plugins:processReleaseManifest FROM-CACHE
+> Task :widgetpicker:extractDeepLinksRelease FROM-CACHE
+> Task :wmshellshared:extractDeepLinksRelease FROM-CACHE
+> Task :usertypelib:processReleaseManifest FROM-CACHE
+> Task :appfunctions:mapReleaseSourceSetPaths
+> Task :wmshellshared:processReleaseManifest FROM-CACHE
+> Task :widgetpicker:processReleaseManifest FROM-CACHE
+> Task :appfunctions:compileReleaseLibraryResources FROM-CACHE
+> Task :dynamiccolors:mapReleaseSourceSetPaths
+> Task :flags:mapReleaseSourceSetPaths
+> Task :iconloaderlib:mapReleaseSourceSetPaths
+> Task :dynamiccolors:compileReleaseLibraryResources FROM-CACHE
+> Task :flags:compileReleaseLibraryResources FROM-CACHE
+> Task :iconloaderlib:compileReleaseLibraryResources FROM-CACHE
+> Task :msdllib:mapReleaseSourceSetPaths
+> Task :launcher3-res:mapReleaseSourceSetPaths
+> Task :msdllib:compileReleaseLibraryResources FROM-CACHE
+> Task :plugins:mapReleaseSourceSetPaths
+> Task :plugins:compileReleaseLibraryResources FROM-CACHE
+> Task :usertypelib:mapReleaseSourceSetPaths
+> Task :usertypelib:compileReleaseLibraryResources FROM-CACHE
+> Task :widgetpicker:mapReleaseSourceSetPaths
+> Task :app:processReleaseNavigationResources FROM-CACHE
+> Task :widgetpicker:compileReleaseLibraryResources FROM-CACHE
+> Task :wmshellshared:mapReleaseSourceSetPaths
+> Task :launcher3-res:compileReleaseLibraryResources FROM-CACHE
+> Task :wmshellshared:compileReleaseLibraryResources FROM-CACHE
+> Task :app:parseReleaseLocalResources FROM-CACHE
+> Task :dynamiccolors:bundleLibRuntimeToJarRelease
+> Task :flags:bundleLibRuntimeToJarRelease
+> Task :appfunctions:bundleLibRuntimeToJarRelease
+> Task :launcher3-res:bundleLibRuntimeToJarRelease
+> Task :msdllib:bundleLibRuntimeToJarRelease
+> Task :iconloaderlib:bundleLibRuntimeToJarRelease
+> Task :plugins:bundleLibRuntimeToJarRelease
+> Task :usertypelib:bundleLibRuntimeToJarRelease
+> Task :wmshellshared:bundleLibRuntimeToJarRelease
+> Task :widgetpicker:bundleLibRuntimeToJarRelease
+> Task :animationlib:processReleaseJavaRes
+> Task :appfunctions:processReleaseJavaRes
+> Task :flags:processReleaseJavaRes NO-SOURCE
+> Task :app:generateReleaseRFile FROM-CACHE
+> Task :dynamiccolors:processReleaseJavaRes NO-SOURCE
+> Task :launcher3-res:processReleaseJavaRes NO-SOURCE
+> Task :iconloaderlib:processReleaseJavaRes
+> Task :msdllib:processReleaseJavaRes
+> Task :usertypelib:processReleaseJavaRes
+> Task :plugins:processReleaseJavaRes
+> Task :animationlib:generateReleaseAssets UP-TO-DATE
+> Task :wmshellshared:processReleaseJavaRes
+> Task :widgetpicker:processReleaseJavaRes
+> Task :appfunctions:generateReleaseAssets UP-TO-DATE
+> Task :dynamiccolors:generateReleaseAssets UP-TO-DATE
+> Task :animationlib:mergeReleaseAssets
+> Task :flags:generateReleaseAssets UP-TO-DATE
+> Task :appfunctions:mergeReleaseAssets
+> Task :iconloaderlib:generateReleaseAssets UP-TO-DATE
+> Task :dynamiccolors:mergeReleaseAssets
+> Task :launcher3-res:generateReleaseAssets UP-TO-DATE
+> Task :flags:mergeReleaseAssets
+> Task :msdllib:generateReleaseAssets UP-TO-DATE
+> Task :iconloaderlib:mergeReleaseAssets
+> Task :plugins:generateReleaseAssets UP-TO-DATE
+> Task :msdllib:mergeReleaseAssets
+> Task :usertypelib:generateReleaseAssets UP-TO-DATE
+> Task :launcher3-res:mergeReleaseAssets
+> Task :widgetpicker:generateReleaseAssets UP-TO-DATE
+> Task :widgetpicker:mergeReleaseAssets
+> Task :wmshellshared:generateReleaseAssets UP-TO-DATE
+> Task :usertypelib:mergeReleaseAssets
+> Task :plugins:mergeReleaseAssets
+> Task :animationlib:extractProguardFiles
+> Task :wmshellshared:mergeReleaseAssets
+> Task :appfunctions:createFullJarRelease
+> Task :dynamiccolors:createFullJarRelease
+> Task :appfunctions:extractProguardFiles
+> Task :dynamiccolors:extractProguardFiles
+> Task :app:kaptGenerateStubsReleaseKotlin FROM-CACHE
+> Task :app:kaptReleaseKotlin FROM-CACHE
+> Task :app:compileReleaseKotlin FROM-CACHE
+> Task :app:javaPreCompileRelease FROM-CACHE
+> Task :app:compileReleaseJavaWithJavac FROM-CACHE
+> Task :app:mergeReleaseArtProfile
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:compileReleaseNavigationResources FROM-CACHE
+> Task :animationlib:generateReleaseLintVitalModel
+> Task :dynamiccolors:generateReleaseLintModel
+> Task :dynamiccolors:prepareLintJarForPublish
+> Task :flags:createFullJarRelease
+> Task :flags:extractProguardFiles
+> Task :flags:generateReleaseLintModel
+> Task :flags:prepareLintJarForPublish
+> Task :iconloaderlib:createFullJarRelease
+> Task :iconloaderlib:extractProguardFiles
+> Task :animationlib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :animationlib:prepareLintJarForPublish
+> Task :usertypelib:createFullJarRelease
+> Task :animationlib:createFullJarRelease
+> Task :usertypelib:extractProguardFiles
+> Task :animationlib:generateReleaseLintModel
+> Task :usertypelib:generateReleaseLintModel
+> Task :usertypelib:prepareLintJarForPublish
+> Task :iconloaderlib:prepareLintJarForPublish
+> Task :launcher3-res:createFullJarRelease
+> Task :launcher3-res:extractProguardFiles
+> Task :msdllib:createFullJarRelease
+> Task :msdllib:extractProguardFiles
+> Task :appfunctions:generateReleaseLintModel
+> Task :iconloaderlib:generateReleaseLintModel
+> Task :appfunctions:prepareLintJarForPublish
+> Task :plugins:createFullJarRelease
+> Task :msdllib:generateReleaseLintModel
+> Task :plugins:extractProguardFiles
+> Task :msdllib:prepareLintJarForPublish
+> Task :wmshellshared:createFullJarRelease
+> Task :widgetpicker:createFullJarRelease
+> Task :wmshellshared:extractProguardFiles
+> Task :widgetpicker:extractProguardFiles
+> Task :plugins:generateReleaseLintModel
+> Task :plugins:prepareLintJarForPublish
+> Task :launcher3-res:prepareLintJarForPublish
+> Task :wmshellshared:generateReleaseLintModel
+> Task :wmshellshared:prepareLintJarForPublish
+> Task :dynamiccolors:checkReleaseAarMetadata
+> Task :dynamiccolors:extractDeepLinksForAarRelease FROM-CACHE
+> Task :dynamiccolors:extractReleaseAnnotations FROM-CACHE
+> Task :dynamiccolors:mergeReleaseConsumerProguardFiles
+> Task :launcher3-res:checkReleaseAarMetadata
+> Task :launcher3-res:extractDeepLinksForAarRelease FROM-CACHE
+> Task :widgetpicker:generateReleaseLintModel
+> Task :widgetpicker:prepareLintJarForPublish
+> Task :launcher3-res:extractReleaseAnnotations FROM-CACHE
+> Task :iconloaderlib:checkReleaseAarMetadata
+> Task :iconloaderlib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :dynamiccolors:mergeReleaseJavaResource
+> Task :iconloaderlib:extractReleaseAnnotations FROM-CACHE
+> Task :iconloaderlib:mergeReleaseConsumerProguardFiles
+> Task :dynamiccolors:syncReleaseLibJars FROM-CACHE
+> Task :dynamiccolors:bundleReleaseLocalLintAar
+> Task :iconloaderlib:mergeReleaseJavaResource
+> Task :iconloaderlib:syncReleaseLibJars FROM-CACHE
+> Task :launcher3-res:generateReleaseLintModel
+> Task :animationlib:checkReleaseAarMetadata
+> Task :animationlib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :launcher3-res:mergeReleaseConsumerProguardFiles
+> Task :iconloaderlib:bundleReleaseLocalLintAar
+> Task :launcher3-res:mergeReleaseJavaResource
+> Task :animationlib:extractReleaseAnnotations FROM-CACHE
+> Task :launcher3-res:syncReleaseLibJars FROM-CACHE
+> Task :animationlib:mergeReleaseConsumerProguardFiles
+> Task :msdllib:checkReleaseAarMetadata
+> Task :animationlib:mergeReleaseJavaResource
+> Task :msdllib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :animationlib:syncReleaseLibJars FROM-CACHE
+> Task :animationlib:bundleReleaseLocalLintAar
+> Task :msdllib:extractReleaseAnnotations FROM-CACHE
+> Task :msdllib:mergeReleaseConsumerProguardFiles
+> Task :plugins:checkReleaseAarMetadata
+> Task :plugins:extractDeepLinksForAarRelease FROM-CACHE
+> Task :msdllib:mergeReleaseJavaResource
+> Task :msdllib:syncReleaseLibJars FROM-CACHE
+> Task :msdllib:bundleReleaseLocalLintAar
+> Task :plugins:extractReleaseAnnotations FROM-CACHE
+> Task :plugins:mergeReleaseConsumerProguardFiles
+> Task :wmshellshared:checkReleaseAarMetadata
+> Task :wmshellshared:extractDeepLinksForAarRelease FROM-CACHE
+> Task :plugins:mergeReleaseJavaResource
+> Task :plugins:syncReleaseLibJars FROM-CACHE
+> Task :plugins:bundleReleaseLocalLintAar
+> Task :wmshellshared:extractReleaseAnnotations FROM-CACHE
+> Task :launcher3-res:bundleReleaseLocalLintAar
+> Task :wmshellshared:mergeReleaseConsumerProguardFiles
+> Task :widgetpicker:checkReleaseAarMetadata
+> Task :widgetpicker:extractDeepLinksForAarRelease FROM-CACHE
+> Task :widgetpicker:extractReleaseAnnotations FROM-CACHE
+> Task :widgetpicker:mergeReleaseConsumerProguardFiles
+> Task :widgetpicker:mergeReleaseJavaResource
+> Task :wmshellshared:mergeReleaseJavaResource
+> Task :wmshellshared:syncReleaseLibJars FROM-CACHE
+> Task :wmshellshared:bundleReleaseLocalLintAar
+> Task :widgetpicker:syncReleaseLibJars FROM-CACHE
+> Task :flags:checkReleaseAarMetadata
+> Task :appfunctions:checkReleaseAarMetadata
+> Task :appfunctions:extractDeepLinksForAarRelease FROM-CACHE
+> Task :flags:extractDeepLinksForAarRelease FROM-CACHE
+> Task :widgetpicker:bundleReleaseLocalLintAar
+> Task :flags:extractReleaseAnnotations FROM-CACHE
+> Task :appfunctions:extractReleaseAnnotations FROM-CACHE
+> Task :flags:mergeReleaseConsumerProguardFiles
+> Task :appfunctions:mergeReleaseConsumerProguardFiles
+> Task :flags:mergeReleaseJavaResource
+> Task :appfunctions:mergeReleaseJavaResource
+> Task :flags:syncReleaseLibJars FROM-CACHE
+> Task :appfunctions:syncReleaseLibJars FROM-CACHE
+> Task :appfunctions:bundleReleaseLocalLintAar
+> Task :flags:bundleReleaseLocalLintAar
+> Task :usertypelib:checkReleaseAarMetadata
+> Task :usertypelib:extractDeepLinksForAarRelease FROM-CACHE
+> Task :usertypelib:extractReleaseAnnotations FROM-CACHE
+> Task :usertypelib:mergeReleaseConsumerProguardFiles
+> Task :usertypelib:mergeReleaseJavaResource
+> Task :usertypelib:syncReleaseLibJars FROM-CACHE
+> Task :usertypelib:bundleReleaseLocalLintAar
+> Task :animationlib:writeReleaseLintModelMetadata
+> Task :appfunctions:lintVitalAnalyzeRelease FROM-CACHE
+> Task :flags:lintVitalAnalyzeRelease FROM-CACHE
+> Task :dynamiccolors:lintVitalAnalyzeRelease FROM-CACHE
+> Task :appfunctions:writeReleaseLintModelMetadata
+> Task :flags:writeReleaseLintModelMetadata
+> Task :dynamiccolors:writeReleaseLintModelMetadata
+> Task :iconloaderlib:writeReleaseLintModelMetadata
+> Task :msdllib:writeReleaseLintModelMetadata
+> Task :usertypelib:writeReleaseLintModelMetadata
+> Task :plugins:writeReleaseLintModelMetadata
+> Task :widgetpicker:writeReleaseLintModelMetadata
+> Task :launcher3-res:writeReleaseLintModelMetadata
+> Task :wmshellshared:writeReleaseLintModelMetadata
+> Task :msdllib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :plugins:lintVitalAnalyzeRelease FROM-CACHE
+> Task :iconloaderlib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :usertypelib:lintVitalAnalyzeRelease FROM-CACHE
+> Task :wmshellshared:lintVitalAnalyzeRelease FROM-CACHE
+> Task :widgetpicker:lintVitalAnalyzeRelease FROM-CACHE
+> Task :dynamiccolors:generateReleaseLintVitalModel
+> Task :flags:generateReleaseLintVitalModel
+> Task :appfunctions:generateReleaseLintVitalModel
+> Task :msdllib:generateReleaseLintVitalModel
+> Task :iconloaderlib:generateReleaseLintVitalModel
+> Task :launcher3-res:lintVitalAnalyzeRelease FROM-CACHE
+> Task :plugins:generateReleaseLintVitalModel
+> Task :usertypelib:generateReleaseLintVitalModel
+> Task :wmshellshared:generateReleaseLintVitalModel
+> Task :widgetpicker:generateReleaseLintVitalModel
+> Task :launcher3-res:generateReleaseLintVitalModel
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease FROM-CACHE
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:extractProguardFiles
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseStartupProfile
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets FROM-CACHE
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:processReleaseManifestForPackage
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:mergeReleaseJavaResource
+> Task :app:mergeReleaseResources
+warn: removing resource app.folio.launcher:string/allow_rotation_title without required default value.
+warn: removing resource app.folio.launcher:string/folder_name_format_exact without required default value.
+warn: removing resource app.folio.launcher:string/folder_name_format_overflow without required default value.
+warn: removing resource app.folio.launcher:string/item_added_to_workspace without required default value.
+warn: removing resource app.folio.launcher:string/widgets_full_sheet_cancel_button_description without required default value.
+warn: removing resource app.folio.launcher:string/widgets_full_sheet_search_bar_hint without required default value.
+warn: removing resource app.folio.launcher:string/work_profile_edu_accept without required default value.
+
+> Task :app:processReleaseResources
+> Task :app:mergeReleaseGeneratedProguardFiles
+> Task :app:expandReleaseArtProfileWildcards
+> Task :app:produceReleaseComposeMapping
+> Task :app:reportReleaseComposeMappingErrors
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:minifyReleaseWithR8
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:mergeReleaseComposeMapping
+> Task :app:compileReleaseArtProfile
+> Task :app:convertShrunkResourcesToBinaryRelease
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1793132331671.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/Loom/Loom/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 3m 1s
+442 actionable tasks: 268 executed, 174 from cache
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html
+V2 Signer: certificate DN: CN=Folio
+V2 Signer: certificate SHA-256 digest: 5acbbd65b56a3da013474344a728f1a6cdcfeefce22f45ca916f5f8141124018
