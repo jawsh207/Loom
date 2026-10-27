@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.2 (2026-10-27)
+
 - Smaller and faster: release builds are now shrunk and optimized (R8), as GrapheneOS builds its launcher. The APK drops from about 69 MB to under 9 MB, and the Compose screens (feed panel, Manage feeds, Grid) run smoother.
 
 ## 0.4.1 (2026-10-27)
