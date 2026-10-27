@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.1 (2026-10-27)
+
 - Fixed: home screen accessibility actions (Widgets, Home settings and the others TalkBack offers on the home screen) did nothing when chosen. Fix from GrapheneOS's launcher.
 
 ## 0.4.0 (2026-10-24)
