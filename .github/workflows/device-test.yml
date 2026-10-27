@@ -215,6 +215,7 @@ jobs:
         if: always()
         run: |
           mkdir -p out && cp devtest.log emulator.log boot.log images.txt out/ 2>/dev/null || true
+          ls -l folio.apk > out/apk-size.txt 2>/dev/null || true
           echo "$IMG ${{ github.sha }} run ${{ github.run_id }}" > out/RUN
           cd out && git init -q -b ci-devtest && git add -A
           git -c user.name=folio-ci -c user.email=ci@users.noreply.github.com commit -qm "Device test ${{ github.run_id }}"
