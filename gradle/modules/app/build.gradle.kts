@@ -68,8 +68,15 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
 
     buildTypes {
         getByName("release") {
-            // Like the AOSP Launcher3 build: no shrinking.
-            isMinifyEnabled = false
+            // Shrunk and optimized with R8, as Soong builds Launcher3 (its "optimize" block uses
+            // launcher3/proguard.flags). Only the APK changes; the sources stay as they are.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                rootProject.file("launcher3/proguard.flags"),
+                rootProject.file("launcher3/folio/proguard-folio.pro"),
+            )
             signingConfig = signingConfigs.getByName(if (keystore != null) "folio" else "debug")
         }
     }
