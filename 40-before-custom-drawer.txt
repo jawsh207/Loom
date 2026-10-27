@@ -1,0 +1,30 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[74, 296, 292, 301] text='Home screen' desc='' id= click=false
+[84, 364, 592, 427] text='Choose home screen size' desc='' id= click=false
+[84, 530, 618, 593] text='Columns' desc='' id= click=false
+[619, 499, 745, 625] text='' desc='Fewer columns' id= click=true
+[744, 524, 870, 598] text='5' desc='' id= click=false
+[871, 499, 997, 625] text='' desc='More columns' id= click=true
+[84, 706, 618, 769] text='Rows' desc='' id= click=false
+[619, 675, 745, 801] text='' desc='Fewer rows' id= click=true
+[744, 700, 870, 774] text='5' desc='' id= click=false
+[871, 675, 997, 801] text='' desc='More rows' id= click=true
+[84, 866, 433, 929] text='Choose dock size' desc='' id= click=false
+[84, 929, 662, 982] text='Same number of icons as columns' desc='' id= click=false
+[84, 1079, 618, 1142] text='Dock icons' desc='' id= click=false
+[619, 1048, 745, 1174] text='' desc='Fewer dock' id= click=true
+[744, 1073, 870, 1147] text='4' desc='' id= click=false
+[871, 1048, 997, 1174] text='' desc='More dock' id= click=true
+[74, 1257, 261, 1310] text='App drawer' desc='' id= click=false
+[84, 1368, 649, 1431] text='Choose app drawer columns' desc='' id= click=false
+[84, 1431, 559, 1484] text='Using the default: 4 columns' desc='' id= click=false
+[84, 1581, 618, 1644] text='Columns' desc='' id= click=false
+[619, 1550, 745, 1676] text='' desc='Fewer drawer' id= click=true
+[744, 1575, 870, 1649] text='4' desc='' id= click=false
+[871, 1550, 997, 1676] text='' desc='More drawer' id= click=true
+[64, 1754, 391, 1807] text='Back to the defaults' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text='Changing the home screen or dock size resets your home screen and dock to the standard layout for the new size. Changing only the app drawer columns keeps everything.' desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

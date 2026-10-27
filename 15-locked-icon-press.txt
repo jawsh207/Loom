@@ -1,0 +1,17 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[342, 1120, 909, 1668] text='' desc='' id=app.folio.launcher:id/popup_container click=false
+[342, 1120, 909, 1668] text='' desc='' id=app.folio.launcher:id/system_shortcuts_container click=false
+[342, 1120, 909, 1257] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[342, 1120, 909, 1257] text='App info' desc='' id=app.folio.launcher:id/bubble_text click=false
+[384, 1162, 437, 1215] text='' desc='' id=app.folio.launcher:id/icon click=false
+[342, 1257, 909, 1394] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[342, 1257, 909, 1394] text='Edit icon' desc='' id=app.folio.launcher:id/bubble_text click=false
+[384, 1299, 437, 1352] text='' desc='' id=app.folio.launcher:id/icon click=false
+[342, 1394, 909, 1531] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[342, 1394, 909, 1531] text='Rename' desc='' id=app.folio.launcher:id/bubble_text click=false
+[384, 1436, 437, 1489] text='' desc='' id=app.folio.launcher:id/icon click=false
+[342, 1531, 909, 1668] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[342, 1531, 909, 1668] text='Add to tab' desc='' id=app.folio.launcher:id/bubble_text click=false
+[384, 1573, 437, 1626] text='' desc='' id=app.folio.launcher:id/icon click=false
