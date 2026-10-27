@@ -14,3 +14,10 @@
 
 # protobuf-lite reads its generated messages' fields by name (the launcher's logging and saved data).
 -keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite { <fields>; }
+
+# SharedPreferences only holds its change listeners weakly. A field that keeps one alive is
+# never read, so R8 would drop it and the listener would stop firing (the feed panel missed
+# Style changes). Keep every such field.
+-keepclassmembers class * {
+    android.content.SharedPreferences$OnSharedPreferenceChangeListener *;
+}
