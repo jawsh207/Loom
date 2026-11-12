@@ -59,8 +59,6 @@ import com.android.launcher3.R;
 import com.android.launcher3.display.DisplayController;
 import com.android.launcher3.display.LauncherDisplayInfo;
 import com.android.launcher3.folio.DrawerTabsActivity;
-import com.android.launcher3.folio.IconPackManager;
-import com.android.launcher3.folio.IconPackPicker;
 import com.android.launcher3.util.SafeCloseable;
 import com.android.launcher3.util.SettingsCache;
 
@@ -79,7 +77,6 @@ public class SettingsActivity extends FragmentActivity
 
     public static final String EXTRA_FRAGMENT_ARGS = ":settings:fragment_args";
     /** Folio: the Icons sub-screen in launcher_preferences.xml. */
-    private static final String ICONS_SCREEN_KEY = "pref_icons";
 
     // Intent extra to indicate the pref-key to highlighted when opening the settings activity
     public static final String EXTRA_FRAGMENT_HIGHLIGHT_KEY = ":settings:fragment_args_key";
@@ -343,20 +340,6 @@ public class SettingsActivity extends FragmentActivity
         protected boolean initPreference(Preference preference) {
             LauncherDisplayInfo info = DisplayController.INSTANCE.get(getContext()).getInfo();
             switch (preference.getKey()) {
-                case ICONS_SCREEN_KEY:
-                    // Folio: the Icons screen; its summary names the icon pack.
-                    preference.setSummary(IconPackPicker.currentLabel(getContext()));
-                    return true;
-                case IconPackManager.PREF_ICON_PACK:
-                    // Folio: icon pack chooser.
-                    IconPackPicker.bind(preference);
-                    return true;
-                case IconPackManager.PREF_FALLBACK:
-                    IconPackPicker.bindFallback(preference);
-                    return true;
-                case IconPackManager.PREF_COLORED:
-                    IconPackPicker.bindColored(preference);
-                    return true;
                 case DrawerTabsActivity.PREF_KEY:
                     // Folio: opens the drawer tabs screen.
                     preference.setOnPreferenceClickListener(p -> {
@@ -414,10 +397,6 @@ public class SettingsActivity extends FragmentActivity
         @Override
         public void onResume() {
             super.onResume();
-
-            // Folio: the icon pack may have been changed on the Icons screen.
-            Preference icons = findPreference(ICONS_SCREEN_KEY);
-            if (icons != null) icons.setSummary(IconPackPicker.currentLabel(getContext()));
 
             if (isAdded() && !mPreferenceHighlighted) {
                 PreferenceHighlighter highlighter = createHighlighter();

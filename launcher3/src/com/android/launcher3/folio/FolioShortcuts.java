@@ -69,16 +69,6 @@ public final class FolioShortcuts {
                         AppActions.isHidden(launcher, itemInfo));
             };
 
-    /** "Edit icon": pick this app's icon from any installed icon pack, or reset it. */
-    public static final SystemShortcut.Factory<Launcher> EDIT_ICON =
-            (launcher, itemInfo, originalView) -> {
-                if (itemInfo.itemType != LauncherSettings.Favorites.ITEM_TYPE_APPLICATION
-                        || itemInfo.getTargetComponent() == null) {
-                    return null;
-                }
-                return new EditIcon(launcher, itemInfo, originalView);
-            };
-
     /**
      * "Use as folder cover" / "Stop using as cover", shown only on the first app of the folder
      * that is currently open.
@@ -136,18 +126,6 @@ public final class FolioShortcuts {
         public void onClick(View view) {
             AbstractFloatingView.closeAllOpenViews(mTarget);
             AppActions.setHidden(mTarget, mItemInfo, !mHidden);
-        }
-    }
-
-    static class EditIcon extends SystemShortcut<Launcher> {
-        EditIcon(Launcher launcher, ItemInfo info, @NonNull View originalView) {
-            super(R.drawable.ic_palette, R.string.icon_edit_title, launcher, info, originalView);
-        }
-
-        @Override
-        public void onClick(View view) {
-            AbstractFloatingView.closeAllOpenViews(mTarget);
-            EditIconDialog.show(mTarget, mItemInfo.getTargetComponent(), mItemInfo.title);
         }
     }
 

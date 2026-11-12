@@ -64,11 +64,6 @@ def shoot(mode):
     time.sleep(4)
     snap(f"{mode}-home-settings")
     shots.append(("Home settings", last_png(), color_at(12, h // 2)))
-    if tap_scrolled(r"^icons$", f"{mode}-icons", wait=3):
-        snap(f"{mode}-icons-screen")
-        shots.append(("Icons", last_png(), color_at(12, h // 2)))
-        sh("input keyevent KEYCODE_BACK")
-        time.sleep(2)
     if tap_scrolled(r"^feeds$", f"{mode}-feeds", wait=4):
         snap(f"{mode}-manage-feeds")
         shots.append(("Manage feeds", last_png(), color_at(12, h // 2)))

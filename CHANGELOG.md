@@ -5,6 +5,9 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Colorful GrapheneOS icons are always on, and **Home settings › Icons** is gone.
+- Icon pack support is removed, along with **Edit icon** in app menus, which picked icons from packs. Icons are the apps' own, with GrapheneOS's apps and Brave in color.
+
 ## 0.4.2 (2026-10-27)
 
 - Smaller and faster: release builds are now shrunk and optimized (R8), as GrapheneOS builds its launcher. The APK drops from about 69 MB to under 9 MB, and the Compose screens (feed panel, Manage feeds, Grid) run smoother.

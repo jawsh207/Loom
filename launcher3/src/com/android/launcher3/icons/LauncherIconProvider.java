@@ -31,7 +31,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.dagger.ApplicationContext;
 import com.android.launcher3.dagger.LauncherAppSingleton;
-import com.android.launcher3.folio.IconPackManager;
+import com.android.launcher3.folio.ColoredIcons;
 import com.android.launcher3.graphics.ThemeManager;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -75,34 +75,24 @@ public class LauncherIconProvider extends IconProvider {
     @Override
     public void updateSystemState() {
         super.updateSystemState();
-        // Folio: the icon pack is part of the theme code, so changing it re-renders cached icons.
+        // Folio: colourful icons are part of the theme code, so icons cached before (or without
+        // them) are drawn again.
         mSystemState = mSystemState.withTheme(
-                mThemeManager.getIconState().getThemeCode()
-                        + IconPackManager.get(mContext).getStateCode(),
+                mThemeManager.getIconState().getThemeCode() + ColoredIcons.STATE_CODE,
                 mThemeManager.getIconState().isCircle());
     }
 
     @Override
-    public PersistedItemState getStateForApp(@Nullable ApplicationInfo appInfo) {
-        PersistedItemState state = super.getStateForApp(appInfo);
-        // Folio: icon packs' calendar icons change daily, so tie their cache entry to the day.
-        String daily = appInfo == null ? null
-                : IconPackManager.get(mContext).getDailyState(appInfo.packageName);
-        return daily == null ? state : state.withAdditionalValues(daily);
-    }
-
-    @Override
     public Drawable getIcon(ComponentInfo info, int iconDpi) {
-        Drawable packIcon = IconPackManager.get(mContext).getIcon(
-                info, iconDpi, () -> super.getIcon(info, iconDpi));
-        return packIcon != null ? packIcon : super.getIcon(info, iconDpi);
+        // Folio: GrapheneOS's apps and Brave in colour.
+        return ColoredIcons.apply(mContext.getResources(), info.packageName,
+                super.getIcon(info, iconDpi));
     }
 
     @Override
     public Drawable getIcon(ApplicationInfo info, int iconDpi) {
-        Drawable packIcon = IconPackManager.get(mContext).getIcon(
-                info, iconDpi, () -> super.getIcon(info, iconDpi));
-        return packIcon != null ? packIcon : super.getIcon(info, iconDpi);
+        return ColoredIcons.apply(mContext.getResources(), info.packageName,
+                super.getIcon(info, iconDpi));
     }
 
     private Map<String, ThemeData> getThemedIconMap() {

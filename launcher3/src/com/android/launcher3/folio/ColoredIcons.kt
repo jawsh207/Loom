@@ -56,6 +56,19 @@ object ColoredIcons {
     fun colorFor(packageName: String): Int? = COLORS[packageName]
 
     /**
+     * Part of the icon cache's theme code. Bump it when the colours or the drawing change, so
+     * icons cached before are drawn again.
+     */
+    const val STATE_CODE = "|colored:2"
+
+    /** [icon] turned colourful if [packageName] is one of the apps above, else [icon] itself. */
+    @JvmStatic
+    fun apply(res: Resources, packageName: String, icon: Drawable?): Drawable? {
+        val color = colorFor(packageName) ?: return icon
+        return recolor(res, icon, color) ?: icon
+    }
+
+    /**
      * The app's icon turned into a white symbol on [color], or null when the icon isn't a
      * symbol on a light background (so it's left alone).
      */

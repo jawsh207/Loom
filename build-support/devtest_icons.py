@@ -4,8 +4,8 @@
 """Emulator test of the colourful icons for GrapheneOS's apps and Brave.
 
 Installs the real apps (official release APKs, downloaded by the workflow), then checks in
-the app drawer that each icon shows its colour, that other apps are left alone, and that the
-"Colorful GrapheneOS icons" switch turns it off again. Saves a contact sheet of the icons.
+the app drawer that each icon shows its colour and that other apps are left alone. It's
+always on, so there's no setting to check. Saves a contact sheet of the icons.
 
 usage: devtest_icons.py OUT_DIR LOOM_APK APK_DIR"""
 
@@ -133,19 +133,11 @@ def main():
         sheet.save(OUT / "icons-sheet.png")
         log(f"  contact sheet: {', '.join(on.keys())}")
 
-    # Switch it off: the icons go back to the apps' own.
+    # No setting for it any more: Home settings has no Icons screen.
     go_home()
     open_settings()
-    tap_scrolled(r"^icons$", "settings-icons", wait=3)
-    tap_scrolled(r"^colorful grapheneos icons$", "colored-off", wait=4)
+    log(f"  no Icons screen in Home settings: {not find(snap('settings-main'), '^icons$')}")
     go_home()
-    time.sleep(3)
-    open_drawer("drawer-off", r"search apps")
-    off = scan("plain")
-    for label in EXPECTED:
-        share = off.get(label, (None,))[0]
-        if share is not None:
-            log(f"  {label} back to its own icon when switched off: {share < 0.1} ({share:.0%})")
     save_logs()
 
 

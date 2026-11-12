@@ -137,7 +137,6 @@ constructor(
      * cache and reloads the launcher so every icon is rendered from the new pack.
      */
     @MainThread
-    fun notifyIconPackChanged() = listeners.forEach { it.onThemeChanged() }
 
     /**
      * Generates new IconShape based given [iconSize] and current [iconShape] Allocates new Bitmap

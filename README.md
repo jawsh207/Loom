@@ -2,7 +2,7 @@
 
 A home-screen launcher for GrapheneOS, built from GrapheneOS's Launcher3 (Android 17). It has no Google services and no search bar.
 
-A loom weaves separate threads into a single fabric; Loom weaves folder covers, drawer tabs, icon packs, a feed reader and more into one cohesive home screen.
+A loom weaves separate threads into a single fabric; Loom weaves folder covers, drawer tabs, colorful icons, a feed reader and more into one cohesive home screen.
 
 Loom was called Folio before version 0.3. Its package name is still `app.folio.launcher`, so it updates over Folio in place and keeps your home screen and settings.
 
@@ -12,8 +12,7 @@ What Loom adds:
 - **Double-tap to lock**: double-tap an empty part of the home screen to turn the screen off.
 - **Swipe down for notifications**: swipe down anywhere on the home screen to open the notification shade. This and double-tap to lock can be turned off in **Home settings › Gestures**.
 - **Cover folders**: the folder shows its first app's icon; a tap opens that app, and a swipe up opens the folder. Turn it on from the folder's ⋮ menu, which also has **Rename folder**.
-- **Icon packs** (**Home settings › Icons**): works with packs made for Nova and ADW, including daily calendar icons, a per-app icon picker (**Edit icon** on any app), and styling for apps the pack doesn't cover.
-- **Colorful GrapheneOS icons** (**Home settings › Icons**, on by default): GrapheneOS's apps show their symbol in white on a color of their own instead of black on white, and Brave shows its lion in white on orange.
+- **Colorful GrapheneOS icons** (always on): GrapheneOS's apps show their symbol in white on a color of their own instead of black on white, and Brave shows its lion in white on orange.
 - **Grid sizes**: in **Home settings › Grid**, choose the home screen's columns (3–8) and rows (3–10), how many icons the dock holds, and the app drawer's columns, with a live preview. Changing the home screen or dock size asks first, then resets the home screen and dock to the standard layout for the new size (your shortcuts, folders and widgets there are removed); apps stay in the drawer. Changing only the drawer columns keeps everything. Icons shrink when there are more columns than the phone's default.
 - **Lock home screen**: at the bottom of **Home settings**, stops shortcuts, folders and widgets on the home screen and dock from being moved, removed, resized or added (including new apps and "add to home screen" requests). Apps still open and their long-press menus still work; touch and hold an empty spot to unlock the home screen for 45 seconds, after which it locks again by itself.
 - **Feed panel** (off by default): swipe right from the first home screen page to read RSS, Atom and JSON feeds in a Material 3 panel. Opening an article shows just the article (text, images, headings, quotes and links), pulled from its page the way Firefox's Reader View does, instead of loading the whole website. Add a feed or just a site's address, import or export OPML, sort feeds into folders, star articles, and pick the text size. New articles are checked in the background every few hours (or only when you refresh), optionally only on Wi-Fi. Turn it on in **Home settings › Feeds**; Loom only uses the network for this, and only while it's on.
