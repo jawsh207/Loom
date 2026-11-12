@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.3 (2026-11-12)
+
 - Colorful GrapheneOS icons are always on, and **Home settings › Icons** is gone.
 - Icon pack support is removed, along with **Edit icon** in app menus, which picked icons from packs. Icons are the apps' own, with GrapheneOS's apps and Brave in color.
 
