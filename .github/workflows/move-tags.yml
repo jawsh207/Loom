@@ -1,0 +1,67 @@
+name: Move release tags
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Point each release tag at its rewritten commit, and fix the release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          move() {  # tag old-short new-short
+            git tag -f "$1" "$(git rev-parse "$3")"
+            body=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/$1" -q .body 2>/dev/null || true)
+            if [ -n "$body" ] && printf '%s' "$body" | grep -q "$2"; then
+              id=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/$1" -q .id)
+              printf '%s' "$body" | sed "s/$2/$3/g" > body.md
+              gh api -X PATCH "repos/${GITHUB_REPOSITORY}/releases/$id" -F body=@body.md > /dev/null
+              echo "$1: notes now say $3"
+            fi
+          }
+          move build-17 d88c839 ca7bc82
+          move build-19 41aa4e8 240954e
+          move build-20 779163a 9ebc5bc
+          move build-21 6d344aa 8345ee2
+          move build-22 a4d768c f1abf91
+          move build-23 6230566 6e6c807
+          move build-24 a213e1b c511113
+          move build-25 e2c0cd4 de04a62
+          move build-26 2aa8a9f 6abcb3d
+          move build-28 c05cba7 71f0858
+          move build-29 dcaf3cc 5d8d0c1
+          move build-30 cd4d7dd 018c897
+          move build-31 4fd15c3 25fcec1
+          move build-32 66ff368 2117c53
+          move build-33 30eaab3 11fe7bc
+          move build-34 5e97b9d 9d64de8
+          move build-35 ab3ca55 88f1756
+          move build-36 69bf28c 1b91be8
+          move build-37 2ffa5ea dbb2c26
+          move v0.2.1 ac9f5cb a34bd1b
+          move v0.2.2 0f15eea ceaa401
+          move v0.2.3 6443e8e 9181ade
+          move v0.2.4 15e97b2 ed89380
+          move v0.2.5 c6008c1 5397351
+          move v0.3.0 66ec36b c3bddc6
+          move v0.3.1 1f7a49f 509b2a4
+          move v0.3.2 7a4d402 bdbdac3
+          move v0.3.3 2afd7f1 69823c2
+          move v0.3.4 d227346 c2cccc9
+          move v0.3.5 510028e 54a90f7
+          move v0.3.6 c7f643f f413381
+          move v0.3.7 7ddf80f 1cc20cc
+          move v0.3.8 abe8b82 b36ab0a
+          move v0.4.0 0e96784 7a805fb
+          move v0.4.1 bb5c028 5b3b858
+          move v0.4.2 69df080 0dec5d1
+          git push -f origin --tags
