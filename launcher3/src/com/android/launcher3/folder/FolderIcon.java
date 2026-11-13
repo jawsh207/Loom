@@ -125,6 +125,8 @@ public class FolderIcon extends FrameLayout implements FloatingIconViewCompanion
     private boolean mCoverSwipeActive;
     @Nullable
     private FastBitmapDrawable mCoverIcon;
+    /** Whether the last draw showed the cover icon (so the dot goes on that icon). */
+    private boolean mDrawingCover;
     @Nullable
     private BitmapInfo mCoverIconSource;
 
@@ -637,6 +639,7 @@ public class FolderIcon extends FrameLayout implements FloatingIconViewCompanion
         if (!mBackgroundIsVisible) return;
 
         FastBitmapDrawable coverIcon = getCoverIconToDraw();
+        mDrawingCover = coverIcon != null;
         if (coverIcon != null) {
             // Folio cover mode: draw the first app's icon where an app icon would sit.
             int iconSize = mActivity.getDeviceProfile().getWorkspaceProfile().getIconSizePx();
@@ -744,8 +747,13 @@ public class FolderIcon extends FrameLayout implements FloatingIconViewCompanion
             iconBounds.top = getPaddingTop();
             iconBounds.bottom = iconBounds.top + iconSize;
 
-            float iconScale = (float) mBackground.previewSize / iconSize;
-            Utilities.scaleRectAboutCenter(iconBounds, iconScale);
+            // Folio: a cover is a full-size app icon, so its dot sits where an app icon's does. The
+            // preview size is also only known once the folder has drawn its normal preview; until
+            // then it's 0, which shrank the bounds to a point and put the dot in the middle.
+            if (!mDrawingCover && mBackground.previewSize > 0) {
+                float iconScale = (float) mBackground.previewSize / iconSize;
+                Utilities.scaleRectAboutCenter(iconBounds, iconScale);
+            }
 
             // If we are animating to the accepting state, animate the dot out.
             mDotParams.scale = Math.max(0, mDotScale - mBackground.getAcceptScaleProgress());
