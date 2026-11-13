@@ -102,13 +102,15 @@ def main():
     go_home()
     time.sleep(2)
     nodes = snap("folder-made")
-    folder = next((n for n in nodes if n["bounds"][1] > h * 0.8
-                   and "folder" in (n["desc"] + n["cls"]).lower()), None)
+    # The new dock item: whatever isn't one of the dock's apps any more.
+    folder = next((n for n in nodes if n["bounds"][1] > h * 0.8 and n["desc"]
+                   and n["desc"] not in names), None)
     if not folder:
         log("!! no folder in the dock")
         save_logs()
         return
-    log(f"  folder made: {folder['desc']!r}")
+    log(f"  folder made: {folder['desc']!r}; dock now "
+        f"{[n['desc'] for n in nodes if n['desc'] and n['bounds'][1] > h * 0.8]}")
     fx, fy = center(folder)
     folder_menu(fx, fy, r"^make cover folder$", "cover-on", opened_by_tap=True)
 
