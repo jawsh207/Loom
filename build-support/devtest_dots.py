@@ -3,10 +3,10 @@
 # SPDX-License-Identifier: Apache-2.0
 """Emulator test of notification dots on folders and cover folders.
 
-Makes a folder in the dock from the Phone and Messages icons, turns it into a cover folder,
+Makes a folder in the dock from the Phone and Messaging icons, turns it into a cover folder,
 restarts the launcher (a cover that hasn't drawn its normal folder preview since start is
 where the dot used to end up in the middle of the icon), then has the Phone app post a
-missed-call notification and Messages a text. Saves the folder icon and reports where the dot
+missed-call notification and Messaging a text. Saves the folder icon and reports where the dot
 is: it belongs at the icon's top right corner.
 
 usage: devtest_dots.py OUT_DIR LOOM_APK"""
@@ -90,7 +90,7 @@ def main():
     names = [n["desc"] for n in nodes if n["desc"] and n["bounds"][1] > h * 0.8]
     log(f"  dock: {names}")
     phone = find(nodes, r"^phone$")
-    messages = find(nodes, r"^messages$")
+    messages = find(nodes, r"^messag(es|ing)$")
     if not (phone and messages):
         log("!! Phone or Messages isn't in the dock")
         save_logs()
@@ -125,8 +125,10 @@ def main():
         Image.open(last_png()).crop(box).save(OUT / "cover-no-dot.png")
 
     # Notifications for apps in the folder: a missed call, and a text.
-    sh("pm grant com.google.android.dialer android.permission.POST_NOTIFICATIONS")
-    sh("pm grant com.google.android.apps.messaging android.permission.POST_NOTIFICATIONS")
+    for p in ("com.google.android.dialer", "com.android.dialer", "com.android.messaging",
+              "com.google.android.apps.messaging"):
+        sh(f"pm grant {p} android.permission.POST_NOTIFICATIONS")
+    sh("cmd role add-role-holder --user 0 android.app.role.SMS com.android.messaging 0")
     adb("emu", "gsm", "call", "5551234")
     time.sleep(6)
     adb("emu", "gsm", "cancel", "5551234")
@@ -136,7 +138,7 @@ def main():
     go_home()
     sh("cmd statusbar collapse")
     time.sleep(4)
-    log(f"  notifications: {sh('dumpsys notification --noredact | grep -E \"pkg=com.google.android.(dialer|apps.messaging)\" | head -5').strip()[:300]}")
+    log(f"  notifications: {sh('dumpsys notification --noredact | grep -E \"pkg=com.(google.)?android.(dialer|messaging|apps.messaging)\" | head -5').strip()[:300]}")
     snap("cover-dot")
     if box:
         Image.open(last_png()).crop(box).save(OUT / "cover-dot.png")
