@@ -6,6 +6,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 ## Unreleased
 
 - Fixed: a cover folder's notification dot was sometimes drawn in the middle of the icon instead of at its corner (after the launcher restarted, until the folder had been opened).
+
 ## 0.4.3 (2026-11-12)
 
 - Colorful GrapheneOS icons are always on, and **Home settings › Icons** is gone.
