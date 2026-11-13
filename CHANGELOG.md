@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.4 (2026-11-13)
+
 - Fixed: a cover folder's notification dot was sometimes drawn in the middle of the icon instead of at its corner (after the launcher restarted, until the folder had been opened).
 
 ## 0.4.3 (2026-11-12)
