@@ -126,6 +126,9 @@ def main():
     if box:
         Image.open(last_png()).crop(box).save(OUT / "cover-no-dot.png")
 
+    # Dots need notification access (Settings › Notifications › Device & app notifications).
+    sh(f"cmd notification allow_listener {PKG}/com.android.launcher3.notification.NotificationListener")
+    time.sleep(3)
     # Notifications for apps in the folder: a missed call, and a text.
     for p in ("com.google.android.dialer", "com.android.dialer", "com.android.messaging",
               "com.google.android.apps.messaging"):
