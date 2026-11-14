@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Backup & restore: after restoring, Home settings now reopens on its main page instead of the Backup & restore screen.
+
 ## 0.4.6 (2026-11-14)
 
 - **Backup & restore** (Home settings): save your home screen and dock (pages, folders, widgets, shortcuts), Loom's settings, drawer tabs, renamed and hidden apps, and feeds to a file, and bring them back later or on another phone. Restoring replaces your current setup and restarts Loom; widgets on a new phone need a tap to set up again.
