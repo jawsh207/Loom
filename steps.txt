@@ -1,0 +1,31 @@
+system ready
+system ready
+system ready
+Performing Streamed Install
+Success
+
+Success
+
+setup 0: home role=app.folio.launcher top=topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  install AppStore-AppStore-37.apk: Success
+  install Auditor-Auditor-92.apk: Success
+  install BraveMonox64.apk: Success
+  install Camera-Camera-93.apk: Success
+  install OpenCamera.apk: Success
+  install PdfViewer-PdfViwer-33.apk: Success
+[01-drawer-icons-0] activity: topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[02-drawer-icons-1] activity: topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[03-colored-0] activity: topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Open Camera icon colours: #2898F0 (5511), #2090F0 (3006), #2098F0 (2070)
+[04-colored-1] activity: topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Camera: colored True (58% of the icon in its colour)
+  PDF Viewer: colored True (57% of the icon in its colour)
+  Auditor: colored True (62% of the icon in its colour)
+  App Store: colored True (59% of the icon in its colour)
+  Brave: colored True (56% of the icon in its colour)
+[05-drawer-others] activity: topResumedActivity=ActivityRecord{204629397 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Settings untouched: True
+  contact sheet: Camera, PDF Viewer, Auditor, App Store, Brave
+[06-loom-app-info] activity: topResumedActivity=ActivityRecord{66454359 u0 com.android.settings/.spa.SpaActivity t12}
+[07-settings-main] activity: topResumedActivity=ActivityRecord{56410288 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t13}
+  no Icons screen in Home settings: True

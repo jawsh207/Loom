@@ -1,0 +1,120 @@
+--------- beginning of system
+11-14 06:57:27.295   662   685 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-14 06:57:27.297   662   685 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-14 06:57:34.479   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:34.507   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:34.532   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:34.539   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:34.698   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:34.727   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:34.798   662   679 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:34.809   662   679 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:36.983   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:36.984   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:36.984   662   730 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:36.985   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:36.985   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:36.990   662  1131 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:36.992   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:36.997   662  2035 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-14 06:57:36.998   662  2035 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-14 06:57:37.033   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:37.033   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.033   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.033   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.054   662  2035 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-14 06:57:37.083   662   945 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.093   662  2035 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.093   662  2035 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-14 06:57:37.093   662  2035 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-14 06:57:37.097   662  2035 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-14 06:57:37.136   662   945 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.148   662  2035 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.163   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.314   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:37.344   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:37.348   662   730 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.354   662   679 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.685   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:37.685   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.685   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.685   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.686   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.696   662  2035 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.708   662  2035 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.712   662  2035 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-14 06:57:37.714   662  1110 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-14 06:57:37.730   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:37.730   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.730   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.733   662   986 D AppWidgetServiceImpl: Trying to notify widget providers changed
+11-14 06:57:37.742   662  2210 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-14 06:57:37.751   662  2210 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.752   662  1327 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-14 06:57:37.752   662  1327 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-14 06:57:37.753   662  2035 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-14 06:57:37.816   662  1131 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.859   662   945 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.863   662   945 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:37.914   662  1131 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:38.062   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_ADDED on user 0
+11-14 06:57:38.079   662   986 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_CHANGED on user 0
+11-14 06:57:38.103   662  1817 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:38.113   662  2035 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-14 06:57:44.092   662   685 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-14 06:57:44.094   662   685 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+--------- beginning of main
+11-14 06:57:51.147  2938  2938 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:57:51.150  2938  2938 I AndroidRuntime: Using default boot image
+11-14 06:57:51.150  2938  2938 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:57:51.219  2938  2938 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:57:52.243  2938  2938 D AndroidRuntime: Shutting down VM
+11-14 06:57:53.104   662   685 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-14 06:57:53.106   662   685 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-14 06:58:01.658  2973  2973 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:01.660  2973  2973 I AndroidRuntime: Using default boot image
+11-14 06:58:01.660  2973  2973 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:01.729  2973  2973 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:02.757  2973  2973 D AndroidRuntime: Shutting down VM
+11-14 06:58:03.779  3003  3003 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:03.782  3003  3003 I AndroidRuntime: Using default boot image
+11-14 06:58:03.782  3003  3003 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:03.848  3003  3003 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:04.873  3003  3003 D AndroidRuntime: Shutting down VM
+11-14 06:58:08.020  3032  3032 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:08.022  3032  3032 I AndroidRuntime: Using default boot image
+11-14 06:58:08.022  3032  3032 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:08.091  3032  3032 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:09.123  3032  3032 D AndroidRuntime: Shutting down VM
+11-14 06:58:10.117  3056  3056 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:10.120  3056  3056 I AndroidRuntime: Using default boot image
+11-14 06:58:10.120  3056  3056 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:10.186  3056  3056 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:11.207  3056  3056 D AndroidRuntime: Shutting down VM
+11-14 06:58:12.190   662  1131 W ActivityTaskManager: callingPackage for (uid=2000, pid=3080) has no WPC
+11-14 06:58:12.195   662  1131 I ActivityTaskManager: START u0 {act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 xflg=0x4 cmp=com.android.settings/.applications.InstalledAppDetails} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-14 06:58:12.645   662   945 I ActivityTaskManager: START u0 {xflg=0x4 cmp=com.android.settings/.spa.SpaActivity (has extras)} with LAUNCH_MULTIPLE from uid 1000 (sr=161865188) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-14 06:58:12.925   662   684 I ActivityTaskManager: Displayed com.android.settings/.spa.SpaActivity for user 0: +733ms
+11-14 06:58:12.949   662  1110 I AppWidgetServiceImpl: stopListening() 0
+11-14 06:58:12.949   662  1110 I AppWidgetServiceImpl: Pruning host HostId{user:0, app:10150, hostId:1024, pkg:app.folio.launcher}
+11-14 06:58:16.393  3104  3104 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:16.395  3104  3104 I AndroidRuntime: Using default boot image
+11-14 06:58:16.395  3104  3104 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:16.461  3104  3104 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:17.534  3104  3104 D AndroidRuntime: Shutting down VM
+11-14 06:58:19.421   662   685 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-14 06:58:19.424   662   685 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-14 06:58:19.425   662  1547 I AppWidgetServiceImpl: startListening() 0
+11-14 06:58:22.436   662  1547 W ActivityTaskManager: callingPackage for (uid=2000, pid=3140) has no WPC
+11-14 06:58:22.440   662  1547 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10000000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-14 06:58:22.721   662   684 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +280ms
+11-14 06:58:22.969   662   679 I AppWidgetServiceImpl: stopListening() 0
+11-14 06:58:22.969   662   679 I AppWidgetServiceImpl: Pruning host HostId{user:0, app:10150, hostId:1024, pkg:app.folio.launcher}
+11-14 06:58:26.588  3147  3147 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 06:58:26.590  3147  3147 I AndroidRuntime: Using default boot image
+11-14 06:58:26.590  3147  3147 I AndroidRuntime: Leaving lock profiling enabled
+11-14 06:58:26.656  3147  3147 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-14 06:58:27.679  3147  3147 D AndroidRuntime: Shutting down VM
+11-14 06:58:28.551   662   685 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-14 06:58:28.556   662   685 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=2
+11-14 06:58:28.559   662   679 I AppWidgetServiceImpl: startListening() 0

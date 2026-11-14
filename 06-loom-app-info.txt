@@ -1,0 +1,21 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[472, 805, 608, 867] text='Loom' desc='' id= click=false
+[145, 1073, 270, 1116] text='Archive' desc='' id= click=false
+[468, 1073, 613, 1116] text='Uninstall' desc='' id= click=false
+[786, 1073, 961, 1116] text='Force stop' desc='' id= click=false
+[63, 1248, 771, 1310] text='Additional settings in the app' desc='' id= click=false
+[63, 1404, 373, 1466] text='Notifications' desc='' id= click=false
+[63, 1471, 116, 1514] text='Off' desc='' id= click=false
+[63, 1603, 366, 1665] text='Permissions' desc='' id= click=false
+[63, 1670, 458, 1713] text='No permissions granted' desc='' id= click=false
+[63, 1802, 456, 1864] text='Storage & cache' desc='' id= click=false
+[63, 1869, 614, 1912] text='10.05 MB used in internal storage' desc='' id= click=false
+[63, 2001, 508, 2063] text='Mobile data usage' desc='' id= click=false
+[63, 2068, 283, 2111] text='No data used' desc='' id= click=false
+[63, 2200, 503, 2262] text='App battery usage' desc='' id= click=false
+[63, 2267, 655, 2310] text='No battery use since last full charge' desc='' id= click=false
+[63, 2399, 443, 2400] text='Open by default' desc='' id= click=false
+[43, 170, 106, 233] text='' desc='Navigate up' id= click=false
+[975, 170, 1038, 233] text='' desc='Open' id= click=false
+[64, 426, 416, 542] text='App info' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false
