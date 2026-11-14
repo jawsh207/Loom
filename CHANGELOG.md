@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.6 (2026-11-14)
+
 - **Backup & restore** (Home settings): save your home screen and dock (pages, folders, widgets, shortcuts), Loom's settings, drawer tabs, renamed and hidden apps, and feeds to a file, and bring them back later or on another phone. Restoring replaces your current setup and restarts Loom; widgets on a new phone need a tap to set up again.
 - **Allow home screen rotation** (Home settings): lets the home screen turn with the phone when auto-rotate is on. Off by default, which keeps it upright as before.
 - Fixed: the icon shape picked in Wallpaper & style changed the home screen's icons but not the app drawer's. The drawer and search now follow it too.
