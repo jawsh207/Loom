@@ -355,6 +355,14 @@ public class SettingsActivity extends FragmentActivity
                         return true;
                     });
                     return true;
+                case "pref_folio_backup":
+                    // Folio: Backup & restore.
+                    preference.setOnPreferenceClickListener(p -> {
+                        startActivity(new Intent(getContext(),
+                                com.android.launcher3.folio.BackupActivity.class));
+                        return true;
+                    });
+                    return true;
                 case com.android.launcher3.folio.feed.FeedPrefs.SETTINGS:
                     // Folio: feeds, refresh and OPML.
                     preference.setOnPreferenceClickListener(p -> {

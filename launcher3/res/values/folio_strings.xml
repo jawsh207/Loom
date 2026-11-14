@@ -79,4 +79,26 @@
     <string name="folio_hidden_query">hidden</string>
     <string name="folio_hidden_toast"><xliff:g id="app" example="Bank">%1$s</xliff:g> is hidden. Search \"hidden\" in the app drawer to find it.</string>
     <string name="folio_unhidden_toast"><xliff:g id="app" example="Bank">%1$s</xliff:g> is back in the app drawer.</string>
+    <!-- Home settings › Backup & restore -->
+    <string name="folio_backup_title">Backup &amp; restore</string>
+    <string name="folio_backup_summary">Save your setup to a file, or bring one back</string>
+    <string name="folio_backup_intro">A backup holds your home screen and dock (pages, folders, widgets and shortcuts), Loom\'s settings, drawer tabs, renamed and hidden apps, and your feeds with their starred articles.</string>
+    <string name="folio_backup_now">Back up</string>
+    <string name="folio_backup_now_summary">Save everything to a file you choose</string>
+    <string name="folio_restore_now">Restore</string>
+    <string name="folio_restore_now_summary">Replace your current setup with a backup</string>
+    <string name="folio_backup_note">Apps that aren\'t installed are left out when restoring. On a new phone, or after reinstalling Loom, widgets need a tap to set up again.</string>
+    <string name="folio_backup_done">Backup saved</string>
+    <string name="folio_backup_failed">Couldn\'t save the backup</string>
+    <string name="folio_restore_confirm_title">Restore this backup?</string>
+    <string name="folio_restore_confirm_body">Your current home screen, dock, settings, drawer tabs and feeds are replaced by the backup\'s. Loom restarts to finish.</string>
+    <string name="folio_restore_confirm">Restore</string>
+    <string name="folio_restore_done">Restored. Restarting Loom…</string>
+    <string name="folio_restore_failed">Couldn\'t restore this backup</string>
+    <string name="folio_restore_not_backup">That file isn\'t a Loom backup</string>
+    <string name="folio_restore_newer">This backup was made by a newer version of Loom. Update Loom first.</string>
+
+    <!-- Home settings: let the home screen turn with the phone -->
+    <string name="folio_allow_rotation_title">Allow home screen rotation</string>
+    <string name="folio_allow_rotation_summary">Turn with the phone when auto-rotate is on. Off keeps the home screen upright.</string>
 </resources>

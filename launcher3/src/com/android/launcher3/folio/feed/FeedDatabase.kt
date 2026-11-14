@@ -261,5 +261,11 @@ class FeedDatabase(context: Context) :
             instance ?: synchronized(this) {
                 instance ?: FeedDatabase(context).also { instance = it }
             }
+
+        /** Closes the database so a restored copy can take its place (Backup & restore). */
+        fun closeForRestore() = synchronized(this) {
+            instance?.close()
+            instance = null
+        }
     }
 }

@@ -78,6 +78,7 @@ internal constructor(
     @Synchronized
     private fun createDbIfNotExists() {
         if (!::openHelper.isInitialized) {
+            folioApplyRestore()
             // Initialize the restore task before opening the DB
             val restoreTask = RestoreDbTask.createRestoreTask(context)
             val dbFile = prefs.get(LauncherPrefs.DB_FILE).ifEmpty { idp.dbFile }
@@ -233,6 +234,35 @@ internal constructor(
         prefs.putSync(getEmptyDbCreatedKey(target).to(true))
         DeviceGridState(idp).writeToPrefs(context)
         return true
+    }
+
+    /**
+     * Folio: a layout restored from a backup (Home settings › Backup & restore) waits until the
+     * launcher restarts; it replaces every saved layout here, before the database is opened,
+     * under the name the restored home screen size uses.
+     */
+    private fun folioApplyRestore() {
+        val staged = com.android.launcher3.folio.FolioBackup.stagedLauncherDb(context) ?: return
+        FileLog.d(TAG, "folioApplyRestore: putting the restored layout in place")
+        try {
+            val target = idp.dbFile
+            for (name in context.databaseList()) {
+                if (name.startsWith("launcher") && name.endsWith(".db")) {
+                    context.deleteDatabase(name)
+                    prefs.putSync(getEmptyDbCreatedKey(name).to(false))
+                }
+            }
+            val file = context.getDatabasePath(target)
+            staged.copyTo(file, overwrite = true)
+            com.android.launcher3.folio.FolioBackup.fixRestoredWidgets(context, file)
+            prefs.putSync(getEmptyDbCreatedKey(target).to(false))
+            prefs.putSync(LauncherPrefs.DB_FILE.to(target))
+            DeviceGridState(idp).writeToPrefs(context)
+        } catch (e: Exception) {
+            FileLog.e(TAG, "folioApplyRestore: couldn't restore the layout", e)
+        } finally {
+            com.android.launcher3.folio.FolioBackup.clearStaged(context)
+        }
     }
 
     /** Determines if we should reset the DB. */

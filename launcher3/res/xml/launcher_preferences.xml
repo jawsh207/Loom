@@ -86,7 +86,21 @@
             launcher:logIdOff="614" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:key="group_backup" android:persistent="false">
+        <Preference
+            android:key="pref_folio_backup"
+            android:title="@string/folio_backup_title"
+            android:summary="@string/folio_backup_summary"
+            android:persistent="false" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="group_lock" android:persistent="false">
+        <SwitchPreference
+            android:key="pref_folio_allow_rotation"
+            android:title="@string/folio_allow_rotation_title"
+            android:summary="@string/folio_allow_rotation_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
         <SwitchPreference
             android:key="pref_folio_lock_home"
             android:title="@string/folio_lock_title"

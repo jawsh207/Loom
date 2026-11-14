@@ -23,6 +23,7 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE;
 import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
 import static com.android.launcher3.util.Executors.UI_HELPER_EXECUTOR;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -33,6 +34,7 @@ import androidx.annotation.WorkerThread;
 
 import com.android.launcher3.BaseActivity;
 import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.LauncherFiles;
 import com.android.launcher3.display.DisplayController;
 import com.android.launcher3.display.LauncherDisplayInfo;
 import com.android.launcher3.util.ContextTracker;
@@ -77,6 +79,18 @@ public class RotationHelper implements DeviceProfile.OnDeviceProfileChangeListen
     // This is used to defer setting rotation flags until the activity is being created
     private boolean mInitialized;
     private boolean mDestroyed;
+
+    /** Folio: Home settings › Allow home screen rotation (follow the phone's auto-rotate). */
+    public static final String PREF_ALLOW_ROTATION = "pref_folio_allow_rotation";
+    private boolean mAllowRotation;
+    // A field, so SharedPreferences (which only keeps a weak reference) doesn't lose it.
+    private final SharedPreferences.OnSharedPreferenceChangeListener mRotationPrefListener =
+            (prefs, key) -> {
+                if (PREF_ALLOW_ROTATION.equals(key)) {
+                    mAllowRotation = prefs.getBoolean(PREF_ALLOW_ROTATION, false);
+                    notifyChange();
+                }
+            };
 
     // Initialize mLastActivityFlags to a value not used by SCREEN_ORIENTATION flags
     private int mLastActivityFlags = -999;
@@ -170,6 +184,10 @@ public class RotationHelper implements DeviceProfile.OnDeviceProfileChangeListen
                             });
         }
         mActivity.addOnDeviceProfileChangeListener(this);
+        SharedPreferences prefs = mActivity.getSharedPreferences(
+                LauncherFiles.SHARED_PREFERENCES_KEY, android.content.Context.MODE_PRIVATE);
+        mAllowRotation = prefs.getBoolean(PREF_ALLOW_ROTATION, false);
+        prefs.registerOnSharedPreferenceChangeListener(mRotationPrefListener);
         notifyChange();
     }
 
@@ -177,6 +195,9 @@ public class RotationHelper implements DeviceProfile.OnDeviceProfileChangeListen
         if (mDestroyed) return;
         mDestroyed = true;
         mActivity.removeOnDeviceProfileChangeListener(this);
+        mActivity.getSharedPreferences(
+                        LauncherFiles.SHARED_PREFERENCES_KEY, android.content.Context.MODE_PRIVATE)
+                .unregisterOnSharedPreferenceChangeListener(mRotationPrefListener);
         if (mDisplayInfoChangesSafeCloseable != null) {
             mDisplayInfoChangesSafeCloseable.close();
             mDisplayInfoChangesSafeCloseable = null;
@@ -202,6 +223,7 @@ public class RotationHelper implements DeviceProfile.OnDeviceProfileChangeListen
         } else if (mIgnoreAutoRotateSettings
                 || mCurrentStateRequest == REQUEST_ROTATE
                 || mForceAllowRotationForTesting
+                || mAllowRotation
         ) {
             activityFlags = SCREEN_ORIENTATION_UNSPECIFIED;
         } else {
