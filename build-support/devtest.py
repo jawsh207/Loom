@@ -68,6 +68,8 @@ def parse(xml):
         b = [int(x) for x in re.findall(r"\d+", e.get("bounds", "[0,0][0,0]"))]
         nodes.append({"text": e.get("text", ""), "desc": e.get("content-desc", ""),
                       "id": e.get("resource-id", ""), "click": e.get("clickable"),
+                      "checkable": e.get("checkable") == "true",
+                      "checked": e.get("checked") == "true",
                       "bounds": b})
     return nodes
 
