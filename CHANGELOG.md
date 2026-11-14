@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.5 (2026-11-14)
+
 - New app icon: a loom whose threads weave a house, in Loom's colors on deep navy. It's an adaptive icon, so it fits whatever icon shape the phone uses, and it has a one-color version for themed icons.
 
 ## 0.4.4 (2026-11-13)
