@@ -133,6 +133,13 @@ def main():
         sheet.save(OUT / "icons-sheet.png")
         log(f"  contact sheet: {', '.join(on.keys())}")
 
+    # Loom's own icon, as the system draws it (App info).
+    sh("am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:app.folio.launcher")
+    time.sleep(4)
+    snap("loom-app-info")
+    sh("input keyevent KEYCODE_BACK")
+    time.sleep(1)
+
     # No setting for it any more: Home settings has no Icons screen.
     go_home()
     open_settings()
