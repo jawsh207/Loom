@@ -19,7 +19,6 @@ package com.android.launcher3.graphics
 import android.content.Context
 import android.content.res.Resources
 import androidx.annotation.AnyThread
-import androidx.annotation.MainThread
 import com.android.launcher3.LauncherPrefChangeListener
 import com.android.launcher3.LauncherPrefs
 import com.android.launcher3.LauncherPrefs.Companion.backedUpItem
@@ -131,12 +130,6 @@ constructor(
     @AnyThread fun addChangeListener(listener: ThemeChangeListener) = listeners.add(listener)
 
     @AnyThread fun removeChangeListener(listener: ThemeChangeListener) = listeners.remove(listener)
-
-    /**
-     * Folio: the icon pack changed. Notifies listeners like a theme change, which clears the icon
-     * cache and reloads the launcher so every icon is rendered from the new pack.
-     */
-    @MainThread
 
     /**
      * Generates new IconShape based given [iconSize] and current [iconShape] Allocates new Bitmap

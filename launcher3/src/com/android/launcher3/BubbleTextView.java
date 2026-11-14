@@ -603,7 +603,7 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
                 setIcon(newAutomatedIcon(getContext(), info, getIconCreationFlagsForInfo(info)));
             }
         } else if (hasPendingAnimationCompleted(mIcon) || !mIcon.isSameInfo(info.bitmap)
-                || isOldIconAutomated) {
+                || isOldIconAutomated || hasOldIconShape(info)) {
             // Set new, regular icon if loading completed, no longer automating, or bitmap changed
             setStandardIcon(info);
         }
@@ -671,6 +671,18 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
      * Returns the creation flags to be used when generating icons for this view
      */
     @DrawableCreationFlags
+    /**
+     * Folio: whether the icon was drawn in an icon shape that's no longer the system's. Views
+     * that are rebound with the same app (the app drawer's) would otherwise keep the old shape.
+     */
+    private boolean hasOldIconShape(ItemInfoWithIcon info) {
+        if (mIcon == null || !info.supportsCustomShapes(getIconCreationFlagsForInfo(info))) {
+            return false;
+        }
+        return !mIcon.hasIconShape(
+                ThemeManager.INSTANCE.get(getContext()).getIconShapeData().getValue());
+    }
+
     public int getIconCreationFlagsForInfo(ItemInfoWithIcon info) {
         // Set nonPendingIcon acts as a restart which should refresh the flag state when applicable.
         int flags = shouldUseTheme() ? FLAG_THEMED : 0;

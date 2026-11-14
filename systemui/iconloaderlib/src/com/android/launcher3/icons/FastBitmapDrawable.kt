@@ -88,6 +88,9 @@ constructor(
     /** Returns true if the drawable points to the same bitmap icon object */
     fun isSameInfo(info: BitmapInfo): Boolean = bitmapInfo === info
 
+    /** Folio: whether this drawable is clipped to [shape] (so a new system shape can be noticed). */
+    fun hasIconShape(shape: IconShape): Boolean = iconShape === shape
+
     override fun onBoundsChange(bounds: Rect) {
         super.onBoundsChange(bounds)
         badge?.setBadgeBounds(bounds)

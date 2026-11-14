@@ -378,8 +378,9 @@ public abstract class ItemInfoWithIcon extends ItemInfo {
      * Returns true if the current BitmapInfo can support cropping to custom icon shapes.
      */
     public boolean supportsCustomShapes(@DrawableCreationFlags int creationFlags) {
+        // Folio: the system's icon shape (Wallpaper & style) applies everywhere, the app drawer
+        // and search included, not only to icons drawn themed (home screen, dock and folders).
         return Flags.enableLauncherIconShapes()
-                && (creationFlags & FLAG_THEMED) != 0
                 && bitmap.isFullBleed();
     }
 
