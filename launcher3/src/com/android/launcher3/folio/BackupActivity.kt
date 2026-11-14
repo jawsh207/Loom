@@ -102,6 +102,8 @@ class BackupActivity : ComponentActivity() {
                                 val error = result.exceptionOrNull()
                                 if (error == null) {
                                     toast(R.string.folio_restore_done)
+                                    // Close Home settings too, so it reopens fresh.
+                                    finishAffinity()
                                     FolioBackup.restart(this)
                                 } else {
                                     android.util.Log.e("FolioBackup", "Restore failed", error)
