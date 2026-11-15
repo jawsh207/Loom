@@ -38,6 +38,8 @@ public class LauncherApplication extends Application implements AppFunctionConfi
     public void onCreate() {
         super.onCreate();
         LauncherComponentProvider.get(this).getMainProcessInitializer().init(this);
+        // Loom: Allow home screen rotation applies to Loom's settings screens too.
+        com.android.launcher3.folio.ScreenRotation.install(this);
     }
 
     public LauncherAppComponent getAppComponent() {

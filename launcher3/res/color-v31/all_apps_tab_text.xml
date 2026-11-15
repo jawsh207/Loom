@@ -14,6 +14,8 @@
      limitations under the License.
 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@android:color/system_accent1_200" android:state_selected="true"/>
+    <!-- Loom: white on the selected tab, which is the accent colour, so it reads clearly in the
+         light theme (it was a light tint of the accent). -->
+    <item android:color="@android:color/system_accent1_0" android:state_selected="true"/>
     <item android:color="@android:color/system_neutral1_900"/>
 </selector>

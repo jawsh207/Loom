@@ -100,5 +100,5 @@
 
     <!-- Home settings: let the home screen turn with the phone -->
     <string name="folio_allow_rotation_title">Allow home screen rotation</string>
-    <string name="folio_allow_rotation_summary">Turn with the phone when auto-rotate is on. Off keeps the home screen upright.</string>
+    <string name="folio_allow_rotation_summary">Turn with the phone when auto-rotate is on. Off keeps the home screen and Loom\'s settings upright.</string>
 </resources>
