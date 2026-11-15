@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.4.7 (2026-11-15)
+
 - **Allow home screen rotation** now covers Loom's settings screens too: with it off they stay upright like the home screen.
 - Fixed: in the light theme, the selected tab in the app drawer had pale text that was hard to read. It's white now.
 - Backup & restore: after restoring, Home settings now reopens on its main page instead of the Backup & restore screen.
