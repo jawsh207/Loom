@@ -17,6 +17,7 @@ database inside it, checking that:
 
 usage: devtest_layout.py OUT_DIR LOOM_APK"""
 
+import json
 import os
 import re
 import sqlite3
@@ -30,6 +31,7 @@ from devtest_grid import center, go_home, open_drawer, tap_scrolled
 DESKTOP, HOTSEAT = -100, -101
 APPWIDGET = 4
 FAILED = []
+GRIDS = {}
 
 
 open_settings = open_home_settings
@@ -63,6 +65,11 @@ def backup(tag):
     sh(f"rm '/sdcard/Download/{newest}'")
     with zipfile.ZipFile(local) as z:
         z.extract("launcher.db", OUT / f"layout-{tag}")
+        prefs = json.loads(z.read("prefs.json")).get("com.android.launcher3.prefs", {})
+    grid = {k.replace("pref_folio_grid_", ""): v["value"] for k, v in prefs.items()
+            if k.startswith("pref_folio_grid_")}
+    log(f"  {tag}: saved grid settings {grid}")
+    GRIDS[tag] = grid
     db = sqlite3.connect(OUT / f"layout-{tag}" / "launcher.db")
     db.row_factory = sqlite3.Row
     rows = [dict(r) for r in db.execute(
@@ -177,7 +184,8 @@ def change_grid(tag, columns, rows, dock):
                   if "default for this phone" in (n["text"] or "").lower()), None)
         default = (int(m.group(1)), int(m.group(2))) if m else None
     else:
-        if not switch_on(nodes, r"^choose home screen size$"):
+        # The switch's summary says "Using the default…" only while it's off.
+        if find(nodes, r"default for this phone"):
             tap_text(r"^choose home screen size$", f"{tag}-custom-home", wait=1)
         set_value(r"^columns$", "columns", columns)
         set_value(r"^rows$", "rows", rows)
@@ -185,7 +193,7 @@ def change_grid(tag, columns, rows, dock):
         w, h = screen_size()
         sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 2} 400")
         time.sleep(1.5)
-        if not switch_on(snap(f"{tag}-dock-switch"), r"^choose dock size$"):
+        if find(snap(f"{tag}-dock-switch"), r"^same number of icons as columns$"):
             tap_text(r"^choose dock size$", f"{tag}-custom-dock", wait=1)
         set_value(r"^dock icons$", "dock icons", dock)
         snap(f"{tag}-grid-set")
@@ -311,14 +319,26 @@ def main():
     check("test layout's dock is full (4)", sum(1 for r in before if r["container"] == HOTSEAT) >= 4)
 
     change_grid("small", 3, 3, 3)
-    verify("small 3x3", before, backup("small"), 3, 3, 3)
+    small = backup("small")
+    g = GRIDS.get("small", {})
+    check("small: grid really is 3x3, dock 3",
+          (g.get("columns"), g.get("rows"), g.get("hotseat")) == (3, 3, 3), str(g))
+    verify("small 3x3", before, small, 3, 3, 3)
 
     change_grid("large", 8, 10, 8)
-    verify("large 8x10", before, backup("large"), 8, 10, 8)
+    large = backup("large")
+    g = GRIDS.get("large", {})
+    check("large: grid really is 8x10, dock 8",
+          (g.get("columns"), g.get("rows"), g.get("hotseat")) == (8, 10, 8), str(g))
+    verify("large 8x10", before, large, 8, 10, 8)
 
     default = change_grid("default", None, None, None)
     cols, rows = default if default else (None, None)
-    verify(f"default {cols}x{rows}", before, backup("default"), cols, rows, None)
+    back = backup("default")
+    g = GRIDS.get("default", {})
+    check("default: grid really is back to the default",
+          not any(g.get(k) for k in ("columns", "rows", "hotseat")), str(g))
+    verify(f"default {cols}x{rows}", before, back, cols, rows, cols)
 
     log(f"  RESULT: {'all checks passed' if not FAILED else 'FAILED: ' + ', '.join(FAILED)}")
     save_logs()
