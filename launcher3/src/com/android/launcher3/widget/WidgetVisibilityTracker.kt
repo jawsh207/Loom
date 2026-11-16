@@ -16,6 +16,7 @@
 
 package com.android.launcher3.widget
 
+import android.os.Build
 import android.view.View
 import androidx.core.util.forEach
 import com.android.launcher3.AbstractFloatingView
@@ -60,6 +61,10 @@ class WidgetVisibilityTracker(
     }
 
     private fun updateVisibility() {
+        // Loom: AppWidgetHostView's visibility tracking is new in Android 17 (API 37). On older
+        // versions the calls below don't exist and crashed the launcher whenever a widget was
+        // on the home screen, so there's nothing to do there.
+        if (Build.VERSION.SDK_INT < 37) return
         val inNormalState = stateManager.currentStableState == LauncherState.NORMAL
         val noFloatingViews =
             AbstractFloatingView.getAnyView<AbstractFloatingView>(activityContext, TYPE_ALL) == null

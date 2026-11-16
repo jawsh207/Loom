@@ -173,6 +173,11 @@ jobs:
             "$PLATFORM_DIR/android-public.jar" launcher3 systemui frameworks gradle/modules \
             > sdk-compat.txt
           cat sdk-compat.txt
+          # Loom: code that calls something new in Android 17 (in the Android 17 SDK but not in
+          # Android 16's). Each one needs a version check, or it crashes on Android 16 and older.
+          python3 -I build-support/hidden_api_scan.py "$ANDROID_HOME/platforms/android-36/android.jar" \
+            "$PLATFORM_DIR/android-public.jar" gradle/modules/*/build > android17-only.txt || true
+          tail -1 android17-only.txt
 
       - name: Show signing certificate
         run: |
@@ -239,7 +244,7 @@ jobs:
         if: always() && github.event_name != 'pull_request'
         run: |
           mkdir -p /tmp/ci-logs
-          cp sdk.log build.log hidden-api.txt sdk-compat.txt /tmp/ci-logs/ 2>/dev/null || true
+          cp sdk.log build.log hidden-api.txt sdk-compat.txt android17-only.txt /tmp/ci-logs/ 2>/dev/null || true
           for f in gradle/modules/*/gradle.lockfile; do
             [ -f "$f" ] && mkdir -p "/tmp/ci-logs/$(dirname "$f")" && cp "$f" "/tmp/ci-logs/$f"
           done
