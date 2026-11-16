@@ -25,9 +25,16 @@ import zipfile
 
 from devtest import OUT, adb, add_widget_attempt, find, log, save_logs, screen_size, setup_home, \
     sh, snap, tap, tap_text
-from devtest_grid import center, go_home, open_drawer, open_settings, tap_scrolled
+from devtest_grid import center, go_home, open_drawer, tap_scrolled
 
 DESKTOP, HOTSEAT = -100, -101
+
+
+def open_settings():
+    """Home settings on its main page (its task may still show the Backup & restore screen)."""
+    sh("am start -W -f 0x10008000 -a android.intent.action.APPLICATION_PREFERENCES "
+       "-p app.folio.launcher")
+    time.sleep(3)
 APPWIDGET = 4
 FAILED = []
 
