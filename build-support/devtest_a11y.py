@@ -16,8 +16,8 @@ import time
 import xml.etree.ElementTree as ET
 
 from devtest import OUT, PKG, find, log, save_logs, screen_size, setup_home, sh, snap, tap_text
-from devtest_grid import center, close_popup, go_home, long_press, open_drawer, open_settings, \
-    tap_scrolled
+from devtest import open_home_settings as open_settings
+from devtest_grid import center, close_popup, go_home, long_press, open_drawer, tap_scrolled
 
 PROBLEMS = []
 

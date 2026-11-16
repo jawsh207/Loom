@@ -108,6 +108,13 @@ def top_activity():
     return " | ".join(l.strip() for l in out.splitlines())
 
 
+def open_home_settings():
+    """Home settings on its main page, even if its task was left on another Loom screen."""
+    sh("am start -W -f 0x10008000 -a android.intent.action.APPLICATION_PREFERENCES "
+       f"-p {PKG}")
+    time.sleep(3)
+
+
 def screen_size():
     m = re.search(r"(\d+)x(\d+)", sh("wm size"))
     return (int(m.group(1)), int(m.group(2))) if m else (1080, 2400)

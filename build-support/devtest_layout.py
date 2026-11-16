@@ -23,20 +23,14 @@ import sqlite3
 import time
 import zipfile
 
-from devtest import OUT, adb, add_widget_attempt, find, log, save_logs, screen_size, setup_home, \
-    sh, snap, tap, tap_text
+from devtest import OUT, adb, find, log, open_home_settings, save_logs, screen_size, setup_home, sh, snap, \
+    tap, tap_text
 from devtest_grid import center, go_home, open_drawer, tap_scrolled
 
 DESKTOP, HOTSEAT = -100, -101
 
 
-def open_settings():
-    """Home settings on its main page (its task may still show the Backup & restore screen)."""
-    sh("am start -W -f 0x10008000 -a android.intent.action.APPLICATION_PREFERENCES "
-       "-p app.folio.launcher")
-    time.sleep(3)
-APPWIDGET = 4
-FAILED = []
+open_settings = open_home_settings
 
 
 def check(label, ok, detail=""):
@@ -191,9 +185,66 @@ def change_grid(tag, columns, rows, dock):
     return default
 
 
+def add_clock_widget():
+    """Adds Clock's widget through the picker: it needs no setup (a widget that opens a setup
+    screen would be cancelled by the test and removed by Android, muddling the check)."""
+    w, h = screen_size()
+    go_home()
+    sh(f"input swipe {w // 2} {h // 3} {w // 2} {h // 3} 1500")  # empty spot: home menu
+    time.sleep(2)
+    if not tap_text(r"^widgets$", "widget-menu", wait=6):
+        return False
+    nodes = snap("picker")
+    search = next((n for n in nodes if "search" in (n["id"] + n["text"] + n["desc"]).lower()
+                   and n["bounds"][1] < h // 3), None)
+    if search:
+        tap(search)
+        time.sleep(1)
+        sh("input text clock")
+        time.sleep(3)
+    for attempt in range(4):
+        nodes = snap(f"picker-clock-{attempt}")
+        widget = next((n for n in nodes if re.search(r"clock.*wide by", n["desc"], re.I)), None)
+        if widget:
+            break
+        header = next((n for n in nodes if re.fullmatch(r"clock", n["text"] or "", re.I)
+                       and n["bounds"][1] > h // 5), None)
+        if header:
+            tap(header)
+            time.sleep(2)
+        else:
+            sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 3} 400")
+            time.sleep(1.5)
+    else:
+        log("  !! no Clock widget in the picker")
+        go_home()
+        return False
+    log(f"  widget: {widget['desc']!r}")
+    tap(widget)
+    time.sleep(3)
+    nodes = snap("picker-selected")
+    add = find(nodes, r"^add$|^add .*widget$|add to home")
+    if add:
+        tap(add)
+        time.sleep(6)
+    nodes = snap("widget-bind")
+    allow = find(nodes, r"^create$|^allow$")
+    if allow:
+        always = find(nodes, r"always allow|allow .* to create widgets")
+        if always:
+            tap(always)
+            time.sleep(1)
+        tap(allow)
+        time.sleep(6)
+    go_home()
+    bound = "deskclock" in sh("dumpsys appwidget | grep -i 'provider=' ")
+    log(f"  Clock widget placed and bound: {bound}")
+    return bound
+
+
 def build_layout():
     w, h = screen_size()
-    add_widget_attempt("layout")
+    add_clock_widget()
     go_home()
     nodes = snap("start")
     dock = [n for n in nodes if n["desc"] and n["bounds"][1] > h * 0.8]
