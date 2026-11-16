@@ -40,8 +40,14 @@ def audit(name):
     for e in root.iter("node"):
         if e.get("package") != PKG:
             continue
-        actionable = e.get("clickable") == "true" or e.get("checkable") == "true" \
-            or e.get("long-clickable") == "true"
+        # What TalkBack stops on: things you can tap or focus. A switch inside a settings row
+        # isn't one (the row is, and is read with the switch's state).
+        actionable = e.get("clickable") == "true" or e.get("long-clickable") == "true" or (
+            e.get("checkable") == "true" and e.get("focusable") == "true")
+        x1, y1, x2, y2 = map(int, e.get("bounds", "[0,0][0,0]").replace("][", ",")
+                             .strip("[]").split(","))
+        if y2 - y1 < 60:  # cut off at the screen's edge; checked once scrolled into view
+            continue
         if actionable and not has_label(e):
             bad.append(f"{e.get('class', '').split('.')[-1]} {e.get('resource-id', '')} "
                        f"{e.get('bounds')}")

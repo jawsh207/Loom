@@ -167,12 +167,19 @@ public class SettingsCache extends ContentObserver {
         String key = keyUri.getLastPathSegment();
         boolean newVal;
         int defaultValue = mUrisEnabledByDefault.contains(keyUri) ? 1 : 0;
-        if (keyUri.toString().startsWith(SYSTEM_URI_PREFIX)) {
-            newVal = Settings.System.getInt(mResolver, key, defaultValue) == 1;
-        } else if (keyUri.toString().startsWith(GLOBAL_URI_PREFIX)) {
-            newVal = Settings.Global.getInt(mResolver, key, defaultValue) == 1;
-        } else { // SETTING_SECURE
-            newVal = Settings.Secure.getInt(mResolver, key, defaultValue) == 1;
+        try {
+            if (keyUri.toString().startsWith(SYSTEM_URI_PREFIX)) {
+                newVal = Settings.System.getInt(mResolver, key, defaultValue) == 1;
+            } else if (keyUri.toString().startsWith(GLOBAL_URI_PREFIX)) {
+                newVal = Settings.Global.getInt(mResolver, key, defaultValue) == 1;
+            } else { // SETTING_SECURE
+                newVal = Settings.Secure.getInt(mResolver, key, defaultValue) == 1;
+            }
+        } catch (SecurityException e) {
+            // Loom: some of these settings (like Private Space's "hide when locked") can only be
+            // read by apps that are part of the OS, as GrapheneOS's own launcher is. Loom is a
+            // regular app, so reading them threw and crashed the launcher; use the default.
+            newVal = defaultValue == 1;
         }
 
         return newVal;

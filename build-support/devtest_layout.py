@@ -28,6 +28,8 @@ from devtest import OUT, adb, find, log, open_home_settings, save_logs, screen_s
 from devtest_grid import center, go_home, open_drawer, tap_scrolled
 
 DESKTOP, HOTSEAT = -100, -101
+APPWIDGET = 4
+FAILED = []
 
 
 open_settings = open_home_settings
@@ -216,7 +218,8 @@ def add_clock_widget():
             sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 3} 400")
             time.sleep(1.5)
     else:
-        log("  !! no Clock widget in the picker")
+        log("  !! no Clock widget in the picker; it showed: " + "; ".join(
+            f"{n['text'] or n['desc']}" for n in nodes if n["text"] or n["desc"])[:600])
         go_home()
         return False
     log(f"  widget: {widget['desc']!r}")
