@@ -175,7 +175,7 @@ def change_grid(tag, columns, rows, dock):
         set_value(r"^rows$", "rows", rows)
         if not switch_on(snap(f"{tag}-dock-switch"), r"^choose dock size$"):
             tap_text(r"^choose dock size$", f"{tag}-custom-dock", wait=1)
-        set_value(r"^dock icons$", "dock", dock)
+        set_value(r"^dock icons$", "dock icons", dock)
         snap(f"{tag}-grid-set")
     tap_text(r"^apply$", f"{tag}-apply", wait=12)
     go_home()

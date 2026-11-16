@@ -22,6 +22,13 @@
     <string name="folio_grid_apply_note">Your home screen and dock keep everything: items stay where they are when they fit, and anything that doesn\'t moves to the nearest free spot or to a new page.</string>
     <string name="folio_grid_preview_home">Home screen preview: %1$d columns, %2$d rows, %3$d dock icons</string>
     <string name="folio_grid_preview_drawer">App drawer preview: %1$d columns</string>
+    <!-- Spoken labels of the Grid screen's − and + buttons, e.g. "Fewer columns" -->
+    <string name="folio_grid_fewer">Fewer %1$s</string>
+    <string name="folio_grid_more">More %1$s</string>
+    <string name="folio_grid_a11y_columns">columns</string>
+    <string name="folio_grid_a11y_rows">rows</string>
+    <string name="folio_grid_a11y_dock">dock icons</string>
+    <string name="folio_grid_a11y_drawer">app drawer columns</string>
     <string name="folio_grid_locked">Your home screen is locked. Unlock it in Home settings to change its size.</string>
 
     <!-- Lock home screen -->

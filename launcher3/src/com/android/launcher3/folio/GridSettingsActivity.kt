@@ -184,17 +184,17 @@ class GridSettingsActivity : ComponentActivity() {
                     customHome, "folio_grid_custom_home", enabled = !locked,
                     group = Group.Top) { customHome = it }
                 Stepper(getString(R.string.folio_grid_columns), columns,
-                    FolioGrid.COLUMN_RANGE, customHome && !locked, "columns",
+                    FolioGrid.COLUMN_RANGE, customHome && !locked, R.string.folio_grid_a11y_columns,
                     Group.Middle) { columns = it }
                 Stepper(getString(R.string.folio_grid_rows), rows,
-                    FolioGrid.ROW_RANGE, customHome && !locked, "rows",
+                    FolioGrid.ROW_RANGE, customHome && !locked, R.string.folio_grid_a11y_rows,
                     Group.Middle) { rows = it }
                 SwitchRow(getString(R.string.folio_grid_custom_dock),
                     if (customDock) null else getString(R.string.folio_grid_dock_follows),
                     customDock, "folio_grid_custom_dock", enabled = !locked,
                     group = Group.Middle) { customDock = it }
                 Stepper(getString(R.string.folio_grid_dock), dock,
-                    FolioGrid.COLUMN_RANGE, customDock && !locked, "dock",
+                    FolioGrid.COLUMN_RANGE, customDock && !locked, R.string.folio_grid_a11y_dock,
                     Group.Bottom) { dock = it }
 
                 Section(getString(R.string.folio_grid_drawer))
@@ -203,7 +203,7 @@ class GridSettingsActivity : ComponentActivity() {
                         stock.drawerColumns),
                     customDrawer, "folio_grid_custom_drawer", group = Group.Top) { customDrawer = it }
                 Stepper(getString(R.string.folio_grid_columns), drawer,
-                    FolioGrid.COLUMN_RANGE, customDrawer, "drawer", Group.Bottom) { drawer = it }
+                    FolioGrid.COLUMN_RANGE, customDrawer, R.string.folio_grid_a11y_drawer, Group.Bottom) { drawer = it }
 
                 if (saved != FolioGrid.Sizes(0, 0, 0, 0)) {
                     TextButton(
@@ -245,7 +245,7 @@ class GridSettingsActivity : ComponentActivity() {
 
     @Composable
     private fun Stepper(
-        label: String, value: Int, range: IntRange, enabled: Boolean, tag: String,
+        label: String, value: Int, range: IntRange, enabled: Boolean, what: Int,
         group: Group = Group.Single, onChange: (Int) -> Unit,
     ) {
         val alpha = if (enabled) 1f else 0.38f
@@ -257,14 +257,19 @@ class GridSettingsActivity : ComponentActivity() {
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha))
             FilledTonalIconButton(
                 { onChange(value - 1) }, enabled = enabled && value > range.first,
-                modifier = Modifier.semantics { contentDescription = "Fewer $tag" },
+                // Spoken by TalkBack: "Fewer columns", "More dock icons" and so on.
+                modifier = Modifier.semantics {
+                    contentDescription = getString(R.string.folio_grid_fewer, getString(what))
+                },
             ) { Icon(Icons.Filled.Remove, null) }
-            Text("$value", Modifier.width(48.dp).testTag("folio_grid_$tag"),
+            Text("$value", Modifier.width(48.dp),
                 style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha))
             FilledTonalIconButton(
                 { onChange(value + 1) }, enabled = enabled && value < range.last,
-                modifier = Modifier.semantics { contentDescription = "More $tag" },
+                modifier = Modifier.semantics {
+                    contentDescription = getString(R.string.folio_grid_more, getString(what))
+                },
             ) { Icon(Icons.Filled.Add, null) }
         }
     }

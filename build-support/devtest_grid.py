@@ -256,7 +256,7 @@ def main():
     scroll_down()
     scroll_down()
     tap_text(r"choose app drawer columns", "custom-drawer", wait=1)
-    press(r"^more drawer$", 1, "drawer")
+    press(r"^more app drawer columns$", 1, "drawer")
     tap_text(r"^apply$", "apply-drawer", wait=6)
     nodes = snap("after-drawer-apply")
     log(f"  no warning for drawer change: {not find(nodes, 'reset your home screen')}")

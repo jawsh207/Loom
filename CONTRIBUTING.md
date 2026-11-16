@@ -28,8 +28,10 @@ that file anyway.
 4. **Device test scripts** (`build-support/devtest_*.py`) start with a description of what they
    check and how.
 5. **Only document what's there.** Check each claim against the code before writing it.
-6. **README.md** is updated in the same change when a feature, setting or screen is added,
-   removed or behaves differently.
+6. **README.md** and **[docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md)** are updated in the same
+   change when a feature, setting, screen or file is added, removed, renamed or behaves
+   differently. HOW-IT-WORKS is the plain-language guide for people who don't read code: keep
+   it free of code, and keep its tables (Home settings, and which file does what) accurate.
 7. **CHANGELOG.md** gets a line under "Unreleased" for every change people will notice, in
    plain language. Release notes are taken from it.
 
