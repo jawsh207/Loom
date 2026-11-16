@@ -6,6 +6,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 ## Unreleased
 
 - Changing the grid size (Home settings › Grid) no longer resets your home screen. Everything is kept: items stay put where they fit, anything that doesn't moves to the nearest free spot or a new page, dock icons that don't fit the dock move to the home screen, and widgets bigger than the grid shrink to fit.
+- TalkBack: the Grid screen's − and + buttons now say what they change ("More dock icons", "Fewer app drawer columns"), and can be translated.
 - Fixed: on Android 16 and older, having a widget on the home screen made Loom crash.
 - Fixed: Private Space didn't show in the app drawer. It now appears at the bottom, where it can be unlocked and locked. It shows there even while locked, because Android only lets apps that are part of the system read the "hide when locked" setting.
 
