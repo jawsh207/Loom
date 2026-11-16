@@ -5,6 +5,9 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Changing the grid size (Home settings › Grid) no longer resets your home screen. Everything is kept: items stay put where they fit, anything that doesn't moves to the nearest free spot or a new page, dock icons that don't fit the dock move to the home screen, and widgets bigger than the grid shrink to fit.
+- Fixed: on Android 16 and older, having a widget on the home screen made Loom crash.
+
 ## 0.4.7 (2026-11-15)
 
 - **Allow home screen rotation** now covers Loom's settings screens too: with it off they stay upright like the home screen.

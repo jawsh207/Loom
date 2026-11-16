@@ -205,38 +205,6 @@ internal constructor(
     }
 
     /**
-     * Folio: after the home screen or dock size is changed in Folio's settings, the home
-     * screen starts over: every saved layout (of any size) is deleted, the widgets that were
-     * placed are released, and the stock layout for the new size is loaded
-     * (by [loadDefaultFavoritesIfNecessary], from [InvariantDeviceProfile.defaultLayoutId]).
-     */
-    private fun folioFreshStart(): Boolean {
-        if (!com.android.launcher3.folio.FolioGrid.consumeFreshStart(context)) return false
-        FileLog.d(TAG, "folioFreshStart: resetting the home screen to the stock layout")
-        val target = DeviceGridState(idp).dbFile
-        openHelper.close()
-        for (name in context.databaseList()) {
-            if (name.startsWith("launcher") && name.endsWith(".db")) {
-                context.deleteDatabase(name)
-                prefs.putSync(getEmptyDbCreatedKey(name).to(false))
-            }
-        }
-        try {
-            val host = android.appwidget.AppWidgetHost(context,
-                com.android.launcher3.widget.LauncherWidgetHolder.APPWIDGET_HOST_ID)
-            host.appWidgetIds.forEach { host.deleteAppWidgetId(it) }
-        } catch (e: Exception) {
-            FileLog.e(TAG, "folioFreshStart: couldn't release widgets", e)
-        }
-        openHelper = createDatabaseHelper(forMigration = true, target)
-        openHelper.createEmptyDB(openHelper.writableDatabase)
-        // Load the stock layout into it next.
-        prefs.putSync(getEmptyDbCreatedKey(target).to(true))
-        DeviceGridState(idp).writeToPrefs(context)
-        return true
-    }
-
-    /**
      * Folio: a layout restored from a backup (Home settings › Backup & restore) waits until the
      * launcher restarts; it replaces every saved layout here, before the database is opened,
      * under the name the restored home screen size uses.
@@ -295,7 +263,6 @@ internal constructor(
         modelDelegate: ModelDelegate,
     ) {
         createDbIfNotExists()
-        if (folioFreshStart()) return
         if (shouldResetDb()) {
             resetLauncherDb(restoreEventLogger)
             return
@@ -331,6 +298,9 @@ internal constructor(
                     oldHelper.writableDatabase,
                     modelDelegate,
                 )
+                // Loom: the migrated layout is the layout; never fill it with the default one
+                // (a flag left from an earlier visit to this size could otherwise do that).
+                clearFlagEmptyDbCreated()
             } else {
                 FileLog.e(
                     TAG,

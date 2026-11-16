@@ -11,18 +11,22 @@ import com.android.launcher3.LauncherFiles
 import com.android.launcher3.R
 
 /**
- * Folio's home screen and app drawer grid sizes. 0 means "use the device's default grid".
+ * Loom's home screen and app drawer grid sizes. 0 means "use the device's default grid".
  *
  * Applied on top of the grid Launcher3 picks for the display (like a device maker's partner
  * overrides), so icon sizes and spacing still come from that grid. A different home screen
- * size uses its own layout database, reset to the stock layout for that size.
+ * size uses its own layout database, filled by moving the current layout onto it
+ * ([GridMigration]), so nothing on the home screen or dock is lost.
  */
 object FolioGrid {
     const val COLUMNS = "pref_folio_grid_columns"
     const val ROWS = "pref_folio_grid_rows"
     const val HOTSEAT = "pref_folio_grid_hotseat"
     const val DRAWER_COLUMNS = "pref_folio_drawer_columns"
-    /** Set with a home screen size change: the next layout load starts from the stock layout. */
+    /**
+     * Old setting: grid changes used to start the home screen over. It's removed when sizes
+     * are saved, so a value left from an older version can't trigger anything.
+     */
     private const val FRESH_START = "pref_folio_grid_fresh_start"
 
     /** Matches the entry in launcher_preferences.xml. */
@@ -52,25 +56,17 @@ object FolioGrid {
     }
 
     /**
-     * Saves new sizes. With [freshStart], the home screen and dock are reset to the stock
-     * layout when it reloads for the new size (see ModelDbController.folioFreshStart).
+     * Saves new sizes. When the home screen or dock size changes, the layout is moved onto the
+     * new grid as it reloads (GridMigration), keeping every item.
      */
-    fun write(context: Context, sizes: Sizes, freshStart: Boolean) {
+    fun write(context: Context, sizes: Sizes) {
         prefs(context).edit()
-            .putBoolean(FRESH_START, freshStart)
+            .remove(FRESH_START) // Loom: no longer used; the layout is always kept
             .putInt(COLUMNS, sizes.columns)
             .putInt(ROWS, sizes.rows)
             .putInt(HOTSEAT, sizes.hotseat)
             .putInt(DRAWER_COLUMNS, sizes.drawerColumns)
             .commit()
-    }
-
-    @JvmStatic
-    fun consumeFreshStart(context: Context): Boolean {
-        val p = prefs(context)
-        if (!p.getBoolean(FRESH_START, false)) return false
-        p.edit().putBoolean(FRESH_START, false).commit()
-        return true
     }
 
     /** The home screen size [sizes] works out to (columns, rows, dock) on this device. */

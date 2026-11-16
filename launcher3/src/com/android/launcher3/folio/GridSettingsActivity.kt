@@ -30,8 +30,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
-import androidx.compose.material.icons.outlined.Warning
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalIconButton
@@ -71,7 +69,11 @@ import com.android.launcher3.folio.feed.groupItemColors
 import com.android.launcher3.folio.feed.groupCard
 import com.android.launcher3.folio.feed.Group
 
-/** Home screen and app drawer grid sizes, with a live preview. */
+/**
+ * Home settings › Grid: the home screen's columns and rows, the dock's size and the app
+ * drawer's columns, with a live preview. Applying a new home screen or dock size moves the
+ * layout onto it (GridMigration), so nothing is lost.
+ */
 class GridSettingsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,37 +111,15 @@ class GridSettingsActivity : ComponentActivity() {
             if (customHome) columns else 0, if (customHome) rows else 0,
             if (customDock) dock else 0, if (customDrawer) drawer else 0)
         val changed = result != saved
-        // Changing the home screen or dock size clears the home screen, so ask first.
-        val homeChanges = FolioGrid.effectiveHome(result) != FolioGrid.effectiveHome(saved)
         val locked = remember { HomeLock.isLocked(this) }
-        var confirm by remember { mutableStateOf(false) }
-        val apply = { fresh: Boolean ->
-            FolioGrid.write(this@GridSettingsActivity, result, freshStart = fresh)
+        val apply = {
+            // Loom: the home screen and dock keep everything on the new grid (GridMigration).
+            FolioGrid.write(this@GridSettingsActivity, result)
             // Back to the home screen to see the new grid.
             startActivity(Intent(Intent.ACTION_MAIN)
                 .addCategory(Intent.CATEGORY_HOME).setPackage(packageName)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             finish()
-        }
-        if (confirm) {
-            AlertDialog(
-                onDismissRequest = { confirm = false },
-                icon = { Icon(Icons.Outlined.Warning, null) },
-                title = { Text(getString(R.string.folio_grid_warn_title)) },
-                text = { Text(getString(R.string.folio_grid_warn_body)) },
-                confirmButton = {
-                    TextButton({ confirm = false; apply(true) },
-                        Modifier.testTag("folio_grid_confirm")) {
-                        Text(getString(R.string.folio_grid_warn_confirm),
-                            color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                dismissButton = {
-                    TextButton({ confirm = false }) {
-                        Text(getString(android.R.string.cancel))
-                    }
-                },
-            )
         }
 
         Scaffold(
@@ -165,7 +145,7 @@ class GridSettingsActivity : ComponentActivity() {
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(Modifier.height(12.dp))
                         Button(
-                            onClick = { if (homeChanges) confirm = true else apply(false) },
+                            onClick = apply,
                             enabled = changed,
                             modifier = Modifier.fillMaxWidth().testTag("folio_grid_apply"),
                         ) { Text(getString(R.string.folio_grid_apply)) }

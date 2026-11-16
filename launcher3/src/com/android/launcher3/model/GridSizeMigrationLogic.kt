@@ -79,6 +79,30 @@ constructor(
                 "$srcDeviceState\ndestDeviceState: $destDeviceState",
         )
 
+        // Loom: our own migration, which keeps every item (see folio/GridMigration). Upstream's
+        // below drops dock icons and widgets that don't fit and can reuse a stale layout; it's
+        // only used if ours fails.
+        try {
+            copyTable(source, TABLE_NAME, target.writableDatabase, TMP_TABLE, context)
+            SQLiteTransaction(target.writableDatabase).use { t ->
+                com.android.launcher3.folio.GridMigration.migrate(
+                    context,
+                    t.db,
+                    TMP_TABLE,
+                    TABLE_NAME,
+                    destDeviceState.columns,
+                    destDeviceState.rows,
+                    destDeviceState.numHotseat,
+                )
+                dropTable(t.db, TMP_TABLE)
+                t.commit()
+            }
+            destDeviceState.writeToPrefs(context)
+            return
+        } catch (e: Exception) {
+            FileLog.e(TAG, "Loom grid migration failed, using Launcher3's", e)
+        }
+
         val shouldMigrateToStrtictlyTallerGrid =
             shouldMigrateToStrictlyTallerGrid(srcDeviceState, destDeviceState)
         if (shouldMigrateToStrtictlyTallerGrid) {

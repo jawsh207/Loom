@@ -6,11 +6,11 @@
 1. Lock the home screen: a long press shows the unlock popup and nothing moves; holding the
    popup's button unlocks it, and it locks again after 45 seconds; apps dragged from the
    drawer aren't added; the Grid screen's home screen controls are disabled.
-2. Unlock, change the home screen grid: a warning appears; confirming resets the home screen
-   to the stock layout.
+2. Unlock, change the home screen grid: no warning, and the home screen's icons are all still
+   there (devtest_layout.py checks the whole layout in depth).
 3. Change only the drawer columns: no warning, nothing cleared.
 
-usage: devtest_grid.py OUT_DIR FOLIO_APK"""
+usage: devtest_grid.py OUT_DIR LOOM_APK"""
 
 import time
 
@@ -235,25 +235,19 @@ def main():
     time.sleep(2)
     tap_scrolled(r"^lock home screen$", "lock-off")
 
-    # --- 2. Grid change resets the home screen to the stock layout ---
+    # --- 2. Grid change keeps the home screen (devtest_layout.py checks it in depth) ---
+    before = home_icons(snap("home-before-grid"))
+    open_settings()
     tap_scrolled(r"^grid$", "settings-grid", wait=4, up=True)
     tap_text(r"choose home screen size", "custom-home", wait=1)
     press(r"^more columns$", 1, "cols")
-    tap_text(r"^apply$", "apply", wait=2)
-    nodes = snap("warning")
-    log(f"  warning shown: {bool(find(nodes, 'reset your home screen'))}")
-    tap_text(r"reset and change grid", "confirm", wait=10)
+    tap_text(r"^apply$", "apply", wait=10)
+    log(f"  no reset warning: {not find(snap('after-apply'), 'reset your home screen')}")
     go_home()
     time.sleep(3)
-    nodes = snap("home-reset")
-    reset = home_icons(nodes)
-    log(f"  home icons after reset: {reset}")
-    log(f"  stock layout loaded: {set(['Phone', 'Messaging', 'Camera', 'Gallery']) <= set(reset)}")
-    gallery = find(nodes, r"^gallery$")
-    # Moved to the upper part while unlocked; the stock layout has it in the last row.
-    log(f"  gallery back in its stock spot: {bool(gallery) and gallery['bounds'][1] > h * 0.6}")
-    # The home screen may still be reloading after the reset.
-    log(f"  apps still in drawer: {bool(open_drawer('drawer-after-clear', '^gallery$'))}")
+    after = home_icons(snap("home-after-grid"))
+    log(f"  home icons kept: {set(before) <= set(after)} (before {before}, after {after})")
+    log(f"  apps still in drawer: {bool(open_drawer('drawer-after-grid', '^gallery$'))}")
     go_home()
 
     # --- 3. Drawer-only change: no warning ---
