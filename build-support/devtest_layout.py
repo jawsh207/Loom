@@ -166,7 +166,12 @@ def change_grid(tag, columns, rows, dock):
     nodes = snap(f"{tag}-grid-screen")
     default = None
     if columns is None:
-        tap_text(r"^back to the defaults$", f"{tag}-defaults", wait=1)
+        w, h = screen_size()
+        for _ in range(3):  # the button is at the bottom of the screen
+            if tap_text(r"^back to the defaults$", f"{tag}-defaults", wait=1):
+                break
+            sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 4} 400")
+            time.sleep(1.5)
         nodes = snap(f"{tag}-grid-defaults")
         m = next((re.search(r"(\d+) × (\d+)", n["text"]) for n in nodes
                   if "default for this phone" in (n["text"] or "").lower()), None)
