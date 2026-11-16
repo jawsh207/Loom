@@ -1,0 +1,29 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/content_parent click=false
+[0, 0, 1080, 275] text='' desc='' id=app.folio.launcher:id/app_bar click=false
+[0, 0, 1080, 275] text='' desc='Home settings' id=app.folio.launcher:id/collapsing_toolbar click=false
+[0, 128, 1080, 275] text='' desc='' id=app.folio.launcher:id/action_bar click=false
+[0, 275, 1080, 2400] text='' desc='' id=app.folio.launcher:id/content_frame click=false
+[0, 275, 1080, 2400] text='' desc='' id=android:id/list_container click=false
+[0, 275, 1080, 2400] text='' desc='' id=app.folio.launcher:id/recycler_view click=false
+[95, 363, 378, 434] text='Drawer tabs' desc='' id=android:id/title click=false
+[95, 434, 968, 485] text='Create tabs for the app drawer and choose their apps' desc='' id=android:id/summary click=false
+[95, 632, 237, 703] text='Feeds' desc='' id=android:id/title click=false
+[95, 703, 879, 754] text='Feed panel, add or import feeds, refresh interval' desc='' id=android:id/summary click=false
+[95, 845, 305, 916] text='Gestures' desc='' id=android:id/title click=false
+[95, 916, 872, 967] text='Swipe down for notifications, double-tap to lock' desc='' id=android:id/summary click=false
+[95, 1058, 808, 1129] text='Add app icons to home screen' desc='' id=android:id/title click=false
+[95, 1129, 316, 1180] text='For new apps' desc='' id=android:id/summary click=false
+[808, 1016, 996, 1222] text='' desc='' id=android:id/widget_frame click=false
+[850, 1082, 996, 1155] text='' desc='' id=android:id/switch_widget click=false
+[95, 1327, 495, 1398] text='Backup & restore' desc='' id=android:id/title click=false
+[95, 1398, 787, 1449] text='Save your setup to a file, or bring one back' desc='' id=android:id/summary click=false
+[95, 1596, 738, 1667] text='Allow home screen rotation' desc='' id=android:id/title click=false
+[95, 1667, 808, 1804] text="Turn with the phone when auto-rotate is on. Off keeps the home screen and Loom's settings upright." desc='' id=android:id/summary click=false
+[808, 1554, 996, 1846] text='' desc='' id=android:id/widget_frame click=false
+[850, 1663, 996, 1736] text='' desc='' id=android:id/switch_widget click=false
+[95, 1895, 526, 1966] text='Lock home screen' desc='' id=android:id/title click=false
+[95, 1966, 808, 2232] text="Shortcuts, folders and widgets on the home screen and dock can't be moved, removed or added. Apps still open and their menus still work. Touch and hold an empty spot on the home screen to unlock it for 45 seconds." desc='' id=android:id/summary click=false
+[808, 1853, 996, 2274] text='' desc='' id=android:id/widget_frame click=false
+[850, 2027, 996, 2100] text='' desc='' id=android:id/switch_widget click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

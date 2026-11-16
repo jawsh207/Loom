@@ -1,0 +1,199 @@
+system ready
+system ready
+system ready
+Performing Streamed Install
+Success
+
+Success
+
+setup 0: home role=app.folio.launcher top=topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[01-before-widget-menu] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Widgets' at [472, 472, 1039, 609]
+[02-picker] activity: topResumedActivity=ActivityRecord{2850821 u0 app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity t8}
+[03-picker-clock-0] activity: topResumedActivity=ActivityRecord{2850821 u0 app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity t8}
+[04-picker-clock-1] activity: topResumedActivity=ActivityRecord{2850821 u0 app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity t8}
+  widget: ''
+[05-picker-selected] activity: topResumedActivity=ActivityRecord{2850821 u0 app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity t8}
+[06-widget-bind] activity: topResumedActivity=ActivityRecord{118227018 u0 com.android.settings/.AllowBindAppWidgetActivity t8}
+  Clock widget placed and bound: True
+[07-start] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  dock: ['Phone', 'Messaging', 'WebView Browser Tester', 'Camera']
+[08-drawer-dock-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[09-drawer-dock-1] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[10-drawer-0-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[11-drawer-1-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[12-drawer-2-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[13-drawer-3-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[14-drawer-3-1] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[15-drawer-4-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[16-drawer-5-0] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  apps dragged onto the home screen: 6 (the last one onto another: a folder)
+[17-built] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[18-before-backup-screen-find0] activity: topResumedActivity=ActivityRecord{90735452 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[19-before-backup-screen-find1] activity: topResumedActivity=ActivityRecord{90735452 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[20-before-before-backup-tap] activity: topResumedActivity=ActivityRecord{120824520 u0 app.folio.launcher/com.android.launcher3.folio.BackupActivity t9}
+  tapping 'Back up' at [189, 609, 347, 672]
+[21-before-save-picker] activity: topResumedActivity=ActivityRecord{83691307 u0 com.android.documentsui/.picker.PickActivity t9}
+  before: saved grid settings {}
+  before: 14 items
+      7 c=-101 s= 0 (0,0) 1x1 t=2 
+      2 c=-101 s= 1 (1,0) 1x1 t=0 Messaging
+      3 c=-101 s= 2 (2,0) 1x1 t=0 WebView Browser Tester
+      4 c=-101 s= 3 (3,0) 1x1 t=0 Camera
+      6 c=-100 s= 0 (0,0) 2x1 t=4 com.android.deskclock/com.android.alarmc
+      9 c=-100 s= 0 (0,1) 1x1 t=0 Loom
+     10 c=-100 s= 0 (1,1) 1x1 t=0 Messaging
+     11 c=-100 s= 0 (2,1) 1x1 t=0 Phone
+     12 c=-100 s= 0 (3,1) 1x1 t=0 Search
+     14 c=-100 s= 0 (0,3) 1x1 t=0 TMoble
+     13 c=-100 s= 0 (0,4) 1x1 t=0 Settings
+      5 c=-100 s= 0 (1,4) 1x1 t=0 Gallery
+      1 c=   7 s= 0 (-1,-1) 1x1 t=0 Phone
+      8 c=   7 s= 0 (-1,-1) 1x1 t=0 WebView Browser Tester
+  layout: 14 items; apps 12, folders 1, widgets 1, shortcuts 0; in the dock 4; in folders 2
+  test layout has a widget: True
+  test layout has a folder: True
+  test layout's dock is full (4): True
+[22-small-grid-find0] activity: topResumedActivity=ActivityRecord{128361540 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[23-small-grid-screen] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[24-before-small-custom-home] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Choose home screen size' at [84, 1535, 592, 1598]
+[25-grid-columns] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[26-grid-columns] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[27-grid-rows] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[28-grid-rows] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[29-grid-rows] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[30-small-dock-switch] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[31-before-small-custom-dock] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Choose dock size' at [84, 1578, 433, 1641]
+[32-grid-dock icons] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[33-grid-dock icons] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[34-small-grid-set] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[35-before-small-apply] activity: topResumedActivity=ActivityRecord{159588508 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Apply' at [494, 2143, 587, 2196]
+[36-small-home] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[37-small-backup-screen-find0] activity: topResumedActivity=ActivityRecord{154091389 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[38-small-backup-screen-find1] activity: topResumedActivity=ActivityRecord{154091389 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[39-before-small-backup-tap] activity: topResumedActivity=ActivityRecord{114701825 u0 app.folio.launcher/com.android.launcher3.folio.BackupActivity t9}
+  tapping 'Back up' at [189, 609, 347, 672]
+[40-small-save-picker] activity: topResumedActivity=ActivityRecord{221681087 u0 com.android.documentsui/.picker.PickActivity t9}
+  small: saved grid settings {'rows': 3, 'hotseat': 3, 'columns': 3}
+  small: 14 items
+      7 c=-101 s= 0 (0,0) 1x1 t=2 
+      2 c=-101 s= 1 (1,0) 1x1 t=0 Messaging
+      3 c=-101 s= 2 (2,0) 1x1 t=0 WebView Browser Tester
+      6 c=-100 s= 0 (0,0) 2x1 t=4 com.android.deskclock/com.android.alarmc
+     12 c=-100 s= 0 (2,0) 1x1 t=0 Search
+      9 c=-100 s= 0 (0,1) 1x1 t=0 Loom
+     10 c=-100 s= 0 (1,1) 1x1 t=0 Messaging
+     11 c=-100 s= 0 (2,1) 1x1 t=0 Phone
+     14 c=-100 s= 0 (0,2) 1x1 t=0 TMoble
+     13 c=-100 s= 0 (1,2) 1x1 t=0 Settings
+      5 c=-100 s= 0 (2,2) 1x1 t=0 Gallery
+      4 c=-100 s= 1 (0,0) 1x1 t=0 Camera
+      1 c=   7 s= 0 (-1,-1) 1x1 t=0 Phone
+      8 c=   7 s= 0 (-1,-1) 1x1 t=0 WebView Browser Tester
+  small: grid really is 3x3, dock 3: True ({'rows': 3, 'hotseat': 3, 'columns': 3})
+  small 3x3: nothing lost: True (14 items kept)
+  small 3x3: nothing added: True ([])
+  small 3x3: items and folder contents unchanged: True ([])
+  small 3x3: all inside the 3x3 grid: True ([])
+  small 3x3: nothing overlaps: True ([])
+  small 3x3: dock fits 3 icons: True ([0, 1, 2])
+  small 3x3: widget keeps its id and isn't waiting to be set up: True (id 3, restored 0, 2x1)
+[41-large-grid-find0] activity: topResumedActivity=ActivityRecord{261297199 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[42-large-grid-screen] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[43-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[44-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[45-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[46-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[47-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[48-grid-columns] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[49-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[50-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[51-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[52-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[53-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[54-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[55-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[56-grid-rows] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[57-large-dock-switch] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[58-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[59-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[60-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[61-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[62-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[63-grid-dock icons] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[64-large-grid-set] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[65-before-large-apply] activity: topResumedActivity=ActivityRecord{110693220 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Apply' at [494, 2143, 587, 2196]
+[66-large-home] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[67-large-backup-screen-find0] activity: topResumedActivity=ActivityRecord{43313552 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[68-large-backup-screen-find1] activity: topResumedActivity=ActivityRecord{43313552 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[69-before-large-backup-tap] activity: topResumedActivity=ActivityRecord{224572435 u0 app.folio.launcher/com.android.launcher3.folio.BackupActivity t9}
+  tapping 'Back up' at [189, 609, 347, 672]
+[70-large-save-picker] activity: topResumedActivity=ActivityRecord{207037025 u0 com.android.documentsui/.picker.PickActivity t9}
+  large: saved grid settings {'rows': 10, 'hotseat': 8, 'columns': 8}
+  large: 14 items
+      7 c=-101 s= 0 (0,0) 1x1 t=2 
+      2 c=-101 s= 1 (1,0) 1x1 t=0 Messaging
+      3 c=-101 s= 2 (2,0) 1x1 t=0 WebView Browser Tester
+      6 c=-100 s= 0 (0,0) 2x1 t=4 com.android.deskclock/com.android.alarmc
+     12 c=-100 s= 0 (2,0) 1x1 t=0 Search
+      9 c=-100 s= 0 (0,1) 1x1 t=0 Loom
+     10 c=-100 s= 0 (1,1) 1x1 t=0 Messaging
+     11 c=-100 s= 0 (2,1) 1x1 t=0 Phone
+     14 c=-100 s= 0 (0,2) 1x1 t=0 TMoble
+     13 c=-100 s= 0 (1,2) 1x1 t=0 Settings
+      5 c=-100 s= 0 (2,2) 1x1 t=0 Gallery
+      4 c=-100 s= 1 (0,0) 1x1 t=0 Camera
+      1 c=   7 s= 0 (-1,-1) 1x1 t=0 Phone
+      8 c=   7 s= 0 (-1,-1) 1x1 t=0 WebView Browser Tester
+  large: grid really is 8x10, dock 8: True ({'rows': 10, 'hotseat': 8, 'columns': 8})
+  large 8x10: nothing lost: True (14 items kept)
+  large 8x10: nothing added: True ([])
+  large 8x10: items and folder contents unchanged: True ([])
+  large 8x10: all inside the 8x10 grid: True ([])
+  large 8x10: nothing overlaps: True ([])
+  large 8x10: dock fits 8 icons: True ([0, 1, 2])
+  large 8x10: widget keeps its id and isn't waiting to be set up: True (id 3, restored 0, 2x1)
+[71-default-grid-find0] activity: topResumedActivity=ActivityRecord{78666579 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[72-default-grid-screen] activity: topResumedActivity=ActivityRecord{45193294 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[73-before-default-defaults] activity: topResumedActivity=ActivityRecord{45193294 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  !! no node matching /^back to the defaults$/
+[74-before-default-defaults] activity: topResumedActivity=ActivityRecord{45193294 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Back to the defaults' at [64, 1754, 391, 1807]
+[75-default-grid-defaults] activity: topResumedActivity=ActivityRecord{45193294 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+[76-before-default-apply] activity: topResumedActivity=ActivityRecord{45193294 u0 app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity t9}
+  tapping 'Apply' at [494, 2143, 587, 2196]
+[77-default-home] activity: topResumedActivity=ActivityRecord{12205435 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[78-default-backup-screen-find0] activity: topResumedActivity=ActivityRecord{253334017 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[79-default-backup-screen-find1] activity: topResumedActivity=ActivityRecord{253334017 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[80-before-default-backup-tap] activity: topResumedActivity=ActivityRecord{187803585 u0 app.folio.launcher/com.android.launcher3.folio.BackupActivity t9}
+  tapping 'Back up' at [189, 609, 347, 672]
+[81-default-save-picker] activity: topResumedActivity=ActivityRecord{219534719 u0 com.android.documentsui/.picker.PickActivity t9}
+  default: saved grid settings {'rows': 0, 'hotseat': 0, 'columns': 0}
+  default: 14 items
+      7 c=-101 s= 0 (0,0) 1x1 t=2 
+      2 c=-101 s= 1 (1,0) 1x1 t=0 Messaging
+      3 c=-101 s= 2 (2,0) 1x1 t=0 WebView Browser Tester
+      6 c=-100 s= 0 (0,0) 2x1 t=4 com.android.deskclock/com.android.alarmc
+     12 c=-100 s= 0 (2,0) 1x1 t=0 Search
+      9 c=-100 s= 0 (0,1) 1x1 t=0 Loom
+     10 c=-100 s= 0 (1,1) 1x1 t=0 Messaging
+     11 c=-100 s= 0 (2,1) 1x1 t=0 Phone
+     14 c=-100 s= 0 (0,2) 1x1 t=0 TMoble
+     13 c=-100 s= 0 (1,2) 1x1 t=0 Settings
+      5 c=-100 s= 0 (2,2) 1x1 t=0 Gallery
+      4 c=-100 s= 1 (0,0) 1x1 t=0 Camera
+      1 c=   7 s= 0 (-1,-1) 1x1 t=0 Phone
+      8 c=   7 s= 0 (-1,-1) 1x1 t=0 WebView Browser Tester
+  default: grid really is back to the default: True ({'rows': 0, 'hotseat': 0, 'columns': 0})
+  default 4x5: nothing lost: True (14 items kept)
+  default 4x5: nothing added: True ([])
+  default 4x5: items and folder contents unchanged: True ([])
+  default 4x5: all inside the 4x5 grid: True ([])
+  default 4x5: nothing overlaps: True ([])
+  default 4x5: dock fits 4 icons: True ([0, 1, 2])
+  default 4x5: widget keeps its id and isn't waiting to be set up: True (id 3, restored 0, 2x1)
+  RESULT: all checks passed

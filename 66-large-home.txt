@@ -1,0 +1,22 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/scrim_view click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/workspace click=false
+[24, 156, 282, 348] text='' desc='Analog clock' id= click=false
+[24, 156, 282, 348] text='' desc='21:23' id=com.android.deskclock:id/analog_appwidget click=true
+[282, 156, 411, 348] text='Search' desc='Search' id= click=true
+[24, 348, 153, 540] text='Loom' desc='Loom' id= click=true
+[153, 348, 282, 540] text='Messaging' desc='Messaging' id= click=true
+[282, 348, 411, 540] text='Phone' desc='Phone' id= click=true
+[24, 540, 153, 732] text='TMoble' desc='TMoble' id= click=true
+[153, 540, 282, 732] text='Settings' desc='Settings' id= click=true
+[282, 540, 411, 732] text='Gallery' desc='Gallery' id= click=true
+[0, 128, 1080, 2274] text='' desc='Home' id=app.folio.launcher:id/accessibility_action_view click=false
+[0, 2085, 1080, 2148] text='' desc='' id=app.folio.launcher:id/page_indicator click=false
+[500, 2090, 579, 2143] text='' desc='' id=app.folio.launcher:id/page_indicator_content_container click=false
+[511, 2101, 568, 2132] text='' desc='' id=app.folio.launcher:id/page_indicator_dots click=false
+[0, 2148, 1080, 2400] text='' desc='' id=app.folio.launcher:id/hotseat click=false
+[24, 2148, 153, 2267] text='' desc='Folder: Unnamed folder, 2 items' id= click=true
+[153, 2148, 282, 2267] text='Messaging' desc='Messaging' id= click=true
+[282, 2148, 411, 2267] text='WebView Browser Tester' desc='WebView Browser Tester' id= click=true

@@ -1,0 +1,29 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[74, 296, 292, 343] text='Home screen' desc='' id= click=false
+[84, 406, 592, 469] text='Choose home screen size' desc='' id= click=false
+[84, 572, 618, 635] text='Columns' desc='' id= click=false
+[619, 541, 745, 667] text='' desc='Fewer columns' id= click=true
+[744, 566, 870, 640] text='8' desc='' id= click=false
+[871, 541, 997, 667] text='' desc='More columns' id= click=true
+[84, 748, 618, 811] text='Rows' desc='' id= click=false
+[619, 717, 745, 843] text='' desc='Fewer rows' id= click=true
+[744, 742, 870, 816] text='10' desc='' id= click=false
+[871, 717, 997, 843] text='' desc='More rows' id= click=true
+[84, 913, 433, 976] text='Choose dock size' desc='' id= click=false
+[84, 1079, 618, 1142] text='Dock icons' desc='' id= click=false
+[619, 1048, 745, 1174] text='' desc='Fewer dock icons' id= click=true
+[744, 1073, 870, 1147] text='8' desc='' id= click=false
+[871, 1048, 997, 1174] text='' desc='More dock icons' id= click=true
+[74, 1257, 261, 1310] text='App drawer' desc='' id= click=false
+[84, 1368, 649, 1431] text='Choose app drawer columns' desc='' id= click=false
+[84, 1431, 559, 1484] text='Using the default: 4 columns' desc='' id= click=false
+[84, 1581, 618, 1644] text='Columns' desc='' id= click=false
+[619, 1550, 745, 1676] text='' desc='Fewer app drawer columns' id= click=true
+[744, 1575, 870, 1649] text='4' desc='' id= click=false
+[871, 1550, 997, 1676] text='' desc='More app drawer columns' id= click=true
+[64, 1754, 391, 1807] text='Back to the defaults' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text="Your home screen and dock keep everything: items stay where they are when they fit, and anything that doesn't moves to the nearest free spot or to a new page." desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

@@ -1,0 +1,17 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=com.android.launcher3.widgetpicker:id/widgets_catalog click=false
+[426, 223, 655, 296] text='Widgets' desc='' id= click=false
+[26, 338, 1054, 475] text='' desc='Search' id= click=true
+[37, 559, 1043, 944] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_preview click=false
+[37, 944, 1043, 1133] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_details click=true
+[407, 944, 673, 1133] text='' desc='Messaging widget, 2 wide by 2 high' id= click=false
+[491, 1017, 673, 1060] text='Messaging' desc='' id= click=false
+[37, 1165, 1043, 1909] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_preview click=false
+[37, 1909, 1043, 2098] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_details click=true
+[424, 1909, 656, 2085] text='' desc='Calendar widget, 2 wide by 2 high' id= click=false
+[508, 1982, 656, 2025] text='Calendar' desc='' id= click=false
+[265, 2106, 580, 2232] text='' desc='' id=com.android.launcher3.widgetpicker:id/featured_widgets_tab click=true
+[391, 2148, 538, 2191] text='Featured' desc='Featured widgets' id= click=false
+[580, 2106, 816, 2232] text='' desc='' id=com.android.launcher3.widgetpicker:id/personal_widgets_tab click=true
+[637, 2148, 760, 2191] text='Browse' desc='Browse widgets' id= click=false

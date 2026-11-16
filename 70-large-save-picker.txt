@@ -1,0 +1,32 @@
+[0, 0, 1080, 2400] text='' desc='' id=com.android.documentsui:id/action_bar_root click=false
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=com.android.documentsui:id/coordinator_layout click=false
+[0, 128, 1080, 2400] text='' desc='' id=com.android.documentsui:id/drawer_layout click=false
+[0, 128, 1080, 538] text='' desc='' id=com.android.documentsui:id/app_bar click=false
+[0, 128, 1080, 538] text='' desc='' id=com.android.documentsui:id/collapsing_toolbar click=false
+[0, 254, 1080, 538] text='' desc='' id=com.android.documentsui:id/directory_header click=false
+[0, 254, 1080, 380] text='' desc='' id=com.android.documentsui:id/horizontal_breadcrumb click=false
+[0, 254, 288, 380] text='Downloads' desc='' id=com.android.documentsui:id/breadcrumb_text click=false
+[63, 380, 1017, 538] text='' desc='' id=com.android.documentsui:id/header_container click=false
+[63, 380, 890, 538] text='Files in Downloads' desc='' id=com.android.documentsui:id/header_title click=false
+[890, 396, 1017, 522] text='' desc='' id=com.android.documentsui:id/sub_menu click=false
+[890, 396, 1017, 522] text='' desc='List view' id=com.android.documentsui:id/sub_menu_list click=true
+[0, 128, 1080, 254] text='' desc='' id=com.android.documentsui:id/toolbar click=false
+[0, 128, 147, 254] text='' desc='Show roots' id= click=true
+[189, 155, 453, 226] text='Downloads' desc='' id= click=false
+[827, 128, 954, 254] text='' desc='New folder' id=com.android.documentsui:id/option_menu_create_dir click=true
+[954, 128, 1080, 254] text='' desc='More options' id= click=true
+[0, 128, 1080, 2400] text='' desc='' id=com.android.documentsui:id/container_search_fragment click=false
+[0, 128, 1080, 2400] text='' desc='' id=com.android.documentsui:id/container_directory click=false
+[0, 128, 1080, 2400] text='' desc='' id=com.android.documentsui:id/refresh_layout click=false
+[0, 128, 1080, 2400] text='' desc='' id=com.android.documentsui:id/dir_list click=false
+[53, 538, 1027, 1449] text='' desc='' id=android:id/empty click=false
+[53, 538, 1027, 1449] text='' desc='' id=com.android.documentsui:id/content click=false
+[53, 604, 1027, 1260] text='' desc='' id=com.android.documentsui:id/artwork click=false
+[53, 1326, 1027, 1383] text='No items' desc='' id=com.android.documentsui:id/message click=false
+[0, 128, 32, 2400] text='' desc='' id=com.android.documentsui:id/drawer_edge click=false
+[0, 2148, 1080, 2400] text='' desc='' id=com.android.documentsui:id/container_save click=false
+[42, 2158, 105, 2263] text='' desc='' id=android:id/icon click=false
+[189, 2152, 801, 2270] text='Loom backup 2026-11-16.zip' desc='' id=android:id/title click=true
+[812, 2148, 1043, 2274] text='SAVE' desc='' id=android:id/button1 click=true
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

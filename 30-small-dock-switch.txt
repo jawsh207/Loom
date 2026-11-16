@@ -1,0 +1,26 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[63, 296, 513, 789] text='' desc='Home screen preview: 3 columns, 3 rows, 3 dock icons' id= click=false
+[179, 810, 397, 863] text='Home screen' desc='' id= click=false
+[566, 296, 1017, 791] text='' desc='App drawer preview: 4 columns' id= click=false
+[698, 812, 885, 865] text='App drawer' desc='' id= click=false
+[74, 960, 292, 1013] text='Home screen' desc='' id= click=false
+[84, 1076, 592, 1139] text='Choose home screen size' desc='' id= click=false
+[84, 1242, 618, 1305] text='Columns' desc='' id= click=false
+[619, 1211, 745, 1337] text='' desc='Fewer columns' id= click=true
+[744, 1236, 870, 1310] text='3' desc='' id= click=false
+[871, 1211, 997, 1337] text='' desc='More columns' id= click=true
+[84, 1418, 618, 1481] text='Rows' desc='' id= click=false
+[619, 1387, 745, 1513] text='' desc='Fewer rows' id= click=true
+[744, 1412, 870, 1486] text='3' desc='' id= click=false
+[871, 1387, 997, 1513] text='' desc='More rows' id= click=true
+[84, 1578, 433, 1641] text='Choose dock size' desc='' id= click=false
+[84, 1641, 662, 1694] text='Same number of icons as columns' desc='' id= click=false
+[84, 1791, 618, 1854] text='Dock icons' desc='' id= click=false
+[619, 1760, 745, 1886] text='' desc='Fewer dock icons' id= click=true
+[744, 1785, 870, 1859] text='4' desc='' id= click=false
+[871, 1760, 997, 1886] text='' desc='More dock icons' id= click=true
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text="Your home screen and dock keep everything: items stay where they are when they fit, and anything that doesn't moves to the nearest free spot or to a new page." desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

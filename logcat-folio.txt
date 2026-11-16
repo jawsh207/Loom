@@ -1,0 +1,602 @@
+--------- beginning of system
+11-16 21:16:30.188   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:16:30.190   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:16:37.230   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:16:37.232   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+--------- beginning of main
+11-16 21:16:43.957  2759  2759 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:16:43.959  2759  2759 I AndroidRuntime: Using default boot image
+11-16 21:16:43.959  2759  2759 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:16:44.022  2759  2759 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:16:45.044  2759  2759 D AndroidRuntime: Shutting down VM
+11-16 21:16:45.909   665  1301 I ActivityTaskManager: START u0 {act=android.intent.action.PICK xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity} with LAUNCH_SINGLE_TOP from uid 10150 (sr=12205435) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:16:46.240   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity for user 0: +317ms
+11-16 21:16:46.249   665   683 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:16:52.015  2799  2799 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:16:52.017  2799  2799 I AndroidRuntime: Using default boot image
+11-16 21:16:52.017  2799  2799 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:16:52.081  2799  2799 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:16:53.104  2799  2799 D AndroidRuntime: Shutting down VM
+11-16 21:16:58.507  2839  2839 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:16:58.509  2839  2839 I AndroidRuntime: Using default boot image
+11-16 21:16:58.509  2839  2839 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:16:58.573  2839  2839 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:16:59.594  2839  2839 D AndroidRuntime: Shutting down VM
+11-16 21:17:02.585  2873  2873 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:02.587  2873  2873 I AndroidRuntime: Using default boot image
+11-16 21:17:02.587  2873  2873 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:02.652  2873  2873 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:03.678  2873  2873 D AndroidRuntime: Shutting down VM
+11-16 21:17:07.661  2904  2904 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:07.664  2904  2904 I AndroidRuntime: Using default boot image
+11-16 21:17:07.664  2904  2904 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:07.730  2904  2904 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:08.756  2904  2904 D AndroidRuntime: Shutting down VM
+11-16 21:17:09.622  2675  2675 D ContextTracker: Registering callback: callback=com.android.launcher3.widgetpicker.listeners.WidgetPickerAddItemListener@1e15d20, context=com.android.launcher3.Launcher@5759fa0, reason=WidgetPickerActivity.OnWidgetInteraction
+11-16 21:17:09.623  2675  2675 D ContextTracker: Unregistering callback: com.android.launcher3.widgetpicker.listeners.WidgetPickerAddItemListener@1e15d20, reason=ContextTracker.registerCallback: Intent handled
+11-16 21:17:09.627   665  1582 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.Launcher} with LAUNCH_SINGLE_TASK from uid 10150 (sr=2850821) (BAL_ALLOW_VISIBLE_WINDOW) result code=3
+11-16 21:17:09.627   665  2173 W ActivityTaskManager: Duplicate finish request for r=ActivityRecord{2850821 u0 app.folio.launcher/com.android.launcher3.widgetpicker.WidgetPickerActivity t8 f}}
+11-16 21:17:09.628   665  1301 I AppWidgetServiceImpl: allocateAppWidgetId() 0
+11-16 21:17:09.628   665  1301 I AppWidgetServiceImpl: addWidgetLocked() AppWidgetId{3:Host{HostId{user:0, app:10150, hostId:1024, pkg:app.folio.launcher}}:null}
+11-16 21:17:09.628   665  1301 I AppWidgetServiceImpl: Allocated widget id 3 for host HostId{user:0, app:10150, hostId:1024, pkg:app.folio.launcher}
+11-16 21:17:09.628   665  2173 I AppWidgetServiceImpl: bindAppWidgetId() 0
+11-16 21:17:09.632   665  1301 I ActivityTaskManager: START u0 {act=android.appwidget.action.APPWIDGET_BIND xflg=0x4 cmp=com.android.settings/.AllowBindAppWidgetActivity (has extras)} with LAUNCH_MULTIPLE from uid 10150 (rr=12205435) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:17:09.682   665  1301 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:17:09.689   665  1301 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:17:09.693   665  1301 I AppWidgetServiceImpl: notifyProviderInheritance() 0
+11-16 21:17:09.706   665  1301 I AppWidgetServiceImpl: hasBindAppWidgetPermission() 0
+11-16 21:17:10.559   665   689 I ActivityTaskManager: Displayed com.android.settings/.AllowBindAppWidgetActivity for user 0: +927ms
+11-16 21:17:15.787  2938  2938 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:15.789  2938  2938 I AndroidRuntime: Using default boot image
+11-16 21:17:15.789  2938  2938 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:15.856  2938  2938 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:16.874  2938  2938 D AndroidRuntime: Shutting down VM
+11-16 21:17:18.913   665   683 I AppWidgetServiceImpl: bindAppWidgetId() 0
+11-16 21:17:18.917   665   683 I AppWidgetServiceImpl: Bound widget 3 to provider ProviderId{user:0, app:10104, cmp:ComponentInfo{com.android.deskclock/com.android.alarmclock.AnalogAppWidgetProvider}}
+11-16 21:17:18.918   665   989 D AppWidgetServiceImpl: Trying to notify widget update for package android with widget id: 3
+11-16 21:17:18.921   665  1711 I AppWidgetServiceImpl: hasBindAppWidgetPermission() 0
+11-16 21:17:18.921   665   683 I AppWidgetServiceImpl: setBindAppWidgetPermission() 0
+11-16 21:17:18.958   665  1711 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-16 21:17:19.046   665  1301 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:17:19.047   665  1301 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:17:19.047   665  1301 I AppWidgetServiceImpl: notifyProviderInheritance() 0
+11-16 21:17:19.050   665   989 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+11-16 21:17:19.050   665   989 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10104 package com.android.deskclock isStopped false
+11-16 21:17:19.051   665   989 D AppWidgetServiceImpl: Trying to notify widget update for package null with widget id: 3
+11-16 21:17:19.082   665  1301 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:17:19.115   665  1711 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:17:19.120   665  1711 I AppWidgetServiceImpl: updateAppWidgetIds() 0
+11-16 21:17:19.120   665  1711 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:17:19.120   665   989 D AppWidgetServiceImpl: Trying to notify widget update for package com.android.deskclock with widget id: 3
+11-16 21:17:19.227   665  1301 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:17:19.228   665  1301 I AppWidgetServiceImpl: updateAppWidgetIds() 0
+11-16 21:17:19.228   665  1711 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:17:19.228   665   989 D AppWidgetServiceImpl: Trying to notify widget update for package com.android.deskclock with widget id: 3
+11-16 21:17:24.765   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:17:24.767   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:17:27.795   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:17:27.796   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:17:30.955  3007  3007 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:30.957  3007  3007 I AndroidRuntime: Using default boot image
+11-16 21:17:30.957  3007  3007 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:31.024  3007  3007 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:32.043  3007  3007 D AndroidRuntime: Shutting down VM
+11-16 21:17:36.448  3042  3042 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:36.451  3042  3042 I AndroidRuntime: Using default boot image
+11-16 21:17:36.451  3042  3042 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:36.514  3042  3042 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:37.531  3042  3042 D AndroidRuntime: Shutting down VM
+11-16 21:17:38.388   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:17:38.390   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:17:46.899  3076  3076 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:17:46.902  3076  3076 I AndroidRuntime: Using default boot image
+11-16 21:17:46.902  3076  3076 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:17:46.965  3076  3076 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:17:47.986  3076  3076 D AndroidRuntime: Shutting down VM
+11-16 21:17:49.251   665  2051 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:17:54.523   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:17:54.525   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:18:01.086  3126  3126 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:18:01.089  3126  3126 I AndroidRuntime: Using default boot image
+11-16 21:18:01.089  3126  3126 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:18:01.155  3126  3126 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:18:02.176  3126  3126 D AndroidRuntime: Shutting down VM
+11-16 21:18:03.439   665  1711 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:18:08.648   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:18:08.650   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:18:15.191  3175  3175 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:18:15.193  3175  3175 I AndroidRuntime: Using default boot image
+11-16 21:18:15.193  3175  3175 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:18:15.251  3175  3175 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:18:16.270  3175  3175 D AndroidRuntime: Shutting down VM
+11-16 21:18:17.530   665   683 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:18:22.797   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:18:22.798   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:18:29.298  3224  3224 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:18:29.300  3224  3224 I AndroidRuntime: Using default boot image
+11-16 21:18:29.300  3224  3224 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:18:29.364  3224  3224 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:18:30.383  3224  3224 D AndroidRuntime: Shutting down VM
+11-16 21:18:31.671   665   683 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:18:36.926   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:18:36.928   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:18:43.437  3274  3274 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:18:43.440  3274  3274 I AndroidRuntime: Using default boot image
+11-16 21:18:43.440  3274  3274 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:18:43.502  3274  3274 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:18:44.519  3274  3274 D AndroidRuntime: Shutting down VM
+11-16 21:18:45.378   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:18:45.380   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:18:53.919  3308  3308 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:18:53.921  3308  3308 I AndroidRuntime: Using default boot image
+11-16 21:18:53.921  3308  3308 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:18:53.985  3308  3308 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:18:55.006  3308  3308 D AndroidRuntime: Shutting down VM
+11-16 21:18:56.270   665  2155 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:19:01.474   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:19:01.475   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:19:07.967  3359  3359 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:07.969  3359  3359 I AndroidRuntime: Using default boot image
+11-16 21:19:07.969  3359  3359 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:08.032  3359  3359 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:09.052  3359  3359 D AndroidRuntime: Shutting down VM
+11-16 21:19:10.539   665  1582 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:19:15.568   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:19:15.570   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:19:22.129  3407  3407 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:22.131  3407  3407 I AndroidRuntime: Using default boot image
+11-16 21:19:22.131  3407  3407 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:22.191  3407  3407 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:23.211  3407  3407 D AndroidRuntime: Shutting down VM
+11-16 21:19:24.476   665   683 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:19:29.667   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:19:29.669   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:19:32.820  3447  3447 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:32.822  3447  3447 I AndroidRuntime: Using default boot image
+11-16 21:19:32.822  3447  3447 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:32.882  3447  3447 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:33.898  3447  3447 D AndroidRuntime: Shutting down VM
+11-16 21:19:34.757   665  1301 W ActivityTaskManager: callingPackage for (uid=2000, pid=3470) has no WPC
+11-16 21:19:34.761   665  1301 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:19:35.009   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +249ms
+11-16 21:19:35.346   665  1301 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:19:38.210  3482  3482 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:38.212  3482  3482 I AndroidRuntime: Using default boot image
+11-16 21:19:38.212  3482  3482 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:38.276  3482  3482 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:39.300  3482  3482 D AndroidRuntime: Shutting down VM
+11-16 21:19:42.218  3511  3511 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:42.220  3511  3511 I AndroidRuntime: Using default boot image
+11-16 21:19:42.220  3511  3511 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:42.287  3511  3511 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:43.306  3511  3511 D AndroidRuntime: Shutting down VM
+11-16 21:19:44.194   665  1301 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.BackupActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=90735452) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:19:44.340   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.BackupActivity for user 0: +147ms
+11-16 21:19:47.288  3544  3544 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:47.290  3544  3544 I AndroidRuntime: Using default boot image
+11-16 21:19:47.290  3544  3544 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:47.357  3544  3544 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:48.379  3544  3544 D AndroidRuntime: Shutting down VM
+11-16 21:19:49.246   665   683 I ActivityTaskManager: START u0 {act=android.intent.action.CREATE_DOCUMENT typ=application/zip xflg=0x4 cmp=com.android.documentsui/.picker.PickActivity (has extras)} with LAUNCH_MULTIPLE from uid 10150 (rr=120824520) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:19:50.043   665   689 I ActivityTaskManager: Displayed com.android.documentsui/.picker.PickActivity for user 0: +795ms
+11-16 21:19:53.364  3592  3592 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:19:53.367  3592  3592 I AndroidRuntime: Using default boot image
+11-16 21:19:53.367  3592  3592 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:19:53.434  3592  3592 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:19:54.454  3592  3592 D AndroidRuntime: Shutting down VM
+11-16 21:20:00.337   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:20:00.340   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=2
+11-16 21:20:00.343   665   683 I AppWidgetServiceImpl: startListening() 0
+11-16 21:20:03.397   665  2173 W ActivityTaskManager: callingPackage for (uid=2000, pid=3637) has no WPC
+11-16 21:20:03.406   665  2173 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:20:03.622   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +222ms
+11-16 21:20:03.698   665  2161 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:20:06.757  3650  3650 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:06.759  3650  3650 I AndroidRuntime: Using default boot image
+11-16 21:20:06.759  3650  3650 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:06.825  3650  3650 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:07.850  3650  3650 D AndroidRuntime: Shutting down VM
+11-16 21:20:08.743   665  1711 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=128361540) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:20:08.965   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity for user 0: +226ms
+11-16 21:20:12.847  3682  3682 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:12.849  3682  3682 I AndroidRuntime: Using default boot image
+11-16 21:20:12.849  3682  3682 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:12.920  3682  3682 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:13.967  3682  3682 D AndroidRuntime: Shutting down VM
+11-16 21:20:14.950  3707  3707 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:14.953  3707  3707 I AndroidRuntime: Using default boot image
+11-16 21:20:14.953  3707  3707 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:15.023  3707  3707 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:16.040  3707  3707 D AndroidRuntime: Shutting down VM
+11-16 21:20:18.027  3737  3737 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:18.031  3737  3737 I AndroidRuntime: Using default boot image
+11-16 21:20:18.031  3737  3737 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:18.104  3737  3737 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:19.123  3737  3737 D AndroidRuntime: Shutting down VM
+11-16 21:20:20.612  3768  3768 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:20.615  3768  3768 I AndroidRuntime: Using default boot image
+11-16 21:20:20.615  3768  3768 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:20.684  3768  3768 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:21.704  3768  3768 D AndroidRuntime: Shutting down VM
+11-16 21:20:22.663  3792  3792 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:22.665  3792  3792 I AndroidRuntime: Using default boot image
+11-16 21:20:22.665  3792  3792 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:22.731  3792  3792 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:23.749  3792  3792 D AndroidRuntime: Shutting down VM
+11-16 21:20:25.244  3822  3822 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:25.247  3822  3822 I AndroidRuntime: Using default boot image
+11-16 21:20:25.247  3822  3822 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:25.317  3822  3822 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:26.337  3822  3822 D AndroidRuntime: Shutting down VM
+11-16 21:20:27.827  3851  3851 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:27.829  3851  3851 I AndroidRuntime: Using default boot image
+11-16 21:20:27.829  3851  3851 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:27.899  3851  3851 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:28.922  3851  3851 D AndroidRuntime: Shutting down VM
+11-16 21:20:31.859  3884  3884 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:31.861  3884  3884 I AndroidRuntime: Using default boot image
+11-16 21:20:31.861  3884  3884 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:31.929  3884  3884 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:32.950  3884  3884 D AndroidRuntime: Shutting down VM
+11-16 21:20:33.929  3908  3908 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:33.931  3908  3908 I AndroidRuntime: Using default boot image
+11-16 21:20:33.931  3908  3908 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:34.002  3908  3908 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:35.018  3908  3908 D AndroidRuntime: Shutting down VM
+11-16 21:20:37.003  3938  3938 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:37.006  3938  3938 I AndroidRuntime: Using default boot image
+11-16 21:20:37.006  3938  3938 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:37.075  3938  3938 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:38.103  3938  3938 D AndroidRuntime: Shutting down VM
+11-16 21:20:39.608  3969  3969 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:39.611  3969  3969 I AndroidRuntime: Using default boot image
+11-16 21:20:39.611  3969  3969 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:39.680  3969  3969 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:40.699  3969  3969 D AndroidRuntime: Shutting down VM
+11-16 21:20:41.676  3993  3993 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:41.679  3993  3993 I AndroidRuntime: Using default boot image
+11-16 21:20:41.679  3993  3993 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:41.750  3993  3993 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:42.774  3993  3993 D AndroidRuntime: Shutting down VM
+11-16 21:20:43.737  4016  4016 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:20:43.739  4016  4016 I AndroidRuntime: Using default boot image
+11-16 21:20:43.739  4016  4016 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:20:43.809  4016  4016 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:20:44.826  4016  4016 D AndroidRuntime: Shutting down VM
+11-16 21:20:45.700   665  1582 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.700   665  1582 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:20:45.701   665  2155 I AppWidgetServiceImpl: updateAppWidgetOptions() 0
+11-16 21:20:45.703   665  2155 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.703   665  2155 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:20:45.710   665  1582 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.710   665  1582 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:20:45.711   665  2155 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.712   665  1582 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:20:45.731   665  1711 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:20:45.732   665  2155 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.Launcher} with LAUNCH_SINGLE_TASK from uid 10150 (sr=159588508) (BAL_ALLOW_VISIBLE_WINDOW) result code=2
+11-16 21:20:45.747   665  1242 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.768   665  1711 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.769   665  2161 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:45.774   665  2048 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:20:45.855   665  2048 I AppWidgetServiceImpl: startListening() 0
+11-16 21:20:45.869   665  2155 I AppWidgetServiceImpl: getAppWidgetIdsForHost() 0
+11-16 21:20:45.957   665  2155 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:20:46.013   665  2155 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-16 21:20:46.058   665  1711 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:20:57.761   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:20:57.763   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:21:05.926  4053  4053 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:05.928  4053  4053 I AndroidRuntime: Using default boot image
+11-16 21:21:05.928  4053  4053 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:06.001  4053  4053 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:07.017  4053  4053 D AndroidRuntime: Shutting down VM
+11-16 21:21:07.886   665   683 W ActivityTaskManager: callingPackage for (uid=2000, pid=4076) has no WPC
+11-16 21:21:07.889   665   683 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:21:08.035   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +149ms
+11-16 21:21:08.239   665   683 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:21:11.188  4088  4088 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:11.190  4088  4088 I AndroidRuntime: Using default boot image
+11-16 21:21:11.190  4088  4088 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:11.257  4088  4088 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:12.284  4088  4088 D AndroidRuntime: Shutting down VM
+11-16 21:21:15.208  4116  4116 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:15.210  4116  4116 I AndroidRuntime: Using default boot image
+11-16 21:21:15.210  4116  4116 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:15.279  4116  4116 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:16.308  4116  4116 D AndroidRuntime: Shutting down VM
+11-16 21:21:17.177   665  2048 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.BackupActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=154091389) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:21:17.278   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.BackupActivity for user 0: +104ms
+11-16 21:21:20.283  4148  4148 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:20.285  4148  4148 I AndroidRuntime: Using default boot image
+11-16 21:21:20.285  4148  4148 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:20.353  4148  4148 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:21.371  4148  4148 D AndroidRuntime: Shutting down VM
+11-16 21:21:22.248   665  1582 I ActivityTaskManager: START u0 {act=android.intent.action.CREATE_DOCUMENT typ=application/zip xflg=0x4 cmp=com.android.documentsui/.picker.PickActivity (has extras)} with LAUNCH_MULTIPLE from uid 10150 (rr=114701825) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:21:23.042   665   689 I ActivityTaskManager: Displayed com.android.documentsui/.picker.PickActivity for user 0: +793ms
+11-16 21:21:26.372  4187  4187 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:26.375  4187  4187 I AndroidRuntime: Using default boot image
+11-16 21:21:26.375  4187  4187 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:26.437  4187  4187 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:27.458  4187  4187 D AndroidRuntime: Shutting down VM
+11-16 21:21:33.334   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:21:33.338   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=2
+11-16 21:21:33.340   665  2155 I AppWidgetServiceImpl: startListening() 0
+11-16 21:21:36.387   665  2155 W ActivityTaskManager: callingPackage for (uid=2000, pid=4230) has no WPC
+11-16 21:21:36.391   665  2155 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:21:36.544   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +156ms
+11-16 21:21:36.873   665  2155 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:21:39.691  4242  4242 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:39.694  4242  4242 I AndroidRuntime: Using default boot image
+11-16 21:21:39.694  4242  4242 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:39.760  4242  4242 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:40.782  4242  4242 D AndroidRuntime: Shutting down VM
+11-16 21:21:41.660   665  2048 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=261297199) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:21:41.780   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity for user 0: +122ms
+11-16 21:21:45.755  4273  4273 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:45.757  4273  4273 I AndroidRuntime: Using default boot image
+11-16 21:21:45.757  4273  4273 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:45.820  4273  4273 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:46.849  4273  4273 D AndroidRuntime: Shutting down VM
+11-16 21:21:47.849  4296  4296 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:47.851  4296  4296 I AndroidRuntime: Using default boot image
+11-16 21:21:47.851  4296  4296 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:47.914  4296  4296 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:48.938  4296  4296 D AndroidRuntime: Shutting down VM
+11-16 21:21:50.419  4326  4326 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:50.421  4326  4326 I AndroidRuntime: Using default boot image
+11-16 21:21:50.421  4326  4326 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:50.486  4326  4326 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:51.505  4326  4326 D AndroidRuntime: Shutting down VM
+11-16 21:21:52.985  4355  4355 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:52.988  4355  4355 I AndroidRuntime: Using default boot image
+11-16 21:21:52.988  4355  4355 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:53.055  4355  4355 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:54.076  4355  4355 D AndroidRuntime: Shutting down VM
+11-16 21:21:55.558  4384  4384 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:55.560  4384  4384 I AndroidRuntime: Using default boot image
+11-16 21:21:55.560  4384  4384 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:55.626  4384  4384 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:56.643  4384  4384 D AndroidRuntime: Shutting down VM
+11-16 21:21:58.115  4413  4413 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:21:58.118  4413  4413 I AndroidRuntime: Using default boot image
+11-16 21:21:58.118  4413  4413 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:21:58.184  4413  4413 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:21:59.203  4413  4413 D AndroidRuntime: Shutting down VM
+11-16 21:22:00.693  4442  4442 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:00.695  4442  4442 I AndroidRuntime: Using default boot image
+11-16 21:22:00.695  4442  4442 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:00.760  4442  4442 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:01.780  4442  4442 D AndroidRuntime: Shutting down VM
+11-16 21:22:02.740  4465  4465 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:02.742  4465  4465 I AndroidRuntime: Using default boot image
+11-16 21:22:02.742  4465  4465 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:02.808  4465  4465 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:03.827  4465  4465 D AndroidRuntime: Shutting down VM
+11-16 21:22:05.303  4495  4495 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:05.306  4495  4495 I AndroidRuntime: Using default boot image
+11-16 21:22:05.306  4495  4495 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:05.375  4495  4495 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:06.398  4495  4495 D AndroidRuntime: Shutting down VM
+11-16 21:22:07.882  4524  4524 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:07.884  4524  4524 I AndroidRuntime: Using default boot image
+11-16 21:22:07.884  4524  4524 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:07.952  4524  4524 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:08.971  4524  4524 D AndroidRuntime: Shutting down VM
+11-16 21:22:10.456  4553  4553 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:10.458  4553  4553 I AndroidRuntime: Using default boot image
+11-16 21:22:10.458  4553  4553 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:10.527  4553  4553 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:11.549  4553  4553 D AndroidRuntime: Shutting down VM
+11-16 21:22:13.035  4582  4582 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:13.037  4582  4582 I AndroidRuntime: Using default boot image
+11-16 21:22:13.037  4582  4582 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:13.109  4582  4582 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:14.131  4582  4582 D AndroidRuntime: Shutting down VM
+11-16 21:22:15.638  4611  4611 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:15.641  4611  4611 I AndroidRuntime: Using default boot image
+11-16 21:22:15.641  4611  4611 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:15.718  4611  4611 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:16.750  4611  4611 D AndroidRuntime: Shutting down VM
+11-16 21:22:18.251  4640  4640 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:18.253  4640  4640 I AndroidRuntime: Using default boot image
+11-16 21:22:18.253  4640  4640 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:18.322  4640  4640 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:19.339  4640  4640 D AndroidRuntime: Shutting down VM
+11-16 21:22:20.822  4669  4669 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:20.824  4669  4669 I AndroidRuntime: Using default boot image
+11-16 21:22:20.824  4669  4669 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:20.892  4669  4669 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:21.917  4669  4669 D AndroidRuntime: Shutting down VM
+11-16 21:22:24.888  4702  4702 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:24.891  4702  4702 I AndroidRuntime: Using default boot image
+11-16 21:22:24.891  4702  4702 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:24.959  4702  4702 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:25.981  4702  4702 D AndroidRuntime: Shutting down VM
+11-16 21:22:26.943  4726  4726 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:26.945  4726  4726 I AndroidRuntime: Using default boot image
+11-16 21:22:26.945  4726  4726 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:27.015  4726  4726 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:28.036  4726  4726 D AndroidRuntime: Shutting down VM
+11-16 21:22:29.511  4756  4756 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:29.514  4756  4756 I AndroidRuntime: Using default boot image
+11-16 21:22:29.514  4756  4756 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:29.583  4756  4756 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:30.608  4756  4756 D AndroidRuntime: Shutting down VM
+11-16 21:22:32.088  4785  4785 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:32.090  4785  4785 I AndroidRuntime: Using default boot image
+11-16 21:22:32.090  4785  4785 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:32.158  4785  4785 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:33.185  4785  4785 D AndroidRuntime: Shutting down VM
+11-16 21:22:34.666  4814  4814 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:34.668  4814  4814 I AndroidRuntime: Using default boot image
+11-16 21:22:34.668  4814  4814 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:34.739  4814  4814 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:35.783  4814  4814 D AndroidRuntime: Shutting down VM
+11-16 21:22:37.276  4843  4843 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:37.278  4843  4843 I AndroidRuntime: Using default boot image
+11-16 21:22:37.278  4843  4843 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:37.345  4843  4843 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:38.371  4843  4843 D AndroidRuntime: Shutting down VM
+11-16 21:22:39.853  4872  4872 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:39.856  4872  4872 I AndroidRuntime: Using default boot image
+11-16 21:22:39.856  4872  4872 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:39.926  4872  4872 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:40.948  4872  4872 D AndroidRuntime: Shutting down VM
+11-16 21:22:41.915  4895  4895 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:41.917  4895  4895 I AndroidRuntime: Using default boot image
+11-16 21:22:41.917  4895  4895 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:41.988  4895  4895 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:43.007  4895  4895 D AndroidRuntime: Shutting down VM
+11-16 21:22:43.970  4918  4918 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:22:43.972  4918  4918 I AndroidRuntime: Using default boot image
+11-16 21:22:43.972  4918  4918 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:22:44.043  4918  4918 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:22:45.065  4918  4918 D AndroidRuntime: Shutting down VM
+11-16 21:22:45.937   665  2155 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:45.938   665  1242 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:22:45.938   665  1242 I AppWidgetServiceImpl: updateAppWidgetOptions() 0
+11-16 21:22:45.943   665  1242 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:45.943   665  1242 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:22:45.948   665  1242 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:45.949   665  1242 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:22:45.953   665  1242 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:22:45.959   665  2155 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.Launcher} with LAUNCH_SINGLE_TASK from uid 10150 (sr=110693220) (BAL_ALLOW_VISIBLE_WINDOW) result code=2
+11-16 21:22:45.985   665  2051 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:46.059   665  1242 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:46.060   665  1582 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:46.070   665  2051 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:22:46.124   665  2051 I AppWidgetServiceImpl: getAppWidgetIdsForHost() 0
+11-16 21:22:46.148   665  1582 I AppWidgetServiceImpl: startListening() 0
+11-16 21:22:46.215   665  2155 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:22:46.267   665  2155 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:22:46.311   665  2051 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-16 21:22:57.981   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:22:57.983   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:23:06.139  4954  4954 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:06.141  4954  4954 I AndroidRuntime: Using default boot image
+11-16 21:23:06.141  4954  4954 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:06.204  4954  4954 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:07.221  4954  4954 D AndroidRuntime: Shutting down VM
+11-16 21:23:08.078   665  2051 W ActivityTaskManager: callingPackage for (uid=2000, pid=4977) has no WPC
+11-16 21:23:08.081   665  2051 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:23:08.307   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +229ms
+11-16 21:23:08.453   665  1711 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:23:11.482  4989  4989 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:11.485  4989  4989 I AndroidRuntime: Using default boot image
+11-16 21:23:11.485  4989  4989 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:11.548  4989  4989 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:12.570  4989  4989 D AndroidRuntime: Shutting down VM
+11-16 21:23:15.504  5017  5017 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:15.507  5017  5017 I AndroidRuntime: Using default boot image
+11-16 21:23:15.507  5017  5017 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:15.573  5017  5017 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:16.600  5017  5017 D AndroidRuntime: Shutting down VM
+11-16 21:23:17.476   665  2162 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.BackupActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=43313552) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:23:17.601   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.BackupActivity for user 0: +123ms
+11-16 21:23:20.585  5049  5049 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:20.587  5049  5049 I AndroidRuntime: Using default boot image
+11-16 21:23:20.587  5049  5049 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:20.657  5049  5049 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:21.678  5049  5049 D AndroidRuntime: Shutting down VM
+11-16 21:23:22.541   665  1242 I ActivityTaskManager: START u0 {act=android.intent.action.CREATE_DOCUMENT typ=application/zip xflg=0x4 cmp=com.android.documentsui/.picker.PickActivity (has extras)} with LAUNCH_MULTIPLE from uid 10150 (rr=224572435) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:23:23.233   665   689 I ActivityTaskManager: Displayed com.android.documentsui/.picker.PickActivity for user 0: +687ms
+11-16 21:23:26.655  5085  5085 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:26.657  5085  5085 I AndroidRuntime: Using default boot image
+11-16 21:23:26.657  5085  5085 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:26.723  5085  5085 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:27.750  5085  5085 D AndroidRuntime: Shutting down VM
+11-16 21:23:33.641   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:23:33.645   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=2
+11-16 21:23:33.648   665  2162 I AppWidgetServiceImpl: startListening() 0
+11-16 21:23:36.688   665  1711 W ActivityTaskManager: callingPackage for (uid=2000, pid=5128) has no WPC
+11-16 21:23:36.691   665  1711 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:23:36.862   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +95ms
+11-16 21:23:37.033   665  1242 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:23:40.025  5140  5140 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:40.027  5140  5140 I AndroidRuntime: Using default boot image
+11-16 21:23:40.027  5140  5140 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:40.095  5140  5140 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:41.122  5140  5140 D AndroidRuntime: Shutting down VM
+11-16 21:23:41.999   665  2173 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=78666579) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:23:42.131   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.GridSettingsActivity for user 0: +136ms
+11-16 21:23:46.102  5172  5172 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:46.105  5172  5172 I AndroidRuntime: Using default boot image
+11-16 21:23:46.105  5172  5172 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:46.172  5172  5172 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:47.189  5172  5172 D AndroidRuntime: Shutting down VM
+11-16 21:23:48.171  5200  5200 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:48.174  5200  5200 I AndroidRuntime: Using default boot image
+11-16 21:23:48.174  5200  5200 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:48.244  5200  5200 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:49.267  5200  5200 D AndroidRuntime: Shutting down VM
+11-16 21:23:52.228  5228  5228 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:52.230  5228  5228 I AndroidRuntime: Using default boot image
+11-16 21:23:52.230  5228  5228 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:52.300  5228  5228 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:53.322  5228  5228 D AndroidRuntime: Shutting down VM
+11-16 21:23:55.296  5259  5259 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:55.299  5259  5259 I AndroidRuntime: Using default boot image
+11-16 21:23:55.299  5259  5259 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:55.364  5259  5259 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:56.382  5259  5259 D AndroidRuntime: Shutting down VM
+11-16 21:23:57.348  5283  5283 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:23:57.350  5283  5283 I AndroidRuntime: Using default boot image
+11-16 21:23:57.350  5283  5283 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:23:57.411  5283  5283 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:23:58.431  5283  5283 D AndroidRuntime: Shutting down VM
+11-16 21:23:59.292   665  1242 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.293   665  1242 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:23:59.294   665  1242 I AppWidgetServiceImpl: updateAppWidgetOptions() 0
+11-16 21:23:59.295   665  2153 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.295   665  2153 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:23:59.298   665  2153 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.298   665  2153 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:23:59.307   665  1242 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-16 21:23:59.310   665  2153 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.Launcher} with LAUNCH_SINGLE_TASK from uid 10150 (sr=45193294) (BAL_ALLOW_VISIBLE_WINDOW) result code=2
+11-16 21:23:59.337   665  1711 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.384   665  2153 I AppWidgetServiceImpl: startListening() 0
+11-16 21:23:59.391   665  2153 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.392   665  1711 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.392   665  1150 I AppWidgetServiceImpl: getAppWidgetOptions() 0
+11-16 21:23:59.523   665  2161 I AppWidgetServiceImpl: getAppWidgetIdsForHost() 0
+11-16 21:23:59.612   665  1150 I AppWidgetServiceImpl: getAppWidgetInfo() 0
+11-16 21:23:59.641   665  2161 I AppWidgetServiceImpl: getAppWidgetViews() 0
+11-16 21:23:59.668   665  2161 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-16 21:24:11.333   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:24:11.335   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=3
+11-16 21:24:19.495  5319  5319 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:24:19.497  5319  5319 I AndroidRuntime: Using default boot image
+11-16 21:24:19.497  5319  5319 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:24:19.563  5319  5319 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:24:20.580  5319  5319 D AndroidRuntime: Shutting down VM
+11-16 21:24:21.441   665  2153 W ActivityTaskManager: callingPackage for (uid=2000, pid=5342) has no WPC
+11-16 21:24:21.445   665  2153 I ActivityTaskManager: START u0 {act=android.intent.action.APPLICATION_PREFERENCES flg=0x10008000 xflg=0x4 pkg=app.folio.launcher cmp=app.folio.launcher/com.android.launcher3.settings.SettingsActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-16 21:24:21.610   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.settings.SettingsActivity for user 0: +165ms
+11-16 21:24:21.946   665  2173 I AppWidgetServiceImpl: stopListening() 0
+11-16 21:24:24.765  5354  5354 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:24:24.767  5354  5354 I AndroidRuntime: Using default boot image
+11-16 21:24:24.767  5354  5354 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:24:24.835  5354  5354 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:24:25.866  5354  5354 D AndroidRuntime: Shutting down VM
+11-16 21:24:28.847  5382  5382 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:24:28.850  5382  5382 I AndroidRuntime: Using default boot image
+11-16 21:24:28.850  5382  5382 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:24:28.916  5382  5382 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:24:29.938  5382  5382 D AndroidRuntime: Shutting down VM
+11-16 21:24:30.809   665  1164 I ActivityTaskManager: START u0 {xflg=0x4 cmp=app.folio.launcher/com.android.launcher3.folio.BackupActivity} with LAUNCH_MULTIPLE from uid 10150 (sr=253334017) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:24:30.909   665   689 I ActivityTaskManager: Displayed app.folio.launcher/com.android.launcher3.folio.BackupActivity for user 0: +100ms
+11-16 21:24:33.920  5413  5413 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:24:33.923  5413  5413 I AndroidRuntime: Using default boot image
+11-16 21:24:33.923  5413  5413 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:24:33.993  5413  5413 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:24:35.012  5413  5413 D AndroidRuntime: Shutting down VM
+11-16 21:24:35.880   665  2153 I ActivityTaskManager: START u0 {act=android.intent.action.CREATE_DOCUMENT typ=application/zip xflg=0x4 cmp=com.android.documentsui/.picker.PickActivity (has extras)} with LAUNCH_MULTIPLE from uid 10150 (rr=187803585) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-16 21:24:36.612   665   689 I ActivityTaskManager: Displayed com.android.documentsui/.picker.PickActivity for user 0: +732ms
+11-16 21:24:39.993  5451  5451 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-16 21:24:39.995  5451  5451 I AndroidRuntime: Using default boot image
+11-16 21:24:39.995  5451  5451 I AndroidRuntime: Leaving lock profiling enabled
+11-16 21:24:40.059  5451  5451 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-16 21:24:41.079  5451  5451 D AndroidRuntime: Shutting down VM
+11-16 21:24:46.963   665   690 W ActivityTaskManager: callingPackage for (uid=-1, pid=0) has no WPC
+11-16 21:24:46.966   665   690 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=app.folio.launcher/com.android.launcher3.Launcher (has extras)} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=2
+11-16 21:24:46.971   665  1711 I AppWidgetServiceImpl: startListening() 0

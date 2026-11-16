@@ -1,0 +1,13 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[472, 335, 1039, 746] text='' desc='' id=app.folio.launcher:id/system_shortcuts_container click=false
+[472, 335, 1039, 472] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[472, 335, 1039, 472] text='Wallpaper & style' desc='' id=app.folio.launcher:id/bubble_text click=false
+[514, 377, 567, 430] text='' desc='' id=app.folio.launcher:id/icon click=false
+[472, 472, 1039, 609] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[472, 472, 1039, 609] text='Widgets' desc='' id=app.folio.launcher:id/bubble_text click=false
+[514, 514, 567, 567] text='' desc='' id=app.folio.launcher:id/icon click=false
+[472, 609, 1039, 746] text='' desc='' id=app.folio.launcher:id/system_shortcut click=true
+[472, 609, 1039, 746] text='Home settings' desc='' id=app.folio.launcher:id/bubble_text click=false
+[514, 651, 567, 704] text='' desc='' id=app.folio.launcher:id/icon click=false

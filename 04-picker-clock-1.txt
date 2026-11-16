@@ -1,0 +1,19 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=com.android.launcher3.widgetpicker:id/widgets_catalog click=false
+[426, 223, 655, 296] text='Widgets' desc='' id= click=false
+[26, 338, 1054, 475] text='clock' desc='' id= click=true
+[58, 376, 121, 439] text='' desc='Back' id= click=false
+[960, 376, 1023, 439] text='' desc='Clear' id= click=false
+[236, 579, 328, 622] text='Clock' desc='' id= click=false
+[236, 622, 663, 665] text='Analog clock, Digital clock' desc='' id= click=false
+[37, 769, 1043, 1141] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_preview click=false
+[37, 1141, 1043, 1330] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_details click=true
+[434, 1162, 647, 1205] text='' desc='Analog clock' id= click=false
+[434, 1162, 647, 1205] text='Analog clock' desc='' id= click=false
+[500, 1205, 580, 1248] text='2 × 1' desc='2 wide by 1 high' id= click=false
+[37, 1362, 1043, 1734] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_preview click=false
+[37, 1734, 1043, 1923] text='' desc='' id=com.android.launcher3.widgetpicker:id/widget_details click=true
+[440, 1755, 640, 1798] text='' desc='Digital clock' id= click=false
+[440, 1755, 640, 1798] text='Digital clock' desc='' id= click=false
+[500, 1798, 580, 1841] text='3 × 1' desc='3 wide by 1 high' id= click=false

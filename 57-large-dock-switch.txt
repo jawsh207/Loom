@@ -1,0 +1,28 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[63, 296, 513, 508] text='' desc='Home screen preview: 8 columns, 10 rows, 3 dock icons' id= click=false
+[179, 529, 397, 582] text='Home screen' desc='' id= click=false
+[566, 296, 1017, 510] text='' desc='App drawer preview: 4 columns' id= click=false
+[698, 531, 885, 584] text='App drawer' desc='' id= click=false
+[74, 679, 292, 732] text='Home screen' desc='' id= click=false
+[84, 795, 592, 858] text='Choose home screen size' desc='' id= click=false
+[84, 961, 618, 1024] text='Columns' desc='' id= click=false
+[619, 930, 745, 1056] text='' desc='Fewer columns' id= click=true
+[744, 955, 870, 1029] text='8' desc='' id= click=false
+[871, 930, 997, 1056] text='' desc='More columns' id= click=true
+[84, 1137, 618, 1200] text='Rows' desc='' id= click=false
+[619, 1106, 745, 1232] text='' desc='Fewer rows' id= click=true
+[744, 1131, 870, 1205] text='10' desc='' id= click=false
+[871, 1106, 997, 1232] text='' desc='More rows' id= click=true
+[84, 1302, 433, 1365] text='Choose dock size' desc='' id= click=false
+[84, 1468, 618, 1531] text='Dock icons' desc='' id= click=false
+[619, 1437, 745, 1563] text='' desc='Fewer dock icons' id= click=true
+[744, 1462, 870, 1536] text='3' desc='' id= click=false
+[871, 1437, 997, 1563] text='' desc='More dock icons' id= click=true
+[74, 1646, 261, 1699] text='App drawer' desc='' id= click=false
+[84, 1757, 649, 1820] text='Choose app drawer columns' desc='' id= click=false
+[84, 1820, 559, 1873] text='Using the default: 4 columns' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text="Your home screen and dock keep everything: items stay where they are when they fit, and anything that doesn't moves to the nearest free spot or to a new page." desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

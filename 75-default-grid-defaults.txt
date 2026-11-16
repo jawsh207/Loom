@@ -1,0 +1,31 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[74, 296, 292, 343] text='Home screen' desc='' id= click=false
+[84, 401, 592, 464] text='Choose home screen size' desc='' id= click=false
+[84, 464, 706, 517] text='Using the default for this phone: 4 × 5' desc='' id= click=false
+[84, 614, 618, 677] text='Columns' desc='' id= click=false
+[619, 583, 745, 709] text='' desc='Fewer columns' id= click=true
+[744, 608, 870, 682] text='4' desc='' id= click=false
+[871, 583, 997, 709] text='' desc='More columns' id= click=true
+[84, 790, 618, 853] text='Rows' desc='' id= click=false
+[619, 759, 745, 885] text='' desc='Fewer rows' id= click=true
+[744, 784, 870, 858] text='5' desc='' id= click=false
+[871, 759, 997, 885] text='' desc='More rows' id= click=true
+[84, 950, 433, 1013] text='Choose dock size' desc='' id= click=false
+[84, 1013, 662, 1066] text='Same number of icons as columns' desc='' id= click=false
+[84, 1163, 618, 1226] text='Dock icons' desc='' id= click=false
+[619, 1132, 745, 1258] text='' desc='Fewer dock icons' id= click=true
+[744, 1157, 870, 1231] text='4' desc='' id= click=false
+[871, 1132, 997, 1258] text='' desc='More dock icons' id= click=true
+[74, 1341, 261, 1394] text='App drawer' desc='' id= click=false
+[84, 1452, 649, 1515] text='Choose app drawer columns' desc='' id= click=false
+[84, 1515, 559, 1568] text='Using the default: 4 columns' desc='' id= click=false
+[84, 1665, 618, 1728] text='Columns' desc='' id= click=false
+[619, 1634, 745, 1760] text='' desc='Fewer app drawer columns' id= click=true
+[744, 1659, 870, 1733] text='4' desc='' id= click=false
+[871, 1634, 997, 1760] text='' desc='More app drawer columns' id= click=true
+[64, 1838, 391, 1891] text='Back to the defaults' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 252, 249] text='Grid' desc='' id= click=false
+[42, 1948, 1038, 2074] text="Your home screen and dock keep everything: items stay where they are when they fit, and anything that doesn't moves to the nearest free spot or to a new page." desc='' id= click=false
+[494, 2143, 587, 2196] text='Apply' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

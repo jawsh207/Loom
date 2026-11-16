@@ -1,0 +1,14 @@
+[70, 845, 1010, 1557] text='' desc='' id=android:id/content click=false
+[70, 845, 1010, 1557] text='' desc='' id=android:id/parentPanel click=false
+[70, 845, 1010, 955] text='' desc='' id=android:id/topPanel click=false
+[70, 845, 1010, 955] text='' desc='' id=android:id/title_template click=false
+[133, 892, 947, 955] text='Create widget and allow access?' desc='' id=android:id/alertTitle click=false
+[70, 955, 1010, 1257] text='' desc='' id=android:id/contentPanel click=false
+[70, 955, 1010, 1257] text='' desc='' id=android:id/scrollView click=false
+[70, 955, 1010, 1257] text='After you create the widget, the application can access everything displayed.\n\nApplication: Loom\nWidget: Analog clock\n' desc='' id=android:id/message click=false
+[70, 1257, 1010, 1393] text='' desc='' id=android:id/customPanel click=false
+[70, 1257, 1010, 1393] text='' desc='' id=android:id/custom click=false
+[107, 1257, 971, 1393] text='Always allow Loom to create widgets and access their data' desc='' id=android:id/alwaysUse click=true
+[70, 1393, 1010, 1557] text='' desc='' id=android:id/buttonPanel click=false
+[579, 1404, 781, 1546] text='CANCEL' desc='' id=android:id/button2 click=true
+[781, 1404, 978, 1546] text='CREATE' desc='' id=android:id/button1 click=true

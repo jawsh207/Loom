@@ -1,0 +1,9 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[0, 0, 1080, 2400] text='' desc='' id=com.android.launcher3.widgetpicker:id/widgets_catalog click=false
+[426, 223, 655, 296] text='Widgets' desc='' id= click=false
+[26, 338, 1054, 475] text='clock' desc='' id= click=true
+[58, 376, 121, 439] text='' desc='Back' id= click=false
+[960, 376, 1023, 439] text='' desc='Clear' id= click=false
+[236, 579, 328, 622] text='Clock' desc='' id= click=false
+[236, 622, 663, 665] text='Analog clock, Digital clock' desc='' id= click=false
