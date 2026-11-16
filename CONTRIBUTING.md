@@ -52,7 +52,7 @@ Release builds are shrunk and optimized with R8. Code that Android or a library 
 ## Testing
 
 Every push to `main` builds a signed APK on GitHub Actions. The device tests in
-`.github/workflows/device-test.yml` run Loom on an emulator (feed, widgets, grid, apps, icons,
-theme, dots, backup); add or extend one when you add a feature. Some things can only be checked
+`.github/workflows/device-test.yml` run Loom on an emulator (feed, widgets, grid, layout, apps,
+icons, theme, dots, backup, a11y, profiles); add or extend one when you add a feature. Some things can only be checked
 on a real phone (GrapheneOS-specific options, icon shapes from Wallpaper & style); say so when
 that's the case.
