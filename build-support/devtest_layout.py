@@ -176,6 +176,10 @@ def change_grid(tag, columns, rows, dock):
             tap_text(r"^choose home screen size$", f"{tag}-custom-home", wait=1)
         set_value(r"^columns$", "columns", columns)
         set_value(r"^rows$", "rows", rows)
+        # The dock's controls are further down the screen.
+        w, h = screen_size()
+        sh(f"input swipe {w // 2} {h * 3 // 4} {w // 2} {h // 2} 400")
+        time.sleep(1.5)
         if not switch_on(snap(f"{tag}-dock-switch"), r"^choose dock size$"):
             tap_text(r"^choose dock size$", f"{tag}-custom-dock", wait=1)
         set_value(r"^dock icons$", "dock icons", dock)
@@ -206,7 +210,10 @@ def add_clock_widget():
         time.sleep(3)
     for attempt in range(4):
         nodes = snap(f"picker-clock-{attempt}")
-        widget = next((n for n in nodes if re.search(r"clock.*wide by", n["desc"], re.I)), None)
+        # Search results list each widget by name ("Analog clock"), with its size apart.
+        widget = next((n for n in nodes if re.search(r"clock.*wide by", n["desc"], re.I)), None) \
+            or next((n for n in reversed(nodes)
+                     if re.fullmatch(r"analog clock", (n["text"] or n["desc"]).strip(), re.I)), None)
         if widget:
             break
         header = next((n for n in nodes if re.fullmatch(r"clock", n["text"] or "", re.I)
@@ -251,11 +258,17 @@ def build_layout():
     go_home()
     nodes = snap("start")
     dock = [n for n in nodes if n["desc"] and n["bounds"][1] > h * 0.8]
-    # A folder in the dock: drop the second dock icon on the first.
-    if len(dock) >= 2:
-        (x1, y1), (x2, y2) = center(dock[1]), center(dock[0])
-        sh(f"input draganddrop {x1} {y1} {x2} {y2} 1500")
-        time.sleep(3)
+    # A folder in the dock, keeping all four dock spots full (so a smaller dock has to move
+    # one to the home screen): drop an app from the drawer on the first dock icon.
+    log(f"  dock: {[n['desc'] for n in dock]}")
+    if dock:
+        nodes = open_drawer("drawer-dock", r"search apps") or []
+        icons = [n for n in nodes if n["id"].endswith("/icon") and n["desc"]
+                 and h * 0.25 < n["bounds"][1] < h * 0.85]
+        if icons:
+            (x1, y1), (x2, y2) = center(icons[-1]), center(dock[0])
+            sh(f"input draganddrop {x1} {y1} {x2} {y2} 2500")
+            time.sleep(3)
         go_home()
     # Six apps from the drawer onto the home screen, spread over the top half.
     spots = [(0.2, 0.42), (0.4, 0.42), (0.6, 0.42), (0.8, 0.42), (0.2, 0.55), (0.2, 0.55)]
@@ -290,6 +303,7 @@ def main():
         f"in folders {sum(1 for r in before if r['container'] not in (DESKTOP, HOTSEAT))}")
     check("test layout has a widget", kinds[4] >= 1)
     check("test layout has a folder", kinds[2] >= 1)
+    check("test layout's dock is full (4)", sum(1 for r in before if r["container"] == HOTSEAT) >= 4)
 
     change_grid("small", 3, 3, 3)
     verify("small 3x3", before, backup("small"), 3, 3, 3)
