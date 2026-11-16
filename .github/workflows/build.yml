@@ -176,7 +176,7 @@ jobs:
           # Loom: code that calls something new in Android 17 (in the Android 17 SDK but not in
           # Android 16's). Each one needs a version check, or it crashes on Android 16 and older.
           python3 -I build-support/hidden_api_scan.py "$ANDROID_HOME/platforms/android-36/android.jar" \
-            "$PLATFORM_DIR/android-public.jar" gradle/modules/*/build > android17-only.txt || true
+            "$PLATFORM_DIR/android-public.jar" gradle/modules/*/build > android17-only.txt 2>&1 || true
           tail -1 android17-only.txt
 
       - name: Show signing certificate
