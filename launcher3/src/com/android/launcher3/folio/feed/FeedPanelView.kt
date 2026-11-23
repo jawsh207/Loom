@@ -214,6 +214,8 @@ class FeedPanelView(private val launcher: Launcher) :
                 velocity?.addMovement(ev)
             }
             MotionEvent.ACTION_MOVE -> {
+                // Dragging a selection handle in an article isn't a swipe to close the panel.
+                if (ArticleSelection.isSelecting()) return false
                 velocity?.addMovement(ev)
                 val dx = ev.rawX - downX
                 val dy = ev.rawY - downY

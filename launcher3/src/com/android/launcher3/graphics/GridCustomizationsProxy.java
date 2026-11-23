@@ -327,6 +327,10 @@ public class GridCustomizationsProxy implements ProxyProvider {
                 }
                 return UPDATE_SETTING_SUCCESS;
             }
+            // Loom: Wallpaper & style's "app names" switch sends its value to the same path it
+            // reads from, like themed icons above; only the set_ path was accepted, so the
+            // change was refused, the switch flipped back and the names never changed.
+            case WORKSPACE_ITEMS_LABEL_HIDDEN:
             case SET_WORKSPACE_ITEMS_LABEL_HIDDEN: {
                 mPrefs.put(
                         LauncherPrefs.WORKSPACE_ITEMS_LABEL_HIDDEN,

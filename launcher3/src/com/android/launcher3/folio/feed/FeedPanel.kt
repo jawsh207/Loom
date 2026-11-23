@@ -82,7 +82,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalTextToolbar
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -721,7 +724,13 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
                 it.offset >= 0 && it.offset + it.size <= articleState.layoutInfo.viewportEndOffset }
             if (!shownFully) articleState.animateScrollToItem(target)
         }
+        // Article text can be selected and copied; see ArticleSelection for the swipe it pauses.
+        val systemToolbar = LocalTextToolbar.current
+        val toolbar = remember(systemToolbar) { ArticleSelection(systemToolbar) }
+        DisposableEffect(post.id) { onDispose { ArticleSelection.clear() } }
         Box(Modifier.fillMaxSize()) {
+          CompositionLocalProvider(LocalTextToolbar provides toolbar) {
+           SelectionContainer {
             LazyColumn(
                 Modifier.fillMaxSize().testTag("folio_feed_article"),
                 state = articleState,
@@ -777,6 +786,8 @@ private fun ArticleScreen(state: FeedPanelState, post: FeedItem) {
                     }
                 }
             }
+           }
+          }
             ScrollToTopButton(articleState, state.bottomInset, Modifier.align(Alignment.BottomEnd))
         }
     }
