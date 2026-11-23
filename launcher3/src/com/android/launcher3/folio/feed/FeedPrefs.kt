@@ -25,6 +25,8 @@ object FeedPrefs {
     const val TOP_WIDGET = "pref_feed_top_widget"
     /** The widget's height in dp, when changed with its handle; otherwise its own height. */
     const val TOP_WIDGET_HEIGHT = "pref_feed_top_widget_height"
+    /** At the top of the feed: the widget above Coming up instead of below it (off by default). */
+    const val TOP_WIDGET_FIRST = "pref_feed_top_widget_first"
 
     val REFRESH_CHOICES = intArrayOf(0, 1, 3, 6, 12, 24)
     val KEEP_CHOICES = intArrayOf(7, 30, 90, 365)
@@ -62,4 +64,6 @@ object FeedPrefs {
     fun largeImages(context: Context) = prefs(context).getBoolean(LARGE_IMAGES, false)
 
     fun topUpcoming(context: Context) = prefs(context).getBoolean(TOP_UPCOMING, false)
+
+    fun topWidgetFirst(context: Context) = prefs(context).getBoolean(TOP_WIDGET_FIRST, false)
 }

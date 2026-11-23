@@ -105,6 +105,8 @@
     <string name="feed_top_widget_title">Widget</string>
     <string name="feed_top_widget_none">None. Tap to choose one.</string>
     <string name="feed_top_widget_remove">Remove widget</string>
+    <string name="feed_top_widget_first">Widget first</string>
+    <string name="feed_top_widget_first_summary">Show the widget above Coming up</string>
     <string name="feed_widget_pick_title">Choose a widget</string>
     <!-- e.g. "Clock · 2 × 1" -->
     <string name="feed_widget_pick_size">%1$s · %2$d × %3$d</string>

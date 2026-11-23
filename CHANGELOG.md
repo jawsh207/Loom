@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- **Widget first** (Manage feeds › At the top): puts the widget above the Coming up card instead of below it. It shows once both are turned on.
+
 ## 0.6.1 (2026-11-23)
 
 - The widget at the top of the feed now starts at the height it would have on the home screen, and the handle under it drags it taller or shorter (double-tap the handle to fit the widget again).

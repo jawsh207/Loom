@@ -11,7 +11,8 @@
    the date, the alarm and the events, including one three weeks away.
 3. Widget (Manage feeds › At the top › Widget): choosing Clock's analog clock puts it at the top
    of the feed (bound to the feed's own widget host); dragging the handle under it resizes it,
-   the height is kept, and double-tapping the handle sizes it back; removing it takes it away.
+   the height is kept, and double-tapping the handle sizes it back; Widget first moves it
+   above Coming up; removing it takes it away.
 
 usage: devtest_feedtop.py OUT_DIR LOOM_APK"""
 
@@ -216,6 +217,14 @@ def main():
             widget = find(snap("widget-fit"), r"^analog clock$")
             h3 = widget["bounds"][3] - widget["bounds"][1] if widget else 0
             log(f"  double-tap goes back to its own size: {abs(h3 - h0) < 10} ({h3} px)")
+    # Widget first: the widget moves above Coming up.
+    go_home()
+    open_manage_feeds("feeds-first")
+    tap_scrolled(r"^widget first$", "widget-first", wait=2)
+    nodes = open_panel("panel-widget-first")
+    widget, alarm = find(nodes, r"^analog clock$"), find(nodes, r"^alarm$")
+    log(f"  Widget first puts the widget above Coming up: "
+        f"{bool(widget and alarm and widget['bounds'][1] < alarm['bounds'][1])}")
     go_home()
     open_manage_feeds("feeds-remove")
     tap_scrolled(r"^remove widget$", "widget-remove", wait=2)

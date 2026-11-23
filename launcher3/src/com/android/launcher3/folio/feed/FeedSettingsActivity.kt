@@ -209,6 +209,7 @@ class FeedSettingsActivity : ComponentActivity() {
         var upcoming by remember { mutableStateOf(FeedPrefs.topUpcoming(this)) }
         var calendarAllowed by remember { mutableStateOf(hasCalendar()) }
         var widgetLabel by remember { mutableStateOf(topWidgetLabel()) }
+        var widgetFirst by remember { mutableStateOf(FeedPrefs.topWidgetFirst(this)) }
         val askCalendar = rememberLauncherForActivityResult(
             ActivityResultContracts.RequestPermission()) { granted -> calendarAllowed = granted }
         val pickWidget = rememberLauncherForActivityResult(
@@ -317,11 +318,31 @@ class FeedSettingsActivity : ComponentActivity() {
                             }
                         },
                         colors = groupItemColors(),
-                        modifier = Modifier.groupCard(Group.Bottom).clickable {
+                        modifier = Modifier.groupCard(
+                            if (upcoming && widgetLabel != null) Group.Middle else Group.Bottom
+                        ).clickable {
                             pickWidget.launch(Intent(this@FeedSettingsActivity,
                                 FeedWidgetActivity::class.java))
                         },
                     )
+                }
+                // Which goes first only matters when both are there.
+                if (upcoming && widgetLabel != null) {
+                    item {
+                        ListItem(
+                            headlineContent = { Text(getString(R.string.feed_top_widget_first)) },
+                            supportingContent = {
+                                Text(getString(R.string.feed_top_widget_first_summary))
+                            },
+                            trailingContent = { Switch(widgetFirst, null) },
+                            colors = groupItemColors(),
+                            modifier = Modifier.groupCard(Group.Bottom).clickable {
+                                widgetFirst = !widgetFirst
+                                prefs.edit().putBoolean(FeedPrefs.TOP_WIDGET_FIRST, widgetFirst)
+                                    .apply()
+                            },
+                        )
+                    }
                 }
                 item { SectionHeader(getString(R.string.feed_section_refresh)) }
                 item {

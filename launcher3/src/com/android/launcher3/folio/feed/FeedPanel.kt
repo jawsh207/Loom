@@ -138,6 +138,7 @@ class FeedPanelState(context: Context) {
     /** What sits above the stories (Manage feeds › At the top): see FeedTop. */
     var topUpcoming by mutableStateOf(FeedPrefs.topUpcoming(context))
     var topWidget by mutableIntStateOf(FeedWidget.currentId(context))
+    var topWidgetFirst by mutableStateOf(FeedPrefs.topWidgetFirst(context))
     /** Follows Manage feeds › Style, even while the panel is open. Kept as a strong reference. */
     private val styleListener =
         android.content.SharedPreferences.OnSharedPreferenceChangeListener { p, key ->
@@ -145,6 +146,7 @@ class FeedPanelState(context: Context) {
             if (key == FeedPrefs.TEXT_SCALE) textScale = p.getFloat(key, 1f)
             if (key == FeedPrefs.TOP_UPCOMING) topUpcoming = p.getBoolean(key, false)
             if (key == FeedPrefs.TOP_WIDGET) topWidget = FeedWidget.currentId(context)
+            if (key == FeedPrefs.TOP_WIDGET_FIRST) topWidgetFirst = p.getBoolean(key, false)
         }
 
     init {

@@ -75,8 +75,8 @@ for reading websites' RSS, Atom and JSON feeds:
   phone's calendar storage, which most calendar apps and sync apps fill; if yours keeps its
   events to itself, the card says there are no calendars to show. **Widget** holds one widget
   of your choice, like the home screen's: it starts at the height it would have there, and the
-  handle under it drags it taller or shorter (double-tap the handle to go back). Both are off
-  by default.
+  handle under it drags it taller or shorter (double-tap the handle to go back). The widget sits
+  below Coming up unless **Widget first** is on. Both are off by default.
 - Loom checks for new stories in the background, from every hour to once a day (or only when
   you refresh), optionally only on Wi-Fi. This is the only part of Loom that uses the internet, and only
   while the panel is turned on.

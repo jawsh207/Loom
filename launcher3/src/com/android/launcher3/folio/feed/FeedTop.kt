@@ -84,9 +84,11 @@ import kotlinx.coroutines.withContext
 fun FeedTop(state: FeedPanelState) {
     if (!state.topUpcoming && state.topWidget == -1) return
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (state.topUpcoming) UpcomingCard()
+        // Below Coming up, or above it (Manage feeds › At the top › Widget first).
+        if (state.topUpcoming && !state.topWidgetFirst) UpcomingCard()
         // A new widget needs a new view, not the old one rebound.
         if (state.topWidget != -1) key(state.topWidget) { WidgetCard(state.topWidget) }
+        if (state.topUpcoming && state.topWidgetFirst) UpcomingCard()
     }
 }
 
