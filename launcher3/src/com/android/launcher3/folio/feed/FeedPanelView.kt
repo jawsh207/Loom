@@ -50,6 +50,7 @@ class FeedPanelView(private val launcher: Launcher) :
     private val minFling = ViewConfiguration.get(launcher).scaledMinimumFlingVelocity * 3f
     private var downX = 0f
     private var downY = 0f
+    private var downTime = 0L
     private var dragging = false
     private var velocity: VelocityTracker? = null
 
@@ -211,6 +212,7 @@ class FeedPanelView(private val launcher: Launcher) :
             MotionEvent.ACTION_DOWN -> {
                 downX = ev.rawX
                 downY = ev.rawY
+                downTime = ev.eventTime
                 dragging = false
                 velocity?.recycle()
                 velocity = VelocityTracker.obtain()
@@ -220,7 +222,7 @@ class FeedPanelView(private val launcher: Launcher) :
                 // A touch held past the long-press time is selecting article text (press and
                 // hold, then drag to extend), not a swipe to close the panel. Selection handles
                 // are drawn in their own popup windows, so dragging them never gets here.
-                if (ev.eventTime - ev.downTime >= ViewConfiguration.getLongPressTimeout()) return false
+                if (ev.eventTime - downTime >= ViewConfiguration.getLongPressTimeout()) return false
                 velocity?.addMovement(ev)
                 val dx = ev.rawX - downX
                 val dy = ev.rawY - downY
