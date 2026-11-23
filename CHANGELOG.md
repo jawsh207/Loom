@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.6.2 (2026-11-23)
+
 - **Widget first** (Manage feeds › At the top): puts the widget above the Coming up card instead of below it. It shows once both are turned on.
 - Coming up now updates as soon as you add, change or remove a calendar event or alarm, instead of waiting or needing to be turned off and on.
 
