@@ -8,7 +8,7 @@
    closing the panel, while a quick sideways swipe still closes it.
 2. Coming up (Manage feeds › At the top): with an alarm set (through the Clock app) and an event
    added to a local calendar, turning it on asks for calendar access, and the panel then shows
-   the date, the alarm and the event.
+   the date, the alarm and the events, including one three weeks away.
 3. Widget (Manage feeds › At the top › Widget): choosing Clock's analog clock puts it at the top
    of the feed (bound to the feed's own widget host); removing it takes it away.
 
@@ -73,6 +73,11 @@ def add_calendar_event():
              f"--bind calendar_id:i:{m[-1]} --bind title:s:Dentist --bind dtstart:l:{start} "
              f"--bind dtend:l:{start + 3600 * 1000} --bind eventTimezone:s:UTC")
     log(f"  event added: {out.strip()[:80]!r}")
+    # And one three weeks away: Coming up shows the next events however far ahead they are.
+    later = start + 21 * 24 * 3600 * 1000
+    sh(f"content insert --uri content://com.android.calendar/events "
+       f"--bind calendar_id:i:{m[-1]} --bind title:s:Passport --bind dtstart:l:{later} "
+       f"--bind dtend:l:{later + 3600 * 1000} --bind eventTimezone:s:UTC")
     return True
 
 
@@ -143,6 +148,9 @@ def main():
     log(f"  shows the date: {bool(find(nodes, time.strftime('%A')))}")
     log(f"  shows the alarm: {bool(find(nodes, r'^alarm$'))}")
     log(f"  shows the event: {bool(find(nodes, r'^dentist$'))}")
+    far = find(nodes, r'^passport$')
+    log(f"  shows the event three weeks away: {bool(far)}; "
+        f"dated: {bool(find(nodes, time.strftime('%b', time.localtime(time.time() + 21 * 86400 + 7200))))}")
     go_home()
 
     # --- 3. A widget ---

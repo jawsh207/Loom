@@ -70,7 +70,7 @@ for reading websites' RSS, Atom and JSON feeds:
   along on screen; it can be paused and picks up at the same paragraph.
 - Stories can be starred, and filtered to unread or starred ones.
 - **At the top** (Manage feeds) can put two things above the stories. **Coming up** shows
-  today's date, your next alarm and today's and tomorrow's calendar events; it asks for
+  today's date, your next alarm and your next 4 calendar events, however far ahead; it asks for
   calendar access when turned on, and shows the alarm alone without it. **Widget** holds one
   widget of your choice, like the home screen's. Both are off by default.
 - Loom checks for new stories in the background, from every hour to once a day (or only when

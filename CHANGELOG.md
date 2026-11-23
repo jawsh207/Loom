@@ -5,7 +5,7 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
-- **At the top** (Home settings › Feeds › Manage feeds): two things that can sit above your stories. **Coming up** shows today's date, your next alarm and today's and tomorrow's calendar events (it asks for calendar access when you turn it on). **Widget** puts one widget of your choice at the top of the feed.
+- **At the top** (Home settings › Feeds › Manage feeds): two things that can sit above your stories. **Coming up** shows today's date, your next alarm and your next 4 calendar events, however far ahead (it asks for calendar access when you turn it on). **Widget** puts one widget of your choice at the top of the feed.
 - Article text in the feed panel can now be selected and copied: long-press a word, then drag the handles.
 - Fixed: the **App names** switch in Wallpaper & style didn't work; turning it on or off now shows or hides the names under home screen icons.
 

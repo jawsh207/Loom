@@ -62,7 +62,7 @@ import kotlinx.coroutines.withContext
 /**
  * What can sit above the stories in the feed panel (Manage feeds › At the top):
  *
- * - **Coming up**: today's date, the next alarm, and calendar events for today and tomorrow.
+ * - **Coming up**: today's date, the next alarm, and the next few calendar events.
  *   The alarm needs no permission (Android tells any app the next alarm); events need calendar
  *   access, asked for when it's turned on. Nothing leaves the phone: events are read from the
  *   phone's own calendar storage, which calendar apps and sync services fill.
@@ -100,12 +100,24 @@ private fun calendarAllowed(context: Context) =
 private fun loadUpcoming(context: Context): Upcoming {
     val alarm = context.getSystemService(AlarmManager::class.java)?.nextAlarmClock
     if (!calendarAllowed(context)) return Upcoming(alarm, emptyList(), false)
+    // The next few events however far ahead they are. The calendar lists repeating events once
+    // per time they happen, so look a week ahead first and only reach further when that week
+    // doesn't hold enough, rather than unrolling years of weekly meetings every minute.
+    var events: List<Event> = emptyList()
+    for (days in SEARCH_DAYS) {
+        events = queryEvents(context, days)
+        if (events.size >= MAX_EVENTS) break
+    }
+    return Upcoming(alarm, events.take(MAX_EVENTS), true)
+}
+
+/** Days ahead to look for events, widening until [MAX_EVENTS] are found. */
+private val SEARCH_DAYS = intArrayOf(7, 31, 92, 366, 366 * 3)
+
+/** Events that haven't ended yet and start within [days] from now, soonest day first. */
+private fun queryEvents(context: Context, days: Int): List<Event> {
     val now = System.currentTimeMillis()
-    // Up to the end of tomorrow.
-    val until = Calendar.getInstance().apply {
-        add(Calendar.DAY_OF_YEAR, 2)
-        set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0)
-    }.timeInMillis
+    val until = now + days * DateUtils.DAY_IN_MILLIS
     val uri = CalendarContract.Instances.CONTENT_URI.buildUpon().also {
         ContentUris.appendId(it, now - DateUtils.DAY_IN_MILLIS) // all-day events run in UTC
         ContentUris.appendId(it, until)
@@ -135,8 +147,14 @@ private fun loadUpcoming(context: Context): Upcoming {
     } catch (e: Exception) {
         Log.w("FeedTop", "Couldn't read the calendar", e)
     }
-    return Upcoming(alarm, events.sortedWith(compareBy({ !it.allDay }, { it.begin }))
-        .take(MAX_EVENTS), true)
+    // By day (an all-day event that began earlier counts as today), all-day ones first.
+    return events.sortedWith(compareBy({ dayOf(maxOf(it.begin, now)) }, { !it.allDay }, { it.begin }))
+}
+
+/** A number that orders local calendar days. */
+private fun dayOf(time: Long): Int = Calendar.getInstance().run {
+    timeInMillis = time
+    get(Calendar.YEAR) * 400 + get(Calendar.DAY_OF_YEAR)
 }
 
 @Composable
@@ -234,15 +252,22 @@ private fun Line(
     }
 }
 
-/** "Today · 2:30 – 3:00 PM", "Tomorrow · All day", "Wed · 7:00 AM". */
+/**
+ * "Today · 2:30 – 3:00 PM", "Tomorrow · All day", "Wed · 7:00 AM" within the week, then with
+ * the date: "Wed, Dec 3 · 7:00 AM" (and the year when it isn't this one).
+ */
 private fun whenLabel(context: Context, begin: Long, end: Long, allDay: Boolean): String {
     val day = when {
         DateUtils.isToday(begin) || (allDay && begin < System.currentTimeMillis()) ->
             context.getString(R.string.feed_top_today)
         DateUtils.isToday(begin - DateUtils.DAY_IN_MILLIS) ->
             context.getString(R.string.feed_top_tomorrow)
+        begin < System.currentTimeMillis() + 6 * DateUtils.DAY_IN_MILLIS ->
+            DateUtils.formatDateTime(context, begin, DateUtils.FORMAT_SHOW_WEEKDAY or
+                DateUtils.FORMAT_ABBREV_WEEKDAY)
         else -> DateUtils.formatDateTime(context, begin, DateUtils.FORMAT_SHOW_WEEKDAY or
-            DateUtils.FORMAT_ABBREV_WEEKDAY)
+            DateUtils.FORMAT_ABBREV_WEEKDAY or DateUtils.FORMAT_SHOW_DATE or
+            DateUtils.FORMAT_ABBREV_MONTH)
     }
     val time = when {
         allDay -> context.getString(R.string.feed_top_all_day)
