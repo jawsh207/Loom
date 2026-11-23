@@ -101,8 +101,9 @@ def main():
             snap("selected")
             log(f"  long-press selects (handles and the Copy menu open): {popups() > before} "
                 f"({before} -> {popups()} popup windows)")
-            sh("input keyevent KEYCODE_ESCAPE")
+            tap(find(nodes, r"^ada marlow"))  # a tap elsewhere clears the selection
             time.sleep(1)
+            log(f"  still reading the article: {panel_open()}")
             # Press and hold, then drag sideways in the same touch: extends a selection.
             sh(f"input motionevent DOWN {x} {y}")
             time.sleep(1.2)
@@ -112,7 +113,7 @@ def main():
             time.sleep(2)
             snap("hold-drag")
             log(f"  press-hold-drag sideways keeps the panel open: {panel_open()}")
-            sh("input keyevent KEYCODE_ESCAPE")
+            tap(find(nodes, r"^ada marlow"))
             time.sleep(1)
             # A quick sideways swipe still closes it.
             sh(f"input swipe {w * 7 // 8} {y} {w // 8} {y} 250")
