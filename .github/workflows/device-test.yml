@@ -21,7 +21,7 @@ on:
       test:
         description: "What to test"
         type: choice
-        options: [feed, widgets, grid, apps, icons, theme, dots, backup, layout, a11y, profiles]
+        options: [feed, feedtop, widgets, grid, apps, icons, theme, dots, backup, layout, a11y, profiles]
         default: feed
       flavor:
         description: "System image type to prefer (default, google_apis, aosp_atd...); blank: default"
@@ -197,6 +197,9 @@ jobs:
           elif [ "${{ inputs.test }}" = "theme" ]; then
             python3 -m http.server 8000 --directory build-support/devtest-feed > http.log 2>&1 &
             python3 build-support/devtest_theme.py out folio.apk 2>&1 | tee devtest.log
+          elif [ "${{ inputs.test }}" = "feedtop" ]; then
+            python3 -m http.server 8000 --directory build-support/devtest-feed > http.log 2>&1 &
+            python3 build-support/devtest_feedtop.py out folio.apk 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "profiles" ]; then
             python3 build-support/devtest_profiles.py out folio.apk 2>&1 | tee devtest.log
           elif [ "${{ inputs.test }}" = "a11y" ]; then
