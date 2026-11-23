@@ -71,7 +71,8 @@ for reading websites' RSS, Atom and JSON feeds:
 - Stories can be starred, and filtered to unread or starred ones.
 - **At the top** (Manage feeds) can put two things above the stories. **Coming up** shows
   today's date, your next alarm and your next 4 calendar events, however far ahead; it asks for
-  calendar access when turned on, and shows the alarm alone without it. Events come from the
+  calendar access when turned on, and shows the alarm alone without it. It updates as soon as
+  an event or alarm changes. Events come from the
   phone's calendar storage, which most calendar apps and sync apps fill; if yours keeps its
   events to itself, the card says there are no calendars to show. **Widget** holds one widget
   of your choice, like the home screen's: it starts at the height it would have there, and the

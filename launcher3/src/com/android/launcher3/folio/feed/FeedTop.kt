@@ -6,10 +6,15 @@ package com.android.launcher3.folio.feed
 
 import android.Manifest
 import android.app.AlarmManager
+import android.content.BroadcastReceiver
 import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.database.ContentObserver
+import android.os.Handler
+import android.os.Looper
 import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.text.format.DateFormat
@@ -17,17 +22,10 @@ import android.text.format.DateUtils
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.customActions
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.CustomAccessibilityAction
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -49,9 +47,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -59,11 +60,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import com.android.launcher3.R
 import java.util.Calendar
 import kotlinx.coroutines.Dispatchers
@@ -75,7 +83,8 @@ import kotlinx.coroutines.withContext
  *
  * - **Coming up**: today's date, the next alarm, and the next few calendar events.
  *   The alarm needs no permission (Android tells any app the next alarm); events need calendar
- *   access, asked for when it's turned on. Nothing leaves the phone: events are read from the
+ *   access, asked for when it's turned on. The card reloads as soon as the calendar or the
+ *   alarm changes, and every minute. Nothing leaves the phone: events are read from the
  *   phone's own calendar storage, which calendar apps and sync services fill.
  * - **A widget**: any one widget, chosen in [FeedWidgetActivity] and kept by [FeedWidget]. It
  *   starts at the height it would have on the home screen; the handle under it resizes it.
@@ -194,8 +203,36 @@ private fun dayOf(time: Long): Int = Calendar.getInstance().run {
 private fun UpcomingCard() {
     val context = LocalContext.current
     var upcoming by remember { mutableStateOf<Upcoming?>(null) }
-    LaunchedEffect(Unit) {
-        // Kept current while the panel exists: the clock ticks, alarms and events change.
+    // Bumped whenever the calendar or the next alarm changes, which reloads the card at once.
+    var changes by remember { mutableIntStateOf(0) }
+    // Registered again once calendar access is granted (the observer needs it).
+    DisposableEffect(upcoming?.calendarAllowed) {
+        val observer = object : ContentObserver(Handler(Looper.getMainLooper())) {
+            override fun onChange(selfChange: Boolean) { changes++ }
+        }
+        val alarms = object : BroadcastReceiver() {
+            override fun onReceive(c: Context, intent: Intent) { changes++ }
+        }
+        // Calendar apps and sync apps notify this address when they add, change or remove events.
+        runCatching {
+            context.contentResolver.registerContentObserver(CalendarContract.CONTENT_URI, true,
+                observer)
+        }
+        ContextCompat.registerReceiver(context, alarms, IntentFilter().apply {
+            addAction(AlarmManager.ACTION_NEXT_ALARM_CLOCK_CHANGED)
+            addAction(Intent.ACTION_DATE_CHANGED)
+            addAction(Intent.ACTION_TIME_CHANGED)
+            addAction(Intent.ACTION_TIMEZONE_CHANGED)
+        }, ContextCompat.RECEIVER_NOT_EXPORTED)
+        onDispose {
+            context.contentResolver.unregisterContentObserver(observer)
+            runCatching { context.unregisterReceiver(alarms) }
+        }
+    }
+    LaunchedEffect(changes) {
+        // A burst of changes (a sync writes many events) reloads once, after it settles.
+        if (changes > 0) delay(500)
+        // Also every minute, so "Today" and times stay right as the clock moves on.
         while (true) {
             upcoming = withContext(Dispatchers.IO) { loadUpcoming(context) }
             delay(60_000)

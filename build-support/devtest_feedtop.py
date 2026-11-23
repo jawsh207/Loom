@@ -8,7 +8,8 @@
    closing the panel, while a quick sideways swipe still closes it.
 2. Coming up (Manage feeds › At the top): with an alarm set (through the Clock app) and an event
    added to a local calendar, turning it on asks for calendar access, and the panel then shows
-   the date, the alarm and the events, including one three weeks away.
+   the date, the alarm and the events, including one three weeks away; an event added while
+   the panel is open appears by itself.
 3. Widget (Manage feeds › At the top › Widget): choosing Clock's analog clock puts it at the top
    of the feed (bound to the feed's own widget host); dragging the handle under it resizes it,
    the height is kept, and double-tapping the handle sizes it back; Widget first moves it
@@ -153,6 +154,16 @@ def main():
     far = find(nodes, r'^passport$')
     log(f"  shows the event three weeks away: {bool(far)}; "
         f"dated: {bool(find(nodes, time.strftime('%b', time.localtime(time.time() + 21 * 86400 + 7200))))}")
+    # A new event shows up by itself while the panel is open (no turning the card off and on).
+    cal = re.findall(r"_id=(\d+)", sh("content query --uri content://com.android.calendar/calendars "
+                                       "--projection _id"))
+    if cal:
+        soon = int(time.time() * 1000) + 3 * 3600 * 1000
+        sh(f"content insert --uri content://com.android.calendar/events "
+           f"--bind calendar_id:i:{cal[-1]} --bind title:s:Haircut --bind dtstart:l:{soon} "
+           f"--bind dtend:l:{soon + 1800 * 1000} --bind eventTimezone:s:UTC")
+        time.sleep(4)
+        log(f"  a new event appears without reopening: {bool(find(snap('panel-new-event'), r'^haircut$'))}")
     go_home()
 
     # --- 3. A widget ---
