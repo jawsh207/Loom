@@ -23,6 +23,8 @@ object FeedPrefs {
     const val TOP_UPCOMING = "pref_feed_top_upcoming"
     /** At the top of the feed: the chosen widget's id, or none ([FeedWidget]). */
     const val TOP_WIDGET = "pref_feed_top_widget"
+    /** The widget's height in dp, when changed with its handle; otherwise its own height. */
+    const val TOP_WIDGET_HEIGHT = "pref_feed_top_widget_height"
 
     val REFRESH_CHOICES = intArrayOf(0, 1, 3, 6, 12, 24)
     val KEEP_CHOICES = intArrayOf(7, 30, 90, 365)

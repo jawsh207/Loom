@@ -117,4 +117,10 @@
     <string name="feed_top_nothing">No alarms or events coming up</string>
     <string name="feed_top_nothing_alarm">No alarm set</string>
     <string name="feed_top_calendar_allow">Show calendar events</string>
+    <string name="feed_top_no_events">No upcoming calendar events</string>
+    <string name="feed_top_no_calendars">No calendars to show. Some calendar apps keep events to themselves; look in yours for an option to sync them with the phone\'s calendar.</string>
+    <string name="feed_top_widget_resize">Widget size. Drag to resize, double-tap to fit the widget.</string>
+    <string name="feed_top_widget_taller">Make taller</string>
+    <string name="feed_top_widget_shorter">Make shorter</string>
+    <string name="feed_top_widget_fit">Fit the widget</string>
 </resources>

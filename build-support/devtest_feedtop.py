@@ -10,7 +10,8 @@
    added to a local calendar, turning it on asks for calendar access, and the panel then shows
    the date, the alarm and the events, including one three weeks away.
 3. Widget (Manage feeds › At the top › Widget): choosing Clock's analog clock puts it at the top
-   of the feed (bound to the feed's own widget host); removing it takes it away.
+   of the feed (bound to the feed's own widget host); dragging the handle under it resizes it,
+   the height is kept, and double-tapping the handle sizes it back; removing it takes it away.
 
 usage: devtest_feedtop.py OUT_DIR LOOM_APK"""
 
@@ -187,6 +188,34 @@ def main():
     nodes = open_panel("panel-widget")
     log(f"  widget shows in the panel (Coming up still there): "
         f"{bool(find(nodes, r'^alarm$'))}; views {sorted(set(n['id'] for n in nodes if 'deskclock' in n['id'] or 'analog' in n['id'].lower()))[:3]}")
+    # Resizing with the handle under it, and double-tapping it back to the widget's own size.
+    widget = find(nodes, r"^analog clock$")
+    handle = find(nodes, r"^widget size")
+    log(f"  resize handle under the widget: {bool(handle)}")
+    if widget and handle:
+        h0 = widget["bounds"][3] - widget["bounds"][1]
+        hx, hy = center(handle)
+        sh(f"input swipe {hx} {hy} {hx} {hy + 300} 800")
+        time.sleep(2)
+        nodes = snap("widget-taller")
+        widget = find(nodes, r"^analog clock$")
+        h1 = widget["bounds"][3] - widget["bounds"][1] if widget else 0
+        log(f"  dragging the handle down makes it taller: {h1 > h0 + 150} ({h0} -> {h1} px)")
+        go_home()
+        nodes = open_panel("panel-widget-again")
+        widget = find(nodes, r"^analog clock$")
+        h2 = widget["bounds"][3] - widget["bounds"][1] if widget else 0
+        log(f"  the height is kept: {abs(h2 - h1) < 10} ({h2} px)")
+        handle = find(nodes, r"^widget size")
+        if handle:
+            hx, hy = center(handle)
+            sh(f"input tap {hx} {hy}")
+            time.sleep(0.1)
+            sh(f"input tap {hx} {hy}")
+            time.sleep(2)
+            widget = find(snap("widget-fit"), r"^analog clock$")
+            h3 = widget["bounds"][3] - widget["bounds"][1] if widget else 0
+            log(f"  double-tap goes back to its own size: {abs(h3 - h0) < 10} ({h3} px)")
     go_home()
     open_manage_feeds("feeds-remove")
     tap_scrolled(r"^remove widget$", "widget-remove", wait=2)

@@ -17,6 +17,17 @@ import android.text.format.DateUtils
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -66,7 +77,8 @@ import kotlinx.coroutines.withContext
  *   The alarm needs no permission (Android tells any app the next alarm); events need calendar
  *   access, asked for when it's turned on. Nothing leaves the phone: events are read from the
  *   phone's own calendar storage, which calendar apps and sync services fill.
- * - **A widget**: any one widget, chosen in [FeedWidgetActivity] and kept by [FeedWidget].
+ * - **A widget**: any one widget, chosen in [FeedWidgetActivity] and kept by [FeedWidget]. It
+ *   starts at the height it would have on the home screen; the handle under it resizes it.
  */
 @Composable
 fun FeedTop(state: FeedPanelState) {
@@ -84,6 +96,8 @@ private class Upcoming(
     val alarm: AlarmManager.AlarmClockInfo?,
     val events: List<Event>,
     val calendarAllowed: Boolean,
+    /** Calendars shown in the phone's calendar storage; 0 when no app has shared any. */
+    val calendars: Int = -1,
 )
 
 private class Event(
@@ -108,7 +122,21 @@ private fun loadUpcoming(context: Context): Upcoming {
         events = queryEvents(context, days)
         if (events.size >= MAX_EVENTS) break
     }
-    return Upcoming(alarm, events.take(MAX_EVENTS), true)
+    return Upcoming(alarm, events.take(MAX_EVENTS), true, countCalendars(context))
+}
+
+/**
+ * How many visible calendars the phone's calendar storage holds. Some calendar apps keep their
+ * events to themselves instead of putting them there; then this is 0, and the card says so
+ * rather than just showing nothing.
+ */
+private fun countCalendars(context: Context): Int = try {
+    context.contentResolver.query(CalendarContract.Calendars.CONTENT_URI,
+        arrayOf(CalendarContract.Calendars._ID), "${CalendarContract.Calendars.VISIBLE} = 1",
+        null, null)?.use { it.count } ?: -1
+} catch (e: Exception) {
+    Log.w("FeedTop", "Couldn't list calendars", e)
+    -1
 }
 
 /** Days ahead to look for events, widening until [MAX_EVENTS] are found. */
@@ -129,8 +157,11 @@ private fun queryEvents(context: Context, days: Int): List<Event> {
             CalendarContract.Instances.BEGIN, CalendarContract.Instances.END,
             CalendarContract.Instances.ALL_DAY, CalendarContract.Instances.DISPLAY_COLOR,
         ), "${CalendarContract.Instances.VISIBLE} = 1 AND " +
+            // Some sync apps leave the attendee status empty, and in SQL "empty != declined"
+            // isn't true, so it has to be allowed for by name.
+            "(${CalendarContract.Instances.SELF_ATTENDEE_STATUS} IS NULL OR " +
             "${CalendarContract.Instances.SELF_ATTENDEE_STATUS} != " +
-            "${CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED}",
+            "${CalendarContract.Attendees.ATTENDEE_STATUS_DECLINED})",
             null, "${CalendarContract.Instances.BEGIN} ASC")?.use { c ->
             while (c.moveToNext()) {
                 val allDay = c.getInt(4) == 1
@@ -211,9 +242,17 @@ private fun UpcomingCard() {
                     }
                 }
             }
-            if (u.alarm == null && u.events.isEmpty()) {
-                Text(context.getString(if (u.calendarAllowed) R.string.feed_top_nothing
-                    else R.string.feed_top_nothing_alarm),
+            // Say why there's nothing, so an empty card doesn't look broken.
+            val empty = when {
+                u.calendarAllowed && u.events.isEmpty() && u.calendars == 0 ->
+                    R.string.feed_top_no_calendars
+                u.calendarAllowed && u.events.isEmpty() ->
+                    if (u.alarm == null) R.string.feed_top_nothing else R.string.feed_top_no_events
+                u.alarm == null -> R.string.feed_top_nothing_alarm
+                else -> 0
+            }
+            if (empty != 0) {
+                Text(context.getString(empty),
                     Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                     style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
             }
@@ -283,16 +322,59 @@ private fun whenLabel(context: Context, begin: Long, end: Long, allDay: Boolean)
 private fun WidgetCard(id: Int) {
     val context = LocalContext.current
     val info = remember(id) { FeedWidget.info(context, id) } ?: return
-    val heightDp = remember(info) { FeedWidget.heightDp(context, info) }
+    val density = LocalDensity.current.density
+    // The height follows the finger while dragging; the widget is told its new size (and the
+    // height saved) when the drag ends, since widgets redraw themselves for every size change.
+    var height by remember(id) { mutableFloatStateOf(FeedWidget.heightDp(context, info)) }
+    var settled by remember(id) { mutableFloatStateOf(height) }
+    fun settle(dp: Float?) {
+        if (dp == null) FeedWidget.resetHeight(context) else FeedWidget.saveHeight(context, dp)
+        height = FeedWidget.heightDp(context, info)
+        settled = height
+    }
+    val maxDp = FeedWidget.maxHeightDp(context)
     Surface(Modifier.fillMaxWidth().testTag("folio_feed_widget"),
         shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.surfaceBright) {
-        BoxWithConstraints(Modifier.fillMaxWidth().height(heightDp.dp)) {
-            val widthDp = maxWidth.value
-            LaunchedEffect(id, widthDp) { FeedWidget.reportSize(context, id, widthDp, heightDp) }
-            AndroidView(
-                factory = { c -> FeedWidget.createView(c, id, info) },
-                modifier = Modifier.fillMaxWidth().height(heightDp.dp),
-            )
+        Column {
+            BoxWithConstraints(Modifier.fillMaxWidth().height(height.dp)) {
+                val widthDp = maxWidth.value
+                LaunchedEffect(id, widthDp, settled) {
+                    FeedWidget.reportSize(context, id, widthDp, settled)
+                }
+                AndroidView(
+                    factory = { c -> FeedWidget.createView(c, id, info) },
+                    modifier = Modifier.fillMaxWidth().height(height.dp),
+                )
+            }
+            // The handle: drag to resize, double-tap to go back to the widget's own size.
+            val label = context.getString(R.string.feed_top_widget_resize)
+            val taller = context.getString(R.string.feed_top_widget_taller)
+            val shorter = context.getString(R.string.feed_top_widget_shorter)
+            val fit = context.getString(R.string.feed_top_widget_fit)
+            Box(
+                Modifier.fillMaxWidth().height(24.dp).testTag("folio_feed_widget_handle")
+                    .draggable(
+                        rememberDraggableState { delta ->
+                            height = (height + delta / density)
+                                .coerceIn(FeedWidget.MIN_HEIGHT_DP, maxDp)
+                        },
+                        Orientation.Vertical,
+                        onDragStopped = { settle(height) },
+                    )
+                    .pointerInput(id) { detectTapGestures(onDoubleTap = { settle(null) }) }
+                    .semantics {
+                        contentDescription = label
+                        customActions = listOf(
+                            CustomAccessibilityAction(taller) { settle(height + 48f); true },
+                            CustomAccessibilityAction(shorter) { settle(height - 48f); true },
+                            CustomAccessibilityAction(fit) { settle(null); true },
+                        )
+                    },
+                contentAlignment = Alignment.Center,
+            ) {
+                Box(Modifier.size(width = 32.dp, height = 4.dp).clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)))
+            }
         }
     }
 }

@@ -5,6 +5,9 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- The widget at the top of the feed now starts at the height it would have on the home screen, and the handle under it drags it taller or shorter (double-tap the handle to fit the widget again).
+- Coming up: events that sync apps saved without an attendee status no longer go missing, and when there are no events the card now says why (no upcoming events, or no calendars shared by your calendar app).
+
 ## 0.6.0 (2026-11-23)
 
 - **At the top** (Home settings › Feeds › Manage feeds): two things that can sit above your stories. **Coming up** shows today's date, your next alarm and your next 4 calendar events, however far ahead (it asks for calendar access when you turn it on). **Widget** puts one widget of your choice at the top of the feed.

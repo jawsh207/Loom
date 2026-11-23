@@ -71,8 +71,12 @@ for reading websites' RSS, Atom and JSON feeds:
 - Stories can be starred, and filtered to unread or starred ones.
 - **At the top** (Manage feeds) can put two things above the stories. **Coming up** shows
   today's date, your next alarm and your next 4 calendar events, however far ahead; it asks for
-  calendar access when turned on, and shows the alarm alone without it. **Widget** holds one
-  widget of your choice, like the home screen's. Both are off by default.
+  calendar access when turned on, and shows the alarm alone without it. Events come from the
+  phone's calendar storage, which most calendar apps and sync apps fill; if yours keeps its
+  events to itself, the card says there are no calendars to show. **Widget** holds one widget
+  of your choice, like the home screen's: it starts at the height it would have there, and the
+  handle under it drags it taller or shorter (double-tap the handle to go back). Both are off
+  by default.
 - Loom checks for new stories in the background, from every hour to once a day (or only when
   you refresh), optionally only on Wi-Fi. This is the only part of Loom that uses the internet, and only
   while the panel is turned on.
