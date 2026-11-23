@@ -18,18 +18,25 @@ import time
 
 from devtest import find, log, open_home_settings, save_logs, screen_size, setup_home, sh, snap, \
     tap, tap_text
-from devtest_feed import LOCAL_RSS, add_feed, choose_source
+from devtest_feed import LOCAL_RSS, add_feed, choose_source, scroll_to
 from devtest_grid import center, go_home, tap_scrolled
 
 FEED_HOST = 0x4c6f6f6d
 
 
 def open_panel(name):
+    """Swipes right from the first page; tries again if the home screen wasn't ready for it."""
     w, h = screen_size()
-    go_home()
-    sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
-    time.sleep(5)
-    return snap(name)
+    for attempt in range(3):
+        go_home()
+        time.sleep(2)
+        sh(f"input swipe {w // 8} {h // 2} {w * 7 // 8} {h // 2} 350")
+        time.sleep(5)
+        nodes = snap(f"{name}-{attempt}")
+        if find(nodes, r"^choose which feeds to show$"):
+            return nodes
+    log(f"  !! the feed panel didn't open ({name})")
+    return nodes
 
 
 def open_manage_feeds(name):
@@ -69,6 +76,7 @@ def main():
     # The feed panel on, with the local test feed.
     open_manage_feeds("feeds")
     tap_text(r"^feed panel$", "feed-on", wait=2)
+    scroll_to(r"^add feed$", "find-add")  # below the settings, at the end of the list
     add_feed(LOCAL_RSS, "rss")
     go_home()
 
