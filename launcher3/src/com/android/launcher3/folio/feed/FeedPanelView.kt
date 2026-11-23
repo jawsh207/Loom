@@ -98,11 +98,14 @@ class FeedPanelView(private val launcher: Launcher) :
             ViewGroup.LayoutParams.MATCH_PARENT)
         lp.ignoreInsets = true
         launcher.dragLayer.addView(this, lp)
+        // A widget at the top of the feed only updates while its host listens.
+        FeedWidget.startListening(launcher)
     }
 
     fun detach() {
         animator?.cancel()
         state.speaker.shutdown()
+        FeedWidget.stopListening(launcher)
         setProgress(0f)
         (parent as? ViewGroup)?.removeView(this)
     }

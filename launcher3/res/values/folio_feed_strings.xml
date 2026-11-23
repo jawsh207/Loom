@@ -97,4 +97,24 @@
     <string name="feed_import_failed">That file couldn\'t be read as OPML</string>
     <string name="feed_exported">Feeds exported</string>
     <string name="feed_export_failed">Couldn\'t save the file</string>
+    <!-- Manage feeds › At the top: what shows above the stories -->
+    <string name="feed_section_top">At the top</string>
+    <string name="feed_top_upcoming_title">Coming up</string>
+    <string name="feed_top_upcoming_summary">Today\'s date, your next alarm, and calendar events for today and tomorrow</string>
+    <string name="feed_top_upcoming_no_calendar">Today\'s date and your next alarm. Allow calendar access to see events too.</string>
+    <string name="feed_top_widget_title">Widget</string>
+    <string name="feed_top_widget_none">None. Tap to choose one.</string>
+    <string name="feed_top_widget_remove">Remove widget</string>
+    <string name="feed_widget_pick_title">Choose a widget</string>
+    <!-- e.g. "Clock · 2 × 1" -->
+    <string name="feed_widget_pick_size">%1$s · %2$d × %3$d</string>
+    <!-- The Coming up card in the feed panel -->
+    <string name="feed_top_alarm">Alarm</string>
+    <string name="feed_top_untitled">(No title)</string>
+    <string name="feed_top_today">Today</string>
+    <string name="feed_top_tomorrow">Tomorrow</string>
+    <string name="feed_top_all_day">All day</string>
+    <string name="feed_top_nothing">No alarms or events coming up</string>
+    <string name="feed_top_nothing_alarm">No alarm set</string>
+    <string name="feed_top_calendar_allow">Show calendar events</string>
 </resources>

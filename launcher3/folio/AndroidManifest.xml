@@ -36,6 +36,9 @@
     <!-- Private Space: Android only shows hidden profiles to the default home app, and only
          if it asks for this. (GrapheneOS's own launcher sees them as part of the OS.) -->
     <uses-permission android:name="android.permission.ACCESS_HIDDEN_PROFILES" />
+    <!-- The feed's "Coming up" card: calendar events, read on the phone. Asked for only when
+         that card is turned on. -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
     <!-- Only used by the feed panel, which is off until you turn it on. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -139,6 +142,14 @@
         <activity
             android:name="com.android.launcher3.folio.BackupActivity"
             android:label="@string/folio_backup_title"
+            android:theme="@style/FolioFeedSettings"
+            android:exported="false"
+            android:autoRemoveFromRecents="true" />
+
+        <!-- Choosing the widget at the top of the feed -->
+        <activity
+            android:name="com.android.launcher3.folio.feed.FeedWidgetActivity"
+            android:label="@string/feed_widget_pick_title"
             android:theme="@style/FolioFeedSettings"
             android:exported="false"
             android:autoRemoveFromRecents="true" />

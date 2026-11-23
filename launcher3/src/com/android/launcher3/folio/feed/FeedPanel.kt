@@ -90,6 +90,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -136,11 +137,16 @@ class FeedPanelState(context: Context) {
     var textScale by mutableFloatStateOf(FeedPrefs.textScale(context))
     /** Cards with the picture across the top instead of a thumbnail on the right. */
     var largeImages by mutableStateOf(FeedPrefs.largeImages(context))
+    /** What sits above the stories (Manage feeds › At the top): see FeedTop. */
+    var topUpcoming by mutableStateOf(FeedPrefs.topUpcoming(context))
+    var topWidget by mutableIntStateOf(FeedWidget.currentId(context))
     /** Follows Manage feeds › Style, even while the panel is open. Kept as a strong reference. */
     private val styleListener =
         android.content.SharedPreferences.OnSharedPreferenceChangeListener { p, key ->
             if (key == FeedPrefs.LARGE_IMAGES) largeImages = p.getBoolean(key, false)
             if (key == FeedPrefs.TEXT_SCALE) textScale = p.getFloat(key, 1f)
+            if (key == FeedPrefs.TOP_UPCOMING) topUpcoming = p.getBoolean(key, false)
+            if (key == FeedPrefs.TOP_WIDGET) topWidget = FeedWidget.currentId(context)
         }
 
     init {
@@ -245,7 +251,26 @@ private fun FeedList(state: FeedPanelState, onOpenSettings: () -> Unit, onImport
             onRefresh = { scope.launch { state.repo.refresh(force = true) } },
             modifier = Modifier.fillMaxSize(),
         ) {
+            val hasTop = state.topUpcoming || state.topWidget != -1
             when {
+                // The top of the feed also shows without stories: above the empty messages.
+                hasTop && (feeds?.isEmpty() == true || list?.isEmpty() == true) -> Column(
+                    Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 8.dp)) {
+                    FeedTop(state)
+                    Box(Modifier.weight(1f)) {
+                        if (feeds?.isEmpty() == true) EmptyState(
+                            title = stringResource(context, R.string.feed_empty_title),
+                            body = stringResource(context, R.string.feed_empty_body),
+                            primary = stringResource(context, R.string.feed_add) to
+                                { state.showAddDialog = true },
+                            secondary = stringResource(context, R.string.feed_import_opml) to onImport,
+                        ) else EmptyState(
+                            title = stringResource(context, R.string.feed_caught_up_title),
+                            body = stringResource(context, R.string.feed_caught_up_body),
+                            primary = null, secondary = null,
+                        )
+                    }
+                }
                 feeds?.isEmpty() == true -> EmptyState(
                     title = stringResource(context, R.string.feed_empty_title),
                     body = stringResource(context, R.string.feed_empty_body),
@@ -266,6 +291,7 @@ private fun FeedList(state: FeedPanelState, onOpenSettings: () -> Unit, onImport
                         bottom = 16.dp + state.bottomInset),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
+                    if (hasTop) item(key = "top") { FeedTop(state) }
                     items(list, key = { it.item.id }) { e ->
                         ItemCard(state, e, onOpen = {
                             state.openItem = e.item

@@ -4,6 +4,7 @@
  */
 package com.android.launcher3.folio.feed
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateUtils
 import androidx.activity.ComponentActivity
@@ -32,6 +33,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.ListItem
@@ -203,9 +205,21 @@ class FeedSettingsActivity : ComponentActivity() {
                 snackbar.showSnackbar(msg)
             }
         }
+        // At the top of the feed.
+        var upcoming by remember { mutableStateOf(FeedPrefs.topUpcoming(this)) }
+        var calendarAllowed by remember { mutableStateOf(hasCalendar()) }
+        var widgetLabel by remember { mutableStateOf(topWidgetLabel()) }
+        val askCalendar = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestPermission()) { granted -> calendarAllowed = granted }
+        val pickWidget = rememberLauncherForActivityResult(
+            ActivityResultContracts.StartActivityForResult()) { widgetLabel = topWidgetLabel() }
+
         LaunchedEffect(Unit) {
             if (intent.getBooleanExtra(EXTRA_IMPORT, false)) {
                 importer.launch(OPML_TYPES)
+            }
+            if (intent.getBooleanExtra(EXTRA_ASK_CALENDAR, false) && !calendarAllowed) {
+                askCalendar.launch(android.Manifest.permission.READ_CALENDAR)
             }
         }
 
@@ -260,6 +274,53 @@ class FeedSettingsActivity : ComponentActivity() {
                         },
                         colors = groupItemColors(),
                         modifier = Modifier.groupCard(Group.Bottom).clickable(onClick = onStyle),
+                    )
+                }
+                item { SectionHeader(getString(R.string.feed_section_top)) }
+                item {
+                    ListItem(
+                        headlineContent = { Text(getString(R.string.feed_top_upcoming_title)) },
+                        supportingContent = {
+                            Text(getString(when {
+                                !upcoming -> R.string.feed_top_upcoming_summary
+                                calendarAllowed -> R.string.feed_top_upcoming_summary
+                                else -> R.string.feed_top_upcoming_no_calendar
+                            }))
+                        },
+                        trailingContent = { Switch(upcoming, null) },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Top).clickable {
+                            upcoming = !upcoming
+                            prefs.edit().putBoolean(FeedPrefs.TOP_UPCOMING, upcoming).apply()
+                            // Events need calendar access; the next alarm doesn't.
+                            if (upcoming && !calendarAllowed) {
+                                askCalendar.launch(android.Manifest.permission.READ_CALENDAR)
+                            }
+                        },
+                    )
+                }
+                item {
+                    ListItem(
+                        headlineContent = { Text(getString(R.string.feed_top_widget_title)) },
+                        supportingContent = {
+                            Text(widgetLabel ?: getString(R.string.feed_top_widget_none))
+                        },
+                        trailingContent = {
+                            if (widgetLabel != null) {
+                                IconButton({
+                                    FeedWidget.remove(this@FeedSettingsActivity)
+                                    widgetLabel = null
+                                }) {
+                                    Icon(Icons.Outlined.Close,
+                                        getString(R.string.feed_top_widget_remove))
+                                }
+                            }
+                        },
+                        colors = groupItemColors(),
+                        modifier = Modifier.groupCard(Group.Bottom).clickable {
+                            pickWidget.launch(Intent(this@FeedSettingsActivity,
+                                FeedWidgetActivity::class.java))
+                        },
                     )
                 }
                 item { SectionHeader(getString(R.string.feed_section_refresh)) }
@@ -493,6 +554,16 @@ class FeedSettingsActivity : ComponentActivity() {
         )
     }
 
+    private fun hasCalendar() = checkSelfPermission(android.Manifest.permission.READ_CALENDAR) ==
+        android.content.pm.PackageManager.PERMISSION_GRANTED
+
+    /** The feed's widget, by name, or null when there's none. */
+    private fun topWidgetLabel(): String? {
+        val id = FeedWidget.currentId(this)
+        if (id == -1) return null
+        return FeedWidget.info(this, id)?.loadLabel(packageManager)
+    }
+
     private fun intervalLabel(hours: Int): String = if (hours <= 0)
         getString(R.string.feed_refresh_manual)
     else resources.getQuantityString(R.plurals.feed_refresh_hours, hours, hours)
@@ -502,6 +573,8 @@ class FeedSettingsActivity : ComponentActivity() {
 
     companion object {
         const val EXTRA_IMPORT = "import_opml"
+        /** Opened from the feed's "Coming up" card: ask for calendar access straight away. */
+        const val EXTRA_ASK_CALENDAR = "ask_calendar"
         private val OPML_TYPES = arrayOf("text/x-opml", "text/xml", "application/xml",
             "application/octet-stream", "*/*")
     }

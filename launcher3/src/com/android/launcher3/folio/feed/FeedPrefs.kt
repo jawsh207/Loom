@@ -19,6 +19,10 @@ object FeedPrefs {
     const val TEXT_SCALE = "pref_feed_text_scale"
     const val UNREAD_ONLY = "pref_feed_unread_only"
     const val LARGE_IMAGES = "pref_feed_large_images"
+    /** At the top of the feed: the date, next alarm and calendar events (off by default). */
+    const val TOP_UPCOMING = "pref_feed_top_upcoming"
+    /** At the top of the feed: the chosen widget's id, or none ([FeedWidget]). */
+    const val TOP_WIDGET = "pref_feed_top_widget"
 
     val REFRESH_CHOICES = intArrayOf(0, 1, 3, 6, 12, 24)
     val KEEP_CHOICES = intArrayOf(7, 30, 90, 365)
@@ -54,4 +58,6 @@ object FeedPrefs {
     }
 
     fun largeImages(context: Context) = prefs(context).getBoolean(LARGE_IMAGES, false)
+
+    fun topUpcoming(context: Context) = prefs(context).getBoolean(TOP_UPCOMING, false)
 }
