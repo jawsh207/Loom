@@ -217,8 +217,10 @@ class FeedPanelView(private val launcher: Launcher) :
                 velocity?.addMovement(ev)
             }
             MotionEvent.ACTION_MOVE -> {
-                // Dragging a selection handle in an article isn't a swipe to close the panel.
-                if (ArticleSelection.isSelecting()) return false
+                // A touch held past the long-press time is selecting article text (press and
+                // hold, then drag to extend), not a swipe to close the panel. Selection handles
+                // are drawn in their own popup windows, so dragging them never gets here.
+                if (ev.eventTime - ev.downTime >= ViewConfiguration.getLongPressTimeout()) return false
                 velocity?.addMovement(ev)
                 val dx = ev.rawX - downX
                 val dy = ev.rawY - downY

@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Emulator test of the feed panel's newer parts: selectable article text and the top of the feed.
 
-1. Selecting text: long-pressing a word in an article selects it and offers Copy; a sideways
-   drag while text is selected doesn't close the panel.
+1. Selecting text: long-pressing a word in an article selects it (its handles and Copy menu
+   open as popup windows); pressing, holding and then dragging sideways selects instead of
+   closing the panel, while a quick sideways swipe still closes it.
 2. Coming up (Manage feeds › At the top): with an alarm set (through the Clock app) and an event
    added to a local calendar, turning it on asks for calendar access, and the panel then shows
    the date, the alarm and the event.
@@ -49,6 +50,12 @@ def panel_open():
         bool(find(snap("panel-check"), r"^refresh$|^share$|^listen$"))
 
 
+def popups():
+    """Loom's popup windows: the selection handles and the Copy menu are each one."""
+    out = sh("dumpsys window windows | grep -E 'Window #.*(PopupWindow|FloatingToolbar|Magnifier)'")
+    return sum(1 for l in out.splitlines() if l.strip())
+
+
 def add_calendar_event():
     """A local calendar with one event two hours from now, through the calendar provider."""
     out = sh("content insert --uri 'content://com.android.calendar/calendars?caller_is_syncadapter=true"
@@ -88,20 +95,29 @@ def main():
         para = find(nodes, r"a life measured in hours")
         if para:
             x, y = center(para)
+            before = popups()
             sh(f"input swipe {x} {y} {x} {y} 1200")  # long-press a word
             time.sleep(2)
-            nodes = snap("selected")
-            copy = find(nodes, r"^copy$")
-            log(f"  long-press offers Copy: {bool(copy)}")
-            if copy:
-                tap(copy)
-                time.sleep(1)
-                sh(f"input swipe {x} {y} {x} {y} 1200")
-                time.sleep(2)
-            # A sideways drag while text is selected (like dragging a handle).
-            sh(f"input swipe {x} {y + 4} {max(10, x - w // 2)} {y + 4} 600")
+            snap("selected")
+            log(f"  long-press selects (handles and the Copy menu open): {popups() > before} "
+                f"({before} -> {popups()} popup windows)")
+            sh("input keyevent KEYCODE_ESCAPE")
+            time.sleep(1)
+            # Press and hold, then drag sideways in the same touch: extends a selection.
+            sh(f"input motionevent DOWN {x} {y}")
+            time.sleep(1.2)
+            for step in range(1, 9):
+                sh(f"input motionevent MOVE {x - step * w // 20} {y}")
+            sh(f"input motionevent UP {x - 8 * w // 20} {y}")
             time.sleep(2)
-            log(f"  sideways drag with text selected keeps the panel open: {panel_open()}")
+            snap("hold-drag")
+            log(f"  press-hold-drag sideways keeps the panel open: {panel_open()}")
+            sh("input keyevent KEYCODE_ESCAPE")
+            time.sleep(1)
+            # A quick sideways swipe still closes it.
+            sh(f"input swipe {w * 7 // 8} {y} {w // 8} {y} 250")
+            time.sleep(3)
+            log(f"  a quick swipe still closes the panel: {not panel_open()}")
         else:
             log("  !! no paragraph to select")
     go_home()
@@ -157,7 +173,7 @@ def main():
     log(f"  Widget row names it: {bool(find(nodes, r'^analog clock$'))}")
     hosts = sh("dumpsys appwidget")
     log(f"  bound to the feed's widget host: "
-        f"{('hostId=%d' % FEED_HOST) in hosts or ('%x' % FEED_HOST) in hosts.lower()}")
+        f"{str(FEED_HOST) in hosts or ('%x' % FEED_HOST) in hosts.lower()}")
     go_home()
     nodes = open_panel("panel-widget")
     log(f"  widget shows in the panel (Coming up still there): "

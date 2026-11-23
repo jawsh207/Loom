@@ -50,7 +50,8 @@ The list of all apps, opened by swiping up. Loom adds:
 - **Colorful GrapheneOS icons.** GrapheneOS's own apps have a black symbol on white. Loom
   turns them around: the symbol in white on a colour of its own (and Brave's lion in white
   on orange). It uses each app's real icon, so the symbol is always the app's own.
-- **Icon shape** follows what you pick in the system's Wallpaper & style, everywhere in Loom.
+- **Icon shape** follows what you pick in the system's Wallpaper & style, everywhere in Loom,
+  and so does its **App names** switch (show or hide the names under home screen icons).
 - **Colours** of Loom's screens come from the system too: neutral greys with "Other colors",
   tinted by your wallpaper with "Wallpaper colors", light or dark with the system theme.
 
@@ -62,10 +63,16 @@ for reading websites' RSS, Atom and JSON feeds:
   folders, and import or export them as an OPML file.
 - Opening a story shows just the article (text, pictures, headings, quotes, links) pulled out
   of the web page, the way Firefox's Reader View does, instead of loading the whole site.
+  Its text can be selected and copied: long-press a word, then drag (or drag the handles) to
+  select more. A drag that starts with a long-press selects text instead of closing the panel.
 - **Share** sends the article's link; pick a browser from the share sheet to open it there.
 - **Listen** reads the article out loud with the phone's text-to-speech engine, following
   along on screen; it can be paused and picks up at the same paragraph.
 - Stories can be starred, and filtered to unread or starred ones.
+- **At the top** (Manage feeds) can put two things above the stories. **Coming up** shows
+  today's date, your next alarm and today's and tomorrow's calendar events; it asks for
+  calendar access when turned on, and shows the alarm alone without it. **Widget** holds one
+  widget of your choice, like the home screen's. Both are off by default.
 - Loom checks for new stories in the background, from every hour to once a day (or only when
   you refresh), optionally only on Wi-Fi. This is the only part of Loom that uses the internet, and only
   while the panel is turned on.
@@ -79,7 +86,7 @@ Everything is in **Home settings** (long-press an empty spot › Home settings):
 | Notification dots | Dots on apps with notifications (Android's own setting) |
 | Grid | Home screen columns and rows, dock size, app drawer columns |
 | Drawer tabs | Create, rename, fill and remove drawer tabs |
-| Feeds | Turn the feed panel on, manage feeds, choose the story style and text size |
+| Feeds | Turn the feed panel on, manage feeds, choose the story style and text size, and what sits at the top of the feed |
 | Gestures | Double-tap to lock, swipe down for notifications |
 | Add app icons to home screen | New apps go on the home screen |
 | Backup & restore | Save your setup to a file, or bring one back |
@@ -131,6 +138,7 @@ All of these are in `launcher3/src/com/android/launcher3/folio/` unless noted.
 | Home settings' rounded card look | `SettingsCards.kt` |
 | Feed panel: the panel and opening it | `feed/FeedPanel.kt`, `feed/FeedPanelView.kt`, `feed/FeedOverlay.kt` |
 | Feed panel: articles | `feed/ArticleExtractor.kt` (pulls the article out of the page), `feed/ArticleContent.kt` (shows it) |
+| Feed panel: At the top | `feed/FeedTop.kt` (Coming up and the widget card), `feed/FeedWidget.kt` (the feed's own widget host), `feed/FeedWidgetActivity.kt` (choosing the widget) |
 | Feed panel: reading aloud | `feed/FeedSpeaker.kt` |
 | Feed panel: fetching and reading feeds | `feed/FeedHttp.kt`, `feed/FeedParser.kt`, `feed/FeedRepository.kt`, `feed/FeedImages.kt` |
 | Feed panel: storage and background checks | `feed/FeedDatabase.kt`, `feed/FeedModels.kt`, `feed/FeedRefreshJob.kt`, `feed/FeedPrefs.kt` |
@@ -146,6 +154,6 @@ block. A set of automated tests then runs Loom on an Android emulator and goes t
 way a person would: adding widgets, using the feed panel, locking the home screen, changing
 the grid (comparing the whole layout before and after), drawer tabs across an app update,
 renaming and hiding, colorful icons, theme colours, notification dots on cover folders,
-backup and restore, rotation, accessibility labels, and work profiles and Private Space. A
+the top of the feed and selecting article text, backup and restore, rotation, accessibility labels, and work profiles and Private Space. A
 few things can only be checked on a real GrapheneOS phone, such as GrapheneOS-only menu
-options and the icon shape picked in Wallpaper & style.
+options and the icon shape and app names switch in Wallpaper & style.

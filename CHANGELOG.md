@@ -5,6 +5,10 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- **At the top** (Home settings › Feeds › Manage feeds): two things that can sit above your stories. **Coming up** shows today's date, your next alarm and today's and tomorrow's calendar events (it asks for calendar access when you turn it on). **Widget** puts one widget of your choice at the top of the feed.
+- Article text in the feed panel can now be selected and copied: long-press a word, then drag the handles.
+- Fixed: the **App names** switch in Wallpaper & style didn't work; turning it on or off now shows or hides the names under home screen icons.
+
 ## 0.5.0 (2026-11-16)
 
 - Changing the grid size (Home settings › Grid) no longer resets your home screen. Everything is kept: items stay put where they fit, anything that doesn't moves to the nearest free spot or a new page, dock icons that don't fit the dock move to the home screen, and widgets bigger than the grid shrink to fit.
