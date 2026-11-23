@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.6.1 (2026-11-23)
+
 - The widget at the top of the feed now starts at the height it would have on the home screen, and the handle under it drags it taller or shorter (double-tap the handle to fit the widget again).
 - Coming up: events that sync apps saved without an attendee status no longer go missing, and when there are no events the card now says why (no upcoming events, or no calendars shared by your calendar app).
 
