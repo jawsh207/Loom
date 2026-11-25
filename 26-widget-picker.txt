@@ -1,0 +1,20 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[231, 333, 408, 396] text='Calendar' desc='' id= click=false
+[231, 396, 487, 449] text='Calendar · 1 × 1' desc='' id= click=false
+[231, 530, 487, 593] text='Analog clock' desc='' id= click=false
+[231, 593, 433, 646] text='Clock · 1 × 1' desc='' id= click=false
+[231, 727, 476, 790] text='Digital clock' desc='' id= click=false
+[231, 790, 433, 843] text='Clock · 1 × 1' desc='' id= click=false
+[231, 924, 498, 987] text='Photo Gallery' desc='' id= click=false
+[231, 987, 455, 1040] text='Gallery · 1 × 1' desc='' id= click=false
+[231, 1121, 450, 1184] text='Messaging' desc='' id= click=false
+[231, 1184, 522, 1237] text='Messaging · 1 × 1' desc='' id= click=false
+[231, 1318, 450, 1381] text='Messaging' desc='' id= click=false
+[231, 1381, 522, 1434] text='Messaging · 1 × 1' desc='' id= click=false
+[231, 1515, 368, 1578] text='Search' desc='' id= click=false
+[231, 1578, 454, 1631] text='Search · 1 × 1' desc='' id= click=false
+[231, 1712, 493, 1775] text='Conversation' desc='' id= click=false
+[231, 1775, 507, 1828] text='System UI · 1 × 1' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 570, 249] text='Choose a widget' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

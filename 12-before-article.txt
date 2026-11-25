@@ -1,0 +1,16 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 665, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 570, 254] text='Folio Test Gazette' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 338, 527, 380] text='Folio Test Gazette · October 7' desc='' id= click=false
+[74, 391, 769, 517] text='Lighthouse keepers of the northern coast' desc='' id= click=false
+[74, 528, 769, 634] text='A short teaser: the full story is only on the web page.' desc='' id= click=false
+[74, 739, 527, 781] text='Folio Test Gazette · October 6' desc='' id= click=false
+[74, 792, 810, 855] text='Why bread rises: a field guide to yeast' desc='' id= click=false
+[74, 866, 906, 919] text='Yeast eats sugar and breathes out carbon dioxide.' desc='' id= click=false
+[74, 1024, 527, 1066] text='Folio Test Gazette · October 5' desc='' id= click=false
+[74, 1077, 737, 1140] text='Full text in the feed & no web page' desc='' id= click=false
+[74, 1151, 1006, 1257] text="This item has no link, so Folio shows the feed's own text. First point Second point" desc='' id= click=false

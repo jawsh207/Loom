@@ -1,0 +1,20 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 665, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 570, 254] text='Folio Test Gazette' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 339, 728, 413] text='Wednesday, November 25' desc='' id= click=false
+[169, 445, 287, 508] text='Alarm' desc='' id= click=false
+[169, 508, 503, 561] text='Tomorrow · 7:30 AM' desc='' id= click=false
+[169, 603, 311, 666] text='Dentist' desc='' id= click=false
+[169, 666, 614, 719] text='Tomorrow · 1:52\u2009–\u20092:52\u202fAM' desc='' id= click=false
+[169, 761, 314, 824] text='Haircut' desc='' id= click=false
+[169, 824, 614, 877] text='Tomorrow · 2:52\u2009–\u20093:22\u202fAM' desc='' id= click=false
+[74, 993, 527, 1035] text='Folio Test Gazette · October 6' desc='' id= click=false
+[74, 1046, 810, 1109] text='Why bread rises: a field guide to yeast' desc='' id= click=false
+[74, 1120, 906, 1173] text='Yeast eats sugar and breathes out carbon dioxide.' desc='' id= click=false
+[74, 1278, 527, 1320] text='Folio Test Gazette · October 5' desc='' id= click=false
+[74, 1331, 737, 1394] text='Full text in the feed & no web page' desc='' id= click=false
+[74, 1405, 1006, 1511] text="This item has no link, so Folio shows the feed's own text. First point Second point" desc='' id= click=false

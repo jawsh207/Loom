@@ -1,0 +1,8 @@
+[120, 717, 960, 1684] text='' desc='' id=android:id/content click=false
+[414, 885, 667, 969] text='Add feed' desc='' id= click=false
+[183, 1011, 897, 1232] text='http://10.0.2.2:8000/rss.xml' desc='' id= click=true
+[225, 1011, 584, 1053] text='Feed or website address' desc='' id= click=false
+[225, 1190, 838, 1232] text='A website works too: Loom finds its feed.' desc='' id= click=false
+[225, 1327, 555, 1390] text='Folder (optional)' desc='' id= click=false
+[788, 1532, 854, 1585] text='Add' desc='' id= click=false
+[579, 1532, 692, 1585] text='Cancel' desc='' id= click=false

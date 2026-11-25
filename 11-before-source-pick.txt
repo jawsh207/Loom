@@ -1,0 +1,5 @@
+[32, 275, 487, 572] text='' desc='' id=android:id/content click=false
+[64, 333, 208, 386] text='All feeds' desc='' id= click=false
+[392, 333, 413, 386] text='3' desc='' id= click=false
+[64, 462, 360, 515] text='Folio Test Gazette' desc='' id= click=false
+[392, 462, 413, 515] text='3' desc='' id= click=false

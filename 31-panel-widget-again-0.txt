@@ -1,0 +1,23 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/launcher click=false
+[0, 0, 1080, 2400] text='' desc='' id=app.folio.launcher:id/drag_layer click=false
+[32, 149, 665, 275] text='' desc='Choose which feeds to show' id= click=false
+[64, 170, 570, 254] text='Folio Test Gazette' desc='' id= click=false
+[849, 181, 912, 244] text='' desc='Refresh' id= click=false
+[975, 181, 1038, 244] text='' desc='More options' id= click=false
+[74, 339, 728, 413] text='Wednesday, November 25' desc='' id= click=false
+[169, 445, 287, 508] text='Alarm' desc='' id= click=false
+[169, 508, 503, 561] text='Tomorrow · 7:30 AM' desc='' id= click=false
+[169, 603, 311, 666] text='Dentist' desc='' id= click=false
+[169, 666, 614, 719] text='Tomorrow · 1:52\u2009–\u20092:52\u202fAM' desc='' id= click=false
+[169, 761, 314, 824] text='Haircut' desc='' id= click=false
+[169, 824, 614, 877] text='Tomorrow · 2:52\u2009–\u20093:22\u202fAM' desc='' id= click=false
+[32, 951, 1048, 1735] text='' desc='Analog clock' id= click=false
+[53, 972, 1027, 1714] text='' desc='23:54' id=com.android.deskclock:id/analog_appwidget click=true
+[32, 1735, 1048, 1798] text='' desc='Widget size. Drag to resize, double-tap to fit the widget.' id= click=false
+[74, 1861, 527, 1903] text='Folio Test Gazette · October 6' desc='' id= click=false
+[74, 1914, 810, 1977] text='Why bread rises: a field guide to yeast' desc='' id= click=false
+[74, 1988, 906, 2041] text='Yeast eats sugar and breathes out carbon dioxide.' desc='' id= click=false
+[74, 2146, 527, 2188] text='Folio Test Gazette · October 5' desc='' id= click=false
+[74, 2199, 737, 2262] text='Full text in the feed & no web page' desc='' id= click=false
+[74, 2273, 1006, 2379] text="This item has no link, so Folio shows the feed's own text. First point Second point" desc='' id= click=false

@@ -1,0 +1,25 @@
+[0, 0, 1080, 2400] text='' desc='' id=android:id/content click=false
+[84, 31, 182, 94] text='Style' desc='' id= click=false
+[84, 94, 457, 147] text='Compact · Default text' desc='' id= click=false
+[74, 246, 234, 299] text='At the top' desc='' id= click=false
+[84, 352, 298, 415] text='Coming up' desc='' id= click=false
+[84, 415, 817, 521] text="Today's date, your next alarm, and your next 4 calendar events" desc='' id= click=false
+[84, 597, 223, 660] text='Widget' desc='' id= click=false
+[84, 660, 510, 713] text='None. Tap to choose one.' desc='' id= click=false
+[74, 812, 252, 865] text='Refreshing' desc='' id= click=false
+[84, 923, 526, 986] text='Check for new articles' desc='' id= click=false
+[84, 986, 306, 1039] text='Every 3 hours' desc='' id= click=false
+[84, 1115, 342, 1178] text='Only on Wi-Fi' desc='' id= click=false
+[84, 1178, 817, 1284] text='Background checks wait for an unmetered connection' desc='' id= click=false
+[84, 1360, 510, 1423] text='Keep read articles for' desc='' id= click=false
+[84, 1423, 213, 1476] text='30 days' desc='' id= click=false
+[74, 1575, 176, 1628] text='1 feed' desc='' id= click=false
+[189, 1691, 367, 1754] text='Add feed' desc='' id= click=false
+[189, 1836, 455, 1899] text='Import OPML' desc='' id= click=false
+[189, 1899, 996, 2005] text='The subscription list format other feed readers export' desc='' id= click=false
+[189, 2086, 452, 2149] text='Export OPML' desc='' id= click=false
+[189, 2270, 549, 2333] text='Folio Test Gazette' desc='' id= click=false
+[189, 2333, 554, 2386] text='10.0.2.2:8000/rss.xml' desc='' id= click=false
+[43, 181, 106, 244] text='' desc='Back' id= click=false
+[148, 175, 301, 249] text='Feeds' desc='' id= click=false
+[0, 2274, 1080, 2400] text='' desc='' id=android:id/navigationBarBackground click=false

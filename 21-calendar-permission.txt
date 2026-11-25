@@ -1,0 +1,8 @@
+[28, 785, 1052, 1616] text='' desc='' id=android:id/content click=false
+[28, 785, 1052, 1616] text='' desc='' id=com.android.permissioncontroller:id/grant_singleton click=true
+[28, 785, 1052, 1616] text='' desc='' id=com.android.permissioncontroller:id/grant_dialog click=true
+[70, 827, 1010, 1202] text='' desc='' id=com.android.permissioncontroller:id/content_container click=false
+[498, 890, 582, 974] text='' desc='' id=com.android.permissioncontroller:id/permission_icon click=false
+[133, 1006, 947, 1139] text='Allow Loom to access your calendar?' desc='' id=com.android.permissioncontroller:id/permission_message click=false
+[133, 1207, 947, 1354] text='ALLOW' desc='' id=com.android.permissioncontroller:id/permission_allow_button click=true
+[133, 1364, 947, 1511] text='DON’T ALLOW' desc='' id=com.android.permissioncontroller:id/permission_deny_button click=true

@@ -1,0 +1,78 @@
+system ready
+system ready
+system ready
+Performing Streamed Install
+Success
+
+Success
+
+setup 0: home role=app.folio.launcher top=topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[01-feeds-find0] activity: topResumedActivity=ActivityRecord{138809787 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[02-before-feed-on] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  tapping 'Feed panel' at [84, 559, 300, 622]
+[03-find-add-find0] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[04-find-add-find1] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[05-before-add-rss] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  tapping 'Add feed' at [189, 1691, 367, 1754]
+[06-add-rss-dialog] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[07-before-add-rss-confirm] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  tapping 'Add' at [788, 1532, 854, 1585]
+[08-add-rss-done] activity: topResumedActivity=ActivityRecord{28736354 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  add http://10.0.2.2:8000/rss.xml: ok
+[09-panel-0] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[10-before-source-menu] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Choose which feeds to show' at [32, 149, 296, 275]
+[11-before-source-pick] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Folio Test Gazette' at [64, 462, 360, 515]
+[12-before-article] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  tapping 'Lighthouse keepers of the northern coast' at [74, 391, 769, 517]
+[13-article-open] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[14-selected] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  long-press selects (handles and the Copy menu open): True (0 -> 1 popup windows)
+[15-panel-check] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  still reading the article: True
+[16-hold-drag] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+[17-panel-check] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  press-hold-drag sideways keeps the panel open: True
+[18-panel-check] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  a quick swipe still closes the panel: True
+  next alarm set: False
+  calendar: '' ids ['1']
+  event added: ''
+[19-feeds-top-find0] activity: topResumedActivity=ActivityRecord{91755268 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[20-upcoming-on-find0] activity: topResumedActivity=ActivityRecord{212942422 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[21-calendar-permission] activity: topResumedActivity=ActivityRecord{177102760 u0 com.android.permissioncontroller/.permission.ui.GrantPermissionsActivity t9}
+  turning it on asks for calendar access: True
+[22-panel-upcoming-0] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  shows the date: True
+  shows the alarm: True
+  shows the event: True
+  leaves out the event three weeks away: True
+[23-panel-new-event] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  a new event appears without reopening: True
+[24-feeds-widget-find0] activity: topResumedActivity=ActivityRecord{227274824 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[25-widget-row-find0] activity: topResumedActivity=ActivityRecord{42878960 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[26-widget-picker] activity: topResumedActivity=ActivityRecord{213897940 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedWidgetActivity t9}
+  Clock's analog clock in the list: True
+[27-widget-bind] activity: topResumedActivity=ActivityRecord{265068844 u0 com.android.settings/.AllowBindAppWidgetActivity t9}
+  Android asks to allow the widget: True
+[28-after-widget] activity: topResumedActivity=ActivityRecord{42878960 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  Widget row names it: True
+  bound to the feed's widget host: True
+[29-panel-widget-0] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  widget shows in the panel (Coming up still there): True; views ['com.android.deskclock:id/analog_appwidget']
+  resize handle under the widget: True
+[30-widget-taller] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  dragging the handle down makes it taller: True (512 -> 784 px)
+[31-panel-widget-again-0] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  the height is kept: True (784 px)
+[32-widget-fit] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  double-tap goes back to its own size: True (512 px)
+[33-feeds-first-find0] activity: topResumedActivity=ActivityRecord{141676848 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[34-widget-first-find0] activity: topResumedActivity=ActivityRecord{84052810 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[35-panel-widget-first-0] activity: topResumedActivity=ActivityRecord{66218136 u0 app.folio.launcher/com.android.launcher3.Launcher t8}
+  Widget first puts the widget above Coming up: True
+[36-feeds-remove-find0] activity: topResumedActivity=ActivityRecord{189860673 u0 app.folio.launcher/com.android.launcher3.settings.SettingsActivity t9}
+[37-widget-remove-find0] activity: topResumedActivity=ActivityRecord{182871287 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+[38-after-remove] activity: topResumedActivity=ActivityRecord{182871287 u0 app.folio.launcher/com.android.launcher3.folio.feed.FeedSettingsActivity t9}
+  removed: True
