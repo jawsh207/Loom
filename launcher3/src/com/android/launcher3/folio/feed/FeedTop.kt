@@ -81,7 +81,8 @@ import kotlinx.coroutines.withContext
 /**
  * What can sit above the stories in the feed panel (Manage feeds › At the top):
  *
- * - **Coming up**: today's date, the next alarm, and the next few calendar events.
+ * - **Coming up**: today's date, the next alarm, and the next few calendar events in the coming
+ *   week ([EVENT_DAYS]).
  *   The alarm needs no permission (Android tells any app the next alarm); events need calendar
  *   access, asked for when it's turned on. The card reloads as soon as the calendar or the
  *   alarm changes, and every minute. Nothing leaves the phone: events are read from the
@@ -125,14 +126,9 @@ private fun calendarAllowed(context: Context) =
 private fun loadUpcoming(context: Context): Upcoming {
     val alarm = context.getSystemService(AlarmManager::class.java)?.nextAlarmClock
     if (!calendarAllowed(context)) return Upcoming(alarm, emptyList(), false)
-    // The next few events however far ahead they are. The calendar lists repeating events once
-    // per time they happen, so look a week ahead first and only reach further when that week
-    // doesn't hold enough, rather than unrolling years of weekly meetings every minute.
-    var events: List<Event> = emptyList()
-    for (days in SEARCH_DAYS) {
-        events = queryEvents(context, days)
-        if (events.size >= MAX_EVENTS) break
-    }
+    // Only the coming week: events further out aren't "coming up" yet, and a short window also
+    // keeps the calendar from unrolling months of repeating meetings on every reload.
+    val events = queryEvents(context, EVENT_DAYS)
     return Upcoming(alarm, events.take(MAX_EVENTS), true, countCalendars(context))
 }
 
@@ -150,8 +146,8 @@ private fun countCalendars(context: Context): Int = try {
     -1
 }
 
-/** Days ahead to look for events, widening until [MAX_EVENTS] are found. */
-private val SEARCH_DAYS = intArrayOf(7, 31, 92, 366, 366 * 3)
+/** How far ahead Coming up looks for events: the next 7 days from now. */
+private const val EVENT_DAYS = 7
 
 /** Events that haven't ended yet and start within [days] from now, soonest day first. */
 private fun queryEvents(context: Context, days: Int): List<Event> {

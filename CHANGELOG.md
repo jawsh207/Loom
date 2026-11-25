@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+- Coming up (Manage feeds › At the top) now only shows calendar events in the next 7 days, instead of the next events however far ahead.
+
 ## 0.6.2 (2026-11-23)
 
 - **Widget first** (Manage feeds › At the top): puts the widget above the Coming up card instead of below it. It shows once both are turned on.
