@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version name, e.g. 1.0 (blank: next 0.5.N)"
+        description: "Version name, e.g. 1.0 (blank: one past the newest tag)"
         type: string
         default: ""
 

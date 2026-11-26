@@ -120,13 +120,16 @@ jobs:
           VERSION_INPUT: ${{ inputs.version }}
         run: |
           CODE=$(( ($(date -u +%s) - 1767225600) / 60 ))
-          # Releases without a typed version count up within this series: 0.5.0, 0.5.1, ...
-          SERIES=0.5
+          # Releases without a typed version take the newest X.Y.Z tag and add one to its last
+          # number (0.6.2 -> 0.6.3). A fixed series here once fell behind typed versions and
+          # published 0.5.1 after 0.6.2; type a version to start a new series (e.g. 0.7.0).
+          LATEST=$(git tag -l 'v*' | sed 's/^v//' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          SERIES="${LATEST%.*}"; SERIES="${SERIES:-0.6}"
           if [ "${{ inputs.publish }}" = "true" ]; then
             NAME="${VERSION_INPUT#v}"
             if [ -z "$NAME" ]; then
-              LAST=$(git tag -l "v${SERIES}.*" | sed "s/^v${SERIES}\.//" | grep -E '^[0-9]+$' | sort -n | tail -1)
-              NAME="${SERIES}.$(( ${LAST:--1} + 1 ))"
+              if [ -n "$LATEST" ]; then PATCH="${LATEST##*.}"; else PATCH=-1; fi
+              NAME="${SERIES}.$(( PATCH + 1 ))"
             fi
             if ! [[ "$NAME" =~ ^[0-9A-Za-z._-]+$ ]]; then
               echo "::error::Use only letters, digits, dots, dashes and underscores in the version."
