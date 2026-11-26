@@ -5,6 +5,8 @@ What's new in each Loom release (called Folio before 0.3). The **Unreleased** se
 
 ## Unreleased
 
+## 0.6.3 (2026-11-26)
+
 - Coming up (Manage feeds › At the top) now only shows calendar events in the next 7 days, instead of the next events however far ahead.
 
 ## 0.6.2 (2026-11-23)
